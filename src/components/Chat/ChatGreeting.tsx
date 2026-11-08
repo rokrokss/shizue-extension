@@ -35,7 +35,9 @@ const loadContinueCards = async (): Promise<ContinueCard[]> => {
         title: messages[0] ? titleOf(messages[0]) : '',
         urls: messages.flatMap((m) => [
           ...(m.attachments ?? []).map((page) => page.url),
-          ...(m.actionType === 'askForSummary' && m.summaryPageLink ? [m.summaryPageLink] : []),
+          // A summary's page, and a selection action's (explain, X-ray and the like).
+          ...(m.summaryPageLink ? [m.summaryPageLink] : []),
+          ...(m.agentRun?.url ? [m.agentRun.url] : []),
         ]),
       };
     })

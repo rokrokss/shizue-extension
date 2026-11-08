@@ -182,10 +182,12 @@ export type AgentOutcome =
   | 'unanswered'
   | 'not_handed_back';
 
-// A browser agent answer's record, kept with the message. tabId: the tab it worked in behind the
-// user's (STORAGE_AGENT_BACKGROUND). tip: what it offered to keep for the site, and what the user did.
+// A browser agent answer's record, kept with the message. url: the page it started on, for the
+// new chat's continue cards. tabId: the tab it worked in behind the user's
+// (STORAGE_AGENT_BACKGROUND). tip: what it offered to keep for the site, and what the user did.
 export type AgentRun = {
   host?: string;
+  url?: string;
   steps: AgentStep[];
   outcome?: AgentOutcome;
   tabId?: number;

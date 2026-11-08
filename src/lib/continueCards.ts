@@ -11,7 +11,8 @@ export interface RecentChat {
   threadId: string;
   title: string;
   updatedAt: number;
-  // The pages the chat attached or summarized.
+  // The pages the chat attached, summarized, acted on a selection in, or worked with the browser
+  // agent.
   urls: string[];
 }
 

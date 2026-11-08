@@ -508,6 +508,7 @@ export async function runBrowserAgent({
     await settle(tabId, 0, 'navigate', signal);
   }
   run.host = new URL(userTab.url!).host;
+  run.url = userTab.url;
 
   runs.set(tabId, controller);
   const said: Steering = { said: [] };
