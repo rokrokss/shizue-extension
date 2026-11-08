@@ -66,7 +66,18 @@ export type BridgeLogEntry = {
 
 const HOST_NAME = 'net.shizue.bridge';
 const GROUP_TITLE = 'Shizue';
-const KINDS: AgentActionKind[] = ['click', 'type', 'select', 'scroll', 'navigate', 'back', 'wait', 'open_tab'];
+const KINDS: AgentActionKind[] = [
+  'click',
+  'type',
+  'select',
+  'press',
+  'hover',
+  'scroll',
+  'navigate',
+  'back',
+  'wait',
+  'open_tab',
+];
 // A connection that lasted this long is worth making again; one that ended at once has no host.
 const WORTH_RECONNECTING_MS = 5000;
 const RECONNECT_AFTER_MS = 5000;
@@ -216,6 +227,8 @@ type FillKey =
   | 'agent.step.type'
   | 'agent.step.select'
   | 'agent.step.click'
+  | 'agent.step.press'
+  | 'agent.step.pressOn'
   | 'bridge.overlayWorking'
   | 'bridge.overlayWaiting'
   | 'bridge.confirmTitle';
@@ -229,10 +242,15 @@ const agentLabel = (name: unknown) => {
 };
 
 const stepText = (action: AgentAction, element: PageElement | undefined) => {
-  const values = { target: elementLabel(element) ?? '', text: action.text ?? '' };
+  const values = {
+    target: elementLabel(element) ?? '',
+    text: action.text ?? '',
+    key: action.key === ' ' ? 'Space' : action.key ?? '',
+  };
   if (action.kind === 'type' && action.submit) return fill('agent.step.typeSubmit', values);
   if (action.kind === 'type') return fill('agent.step.type', values);
   if (action.kind === 'select') return fill('agent.step.select', values);
+  if (action.kind === 'press') return fill(element ? 'agent.step.pressOn' : 'agent.step.press', values);
   return fill('agent.step.click', values);
 };
 
@@ -454,7 +472,7 @@ const act = (args: BridgeArgs, agent: string) => {
     const element = action.ref !== undefined ? page?.elements.find((candidate) => candidate.ref === action.ref) : undefined;
     const step = await doAction(tabId, action, element, agent);
     const now = await chrome.tabs.get(tabId).catch(() => null);
-    const label = elementLabel(element) ?? action.url ?? action.direction;
+    const label = elementLabel(element) ?? action.url ?? action.key ?? action.direction;
     const target = `${action.kind}${label ? ` ‘${label}’` : ''}`;
     const lines = [actionResult(step)];
     if (step.status === 'done') {

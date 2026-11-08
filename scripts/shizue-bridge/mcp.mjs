@@ -51,13 +51,20 @@ const TOOLS = [
   {
     name: 'act',
     description:
-      'Do one thing in a tab. click, type and select take a number from the latest read_page or find. The answer is short: whether it worked and whether the address changed; pass include_snapshot for the page as well. A click or Enter that may send, delete or pay waits for the user to allow it on the page. Password and card fields are refused: leave those to the user. open_tab opens a page in the background, in the Shizue group.',
+      'Do one thing in a tab. click, type, select and hover take a number from the latest read_page or find. press sends a key: Escape closes a popup, arrows move in a list. hover moves the pointer over a control for a menu that opens on hover; if nothing opens, click it. The answer is short: whether it worked and whether the address changed; pass include_snapshot for the page as well. A click or Enter that may send, delete or pay waits for the user to allow it on the page. Password and card fields are refused: leave those to the user. open_tab opens a page in the background, in the Shizue group.',
     inputSchema: {
       type: 'object',
       properties: {
         tabId,
-        kind: { type: 'string', enum: ['click', 'type', 'select', 'scroll', 'navigate', 'back', 'wait', 'open_tab'] },
-        ref: { type: 'integer', description: 'click, type, select: the control.' },
+        kind: {
+          type: 'string',
+          enum: ['click', 'type', 'select', 'press', 'hover', 'scroll', 'navigate', 'back', 'wait', 'open_tab'],
+        },
+        ref: { type: 'integer', description: 'click, type, select, hover: the control. press: the control, or none for what has focus.' },
+        key: {
+          type: 'string',
+          description: 'press: Enter, Escape, Tab, Backspace, Delete, ArrowDown, ArrowUp, ArrowLeft, ArrowRight, PageDown, PageUp, Home, End or Space.',
+        },
         text: { type: 'string', description: 'type: replaces the field. select: the option.' },
         submit: { type: 'boolean', description: 'type: press Enter after it.' },
         url: { type: 'string', description: 'navigate, open_tab.' },
