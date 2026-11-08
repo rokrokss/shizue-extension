@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Correggi la grammatica del testo selezionato",
     "removeTranslation": "Rimuovi traduzione",
     "translateImage": "Traduci immagine",
-    "translatePageImages": "Traduci tutte le immagini della pagina"
+    "translatePageImages": "Traduci tutte le immagini della pagina",
+    "fillFormFromTab": "Compila questo modulo da una scheda aperta"
   },
   "onboarding": {
     "greeting_0": "Benvenuto!",
@@ -523,5 +524,35 @@
     "logEmpty": "Ancora niente",
     "clearLog": "Cancella",
     "refusedStopped": "Rifiutato: l’hai interrotto qui"
+  },
+  "formFill": {
+    "title": "Compila da una scheda aperta",
+    "reading": "Lettura del modulo…",
+    "fieldsFound": "Campi da compilare: {{count}}",
+    "pickSource": "Scegli la scheda da cui prendere i valori",
+    "noTabs": "Nessun'altra scheda web è aperta in questa finestra.",
+    "proposing": "Lettura di «{{title}}» e abbinamento al modulo…",
+    "reviewSource": "Da: {{title}}",
+    "reviewHint": "Controlla i valori. Vengono compilati solo i campi selezionati.",
+    "nothingFound": "Quella scheda non ha valori per nessun campo di questo modulo.",
+    "fill": "Compila ({{count}})",
+    "otherTab": "Scegli un'altra scheda",
+    "filling": "Compilazione del modulo…",
+    "noSubmit": "Shizue non invia mai il modulo. Controllalo e invialo tu.",
+    "filled": "Campi compilati: {{count}}",
+    "skipped": {
+      "gone": "non è più nella pagina",
+      "changed": "lasciato com'era: è cambiato dopo la lettura",
+      "failed": "non è stato possibile compilarlo"
+    },
+    "close": "Chiudi",
+    "error": {
+      "agent_running": "Il controllo del browser sta lavorando in questa scheda. Riprova quando ha finito.",
+      "unreadable": "Shizue non riesce a leggere il modulo di questa pagina.",
+      "no_fields": "Qui non c'è nessun campo che Shizue possa compilare. Password, numeri di carta e caselle restano a te.",
+      "source_unreadable": "Shizue non riesce a leggere quella scheda.",
+      "source_empty": "Quella scheda ha troppo poco testo per compilare.",
+      "failed": "Il modello non è riuscito a rispondere. Riprova."
+    }
   }
 }

@@ -36,7 +36,8 @@
     "fixGrammarSelection": "選択したテキストの文法を修正",
     "removeTranslation": "翻訳を削除",
     "translateImage": "画像を翻訳",
-    "translatePageImages": "ページの画像をすべて翻訳"
+    "translatePageImages": "ページの画像をすべて翻訳",
+    "fillFormFromTab": "開いているタブからこのフォームに入力"
   },
   "onboarding": {
     "greeting_0": "ようこそ！",
@@ -523,5 +524,35 @@
     "logEmpty": "まだありません",
     "clearLog": "消去",
     "refusedStopped": "拒否：このタブで停止されています"
+  },
+  "formFill": {
+    "title": "開いているタブから入力",
+    "reading": "フォームを読み取っています…",
+    "fieldsFound": "入力できる欄: {{count}}",
+    "pickSource": "値を取り出すタブを選んでください",
+    "noTabs": "このウィンドウにはほかに開いているウェブのタブがありません。",
+    "proposing": "「{{title}}」を読んでフォームに当てはめています…",
+    "reviewSource": "取得元: {{title}}",
+    "reviewHint": "値を確認してください。チェックした欄だけに入力します。",
+    "nothingFound": "そのタブには、このフォームの欄に入れる値が見つかりませんでした。",
+    "fill": "入力する（{{count}}）",
+    "otherTab": "別のタブを選ぶ",
+    "filling": "フォームに入力しています…",
+    "noSubmit": "シズエはフォームを送信しません。確認してからご自身で送信してください。",
+    "filled": "入力した欄: {{count}}",
+    "skipped": {
+      "gone": "ページからなくなりました",
+      "changed": "そのままにしました: 読み取った後に変わっていました",
+      "failed": "入力できませんでした"
+    },
+    "close": "閉じる",
+    "error": {
+      "agent_running": "このタブではブラウザ操作が動いています。終わってからもう一度お試しください。",
+      "unreadable": "シズエはこのページのフォームを読み取れません。",
+      "no_fields": "ここにはシズエが入力できる欄がありません。パスワード、カード番号、チェックボックスはご自身で入力してください。",
+      "source_unreadable": "シズエはそのタブを読み取れません。",
+      "source_empty": "そのタブには入力に使えるテキストがほとんどありません。",
+      "failed": "モデルが応答できませんでした。もう一度お試しください。"
+    }
   }
 }

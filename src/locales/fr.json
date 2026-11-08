@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Corriger la grammaire du texte sélectionné",
     "removeTranslation": "Supprimer la traduction",
     "translateImage": "Traduire l’image",
-    "translatePageImages": "Traduire toutes les images de la page"
+    "translatePageImages": "Traduire toutes les images de la page",
+    "fillFormFromTab": "Remplir ce formulaire depuis un onglet ouvert"
   },
   "onboarding": {
     "greeting_0": "Bienvenue !",
@@ -523,5 +524,35 @@
     "logEmpty": "Rien pour l’instant",
     "clearLog": "Effacer",
     "refusedStopped": "Refusé : vous l’avez arrêté ici"
+  },
+  "formFill": {
+    "title": "Remplir depuis un onglet ouvert",
+    "reading": "Lecture du formulaire…",
+    "fieldsFound": "Champs à remplir : {{count}}",
+    "pickSource": "Choisissez l'onglet d'où prendre les valeurs",
+    "noTabs": "Aucun autre onglet web n'est ouvert dans cette fenêtre.",
+    "proposing": "Lecture de « {{title}} » et correspondance avec le formulaire…",
+    "reviewSource": "Depuis : {{title}}",
+    "reviewHint": "Vérifiez les valeurs. Seuls les champs cochés sont remplis.",
+    "nothingFound": "Cet onglet ne contient de valeur pour aucun champ de ce formulaire.",
+    "fill": "Remplir ({{count}})",
+    "otherTab": "Choisir un autre onglet",
+    "filling": "Remplissage du formulaire…",
+    "noSubmit": "Shizue n'envoie jamais le formulaire. Vérifiez-le et envoyez-le vous-même.",
+    "filled": "Champs remplis : {{count}}",
+    "skipped": {
+      "gone": "n'est plus sur la page",
+      "changed": "laissé tel quel : modifié depuis la lecture",
+      "failed": "n'a pas pu être rempli"
+    },
+    "close": "Fermer",
+    "error": {
+      "agent_running": "Le contrôle du navigateur travaille dans cet onglet. Réessayez quand il aura fini.",
+      "unreadable": "Shizue ne peut pas lire le formulaire de cette page.",
+      "no_fields": "Aucun champ ici que Shizue puisse remplir. Les mots de passe, numéros de carte et cases à cocher restent pour vous.",
+      "source_unreadable": "Shizue ne peut pas lire cet onglet.",
+      "source_empty": "Cet onglet contient trop peu de texte pour remplir le formulaire.",
+      "failed": "Le modèle n'a pas pu répondre. Réessayez."
+    }
   }
 }

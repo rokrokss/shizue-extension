@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Seçili metnin dilbilgisini düzelt",
     "removeTranslation": "Çeviriyi kaldır",
     "translateImage": "Görseli çevir",
-    "translatePageImages": "Sayfadaki tüm görselleri çevir"
+    "translatePageImages": "Sayfadaki tüm görselleri çevir",
+    "fillFormFromTab": "Bu formu açık bir sekmeden doldur"
   },
   "onboarding": {
     "greeting_0": "Hoş geldiniz!",
@@ -523,5 +524,35 @@
     "logEmpty": "Henüz bir şey yok",
     "clearLog": "Temizle",
     "refusedStopped": "Reddedildi: burada durdurdunuz"
+  },
+  "formFill": {
+    "title": "Açık bir sekmeden doldur",
+    "reading": "Form okunuyor…",
+    "fieldsFound": "Doldurulabilecek alanlar: {{count}}",
+    "pickSource": "Değerlerin alınacağı sekmeyi seçin",
+    "noTabs": "Bu pencerede açık başka web sekmesi yok.",
+    "proposing": "“{{title}}” okunup formla eşleştiriliyor…",
+    "reviewSource": "Kaynak: {{title}}",
+    "reviewHint": "Değerleri kontrol edin. Yalnızca işaretli alanlar doldurulur.",
+    "nothingFound": "O sekmede bu formun hiçbir alanı için değer yok.",
+    "fill": "Doldur ({{count}})",
+    "otherTab": "Başka sekme seç",
+    "filling": "Form dolduruluyor…",
+    "noSubmit": "Shizue formu asla göndermez. Kontrol edip kendiniz gönderin.",
+    "filled": "Doldurulan alanlar: {{count}}",
+    "skipped": {
+      "gone": "artık sayfada değil",
+      "changed": "dokunulmadı: okunduktan sonra değişti",
+      "failed": "doldurulamadı"
+    },
+    "close": "Kapat",
+    "error": {
+      "agent_running": "Bu sekmede tarayıcı denetimi çalışıyor. Bitince tekrar deneyin.",
+      "unreadable": "Shizue bu sayfanın formunu okuyamıyor.",
+      "no_fields": "Burada Shizue'nin doldurabileceği alan yok. Parolalar, kart numaraları ve onay kutuları size kalır.",
+      "source_unreadable": "Shizue o sekmeyi okuyamıyor.",
+      "source_empty": "O sekmede doldurmak için çok az metin var.",
+      "failed": "Model yanıt veremedi. Tekrar deneyin."
+    }
   }
 }

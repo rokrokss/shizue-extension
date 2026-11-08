@@ -19,6 +19,7 @@ import {
   MESSAGE_SUGGEST_QUESTIONS,
   MESSAGE_AGENT_RESUME,
   MESSAGE_AGENT_STOP,
+  MESSAGE_FORM_FILL_PROPOSE,
   MESSAGE_TRANSLATE_IMAGE,
   MESSAGE_SAVE_WORD,
   MESSAGE_TRANSLATE_HTML_TEXT_BATCH,
@@ -31,6 +32,7 @@ import { addWord, db, getLatestMessageForThread, loadThread } from '@/lib/indexD
 import { parsePlayerResponse } from '@/lib/youtube';
 import { getChatModelHandler } from '@/services/background/chatModelHandler';
 import { translateImage } from '@/services/background/imageTranslationHandler';
+import { proposeFormFill } from '@/services/background/formFillHandler';
 import { resumeAgentInTab, stopAgentInTab } from '@/services/background/browserAgentHandler';
 import { pauseBridgeInTab } from '@/services/background/nativeBridge';
 import { getTranslationHandler } from '@/services/background/translationHandler';
@@ -271,6 +273,11 @@ async function handleTranslateImage(msg: any, sendResponse: (response?: any) => 
   sendResponse(await translateImage(msg.srcUrl, msg.dataUrl, msg.targetLanguage, msg.title ?? ''));
 }
 
+// Values for a form from another tab (components/FormFill/FormFillCard.tsx).
+async function handleFormFillPropose(msg: any, sendResponse: (response?: any) => void) {
+  sendResponse(await proposeFormFill(msg.fields, msg.form, msg.sourceTabId));
+}
+
 // The stop button of the browser agent's pill on the page, which Claude Code's bridge shows too.
 async function handleAgentStop(
   msg: any,
@@ -348,6 +355,7 @@ export const messageHandlers = {
   [MESSAGE_TRANSLATE_IMAGE]: handleTranslateImage,
   [MESSAGE_AGENT_STOP]: handleAgentStop,
   [MESSAGE_AGENT_RESUME]: handleAgentResume,
+  [MESSAGE_FORM_FILL_PROPOSE]: handleFormFillPropose,
   [MESSAGE_LOOKUP_WORD]: handleLookupWord,
   [MESSAGE_SAVE_WORD]: handleSaveWord,
   [MESSAGE_FETCH_YOUTUBE_PLAYER]: handleFetchYoutubePlayer,

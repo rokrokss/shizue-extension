@@ -47,6 +47,17 @@ export async function initBrowserControlContent() {
   });
 }
 
+// The form fill card, from a form field's context menu (lib/formFill.ts).
+export async function initFormFillContent(tabId: number, frameId: number) {
+  const prevGlobalState = await readStorage<GlobalState>(STORAGE_GLOBAL_STATE);
+  await setStorage(STORAGE_GLOBAL_STATE, {
+    ...(prevGlobalState ?? {}),
+    actionType: 'fillForm',
+    formFillTabId: tabId,
+    formFillFrameId: frameId,
+  });
+}
+
 // The word list, from the caption word popup's link.
 export async function initWordsPageContent() {
   const prevGlobalState = await readStorage<GlobalState>(STORAGE_GLOBAL_STATE);

@@ -64,8 +64,10 @@ test('summary panel intent is sent with the synchronous open request', async () 
   });
 });
 
-// The handlers the background added for the Claude Code bridge, which these tests don't reach.
+// The handlers the background added for form fill and the Claude Code bridge, which these tests
+// don't reach.
 const newHandlerStubs = {
+  '@/services/background/formFillHandler': 'export const proposeFormFill = async () => ({});',
   '@/services/background/nativeBridge': 'export const pauseBridgeInTab = async () => {};',
 };
 

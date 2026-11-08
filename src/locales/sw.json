@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Rekebisha sarufi ya maandishi yaliyochaguliwa",
     "removeTranslation": "Ondoa tafsiri",
     "translateImage": "Tafsiri picha",
-    "translatePageImages": "Tafsiri picha zote za ukurasa"
+    "translatePageImages": "Tafsiri picha zote za ukurasa",
+    "fillFormFromTab": "Jaza fomu hii kutoka kichupo kilicho wazi"
   },
   "onboarding": {
     "greeting_0": "Karibu!",
@@ -523,5 +524,35 @@
     "logEmpty": "Bado hakuna kitu",
     "clearLog": "Futa",
     "refusedStopped": "Imekataliwa: uliisimamisha hapa"
+  },
+  "formFill": {
+    "title": "Jaza kutoka kichupo kilicho wazi",
+    "reading": "Inasoma fomu…",
+    "fieldsFound": "Sehemu za kujaza: {{count}}",
+    "pickSource": "Chagua kichupo cha kuchukua thamani",
+    "noTabs": "Hakuna kichupo kingine cha wavuti kilicho wazi kwenye dirisha hili.",
+    "proposing": "Inasoma “{{title}}” na kuilinganisha na fomu…",
+    "reviewSource": "Kutoka: {{title}}",
+    "reviewHint": "Kagua thamani. Sehemu zilizowekwa alama pekee ndizo zitajazwa.",
+    "nothingFound": "Kichupo hicho hakina thamani ya sehemu yoyote ya fomu hii.",
+    "fill": "Jaza ({{count}})",
+    "otherTab": "Chagua kichupo kingine",
+    "filling": "Inajaza fomu…",
+    "noSubmit": "Shizue haitumi fomu kamwe. Ikague kisha uitume mwenyewe.",
+    "filled": "Sehemu zilizojazwa: {{count}}",
+    "skipped": {
+      "gone": "haipo tena kwenye ukurasa",
+      "changed": "imeachwa: ilibadilika baada ya kusomwa",
+      "failed": "haikuweza kujazwa"
+    },
+    "close": "Funga",
+    "error": {
+      "agent_running": "Udhibiti wa kivinjari unafanya kazi kwenye kichupo hiki. Jaribu tena ukimaliza.",
+      "unreadable": "Shizue haiwezi kusoma fomu ya ukurasa huu.",
+      "no_fields": "Hakuna sehemu hapa ambayo Shizue inaweza kujaza. Nenosiri, namba za kadi na visanduku vya kuteua ni vyako.",
+      "source_unreadable": "Shizue haiwezi kusoma kichupo hicho.",
+      "source_empty": "Kichupo hicho kina maandishi machache mno ya kujaza.",
+      "failed": "Modeli haikuweza kujibu. Jaribu tena."
+    }
   }
 }

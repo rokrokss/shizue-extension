@@ -126,7 +126,14 @@ export function snapshotPage(maxText: number): PageSnapshot {
       if (text) return text;
     }
     if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement || element instanceof HTMLSelectElement) {
-      const label = clean(element.labels?.[0]?.innerText);
+      // A label that wraps its control has the control's own text in it too: a dropdown's choices.
+      const wrapping = element.labels?.[0];
+      let label = clean(wrapping?.innerText);
+      if (wrapping?.contains(element)) {
+        const copy = wrapping.cloneNode(true) as HTMLElement;
+        copy.querySelectorAll('select, textarea').forEach((control) => control.remove());
+        label = clean(copy.textContent);
+      }
       if (label) return label;
       if (element instanceof HTMLInputElement && ['submit', 'button', 'reset'].includes(element.type)) return clean(element.value);
       if (!(element instanceof HTMLSelectElement) && element.placeholder) return clean(element.placeholder);

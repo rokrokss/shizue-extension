@@ -36,7 +36,8 @@
     "fixGrammarSelection": "修正所选文字的语法",
     "removeTranslation": "移除翻译",
     "translateImage": "翻译图片",
-    "translatePageImages": "翻译页面上的所有图片"
+    "translatePageImages": "翻译页面上的所有图片",
+    "fillFormFromTab": "用打开的标签页填写此表单"
   },
   "onboarding": {
     "greeting_0": "欢迎！",
@@ -523,5 +524,35 @@
     "logEmpty": "暂无",
     "clearLog": "清除",
     "refusedStopped": "已拒绝：你已在此停止"
+  },
+  "formFill": {
+    "title": "用打开的标签页填写",
+    "reading": "正在读取表单…",
+    "fieldsFound": "可填写的字段：{{count}}",
+    "pickSource": "选择从哪个标签页取值",
+    "noTabs": "此窗口中没有其他打开的网页标签页。",
+    "proposing": "正在读取“{{title}}”并对应到表单…",
+    "reviewSource": "来源：{{title}}",
+    "reviewHint": "请检查这些值。只填写勾选的字段。",
+    "nothingFound": "那个标签页里没有可填入此表单的内容。",
+    "fill": "填写（{{count}}）",
+    "otherTab": "选择其他标签页",
+    "filling": "正在填写表单…",
+    "noSubmit": "Shizue 不会提交表单。请检查后自行提交。",
+    "filled": "已填写字段：{{count}}",
+    "skipped": {
+      "gone": "已不在页面上",
+      "changed": "未改动：读取后已变化",
+      "failed": "未能填写"
+    },
+    "close": "关闭",
+    "error": {
+      "agent_running": "浏览器操控正在此标签页中运行。结束后再试一次。",
+      "unreadable": "Shizue 无法读取此页面的表单。",
+      "no_fields": "这里没有 Shizue 能填写的字段。密码、卡号和复选框请自行填写。",
+      "source_unreadable": "Shizue 无法读取那个标签页。",
+      "source_empty": "那个标签页的文字太少，无法用来填写。",
+      "failed": "模型未能回答。请重试。"
+    }
   }
 }

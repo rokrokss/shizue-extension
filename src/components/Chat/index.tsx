@@ -8,7 +8,7 @@ import SettingsModal from '@/components/Setting/SettingsModal';
 import { isSelectionActionType, MESSAGE_LOAD_THREAD, MESSAGE_REMEMBER_THREAD } from '@/config/constants';
 import { useAutoMemoryValue } from '@/hooks/autoMemory';
 import { chatStatusAtom, createThreadMessageCountAtom, isChatIdle, isChatWaiting, switchThreadAtom } from '@/hooks/chat';
-import { ActionType, browserControlRequestedAtom, threadIdAtom } from '@/hooks/global';
+import { ActionType, browserControlRequestedAtom, formFillRequestAtom, threadIdAtom } from '@/hooks/global';
 import { useThemeValue } from '@/hooks/layout';
 import { useChromePortStream } from '@/hooks/portStream';
 import { convertFilesToBase64Array } from '@/lib/imageUtils';
@@ -37,6 +37,7 @@ import { useTranslation } from 'react-i18next';
 const ChatContainer = lazy(() => import('@/components/Chat/ChatContainer'));
 const ThreadListModalContent = lazy(() => import('@/components/Chat/ThreadListModalContent'));
 const TokenUsageModalContent = lazy(() => import('@/components/Chat/TokenUsageModalContent'));
+const FormFillCard = lazy(() => import('@/components/FormFill/FormFillCard'));
 
 export interface Message {
   // The stored message's id. An answer the panel is still showing as it streams has none.
@@ -712,6 +713,10 @@ const Chat = () => {
     setBrowserAgentTurnedOn((count) => count + 1);
   }, [browserControlRequested, setBrowserControlRequested, switchThread]);
 
+  // A form field's menu: fill its form from another tab, in a card over the chat.
+  const [formFillRequest, setFormFillRequest] = useAtom(formFillRequestAtom);
+  const closeFormFill = useCallback(() => setFormFillRequest(null), [setFormFillRequest]);
+
   // The hint under an answer that was asked to act in the tab with browser control off: turns it on
   // and asks the question again with the browser agent, which the background reads off the question.
   const handleBrowserControlRetry = async (answerIdx: number) => {
@@ -911,6 +916,13 @@ const Chat = () => {
           onClose={handleCloseHistory}
           size="large"
           content={<ThreadListModalContent onClose={handleCloseHistory} />}
+        />
+      )}
+      {formFillRequest && (
+        <SidePanelFullModal
+          onClose={closeFormFill}
+          size="large"
+          content={<FormFillCard key={formFillRequest.at} request={formFillRequest} onClose={closeFormFill} />}
         />
       )}
       {isUsageOpen && (

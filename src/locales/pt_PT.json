@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Corrigir a gramática do texto selecionado",
     "removeTranslation": "Remover tradução",
     "translateImage": "Traduzir imagem",
-    "translatePageImages": "Traduzir todas as imagens da página"
+    "translatePageImages": "Traduzir todas as imagens da página",
+    "fillFormFromTab": "Preencher este formulário a partir de um separador aberto"
   },
   "onboarding": {
     "greeting_0": "Bem-vindo!",
@@ -523,5 +524,35 @@
     "logEmpty": "Ainda nada",
     "clearLog": "Limpar",
     "refusedStopped": "Recusado: parou-o aqui"
+  },
+  "formFill": {
+    "title": "Preencher a partir de um separador aberto",
+    "reading": "A ler o formulário…",
+    "fieldsFound": "Campos a preencher: {{count}}",
+    "pickSource": "Escolha o separador de onde tirar os valores",
+    "noTabs": "Não há outro separador web aberto nesta janela.",
+    "proposing": "A ler “{{title}}” e a encaixar no formulário…",
+    "reviewSource": "De: {{title}}",
+    "reviewHint": "Verifique os valores. Só os campos assinalados são preenchidos.",
+    "nothingFound": "Esse separador não tem valor para nenhum campo deste formulário.",
+    "fill": "Preencher ({{count}})",
+    "otherTab": "Escolher outro separador",
+    "filling": "A preencher o formulário…",
+    "noSubmit": "O Shizue nunca submete o formulário. Verifique-o e submeta-o você.",
+    "filled": "Campos preenchidos: {{count}}",
+    "skipped": {
+      "gone": "já não está na página",
+      "changed": "deixado como estava: mudou depois de lido",
+      "failed": "não foi possível preencher"
+    },
+    "close": "Fechar",
+    "error": {
+      "agent_running": "O controlo do navegador está a trabalhar neste separador. Tente de novo quando terminar.",
+      "unreadable": "O Shizue não consegue ler o formulário desta página.",
+      "no_fields": "Não há aqui nenhum campo que o Shizue possa preencher. Palavras-passe, números de cartão e caixas de verificação ficam consigo.",
+      "source_unreadable": "O Shizue não consegue ler esse separador.",
+      "source_empty": "Esse separador tem pouco texto para preencher.",
+      "failed": "O modelo não conseguiu responder. Tente de novo."
+    }
   }
 }

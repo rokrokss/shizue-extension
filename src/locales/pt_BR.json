@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Corrigir a gramática do texto selecionado",
     "removeTranslation": "Remover tradução",
     "translateImage": "Traduzir imagem",
-    "translatePageImages": "Traduzir todas as imagens da página"
+    "translatePageImages": "Traduzir todas as imagens da página",
+    "fillFormFromTab": "Preencher este formulário com uma aba aberta"
   },
   "onboarding": {
     "greeting_0": "Bem-vindo!",
@@ -523,5 +524,35 @@
     "logEmpty": "Nada ainda",
     "clearLog": "Limpar",
     "refusedStopped": "Recusado: você o parou aqui"
+  },
+  "formFill": {
+    "title": "Preencher com uma aba aberta",
+    "reading": "Lendo o formulário…",
+    "fieldsFound": "Campos para preencher: {{count}}",
+    "pickSource": "Escolha a aba de onde tirar os valores",
+    "noTabs": "Nenhuma outra aba da web está aberta nesta janela.",
+    "proposing": "Lendo “{{title}}” e encaixando no formulário…",
+    "reviewSource": "De: {{title}}",
+    "reviewHint": "Confira os valores. Só os campos marcados são preenchidos.",
+    "nothingFound": "Essa aba não tem valor para nenhum campo deste formulário.",
+    "fill": "Preencher ({{count}})",
+    "otherTab": "Escolher outra aba",
+    "filling": "Preenchendo o formulário…",
+    "noSubmit": "O Shizue nunca envia o formulário. Confira e envie você mesmo.",
+    "filled": "Campos preenchidos: {{count}}",
+    "skipped": {
+      "gone": "não está mais na página",
+      "changed": "deixado como estava: mudou depois de lido",
+      "failed": "não foi possível preencher"
+    },
+    "close": "Fechar",
+    "error": {
+      "agent_running": "O controle do navegador está trabalhando nesta aba. Tente de novo quando terminar.",
+      "unreadable": "O Shizue não consegue ler o formulário desta página.",
+      "no_fields": "Não há campo aqui que o Shizue possa preencher. Senhas, números de cartão e caixas de seleção ficam com você.",
+      "source_unreadable": "O Shizue não consegue ler essa aba.",
+      "source_empty": "Essa aba tem pouco texto para preencher.",
+      "failed": "O modelo não conseguiu responder. Tente de novo."
+    }
   }
 }

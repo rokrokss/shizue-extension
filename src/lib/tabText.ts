@@ -67,8 +67,9 @@ export const readPdfPage = async (data: ArrayBuffer, title: string, url: string)
 };
 
 // Reads the tab's top frame as it is now, the same text a page summary reads. Restricted pages,
-// sites the user withheld from Shizue and closed tabs fail as 'unreadable'.
-export const readTabPage = async (tabId: number): Promise<PageRead> => {
+// sites the user withheld from Shizue and closed tabs fail as 'unreadable'. `short` takes a page
+// with a few lines, such as a contact note a form is filled from.
+export const readTabPage = async (tabId: number, short = false): Promise<PageRead> => {
   try {
     const [injection] = await chrome.scripting.executeScript({
       target: { tabId },
@@ -83,7 +84,7 @@ export const readTabPage = async (tabId: number): Promise<PageRead> => {
       if (!response.ok) return { error: 'unreadable' };
       return readPdfPage(await response.arrayBuffer(), page.title, page.url);
     }
-    if (hasLittleText(page.text)) return { error: 'empty' };
+    if (short ? !page.text.trim() : hasLittleText(page.text)) return { error: 'empty' };
     return { page };
   } catch {
     return { error: 'unreadable' };

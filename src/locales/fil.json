@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Ayusin ang grammar ng napiling teksto",
     "removeTranslation": "Alisin ang pagsasalin",
     "translateImage": "Isalin ang larawan",
-    "translatePageImages": "Isalin ang lahat ng larawan sa pahina"
+    "translatePageImages": "Isalin ang lahat ng larawan sa pahina",
+    "fillFormFromTab": "Punan ang form na ito mula sa bukas na tab"
   },
   "onboarding": {
     "greeting_0": "Maligayang pagdating!",
@@ -523,5 +524,35 @@
     "logEmpty": "Wala pa",
     "clearLog": "Burahin",
     "refusedStopped": "Tinanggihan: itinigil mo ito rito"
+  },
+  "formFill": {
+    "title": "Punan mula sa bukas na tab",
+    "reading": "Binabasa ang form…",
+    "fieldsFound": "Mga field na mapupunan: {{count}}",
+    "pickSource": "Piliin ang tab na pagkukunan ng mga value",
+    "noTabs": "Walang ibang bukas na web tab sa window na ito.",
+    "proposing": "Binabasa ang “{{title}}” at itinutugma sa form…",
+    "reviewSource": "Mula sa: {{title}}",
+    "reviewHint": "Suriin ang mga value. Ang mga naka-check lang ang pupunan.",
+    "nothingFound": "Walang sagot ang tab na iyon sa alinmang field ng form na ito.",
+    "fill": "Punan ({{count}})",
+    "otherTab": "Pumili ng ibang tab",
+    "filling": "Pinupunan ang form…",
+    "noSubmit": "Hindi kailanman isinusumite ng Shizue ang form. Suriin ito at ikaw ang magsumite.",
+    "filled": "Mga field na napunan: {{count}}",
+    "skipped": {
+      "gone": "wala na sa page",
+      "changed": "hindi ginalaw: nagbago pagkatapos basahin",
+      "failed": "hindi napunan"
+    },
+    "close": "Isara",
+    "error": {
+      "agent_running": "May ginagawa ang browser control sa tab na ito. Subukan ulit kapag tapos na.",
+      "unreadable": "Hindi mabasa ng Shizue ang form ng page na ito.",
+      "no_fields": "Walang field dito na mapupunan ng Shizue. Ikaw ang bahala sa password, numero ng card at mga checkbox.",
+      "source_unreadable": "Hindi mabasa ng Shizue ang tab na iyon.",
+      "source_empty": "Masyadong kaunti ang teksto sa tab na iyon para pagkunan.",
+      "failed": "Hindi nakasagot ang model. Subukan ulit."
+    }
   }
 }

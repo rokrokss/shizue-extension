@@ -31,6 +31,8 @@ export const MESSAGE_AGENT_STOP = 'action_agent_stop';
 export const MESSAGE_AGENT_RESUME = 'action_agent_resume';
 // Background → the Claude Code bridge's offscreen page: a PDF tab's text (entrypoints/offscreen-pdf).
 export const MESSAGE_BRIDGE_READ_PDF = 'action_bridge_read_pdf';
+// Values for a form's fields, read from another open tab by the chat model (lib/formFill.ts).
+export const MESSAGE_FORM_FILL_PROPOSE = 'action_form_fill_propose';
 export const MESSAGE_CONTEXT_MENU_TRANSLATE_IMAGE = 'action_context_menu_translate_image';
 export const MESSAGE_CONTEXT_MENU_TRANSLATE_PAGE_IMAGES = 'action_context_menu_translate_page_images';
 export const MESSAGE_FRAME_TRANSLATION_STATE = 'frame_translation_state';

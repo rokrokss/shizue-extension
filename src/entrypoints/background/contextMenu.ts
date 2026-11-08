@@ -16,6 +16,7 @@ import {
   LocalServerConfig,
   modelSupportsImages,
 } from '@/lib/modelRegistry';
+import { initFormFillContent } from '@/lib/initPanelData';
 import { errorLog } from '@/logs';
 import { openPanelForSummary } from '@/services/background/panelSummary';
 import { i18n } from '#i18n';
@@ -54,6 +55,10 @@ export const createContextMenu = async () => {
         void chrome.tabs.sendMessage(tab.id, {
           action: MESSAGE_CONTEXT_MENU_TRANSLATE_PAGE,
         }).catch((error) => errorLog('Page action receiver unavailable; reload the page', error));
+      } else if (info.menuItemId === 'fillFormFromTab') {
+        // Open in the context-menu gesture; the panel reads the request from storage.
+        void openPanel(tab.windowId, tab.id).catch((error) => errorLog('open panel', error));
+        void initFormFillContent(tab.id, info.frameId ?? 0).catch((error) => errorLog('form fill', error));
       } else if (info.menuItemId === 'summarizePage') {
         // Open in the context-menu gesture, before messaging or storage work.
         void openPanelForSummary(tab.id, tab.windowId).catch((error) => errorLog('Page summary unavailable', error));
@@ -133,6 +138,12 @@ export const createContextMenu = async () => {
       parentId: 'shizue-parent',
       title: i18n.t('overlayMenu.fixGrammarSelection'),
       contexts: ['selection'],
+    },
+    {
+      id: 'fillFormFromTab',
+      parentId: 'shizue-parent',
+      title: i18n.t('overlayMenu.fillFormFromTab'),
+      contexts: ['editable'],
     },
     {
       id: 'translateImage',

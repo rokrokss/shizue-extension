@@ -7,6 +7,7 @@ import {
 import { chatStatusAtom, isChatWaiting } from '@/hooks/chat';
 import {
   browserControlRequestedAtom,
+  formFillRequestAtom,
   sidePanelHydratedAtom,
   threadIdAtom,
   updateGlobalStateAtom,
@@ -54,6 +55,8 @@ const SidePanelProvider = ({
       selectionText: undefined,
       imageBase64: undefined,
       imageUrl: undefined,
+      formFillTabId: undefined,
+      formFillFrameId: undefined,
     });
   }, [updateGlobalState]);
 
@@ -75,7 +78,15 @@ const SidePanelProvider = ({
       const threadId = store.get(threadIdAtom);
       debugLog('initData', initData);
     
-      if (isChatWaiting(store.get(chatStatusAtom))) {
+      if (initData?.actionType === 'fillForm') {
+        // A card over the chat, not a message, so a running answer doesn't hold it back.
+        await rollbackActionType();
+        const { formFillTabId, formFillFrameId } = initData;
+        if (formFillTabId !== undefined) {
+          store.set(formFillRequestAtom, { tabId: formFillTabId, frameId: formFillFrameId ?? 0, at: Date.now() });
+        }
+        if (isOutsideChat()) navigate('/');
+      } else if (isChatWaiting(store.get(chatStatusAtom))) {
         debugLog('SidePanelProvider: [getInitData] skip initData while a chat is running');
         return;
       } else if (initData?.actionType === 'chat' && isOutsideChat()) {

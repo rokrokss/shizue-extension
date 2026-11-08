@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Corregir la gramática del texto seleccionado",
     "removeTranslation": "Eliminar traducción",
     "translateImage": "Traducir imagen",
-    "translatePageImages": "Traducir todas las imágenes de la página"
+    "translatePageImages": "Traducir todas las imágenes de la página",
+    "fillFormFromTab": "Rellenar este formulario desde una pestaña abierta"
   },
   "onboarding": {
     "greeting_0": "¡Bienvenido!",
@@ -523,5 +524,35 @@
     "logEmpty": "Nada todavía",
     "clearLog": "Borrar",
     "refusedStopped": "Rechazado: lo detuviste aquí"
+  },
+  "formFill": {
+    "title": "Rellenar desde una pestaña abierta",
+    "reading": "Leyendo el formulario…",
+    "fieldsFound": "Campos que se pueden rellenar: {{count}}",
+    "pickSource": "Elige la pestaña de la que tomar los datos",
+    "noTabs": "No hay otra pestaña web abierta en esta ventana.",
+    "proposing": "Leyendo «{{title}}» y relacionándolo con el formulario…",
+    "reviewSource": "De: {{title}}",
+    "reviewHint": "Revisa los valores. Solo se rellenan los campos marcados.",
+    "nothingFound": "Esa pestaña no tiene datos para ningún campo de este formulario.",
+    "fill": "Rellenar ({{count}})",
+    "otherTab": "Elegir otra pestaña",
+    "filling": "Rellenando el formulario…",
+    "noSubmit": "Shizue nunca envía el formulario. Revísalo y envíalo tú.",
+    "filled": "Campos rellenados: {{count}}",
+    "skipped": {
+      "gone": "ya no está en la página",
+      "changed": "sin tocar: cambió después de leerse",
+      "failed": "no se pudo rellenar"
+    },
+    "close": "Cerrar",
+    "error": {
+      "agent_running": "El control del navegador está trabajando en esta pestaña. Inténtalo cuando termine.",
+      "unreadable": "Shizue no puede leer el formulario de esta página.",
+      "no_fields": "Aquí no hay ningún campo que Shizue pueda rellenar. Las contraseñas, los números de tarjeta y las casillas quedan para ti.",
+      "source_unreadable": "Shizue no puede leer esa pestaña.",
+      "source_empty": "Esa pestaña tiene muy poco texto para rellenar.",
+      "failed": "El modelo no pudo responder. Inténtalo de nuevo."
+    }
   }
 }

@@ -36,7 +36,8 @@
     "fixGrammarSelection": "선택한 텍스트 문법 교정",
     "removeTranslation": "번역 없애기",
     "translateImage": "이미지 번역",
-    "translatePageImages": "페이지의 이미지 모두 번역"
+    "translatePageImages": "페이지의 이미지 모두 번역",
+    "fillFormFromTab": "열린 탭으로 이 양식 채우기"
   },
   "onboarding": {
     "greeting_0": "안녕하세요!",
@@ -523,5 +524,35 @@
     "logEmpty": "아직 없어요",
     "clearLog": "지우기",
     "refusedStopped": "거부됨: 이 탭에서 멈추셨어요"
+  },
+  "formFill": {
+    "title": "열린 탭으로 채우기",
+    "reading": "양식을 읽는 중…",
+    "fieldsFound": "채울 수 있는 칸: {{count}}개",
+    "pickSource": "값을 가져올 탭을 고르세요",
+    "noTabs": "이 창에 열린 다른 웹 탭이 없어요.",
+    "proposing": "‘{{title}}’을 읽고 양식에 맞추는 중…",
+    "reviewSource": "가져온 곳: {{title}}",
+    "reviewHint": "값을 확인하세요. 체크한 칸만 채워요.",
+    "nothingFound": "그 탭에는 이 양식에 넣을 값이 없어요.",
+    "fill": "채우기 ({{count}})",
+    "otherTab": "다른 탭 고르기",
+    "filling": "양식을 채우는 중…",
+    "noSubmit": "시즈에는 양식을 제출하지 않아요. 확인한 뒤 직접 제출하세요.",
+    "filled": "{{count}}칸을 채웠어요.",
+    "skipped": {
+      "gone": "페이지에서 사라졌어요",
+      "changed": "그대로 뒀어요: 읽은 뒤에 바뀌었어요",
+      "failed": "채우지 못했어요"
+    },
+    "close": "닫기",
+    "error": {
+      "agent_running": "이 탭에서 브라우저 조작이 진행 중이에요. 끝난 뒤 다시 해 주세요.",
+      "unreadable": "시즈에가 이 페이지의 양식을 읽을 수 없어요.",
+      "no_fields": "시즈에가 채울 수 있는 칸이 없어요. 비밀번호·카드 번호·체크박스는 직접 채워 주세요.",
+      "source_unreadable": "시즈에가 그 탭을 읽을 수 없어요.",
+      "source_empty": "그 탭에는 채울 만한 글이 거의 없어요.",
+      "failed": "모델이 답하지 못했어요. 다시 해 주세요."
+    }
   }
 }

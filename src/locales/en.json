@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Fix grammar in selected text",
     "removeTranslation": "Remove translation",
     "translateImage": "Translate image",
-    "translatePageImages": "Translate all images on page"
+    "translatePageImages": "Translate all images on page",
+    "fillFormFromTab": "Fill this form from an open tab"
   },
   "onboarding": {
     "greeting_0": "Welcome!",
@@ -523,5 +524,35 @@
     "logEmpty": "Nothing yet",
     "clearLog": "Clear",
     "refusedStopped": "Refused: you stopped it here"
+  },
+  "formFill": {
+    "title": "Fill from an open tab",
+    "reading": "Reading the form…",
+    "fieldsFound": "Fields to fill: {{count}}",
+    "pickSource": "Pick the tab to take the values from",
+    "noTabs": "No other web tab is open in this window.",
+    "proposing": "Reading “{{title}}” and matching it to the form…",
+    "reviewSource": "From: {{title}}",
+    "reviewHint": "Check the values. Only the checked fields are filled.",
+    "nothingFound": "That tab doesn't answer any field of this form.",
+    "fill": "Fill ({{count}})",
+    "otherTab": "Pick another tab",
+    "filling": "Filling the form…",
+    "noSubmit": "Shizue never submits the form. Check it and submit it yourself.",
+    "filled": "Fields filled: {{count}}",
+    "skipped": {
+      "gone": "no longer on the page",
+      "changed": "left alone: it changed after it was read",
+      "failed": "couldn't be filled"
+    },
+    "close": "Close",
+    "error": {
+      "agent_running": "Browser control is working in this tab. Try again when it's done.",
+      "unreadable": "Shizue can't read this page's form.",
+      "no_fields": "There's no field here Shizue can fill. Passwords, card numbers and checkboxes are left to you.",
+      "source_unreadable": "Shizue can't read that tab.",
+      "source_empty": "That tab has too little text to fill from.",
+      "failed": "The model couldn't answer. Try again."
+    }
   }
 }

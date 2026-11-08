@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Grammatik im ausgewählten Text korrigieren",
     "removeTranslation": "Übersetzung entfernen",
     "translateImage": "Bild übersetzen",
-    "translatePageImages": "Alle Bilder der Seite übersetzen"
+    "translatePageImages": "Alle Bilder der Seite übersetzen",
+    "fillFormFromTab": "Dieses Formular aus einem offenen Tab ausfüllen"
   },
   "onboarding": {
     "greeting_0": "Willkommen!",
@@ -523,5 +524,35 @@
     "logEmpty": "Noch nichts",
     "clearLog": "Leeren",
     "refusedStopped": "Abgelehnt: hier von dir gestoppt"
+  },
+  "formFill": {
+    "title": "Aus einem offenen Tab ausfüllen",
+    "reading": "Formular wird gelesen …",
+    "fieldsFound": "Ausfüllbare Felder: {{count}}",
+    "pickSource": "Wähle den Tab, aus dem die Werte kommen",
+    "noTabs": "In diesem Fenster ist kein anderer Web-Tab offen.",
+    "proposing": "„{{title}}“ wird gelesen und dem Formular zugeordnet …",
+    "reviewSource": "Aus: {{title}}",
+    "reviewHint": "Prüfe die Werte. Nur angehakte Felder werden ausgefüllt.",
+    "nothingFound": "Dieser Tab enthält für kein Feld des Formulars einen Wert.",
+    "fill": "Ausfüllen ({{count}})",
+    "otherTab": "Anderen Tab wählen",
+    "filling": "Formular wird ausgefüllt …",
+    "noSubmit": "Shizue sendet das Formular nie ab. Prüfe es und sende es selbst ab.",
+    "filled": "Ausgefüllte Felder: {{count}}",
+    "skipped": {
+      "gone": "nicht mehr auf der Seite",
+      "changed": "unverändert gelassen: seit dem Lesen geändert",
+      "failed": "konnte nicht ausgefüllt werden"
+    },
+    "close": "Schließen",
+    "error": {
+      "agent_running": "Die Browsersteuerung arbeitet gerade in diesem Tab. Versuche es danach erneut.",
+      "unreadable": "Shizue kann das Formular dieser Seite nicht lesen.",
+      "no_fields": "Hier gibt es kein Feld, das Shizue ausfüllen kann. Passwörter, Kartennummern und Kästchen bleiben dir überlassen.",
+      "source_unreadable": "Shizue kann diesen Tab nicht lesen.",
+      "source_empty": "Dieser Tab hat zu wenig Text zum Ausfüllen.",
+      "failed": "Das Modell konnte nicht antworten. Versuche es erneut."
+    }
   }
 }

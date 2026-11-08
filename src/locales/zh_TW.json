@@ -36,7 +36,8 @@
     "fixGrammarSelection": "修正所選文字的文法",
     "removeTranslation": "移除翻譯",
     "translateImage": "翻譯圖片",
-    "translatePageImages": "翻譯頁面上的所有圖片"
+    "translatePageImages": "翻譯頁面上的所有圖片",
+    "fillFormFromTab": "用開啟的分頁填寫此表單"
   },
   "onboarding": {
     "greeting_0": "歡迎！",
@@ -523,5 +524,35 @@
     "logEmpty": "尚無",
     "clearLog": "清除",
     "refusedStopped": "已拒絕：你已在此停止"
+  },
+  "formFill": {
+    "title": "用開啟的分頁填寫",
+    "reading": "正在讀取表單…",
+    "fieldsFound": "可填寫的欄位：{{count}}",
+    "pickSource": "選擇要從哪個分頁取值",
+    "noTabs": "此視窗中沒有其他開啟的網頁分頁。",
+    "proposing": "正在讀取「{{title}}」並對應到表單…",
+    "reviewSource": "來源：{{title}}",
+    "reviewHint": "請檢查這些值。只填寫勾選的欄位。",
+    "nothingFound": "那個分頁裡沒有可填入此表單的內容。",
+    "fill": "填寫（{{count}}）",
+    "otherTab": "選擇其他分頁",
+    "filling": "正在填寫表單…",
+    "noSubmit": "Shizue 不會送出表單。請檢查後自行送出。",
+    "filled": "已填寫欄位：{{count}}",
+    "skipped": {
+      "gone": "已不在頁面上",
+      "changed": "未變更：讀取後已有變動",
+      "failed": "無法填寫"
+    },
+    "close": "關閉",
+    "error": {
+      "agent_running": "瀏覽器操控正在此分頁中執行。結束後再試一次。",
+      "unreadable": "Shizue 無法讀取此頁面的表單。",
+      "no_fields": "這裡沒有 Shizue 能填寫的欄位。密碼、卡號和核取方塊請自行填寫。",
+      "source_unreadable": "Shizue 無法讀取那個分頁。",
+      "source_empty": "那個分頁的文字太少，無法用來填寫。",
+      "failed": "模型無法回答。請再試一次。"
+    }
   }
 }

@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Sửa ngữ pháp văn bản đã chọn",
     "removeTranslation": "Xóa bản dịch",
     "translateImage": "Dịch hình ảnh",
-    "translatePageImages": "Dịch tất cả hình ảnh trên trang"
+    "translatePageImages": "Dịch tất cả hình ảnh trên trang",
+    "fillFormFromTab": "Điền biểu mẫu này từ một thẻ đang mở"
   },
   "onboarding": {
     "greeting_0": "Chào mừng!",
@@ -523,5 +524,35 @@
     "logEmpty": "Chưa có gì",
     "clearLog": "Xóa",
     "refusedStopped": "Bị từ chối: bạn đã dừng ở đây"
+  },
+  "formFill": {
+    "title": "Điền từ thẻ đang mở",
+    "reading": "Đang đọc biểu mẫu…",
+    "fieldsFound": "Số ô có thể điền: {{count}}",
+    "pickSource": "Chọn thẻ để lấy giá trị",
+    "noTabs": "Không có thẻ web nào khác đang mở trong cửa sổ này.",
+    "proposing": "Đang đọc “{{title}}” và khớp với biểu mẫu…",
+    "reviewSource": "Lấy từ: {{title}}",
+    "reviewHint": "Hãy kiểm tra các giá trị. Chỉ những ô được đánh dấu mới được điền.",
+    "nothingFound": "Thẻ đó không có giá trị nào cho các ô của biểu mẫu này.",
+    "fill": "Điền ({{count}})",
+    "otherTab": "Chọn thẻ khác",
+    "filling": "Đang điền biểu mẫu…",
+    "noSubmit": "Shizue không bao giờ gửi biểu mẫu. Hãy kiểm tra rồi tự gửi.",
+    "filled": "Đã điền {{count}} ô.",
+    "skipped": {
+      "gone": "không còn trên trang",
+      "changed": "để nguyên: đã thay đổi sau khi đọc",
+      "failed": "không điền được"
+    },
+    "close": "Đóng",
+    "error": {
+      "agent_running": "Điều khiển trình duyệt đang chạy trong thẻ này. Hãy thử lại khi xong.",
+      "unreadable": "Shizue không đọc được biểu mẫu của trang này.",
+      "no_fields": "Ở đây không có ô nào Shizue điền được. Mật khẩu, số thẻ và ô đánh dấu để bạn tự điền.",
+      "source_unreadable": "Shizue không đọc được thẻ đó.",
+      "source_empty": "Thẻ đó có quá ít nội dung để điền.",
+      "failed": "Mô hình không trả lời được. Hãy thử lại."
+    }
   }
 }

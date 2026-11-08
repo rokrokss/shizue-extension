@@ -36,7 +36,8 @@
     "fixGrammarSelection": "Popraw gramatykę zaznaczonego tekstu",
     "removeTranslation": "Usuń tłumaczenie",
     "translateImage": "Przetłumacz obraz",
-    "translatePageImages": "Przetłumacz wszystkie obrazy na stronie"
+    "translatePageImages": "Przetłumacz wszystkie obrazy na stronie",
+    "fillFormFromTab": "Wypełnij ten formularz z otwartej karty"
   },
   "onboarding": {
     "greeting_0": "Witaj!",
@@ -523,5 +524,35 @@
     "logEmpty": "Na razie nic",
     "clearLog": "Wyczyść",
     "refusedStopped": "Odrzucono: zatrzymano go tutaj"
+  },
+  "formFill": {
+    "title": "Wypełnij z otwartej karty",
+    "reading": "Czytanie formularza…",
+    "fieldsFound": "Pola do wypełnienia: {{count}}",
+    "pickSource": "Wybierz kartę, z której wziąć wartości",
+    "noTabs": "W tym oknie nie ma innej otwartej karty.",
+    "proposing": "Czytanie „{{title}}” i dopasowywanie do formularza…",
+    "reviewSource": "Źródło: {{title}}",
+    "reviewHint": "Sprawdź wartości. Wypełnione zostaną tylko zaznaczone pola.",
+    "nothingFound": "Ta karta nie zawiera wartości dla żadnego pola tego formularza.",
+    "fill": "Wypełnij ({{count}})",
+    "otherTab": "Wybierz inną kartę",
+    "filling": "Wypełnianie formularza…",
+    "noSubmit": "Shizue nigdy nie wysyła formularza. Sprawdź go i wyślij sam.",
+    "filled": "Wypełnione pola: {{count}}",
+    "skipped": {
+      "gone": "nie ma go już na stronie",
+      "changed": "pozostawione: zmieniło się po odczytaniu",
+      "failed": "nie udało się wypełnić"
+    },
+    "close": "Zamknij",
+    "error": {
+      "agent_running": "Sterowanie przeglądarką działa w tej karcie. Spróbuj ponownie, gdy skończy.",
+      "unreadable": "Shizue nie może odczytać formularza na tej stronie.",
+      "no_fields": "Nie ma tu pola, które Shizue może wypełnić. Hasła, numery kart i pola wyboru zostają dla ciebie.",
+      "source_unreadable": "Shizue nie może odczytać tej karty.",
+      "source_empty": "Ta karta ma za mało tekstu, by z niej wypełnić.",
+      "failed": "Model nie odpowiedział. Spróbuj ponownie."
+    }
   }
 }
