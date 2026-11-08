@@ -16,12 +16,18 @@ Shizue is free and open source (MIT). Sign in with ChatGPT to use your plan, or 
 🕹️ Browser control
 - Tell Shizue what to do and it clicks, types, chooses and scrolls in your tab, one step at a time, with each step shown in the panel
 - It asks you before anything that sends, deletes or pays, and never types into password or card fields
+- On a site that's new to the task it asks first, and a longer task shows its plan and sites before it starts
 - Booking, contact and checkout forms that a page embeds from another site work too
+- When a page needs you, for a sign-in or a CAPTCHA, it hands the tab over and goes on when you press Continue
+- Turn on "Run in a separate tab" and it works in a tab of its own while you keep using yours
 - Start it from the top of Shizue's menu on the page
 
 💬 Side panel chat
 - Open it anywhere with Ctrl+Shift+E (Cmd+Shift+E on Mac)
 - Attach images and go back to earlier chats from the history
+- Attach PDFs and Word, Excel, PowerPoint, HWPX and EPUB files and ask about them
+- Find in open tabs and Search history: a question can bring in the open tabs, past chats and visited pages that answer it. You see what history found and choose whether to send it
+- A new chat offers to pick up recent chats whose pages are still open, and what you typed but didn't send stays in the chat box
 
 📋 Page summaries
 - Get a summary in one click, then ask follow-up questions about it
@@ -31,6 +37,9 @@ Shizue is free and open source (MIT). Sign in with ChatGPT to use your plan, or 
 
 🎯 Right-click menu
 - Selected text: translate, explain, summarize, or fix the grammar
+- Look up in this page: select a name or term to have it explained from the page, using only what you've read so far
+- Links: preview a page's key points and reading time without opening it
+- Forms: fill one in from another open tab, such as a résumé or an order. You check the values first, and Shizue never submits it
 - Images: describe them, extract their text, or translate them. Translate every image on a page at once for manga and webtoons
 - Whole page: translate or summarize
 
@@ -46,7 +55,8 @@ Shizue is free and open source (MIT). Sign in with ChatGPT to use your plan, or 
 🔒 Privacy
 - Sign-in details, keys, chat history, and memos stay in your browser
 - When you use a feature, only the content it needs goes straight from your browser to the AI provider you chose
-- Browser control reads the tab it works in as text: never password or card fields, and no screenshots
+- Browser control never reads what's in password or card fields. With a model that reads images, it can also look at the visible part of the tab it works in
+- History search runs on your computer, and nothing it finds is sent unless you choose to
 - With a local model, nothing leaves your computer
 - No analytics or tracking
 - Source code: https://github.com/rokrokss/shizue

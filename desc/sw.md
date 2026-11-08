@@ -16,12 +16,18 @@ Shizue ni bure na ni programu huria (MIT). Ingia kwa ChatGPT ili utumie mpango w
 🕹️ Udhibiti wa kivinjari
 - Iambie Shizue cha kufanya, nayo hubofya, huandika, huchagua na kusogeza kwenye kichupo chako hatua kwa hatua, huku kila hatua ikionyeshwa kwenye paneli
 - Huuliza kwanza kabla ya kitendo chochote cha kutuma, kufuta au kulipa, na kamwe haiandiki kwenye sehemu za nenosiri au kadi
+- Kwenye tovuti ambayo ni mpya kwa kazi hiyo huuliza kwanza, na kazi ndefu zaidi huonyesha mpango wake na tovuti zake kabla ya kuanza
 - Fomu za kuweka nafasi, mawasiliano na malipo ambazo ukurasa huzipachika kutoka tovuti nyingine nazo hufanya kazi
+- Ukurasa unapokuhitaji, kwa ajili ya kuingia au CAPTCHA, hukukabidhi kichupo na huendelea unapobonyeza Endelea
+- Washa "Endesha katika kichupo tofauti", nayo hufanya kazi kwenye kichupo chake yenyewe huku ukiendelea kutumia chako
 - Anza kutoka juu kabisa ya menyu ya Shizue kwenye ukurasa
 
 💬 Gumzo kwenye paneli ya upande
 - Fungua popote kwa Ctrl+Shift+E (Cmd+Shift+E kwenye Mac)
 - Ambatisha picha, na urudi kwenye mazungumzo ya awali kupitia Historia
+- Ambatisha PDF na faili za Word, Excel, PowerPoint, HWPX na EPUB, kisha uulize maswali kuzihusu
+- Tafuta kwenye vichupo vilivyo wazi na Tafuta kwenye historia: swali linaweza kuleta kile kinacholijibu kutoka kwenye vichupo vilivyo wazi, gumzo za zamani na kurasa ulizotembelea. Unaona kile ambacho historia imepata, na unachagua kama utakituma
+- Gumzo mpya hupendekeza kuendelea na gumzo za hivi karibuni ambazo kurasa zake bado ziko wazi, na ulichoandika bila kutuma hubaki kwenye kisanduku cha gumzo
 
 📋 Muhtasari wa ukurasa
 - Pata muhtasari kwa kubofya mara moja, kisha uulize maswali zaidi kuuhusu
@@ -31,6 +37,9 @@ Shizue ni bure na ni programu huria (MIT). Ingia kwa ChatGPT ili utumie mpango w
 
 🎯 Menyu ya kubofya kulia
 - Maandishi yaliyochaguliwa: tafsiri, eleza, fupisha, au rekebisha sarufi
+- Tafuta maana katika ukurasa huu: chagua jina au istilahi upate maelezo yake kutoka kwenye ukurasa, kwa kutumia tu sehemu uliyosoma kufikia sasa
+- Viungo: hakiki mambo muhimu ya ukurasa na muda wa kuusoma bila kuufungua
+- Fomu: jaza fomu kutoka kichupo kingine kilicho wazi, kama CV au oda. Unakagua thamani kwanza, na Shizue haitumi fomu kamwe
 - Picha: eleza picha, toa maandishi yaliyomo, au tafsiri picha. Tafsiri picha zote za ukurasa kwa mara moja kwa ajili ya manga na webtoon
 - Ukurasa mzima: tafsiri au fupisha
 
@@ -46,7 +55,8 @@ Shizue ni bure na ni programu huria (MIT). Ingia kwa ChatGPT ili utumie mpango w
 🔒 Faragha
 - Taarifa za kuingia, funguo, historia ya gumzo, na memo hubaki kwenye kivinjari chako
 - Unapotumia kipengele, maudhui yanayohitajika na kipengele hicho pekee ndiyo hutumwa moja kwa moja kutoka kwenye kivinjari chako hadi kwa mtoa huduma wa AI uliyemchagua
-- Udhibiti wa kivinjari husoma kichupo kinachodhibitiwa kama maandishi tu: kamwe si sehemu za nenosiri au kadi, na hakuna picha za skrini
+- Udhibiti wa kivinjari kamwe hausomi yaliyomo kwenye sehemu za nenosiri au kadi. Kwa modeli inayosoma picha, huweza pia kutazama sehemu inayoonekana ya kichupo kinachodhibitiwa
+- Utafutaji kwenye historia hufanyika kwenye kompyuta yako, na kinachopatikana hakitumwi isipokuwa uchague kukituma
 - Ukitumia modeli ya ndani, hakuna kinachotoka nje ya kompyuta yako
 - Hakuna zana za takwimu wala ufuatiliaji
 - Msimbo chanzo: https://github.com/rokrokss/shizue

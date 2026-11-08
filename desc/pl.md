@@ -16,12 +16,18 @@ Shizue to darmowe rozszerzenie open source (MIT). Zaloguj się przez ChatGPT, ab
 🕹️ Sterowanie przeglądarką
 - Powiedz, co trzeba zrobić, a Shizue krok po kroku klika, wpisuje, wybiera i przewija stronę w Twojej karcie, pokazując każdy krok w panelu
 - Zanim coś wyśle, usunie lub opłaci, pyta Cię o zgodę, a w pola haseł i danych karty nigdy nic nie wpisuje
+- Na witrynie nowej w danym zadaniu najpierw pyta o zgodę, a przy dłuższym zadaniu przed rozpoczęciem pokazuje plan i witryny, z których skorzysta
 - Działają też formularze rezerwacji, kontaktu i płatności, które strona osadza z innej witryny
+- Gdy strona wymaga Twojego udziału, na przykład logowania albo CAPTCHA, Shizue przekazuje Ci kartę i wznawia pracę, gdy naciśniesz „Dalej”
+- Włącz „Uruchom w osobnej karcie”, a Shizue będzie pracować we własnej karcie, podczas gdy Ty korzystasz ze swojej
 - Uruchomisz je z pierwszej pozycji menu Shizue na stronie
 
 💬 Czat w panelu bocznym
 - Otwiera się w dowolnym miejscu skrótem Ctrl+Shift+E (Cmd+Shift+E na Macu)
 - Możesz dołączać obrazy i wracać do wcześniejszych czatów z historii
+- Możesz dołączać pliki PDF, Word, Excel, PowerPoint, HWPX i EPUB i pytać o ich treść
+- „Szukaj w otwartych kartach” i „Szukaj w historii”: do pytania mogą same dołączyć otwarte karty, wcześniejsze czaty i odwiedzone strony, które na nie odpowiadają. Wyniki z historii najpierw widzisz i to Ty decydujesz, czy je wysłać
+- Nowy czat proponuje powrót do ostatnich czatów, których strony są wciąż otwarte, a wpisany, ale niewysłany tekst zostaje w polu czatu
 
 📋 Podsumowania stron
 - Jednym kliknięciem dostajesz podsumowanie, a potem możesz o nie dopytywać
@@ -31,6 +37,9 @@ Shizue to darmowe rozszerzenie open source (MIT). Zaloguj się przez ChatGPT, ab
 
 🎯 Menu pod prawym przyciskiem myszy
 - Zaznaczony tekst: tłumaczenie, wyjaśnienie, podsumowanie lub poprawa gramatyki
+- „Sprawdź znaczenie na tej stronie”: zaznacz nazwę lub termin, a dostaniesz wyjaśnienie oparte tylko na tej części strony, którą masz już za sobą
+- Linki: podgląd najważniejszych punktów strony i czasu czytania bez jej otwierania
+- Formularze: wypełnianie formularza na podstawie innej otwartej karty, na przykład z CV albo zamówieniem. Najpierw sprawdzasz wartości, a Shizue nigdy nie wysyła formularza
 - Obrazy: opis, wyodrębnienie tekstu lub tłumaczenie. Przy mangach i webtoonach przetłumaczysz naraz wszystkie obrazy na stronie
 - Cała strona: tłumaczenie lub podsumowanie
 
@@ -46,7 +55,8 @@ Shizue to darmowe rozszerzenie open source (MIT). Zaloguj się przez ChatGPT, ab
 🔒 Prywatność
 - Dane logowania, klucze, historia czatów i notatki zostają w Twojej przeglądarce
 - Gdy używasz jakiejś funkcji, tylko potrzebna jej treść trafia prosto z przeglądarki do wybranego przez Ciebie dostawcy AI
-- Sterowanie przeglądarką odczytuje kartę, w której działa, tylko jako tekst: bez pól haseł i danych karty płatniczej, bez zrzutów ekranu
+- Sterowanie przeglądarką nigdy nie odczytuje zawartości pól haseł i danych karty płatniczej. Z modelem obsługującym obrazy może też oglądać widoczną część karty, w której działa
+- Wyszukiwanie w historii działa na Twoim komputerze i nic, co znajdzie, nie zostanie wysłane bez Twojej decyzji
 - Z modelem lokalnym nic nie opuszcza Twojego komputera
 - Bez analityki i śledzenia
 - Kod źródłowy: https://github.com/rokrokss/shizue

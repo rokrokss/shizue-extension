@@ -16,12 +16,18 @@ Shizue es gratis y de código abierto (MIT). Inicia sesión con ChatGPT para usa
 🕹️ Control del navegador
 - Dile a Shizue qué hacer: hace clic, escribe, elige opciones y se desplaza por tu pestaña paso a paso, y muestra cada paso en el panel
 - Te pregunta antes de enviar, eliminar o pagar algo, y nunca escribe en campos de contraseña ni de tarjeta
+- En un sitio nuevo para la tarea, primero te pregunta, y si la tarea es más larga, te muestra el plan y los sitios que usará antes de empezar
 - También funciona en los formularios de reserva, contacto y pago que una página inserta desde otro sitio
+- Cuando una página te necesita, para iniciar sesión o resolver un CAPTCHA, te pasa la pestaña y sigue cuando pulsas «Continuar»
+- Activa «Ejecutar en otra pestaña» y trabajará en una pestaña propia mientras sigues usando la tuya
 - Inícialo desde la primera opción del menú de Shizue en la página
 
 💬 Chat en el panel lateral
 - Ábrelo desde cualquier lugar con Ctrl+Shift+E (Cmd+Shift+E en Mac)
 - Adjunta imágenes y vuelve a chats anteriores desde el historial
+- Adjunta PDF y archivos de Word, Excel, PowerPoint, HWPX y EPUB, y haz preguntas sobre ellos
+- «Buscar en pestañas abiertas» y «Buscar en el historial»: una pregunta puede incorporar automáticamente las pestañas abiertas, los chats anteriores y las páginas visitadas que la responden. Ves lo que encontró la búsqueda en el historial y decides si enviarlo
+- Un chat nuevo te ofrece retomar los chats recientes cuyas páginas siguen abiertas, y lo que escribiste sin enviar se queda en el cuadro de chat
 
 📋 Resumen de páginas
 - Obtén un resumen con un clic y sigue preguntando sobre él
@@ -31,6 +37,9 @@ Shizue es gratis y de código abierto (MIT). Inicia sesión con ChatGPT para usa
 
 🎯 Menú del clic derecho
 - Texto seleccionado: traducir, explicar, resumir o corregir la gramática
+- «Buscar su sentido en esta página»: selecciona un nombre o un término para que te lo explique a partir de la página, usando solo lo que has leído hasta ahora
+- Enlaces: ver en una vista previa los puntos clave y el tiempo de lectura de una página sin abrirla
+- Formularios: rellenar uno desde otra pestaña abierta, como un currículum o un pedido. Primero revisas los valores, y Shizue nunca lo envía
 - Imágenes: describirlas, extraer su texto o traducirlas. Para manga y webtoons, traduce a la vez todas las imágenes de una página
 - Página completa: traducir o resumir
 
@@ -46,7 +55,8 @@ Shizue es gratis y de código abierto (MIT). Inicia sesión con ChatGPT para usa
 🔒 Privacidad
 - Los datos de inicio de sesión, las claves, el historial de chats y los memos se quedan en tu navegador
 - Cuando usas una función, solo el contenido que necesita va directamente de tu navegador al proveedor de IA que elijas
-- El control del navegador lee como texto la pestaña en la que trabaja: nunca campos de contraseña ni de tarjeta, y sin capturas de pantalla
+- El control del navegador nunca lee el contenido de los campos de contraseña ni de tarjeta. Con un modelo que lee imágenes, también puede mirar la parte visible de la pestaña en la que trabaja
+- La búsqueda en el historial se ejecuta en tu ordenador, y nada de lo que encuentra se envía a menos que tú lo elijas
 - Con un modelo local, nada sale de tu ordenador
 - Sin herramientas de análisis ni de seguimiento
 - Código fuente: https://github.com/rokrokss/shizue

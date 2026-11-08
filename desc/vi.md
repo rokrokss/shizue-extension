@@ -16,12 +16,18 @@ Shizue miễn phí và là phần mềm mã nguồn mở (MIT). Bạn có thể 
 🕹️ Điều khiển trình duyệt
 - Nói việc cần làm, Shizue sẽ nhấp, nhập, chọn và cuộn trong tab theo từng bước, mỗi bước đều hiện trong bảng điều khiển
 - Luôn hỏi bạn trước khi gửi, xóa hoặc thanh toán, và không bao giờ nhập vào ô mật khẩu hay ô thông tin thẻ
+- Hỏi trước khi vào một trang web mà tác vụ chưa dùng tới, và với tác vụ dài hơn thì cho xem kế hoạch cùng các trang web sẽ dùng trước khi bắt đầu
 - Dùng được cả với biểu mẫu đặt chỗ, liên hệ và thanh toán mà trang nhúng từ trang web khác
+- Khi trang cần đến bạn, chẳng hạn để đăng nhập hay giải CAPTCHA, Shizue giao lại tab cho bạn và làm tiếp khi bạn nhấn Tiếp tục
+- Bật “Chạy trong tab riêng” để Shizue làm việc trong một tab của riêng nó, trong khi bạn vẫn dùng tab của mình
 - Bắt đầu từ mục trên cùng trong menu Shizue trên trang
 
 💬 Trò chuyện trong bảng điều khiển bên
 - Mở ở bất cứ đâu bằng Ctrl+Shift+E (Cmd+Shift+E trên Mac)
 - Đính kèm hình ảnh và mở lại các cuộc trò chuyện trước trong mục Lịch sử
+- Đính kèm PDF và tệp Word, Excel, PowerPoint, HWPX, EPUB rồi đặt câu hỏi về chúng
+- Tìm trong các tab đang mở và Tìm trong lịch sử: mỗi câu hỏi có thể tự lấy các tab đang mở, cuộc trò chuyện trước và trang đã xem chứa câu trả lời. Bạn xem những gì tìm được trong lịch sử rồi chọn có gửi hay không
+- Cuộc trò chuyện mới gợi ý tiếp tục các cuộc trò chuyện gần đây có trang vẫn còn mở, và nội dung đã gõ nhưng chưa gửi vẫn nằm trong ô nhập tin nhắn
 
 📋 Tóm tắt trang
 - Nhận bản tóm tắt chỉ với một cú nhấp, rồi hỏi tiếp về nội dung đó
@@ -31,6 +37,9 @@ Shizue miễn phí và là phần mềm mã nguồn mở (MIT). Bạn có thể 
 
 🎯 Menu chuột phải
 - Văn bản đã chọn: dịch, giải thích, tóm tắt, sửa ngữ pháp
+- Tra nghĩa trong trang này: chọn một cái tên hay thuật ngữ để được giải thích dựa trên trang, chỉ dùng phần bạn đã đọc tới
+- Liên kết: xem trước ý chính và thời gian đọc của trang mà không cần mở
+- Biểu mẫu: điền từ một tab khác đang mở, chẳng hạn hồ sơ xin việc hay đơn hàng. Bạn kiểm tra các giá trị trước, và Shizue không bao giờ gửi biểu mẫu
 - Hình ảnh: mô tả nội dung, trích xuất văn bản, dịch hình ảnh. Với manga và webtoon, dịch tất cả hình ảnh trên trang cùng lúc
 - Cả trang: dịch, tóm tắt
 
@@ -46,7 +55,8 @@ Shizue miễn phí và là phần mềm mã nguồn mở (MIT). Bạn có thể 
 🔒 Quyền riêng tư
 - Thông tin đăng nhập, khóa, lịch sử trò chuyện và ghi chú chỉ được lưu trong trình duyệt
 - Khi dùng một tính năng, chỉ nội dung mà tính năng đó cần mới được gửi thẳng từ trình duyệt đến nhà cung cấp AI đã chọn
-- Điều khiển trình duyệt đọc tab đang thao tác dưới dạng văn bản: không đọc ô mật khẩu hay ô thông tin thẻ, và không chụp màn hình
+- Điều khiển trình duyệt không bao giờ đọc nội dung trong ô mật khẩu hay ô thông tin thẻ. Với mô hình đọc được hình ảnh, nó còn có thể xem phần đang hiển thị của tab đang thao tác
+- Việc tìm trong lịch sử chạy ngay trên máy tính của bạn, và những gì tìm được không bị gửi đi trừ khi bạn chọn gửi
 - Khi dùng mô hình cục bộ, không có gì rời khỏi máy tính của bạn
 - Không dùng công cụ phân tích hay theo dõi
 - Mã nguồn: https://github.com/rokrokss/shizue

@@ -16,12 +16,18 @@ Shizue est une extension gratuite et open source (MIT). Connectez-vous avec Chat
 🕹️ Contrôle du navigateur
 - Dites ce qu'il faut faire, et Shizue clique, saisit, choisit et fait défiler la page dans votre onglet, étape par étape, en affichant chaque étape dans le panneau
 - Shizue vous demande votre accord avant tout envoi, suppression ou paiement, et ne saisit jamais rien dans les champs de mot de passe ou de carte
+- Sur un site nouveau pour la tâche, Shizue demande d'abord votre accord, et pour une tâche plus longue, le plan et les sites prévus s'affichent avant le début
 - Les formulaires de réservation, de contact et de paiement qu'une page intègre depuis un autre site fonctionnent aussi
+- Quand une page a besoin de vous, pour une connexion ou un CAPTCHA, Shizue vous confie l'onglet et reprend dès que vous cliquez sur « Continuer »
+- Activez « Exécuter dans un onglet séparé » et Shizue travaille dans son propre onglet pendant que vous continuez à utiliser le vôtre
 - Se lance tout en haut du menu de Shizue sur la page
 
 💬 Chat dans le panneau latéral
 - S'ouvre partout avec Ctrl+Shift+E (Cmd+Shift+E sur Mac)
 - Joignez des images et retrouvez vos anciennes discussions dans l'historique
+- Joignez des PDF et des fichiers Word, Excel, PowerPoint, HWPX et EPUB, puis posez vos questions dessus
+- « Chercher dans les onglets ouverts » et « Rechercher dans l’historique » : une question peut intégrer automatiquement les onglets ouverts, les anciennes discussions et les pages visitées qui y répondent. Vous voyez ce que la recherche dans l'historique a trouvé et décidez de l'envoyer ou non
+- Une nouvelle discussion propose de reprendre les discussions récentes dont les pages sont encore ouvertes, et ce que vous avez saisi sans l'envoyer reste dans le champ de saisie
 
 📋 Résumé de page
 - Obtenez un résumé en un clic, puis posez d'autres questions à son sujet
@@ -31,6 +37,9 @@ Shizue est une extension gratuite et open source (MIT). Connectez-vous avec Chat
 
 🎯 Menu du clic droit
 - Texte sélectionné : traduire, expliquer, résumer ou corriger la grammaire
+- « Chercher son sens dans cette page » : sélectionnez un nom ou un terme pour qu'il soit expliqué à partir de la page, en se limitant à ce que vous avez déjà lu
+- Liens : voir un aperçu des points clés d'une page et de son temps de lecture sans l'ouvrir
+- Formulaires : en remplir un à partir d'un autre onglet ouvert, comme un CV ou une commande. Vous vérifiez d'abord les valeurs, et Shizue n'envoie jamais le formulaire
 - Images : décrire l'image, en extraire le texte ou la traduire. Pour les mangas et les webtoons, traduisez d'un coup toutes les images d'une page
 - Page entière : traduire ou résumer
 
@@ -46,7 +55,8 @@ Shizue est une extension gratuite et open source (MIT). Connectez-vous avec Chat
 🔒 Confidentialité
 - Les informations de connexion, les clés, l'historique des discussions et les mémos restent dans votre navigateur
 - Quand vous utilisez une fonctionnalité, seul le contenu dont elle a besoin est envoyé, directement depuis votre navigateur, au fournisseur d'IA que vous avez choisi
-- Le contrôle du navigateur lit l'onglet où il travaille uniquement sous forme de texte : jamais les champs de mot de passe ou de carte, et aucune capture d'écran
+- Le contrôle du navigateur ne lit jamais le contenu des champs de mot de passe ou de carte. Avec un modèle qui lit les images, il peut aussi regarder la partie visible de l'onglet où il travaille
+- La recherche dans l'historique s'exécute sur votre ordinateur, et rien de ce qu'elle trouve n'est envoyé sauf si vous le choisissez
 - Avec un modèle local, rien ne quitte votre ordinateur
 - Aucun outil d'analyse ni de suivi
 - Code source : https://github.com/rokrokss/shizue

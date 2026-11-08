@@ -36,6 +36,9 @@ Shizue provides a free, open-source alternative to commercial services (e.g., [S
 
 ### 💬 AI Chat Sidebar:
   - Quickly launch the sidebar using a keyboard shortcut (default: Ctrl/Cmd+Shift+E) to interact with LLMs via a side panel for queries, brainstorming, or information retrieval without navigating away from the current page.
+  - Attach pages, open tabs, images, PDFs, and Word, Excel, PowerPoint, HWPX, and EPUB files.
+  - Turn on "Find in open tabs" or "Search history" in the Tools menu, and each question brings in the open tabs, past chats, and visited pages that answer it. History is searched on your computer, and you choose whether to send what it found.
+  - A new chat offers to pick up recent chats whose pages are still open, and text you typed but didn't send stays in the chat box for 7 days.
 
 <p align="center">
   <img src="store/out/screenshot-3-hero.png" alt="Summarizing a page in the Shizue side panel" width="640" />
@@ -69,6 +72,10 @@ Shizue provides a free, open-source alternative to commercial services (e.g., [S
   - Tell Shizue what to do in your tab and it clicks, types, chooses, scrolls, and opens pages one step at a time, with each step shown in the side panel. Start it from the top of Shizue's menu on the page, or turn on "Browser control" in the chat box's Tools menu.
   - Before anything that sends, deletes, pays, or can't be undone, it asks you on a card in the panel, unless you turn on "Don't ask first" for that chat. It never types into password or card fields, and treats what the page says as content, not instructions.
   - Forms that a page embeds from another site, such as booking and checkout forms, are read and filled in like the rest of the page. A CAPTCHA is left for you.
+  - It can do several actions in one step, such as filling in a whole form, press keys, open menus that show on hover, and put one of your images into an upload field.
+  - When a page needs you, for a sign-in, a CAPTCHA, or a choice only you can make, it hands the tab over with "Your turn" on the pill and goes on when you press Continue.
+  - On a site that's new to the task it asks first ("Allow this time" or "Always allow this site"), and a longer task shows its plan and sites before it starts.
+  - Turn on "Run in a separate tab" and it works in a copy of your tab, in a "Shizue at work" tab group, while you keep using yours.
 
 <p align="center">
   <img src="store/out/screenshot-2-browser-control.png" alt="Browser control filling in a booking form and asking before it sends" width="640" />
@@ -84,6 +91,9 @@ Shizue provides a free, open-source alternative to commercial services (e.g., [S
   - Right-click on any page to translate or summarize it instantly
   - Right-click on images to describe their content or extract text (OCR) using AI
   - Right-click on an image to translate it, or translate every image on the page for a manga chapter or webtoon: the translation is drawn over each speech bubble and caption
+  - Select a name or term and choose "Look up in this page" to have it explained from the passages that mention it, using only what you've read so far
+  - Right-click a link and choose "Preview link" for its key points and reading time without opening it
+  - Right-click a form field and choose "Fill this form from an open tab" to fill it from a résumé, an order, or an email in another tab. You check the values first, and Shizue never submits the form
 
 <p align="center">
   <img src="store/out/screenshot-5-context-menu.png" alt="Extracting text from an image via the context menu" width="640" />
