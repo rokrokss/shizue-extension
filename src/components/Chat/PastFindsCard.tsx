@@ -29,7 +29,9 @@ const PastFindsCard = ({
 }) => {
   const { t, i18n } = useTranslation();
   const theme = useThemeValue();
-  const found = finds.pages.length + finds.chats.length > 0;
+  const pages = finds.pages.length;
+  const chats = finds.chats.length;
+  const found = pages + chats > 0;
   const date = (time: number) =>
     new Date(time).toLocaleDateString(i18n.language.replace('_', '-'), {
       month: 'short',
@@ -48,9 +50,13 @@ const PastFindsCard = ({
     >
       <div className="sz:flex sz:items-start sz:gap-2">
         <div className="sz:flex-1">
-          {found
-            ? t('chat.pastFindsFound', { pages: finds.pages.length, chats: finds.chats.length })
-            : t('chat.pastFindsNone')}
+          {pages && chats
+            ? t('chat.pastFindsFound', { pages, chats })
+            : pages
+              ? t('chat.pastFindsPagesOnly', { pages })
+              : chats
+                ? t('chat.pastFindsChatsOnly', { chats })
+                : t('chat.pastFindsNone')}
         </div>
         <button
           type="button"

@@ -175,6 +175,8 @@
     "searchPastChatsOnly": "Không có quyền đọc lịch sử: chỉ tìm cuộc trò chuyện trước",
     "searchingPast": "Đang tìm trong lịch sử…",
     "pastFindsFound": "Đã tìm thấy {{pages}} trang đã xem và {{chats}} cuộc trò chuyện trước. Gửi kèm câu hỏi của bạn?",
+    "pastFindsPagesOnly": "Đã tìm thấy {{pages}} trang đã xem. Gửi kèm câu hỏi của bạn?",
+    "pastFindsChatsOnly": "Đã tìm thấy {{chats}} cuộc trò chuyện trước. Gửi kèm câu hỏi của bạn?",
     "pastFindsNone": "Không tìm thấy gì trong các cuộc trò chuyện trước hay lịch sử.",
     "pastFindsSend": "Gửi",
     "pastFindsSkip": "Trả lời mà không gửi",

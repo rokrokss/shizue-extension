@@ -175,6 +175,8 @@
     "searchPastChatsOnly": "无权读取浏览记录：只搜索过去的聊天",
     "searchingPast": "正在历史记录中查找…",
     "pastFindsFound": "找到 {{pages}} 个访问过的页面和 {{chats}} 个过去的聊天。要随问题一起发送吗？",
+    "pastFindsPagesOnly": "找到 {{pages}} 个访问过的页面。要随问题一起发送吗？",
+    "pastFindsChatsOnly": "找到 {{chats}} 个过去的聊天。要随问题一起发送吗？",
     "pastFindsNone": "在过去的聊天和浏览记录中没有找到。",
     "pastFindsSend": "发送",
     "pastFindsSkip": "不带这些回答",

@@ -175,6 +175,8 @@
     "searchPastChatsOnly": "방문 기록 권한이 없어 지난 채팅만 찾습니다",
     "searchingPast": "히스토리에서 찾는 중…",
     "pastFindsFound": "방문한 페이지 {{pages}}개와 지난 채팅 {{chats}}개를 찾았습니다. 질문과 함께 보낼까요?",
+    "pastFindsPagesOnly": "방문한 페이지 {{pages}}개를 찾았습니다. 질문과 함께 보낼까요?",
+    "pastFindsChatsOnly": "지난 채팅 {{chats}}개를 찾았습니다. 질문과 함께 보낼까요?",
     "pastFindsNone": "지난 채팅과 방문 기록에서 찾지 못했습니다.",
     "pastFindsSend": "보내기",
     "pastFindsSkip": "빼고 답하기",

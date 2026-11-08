@@ -175,6 +175,8 @@
     "searchPastChatsOnly": "Tarama geçmişine erişim yok: yalnızca geçmiş sohbetler",
     "searchingPast": "Geçmişte aranıyor…",
     "pastFindsFound": "{{pages}} ziyaret edilmiş sayfa ve {{chats}} geçmiş sohbet bulundu. Sorunla birlikte gönderilsin mi?",
+    "pastFindsPagesOnly": "{{pages}} ziyaret edilmiş sayfa bulundu. Sorunla birlikte gönderilsin mi?",
+    "pastFindsChatsOnly": "{{chats}} geçmiş sohbet bulundu. Sorunla birlikte gönderilsin mi?",
     "pastFindsNone": "Geçmiş sohbetlerde ve tarama geçmişinde bir şey bulunamadı.",
     "pastFindsSend": "Gönder",
     "pastFindsSkip": "Bunlar olmadan yanıtla",

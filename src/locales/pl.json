@@ -175,6 +175,8 @@
     "searchPastChatsOnly": "Brak dostępu do historii: tylko poprzednie czaty",
     "searchingPast": "Szukanie w historii…",
     "pastFindsFound": "Znaleziono odwiedzone strony: {{pages}} i poprzednie czaty: {{chats}}. Wysłać je z pytaniem?",
+    "pastFindsPagesOnly": "Znaleziono odwiedzone strony: {{pages}}. Wysłać je z pytaniem?",
+    "pastFindsChatsOnly": "Znaleziono poprzednie czaty: {{chats}}. Wysłać je z pytaniem?",
     "pastFindsNone": "Nic nie znaleziono w poprzednich czatach ani w historii.",
     "pastFindsSend": "Wyślij",
     "pastFindsSkip": "Odpowiedz bez nich",

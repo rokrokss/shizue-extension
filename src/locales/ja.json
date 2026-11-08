@@ -175,6 +175,8 @@
     "searchPastChatsOnly": "閲覧履歴の権限がないため、過去のチャットだけを探します",
     "searchingPast": "履歴を検索中…",
     "pastFindsFound": "閲覧したページ{{pages}}件と過去のチャット{{chats}}件が見つかりました。質問と一緒に送りますか？",
+    "pastFindsPagesOnly": "閲覧したページ{{pages}}件が見つかりました。質問と一緒に送りますか？",
+    "pastFindsChatsOnly": "過去のチャット{{chats}}件が見つかりました。質問と一緒に送りますか？",
     "pastFindsNone": "過去のチャットと閲覧履歴には見つかりませんでした。",
     "pastFindsSend": "送る",
     "pastFindsSkip": "送らずに回答",
