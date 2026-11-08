@@ -1,3 +1,4 @@
+import InfoBadge from '@/components/Text/InfoBadge';
 import { CUSTOM_INSTRUCTIONS_MAX_CHARS } from '@/config/constants';
 import { useThemeValue } from '@/hooks/layout';
 import { useUserMemory } from '@/hooks/userMemory';
@@ -34,11 +35,13 @@ export default function CustomInstructionsSettings() {
 
   return (
     <div className="sz:flex sz:flex-col sz:items-center sz:gap-2">
-      <div className={`sz:text-base ${theme == 'dark' ? 'sz:text-gray-200' : 'sz:text-gray-800'}`}>
+      <div
+        className={`sz:flex sz:items-center sz:gap-1 sz:text-base ${
+          theme == 'dark' ? 'sz:text-gray-200' : 'sz:text-gray-800'
+        }`}
+      >
         {t('settings.customInstructions')}
-      </div>
-      <div className="sz:w-68 sz:text-xs sz:text-center sz:text-gray-500 sz:break-keep sz:wrap-anywhere">
-        {t('settings.customInstructionsDescription')}
+        <InfoBadge text={t('settings.customInstructionsDescription')} />
       </div>
       <Input.TextArea
         value={text}

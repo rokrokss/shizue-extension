@@ -1,10 +1,13 @@
+import InfoBadge from '@/components/Text/InfoBadge';
 import { useAgentAllowedSites, useAgentSiteTips } from '@/hooks/browserAgent';
 import { useThemeValue } from '@/hooks/layout';
 import { Button, List } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 // What the browser agent keeps between runs: the sites the user allowed for good on its cards, and
-// the tips the user kept for a site after a run. Each can be removed here, or all at once.
+// the tips the user kept for a site after a run. Each can be removed here, or all at once. Only
+// lists with something in them show, and the section hides while both are empty, since they fill
+// from the run's cards and not from here.
 export default function BrowserAgentSettings() {
   const { t } = useTranslation();
   const theme = useThemeValue();
@@ -25,17 +28,21 @@ export default function BrowserAgentSettings() {
     void setTips(next);
   };
 
+  if (!sites.length && !tipRows.length) return null;
+
   return (
     <div className="sz:flex sz:flex-col sz:items-center sz:gap-2">
-      <div className={`sz:text-base ${theme == 'dark' ? 'sz:text-gray-200' : 'sz:text-gray-800'}`}>
+      <div
+        className={`sz:flex sz:items-center sz:gap-1 sz:text-base ${
+          theme == 'dark' ? 'sz:text-gray-200' : 'sz:text-gray-800'
+        }`}
+      >
         {t('settings.browserAgent')}
+        <InfoBadge text={t('settings.browserAgentDescription')} />
       </div>
-      <div className="sz:w-68 sz:text-xs sz:text-center sz:text-gray-500 sz:break-keep sz:wrap-anywhere">
-        {t('settings.browserAgentDescription')}
-      </div>
-      <div className="sz:w-68 sz:text-xs sz:font-semibold sz:text-gray-500">{t('settings.agentAllowedSites')}</div>
       {sites.length ? (
         <>
+          <div className="sz:w-68 sz:text-xs sz:font-semibold sz:text-gray-500">{t('settings.agentAllowedSites')}</div>
           <List
             dataSource={sites}
             bordered
@@ -62,12 +69,10 @@ export default function BrowserAgentSettings() {
             {t('settings.agentClearSites')}
           </Button>
         </>
-      ) : (
-        <div className="sz:text-xs sz:text-gray-500">{t('settings.agentNoSites')}</div>
-      )}
-      <div className="sz:w-68 sz:text-xs sz:font-semibold sz:text-gray-500">{t('settings.agentSiteTips')}</div>
+      ) : null}
       {tipRows.length ? (
         <>
+          <div className="sz:w-68 sz:text-xs sz:font-semibold sz:text-gray-500">{t('settings.agentSiteTips')}</div>
           <List
             dataSource={tipRows}
             bordered
@@ -97,9 +102,7 @@ export default function BrowserAgentSettings() {
             {t('settings.agentClearTips')}
           </Button>
         </>
-      ) : (
-        <div className="sz:text-xs sz:text-gray-500">{t('settings.agentNoTips')}</div>
-      )}
+      ) : null}
     </div>
   );
 }

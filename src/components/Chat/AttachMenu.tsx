@@ -1,3 +1,4 @@
+import InfoBadge from '@/components/Text/InfoBadge';
 import { MAX_ATTACHED_TABS } from '@/config/constants';
 import { useThemeValue } from '@/hooks/layout';
 import { OFFICE_FILE_ACCEPT, TEXT_FILE_ACCEPT } from '@/lib/tabText';
@@ -158,18 +159,28 @@ const AttachMenu = ({
             onPickFiles(files);
           }}
         />
-        <button
-          type="button"
-          disabled={full}
-          onClick={() => fileInput.current?.click()}
-          className={rowClass(full)}
-        >
-          <FileAddOutlined className="sz:shrink-0" />
-          <div className="sz:min-w-0 sz:flex-1">
-            <div className="sz:text-sm">{t('chat.attachFile')}</div>
-            <div className="sz:text-xs sz:text-gray-500">{t('chat.attachFileTypes')}</div>
-          </div>
-        </button>
+        {/* The (i) lies over the row beside its button, not inside it, so pressing it doesn't open
+            the file picker. */}
+        <div className="sz:relative">
+          <button
+            type="button"
+            disabled={full}
+            onClick={() => fileInput.current?.click()}
+            className={rowClass(full)}
+          >
+            <FileAddOutlined className="sz:shrink-0" />
+            <div className="sz:min-w-0 sz:flex-1 sz:pr-5">
+              <div className="sz:text-sm">{t('chat.attachFile')}</div>
+            </div>
+          </button>
+          <span
+            className={`sz:absolute sz:right-2 sz:top-1/2 sz:-translate-y-1/2 sz:flex ${
+              full ? 'sz:opacity-50' : ''
+            }`}
+          >
+            <InfoBadge text={t('chat.attachFileTypes')} />
+          </span>
+        </div>
         <input
           ref={imageInput}
           type="file"

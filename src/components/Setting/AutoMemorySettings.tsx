@@ -1,3 +1,4 @@
+import InfoBadge from '@/components/Text/InfoBadge';
 import { useAutoMemory } from '@/hooks/autoMemory';
 import { useThemeValue } from '@/hooks/layout';
 import { Button, Checkbox, List } from 'antd';
@@ -16,11 +17,13 @@ export default function AutoMemorySettings() {
 
   return (
     <div className="sz:flex sz:flex-col sz:items-center sz:gap-2">
-      <div className={`sz:text-base ${theme == 'dark' ? 'sz:text-gray-200' : 'sz:text-gray-800'}`}>
+      <div
+        className={`sz:flex sz:items-center sz:gap-1 sz:text-base ${
+          theme == 'dark' ? 'sz:text-gray-200' : 'sz:text-gray-800'
+        }`}
+      >
         {t('settings.autoMemory')}
-      </div>
-      <div className="sz:w-68 sz:text-xs sz:text-center sz:text-gray-500 sz:break-keep sz:wrap-anywhere">
-        {t('settings.autoMemoryDescription')}
+        <InfoBadge text={t('settings.autoMemoryDescription')} />
       </div>
       <Checkbox
         checked={memory.enabled}

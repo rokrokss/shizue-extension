@@ -1,3 +1,4 @@
+import InfoBadge from '@/components/Text/InfoBadge';
 import { useTranslateTargetLanguageValue, useTranslationTones } from '@/hooks/language';
 import { useThemeValue, useTranslationMaskPrivate } from '@/hooks/layout';
 import { clearCachedTranslations, countCachedTranslations } from '@/lib/indexDB';
@@ -38,19 +39,26 @@ export default function TranslationSettings() {
       <div className={`sz:text-base ${theme == 'dark' ? 'sz:text-gray-200' : 'sz:text-gray-800'}`}>
         {t('settings.pageTranslation')}
       </div>
-      <div className="sz:w-68 sz:text-xs sz:text-center sz:text-gray-500 sz:break-keep sz:wrap-anywhere">
-        {t('settings.maskPrivateDescription')}
+      {/* Beside the checkbox, not in its label, so pressing the (i) doesn't tick it. The label
+          already ends in 8px of padding, taken back to the 4px gap the other (i)s have. */}
+      <div className="sz:flex sz:items-center sz:gap-1">
+        <Checkbox
+          checked={maskPrivate}
+          onChange={(e) => void setMaskPrivate(e.target.checked)}
+          className="sz:font-ycom"
+        >
+          {t('settings.maskPrivate')}
+        </Checkbox>
+        <span className="sz:flex sz:-ml-2">
+          <InfoBadge text={t('settings.maskPrivateDescription')} />
+        </span>
       </div>
-      <Checkbox
-        checked={maskPrivate}
-        onChange={(e) => void setMaskPrivate(e.target.checked)}
-        className="sz:font-ycom"
-      >
-        {t('settings.maskPrivate')}
-      </Checkbox>
       {toneCode && (
         <div className="sz:flex sz:flex-col sz:items-center sz:gap-1">
-          <div className="sz:text-sm sz:text-gray-500">{t('settings.translationTone')}</div>
+          <div className="sz:flex sz:items-center sz:gap-1 sz:text-sm sz:text-gray-500">
+            {t('settings.translationTone')}
+            <InfoBadge text={t('settings.translationToneHint')} />
+          </div>
           <Select<TranslationTone | 'auto'>
             value={tones[toneCode] ?? 'auto'}
             onChange={(value) =>
@@ -72,9 +80,6 @@ export default function TranslationSettings() {
               }),
             ]}
           />
-          <div className="sz:w-68 sz:text-xs sz:text-center sz:text-gray-500 sz:break-keep sz:wrap-anywhere">
-            {t('settings.translationToneHint')}
-          </div>
         </div>
       )}
       {saved !== null && saved > 0 && (
