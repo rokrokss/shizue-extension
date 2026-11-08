@@ -31,8 +31,10 @@ import {
   withFrames,
 } from '@/lib/browserAgent';
 import {
+  type AskedDialog,
   cancelPick,
   clickAt,
+  guardDialogs,
   markElements,
   pageActivity,
   performAction,
@@ -41,6 +43,7 @@ import {
   runWebMcpTool,
   showAgentOverlay,
   snapshotPage,
+  takeDialogs,
   waitForText,
 } from '@/lib/browserAgentPage';
 import { formatImageForProvider } from '@/lib/imageFormatHelper';
@@ -310,6 +313,9 @@ export const execute = async (
     }
     // The time is settle's, which ends it early if the page answers.
     if (action.kind === 'wait') return { status: 'done' };
+    await chrome.scripting
+      .executeScript({ target: { tabId, allFrames: true }, world: 'MAIN', func: guardDialogs })
+      .catch(() => []);
     const [injection] = await chrome.scripting.executeScript({
       target: { tabId, frameIds: [element?.frameId ?? 0] },
       func: performAction,
@@ -323,6 +329,25 @@ export const execute = async (
     // A frame that went away since the page was read.
     return { status: 'failed', error: element?.frameId ? 'not_found' : 'unreachable' };
   }
+};
+
+// What the tab's page asked in a box while hidden since the last time (guardDialogs), told the
+// model with `whatNow`: what it can do when the page needed a yes. Nothing when it asked nothing.
+export const askedDialogs = async (tabId: number, whatNow: string) => {
+  const injections = await chrome.scripting
+    .executeScript({ target: { tabId, allFrames: true }, world: 'MAIN', func: takeDialogs })
+    .catch(() => []);
+  const asked = injections.flatMap(
+    (injection) => (injection.result as AskedDialog[] | undefined) ?? []
+  );
+  if (!asked.length) return '';
+  const lines = asked.map(({ kind, text }) =>
+    kind === 'alert'
+      ? `The page showed a message: ${JSON.stringify(text)}.`
+      : `The page asked ${JSON.stringify(text)} and got ${kind === 'confirm' ? 'Cancel' : 'no answer'}, so what it asked about may not have happened.`
+  );
+  const answered = asked.some(({ kind }) => kind !== 'alert');
+  return `${lines.join(' ')} The tab is behind the user's, where such boxes can't be shown.${answered ? ` ${whatNow}` : ''}`;
 };
 
 const SHOT_LEFT_OUT = '(screenshot left out)';
@@ -973,6 +998,10 @@ export async function runBrowserAgent({
         }
       }
       if (signal.aborted) return end('stopped');
+      const dialogs = await askedDialogs(
+        tabId,
+        'If going on needs a yes, use handoff, so the user does that on screen.'
+      );
 
       // A page that is still being replaced has nothing to read for a moment.
       const reading = Date.now();
@@ -994,6 +1023,7 @@ export async function runBrowserAgent({
               }). Decide again from the page below.`,
             ]
           : []),
+        dialogs,
         output,
       ];
       const text = `${results.filter(Boolean).join('\n')}${

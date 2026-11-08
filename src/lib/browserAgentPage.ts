@@ -5,7 +5,8 @@ import type { AgentAction, AgentStepError, PageElement, PageSnapshot, WebMcpTool
 // page's elements through a global of the extension's isolated world, which lasts until the
 // page is left: a snapshot numbers them, and an action finds its element by that number. The
 // snapshot runs in each of the page's frames too, and an action in the frame its element is in.
-// The WebMCP functions alone run in the page's own world, where its tools are registered.
+// The WebMCP and dialog functions alone run in the page's own world, where its tools are
+// registered and its dialogs are opened.
 
 type AgentGlobals = {
   __shizueAgentRefs?: Map<number, Element>;
@@ -691,6 +692,34 @@ export async function runWebMcpTool(name: string, input: string): Promise<{ ok: 
   } catch (error) {
     return { ok: false, error: String((error as Error)?.message ?? error).slice(0, 300) };
   }
+}
+
+export type AskedDialog = { kind: 'alert' | 'confirm' | 'prompt'; text: string };
+
+// A tab behind the user's can't show alert, confirm or prompt: Chrome closes the box or answers
+// Cancel by itself, and the agent would take what it did for done. While this frame is hidden,
+// they answer the same way and keep what the page asked, for the agent to be told (takeDialogs).
+// On screen they are the page's own. Once for each document (the page's world).
+export function guardDialogs() {
+  const page = window as unknown as Record<string, unknown> & { __shizueDialogs?: AskedDialog[] };
+  if (page.__shizueDialogs) return;
+  const asked: AskedDialog[] = (page.__shizueDialogs = []);
+  const answers = { alert: undefined, confirm: false, prompt: null };
+  for (const kind of ['alert', 'confirm', 'prompt'] as const) {
+    const own = (page[kind] as (...args: unknown[]) => unknown).bind(window);
+    page[kind] = (...args: unknown[]) => {
+      if (document.visibilityState !== 'hidden') return own(...args);
+      asked.push({ kind, text: String(args[0] ?? '').slice(0, 300) });
+      return answers[kind];
+    };
+  }
+}
+
+// What this frame's page asked in a box while hidden, since the last time (the page's world).
+export function takeDialogs(): AskedDialog[] {
+  return (
+    (window as unknown as { __shizueDialogs?: AskedDialog[] }).__shizueDialogs?.splice(0) ?? []
+  );
 }
 
 // While the agent works the tab: a soft frame around the page, a pill at the top saying so with a

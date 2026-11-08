@@ -24,7 +24,7 @@ import { askInPage } from '@/lib/bridgePage';
 import { MAIN_TEXT_EXCLUDE, readPageContent } from '@/lib/mainText';
 import type { PageRead } from '@/lib/tabText';
 import { transcriptText, videoKey, type VideoTranscript } from '@/lib/videoTranscript';
-import { activityOf, execute, screenshot, settle, snapshotOf } from '@/services/background/browserAgentHandler';
+import { activityOf, askedDialogs, execute, screenshot, settle, snapshotOf } from '@/services/background/browserAgentHandler';
 import { recoverTabContentScripts } from '@/services/background/contentScriptRecovery';
 import { debugLog } from '@/logs';
 import { i18n } from '#i18n';
@@ -487,6 +487,11 @@ const act = (args: BridgeArgs, agent: string) => {
       }
       if (!withPage) lines.push('To see what changed, read_page, find, or pass include_snapshot.');
     }
+    const dialogs = await askedDialogs(
+      tabId,
+      'If it needed a yes, ask the user to do it in the tab, or switch_tab and try again.'
+    );
+    if (dialogs) lines.push(dialogs);
     // A failed action comes back with the page, to go on from.
     const showPage = withPage || step.status === 'failed';
     return {
