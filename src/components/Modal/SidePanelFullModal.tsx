@@ -22,7 +22,7 @@ const SidePanelFullModal = ({
       <div
         className={
           size === 'base'
-            ? `sz:rounded-xl sz:px-3 sz:pt-6 sz:pb-9 sz:shadow-xl sz:min-w-78 sz:max-h-full sz:relative`
+            ? `sz:rounded-xl sz:px-3 sz:pt-6 sz:pb-9 sz:shadow-xl sz:min-w-78 sz:max-h-full sz:relative sz:overflow-y-auto sz:scrollbar-hidden`
             : `sz:rounded-xl sz:px-3 sz:pt-6 sz:pb-9 sz:shadow-xl sz:w-7/8 sz:max-h-full sz:relative`
         }
         style={{
