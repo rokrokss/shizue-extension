@@ -17,6 +17,9 @@ type AgentGlobals = {
     resume: HTMLElement;
   };
   __shizueAgentRing?: (element: Element | null) => void;
+  // A click on the pill, from the listener that hears it before the page can stop it
+  // (entrypoints/agent-pill.content.ts); true when it pressed one of the pill's buttons.
+  __shizueAgentPillPress?: (event: MouseEvent) => boolean;
   __shizueAgentMarks?: HTMLElement;
   __shizueAgentWatch?: { changedAt: number | null; acted?: Element; busyBefore: Set<Element>; stop: () => void };
   // What the user clicked when asked to point (pickElement), whether the agent was told so, and
@@ -712,6 +715,7 @@ export function showAgentOverlay(
     globals.__shizueAgentOverlay?.host.remove();
     globals.__shizueAgentOverlay = undefined;
     globals.__shizueAgentRing = undefined;
+    globals.__shizueAgentPillPress = undefined;
     return;
   }
   let overlay = globals.__shizueAgentOverlay;
@@ -783,14 +787,35 @@ export function showAgentOverlay(
     };
   }
   const stopAction = state.stopAction;
+  const stop = () => void chrome.runtime.sendMessage({ action: stopAction }).catch(() => {});
   overlay.button.onclick = (event) => {
     event.preventDefault();
-    void chrome.runtime.sendMessage({ action: stopAction }).catch(() => {});
+    stop();
   };
   const resumeAction = state.resumeAction;
+  const resume = (event: MouseEvent) => {
+    if (event.isTrusted && resumeAction) void chrome.runtime.sendMessage({ action: resumeAction }).catch(() => {});
+  };
   overlay.resume.onclick = (event) => {
     event.preventDefault();
-    if (event.isTrusted && resumeAction) void chrome.runtime.sendMessage({ action: resumeAction }).catch(() => {});
+    resume(event);
+  };
+  // The same buttons, for a click the page would stop on its way down to them. Outside the closed
+  // shadow the click's target is the host; where it landed says which button it was.
+  const shown = overlay;
+  globals.__shizueAgentPillPress = (event) => {
+    if (event.target !== shown.host || globals.__shizueAgentOverlay !== shown) return false;
+    const under = (element: HTMLElement) => {
+      if (element.hidden) return false;
+      const rect = element.getBoundingClientRect();
+      return (
+        event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom
+      );
+    };
+    if (under(shown.button)) stop();
+    else if (under(shown.resume)) resume(event);
+    else return false;
+    return true;
   };
   overlay.resume.hidden = !(state.waitingNow && state.resume && resumeAction);
   overlay.resume.textContent = state.resume ?? '';
