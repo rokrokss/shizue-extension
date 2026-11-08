@@ -1,7 +1,7 @@
 {
   "chatgpt": {
     "providerTitle": "Войти через ChatGPT",
-    "continue": "Continue with ChatGPT",
+    "continue": "Продолжить через ChatGPT",
     "account": "Аккаунт ChatGPT",
     "accountAlreadyRegistered": "Подключение к ChatGPT уже сохранено. Откройте настройки заново, чтобы проверить его состояние.",
     "duplicateAccountRevocationPending": "Существующее подключение к ChatGPT сохранено. Не удалось подтвердить отзыв новой сессии; проверьте подключения Shizue в настройках ChatGPT.",
@@ -26,8 +26,8 @@
     "shizue": "Shizue",
     "translateSettings": "Настройки перевода",
     "translatePage": "Перевести эту страницу",
-    "summarizePage": "Суммировать эту страницу",
-    "summarizeVideo": "Суммировать это видео",
+    "summarizePage": "Кратко пересказать страницу",
+    "summarizeVideo": "Кратко пересказать видео",
     "describeImage": "Описать это изображение",
     "extractImageText": "Извлечь текст из изображения",
     "translateSelection": "Перевести выделенный текст",
@@ -50,7 +50,7 @@
     "next": "Далее",
     "back": "Назад",
     "selectProvider": {
-      "title": "Выберите вашего AI-провайдера",
+      "title": "Выберите ИИ-провайдера",
       "openaiApiKey": {
         "title": "Использовать API-ключ OpenAI",
         "description_0": "Идеально для тех, у кого есть API-ключ.",
@@ -65,7 +65,7 @@
       }
     },
     "selectLanguage": {
-      "title": "Выберите ваш язык"
+      "title": "Выберите язык"
     },
     "selectShortcut": {
       "title": "Установите сочетание клавиш для открытия боковой панели"
@@ -81,8 +81,8 @@
     "history": "История",
     "empty": "Сообщений пока нет",
     "newChat": "Новый чат",
-    "summaryRequestText": "Суммируй эту страницу! Shizue!",
-    "summaryVideoRequestText": "Суммируй это видео! Shizue!",
+    "summaryRequestText": "Кратко перескажи эту страницу! Shizue!",
+    "summaryVideoRequestText": "Кратко перескажи это видео! Shizue!",
     "translateMode": "Режим перевода",
     "describeImageRequest": "Пожалуйста, опишите это изображение.",
     "extractImageTextRequest": "Пожалуйста, извлеките текст из этого изображения.",
@@ -109,7 +109,7 @@
     "tabAsleep": "Выгружена · сначала откройте",
     "attachLimit": "Не больше {{max}} вкладок и файлов",
     "captureScreen": "Снимок экрана",
-    "captureFailed": "Этот экран нельзя снять.",
+    "captureFailed": "Не удаётся сделать снимок этого экрана.",
     "searchChats": "Поиск по чатам",
     "attachFile": "Файл",
     "attachFileTypes": "PDF, Office, HWPX, EPUB, текст или код",
@@ -146,7 +146,7 @@
     "reasoningEffort_high": "High",
     "reasoningEffort_xhigh": "Extra",
     "reasoningEffort_max": "Max",
-    "reasoningEffortNotSupported": "У этой модели это нельзя изменить",
+    "reasoningEffortNotSupported": "Для этой модели глубину размышлений изменить нельзя",
     "reasoningEffortChip": "Размышления: {{level}}",
     "suggestedQuestions": "Спросить дальше",
     "videoMoment": "Этот момент",
@@ -185,14 +185,14 @@
     "pastFindsCancel": "Вернуться к вопросу",
     "pastFindsTitle": "Прошлые чаты и история ({{count}})",
     "openPastChat": "Открыть этот чат",
-    "continueTitle": "Продолжить с того места",
+    "continueTitle": "Продолжить с того места, где вы остановились",
     "continueTabsOpen": "Открытых вкладок: {{count}}",
     "attachmentOldHwp": "Сохраните в HWPX или PDF",
     "xraySelectionRequest": "Что это значит на этой странице?"
   },
   "footer": {
     "joinDiscord": "Присоединяйтесь ко мне в Discord!",
-    "rate": "Оцените меня!"
+    "rate": "Хотите оставить оценку?"
   },
   "settings": {
     "title": "Настройки",
@@ -212,15 +212,15 @@
     "autoMemoryClear": "Очистить всё",
     "autoMemoryEmpty": "Пока ничего не запомнено.",
     "preferOpenRouter": "Предпочитать OpenRouter",
-    "aiProvider": "AI-провайдер",
+    "aiProvider": "ИИ-провайдер",
     "chatModel": "Модель чата",
     "translateModel": "Модель перевода",
     "sourceLanguage": "Исходный язык",
     "targetLanguage": "Целевой язык",
-    "translationDisplay": "Показ",
+    "translationDisplay": "Отображение",
     "translationDisplayBilingual": "Оригинал + перевод",
     "translationDisplayTranslationOnly": "Только перевод",
-    "translateTargetLanguage": "Целевой Язык Перевода",
+    "translateTargetLanguage": "Целевой язык перевода",
     "auto": "Авто",
     "general": "Общие",
     "models": "Модели",
@@ -229,7 +229,7 @@
     "pageTranslation": "Перевод страниц",
     "maskPrivateDescription": "Адреса почты, номера телефонов и карт, ключи API не отправляются ИИ и остаются такими, как на странице.",
     "maskPrivate": "Не отправлять личные данные",
-    "savedTranslations": "Сохранено переводов: {{number}} · 30 дней",
+    "savedTranslations": "Сохранено переводов: {{number}} · хранятся 30 дней",
     "savedTranslationsClear": "Очистить",
     "browserAgent": "Управление браузером",
     "browserAgentDescription": "Сайты, которые вы всегда разрешали на его карточках, и сохранённые советы для сайтов",
@@ -259,16 +259,16 @@
     "darkMode": "Тёмная",
     "resetPosition": "Сбросить положение",
     "menuButton": "Кнопка меню",
-    "hideFromCurrentSite": "Скрыть с текущего сайта",
-    "hideFromAllSites": "Скрыть со всех сайтов",
+    "hideFromCurrentSite": "Скрыть на этом сайте",
+    "hideFromAllSites": "Скрыть на всех сайтах",
     "hiddenSites": "Скрытые сайты",
     "restore": "Вернуть"
   },
   "language": {
     "English": "Английский",
     "Korean": "Корейский",
-    "ChineseSimplified": "Китайский (Упрощенный)",
-    "ChineseTraditional": "Китайский (Традиционный)",
+    "ChineseSimplified": "Китайский (упрощённый)",
+    "ChineseTraditional": "Китайский (традиционный)",
     "Japanese": "Японский",
     "Spanish": "Испанский",
     "French": "Французский",
@@ -290,7 +290,7 @@
     "Thai": "Тайский"
   },
   "youtube": {
-    "aiCaption": "AI-субтитры Shizue",
+    "aiCaption": "ИИ-субтитры Shizue",
     "numCaptLines": "Количество строк",
     "activate": "Активировать",
     "deactivate": "Деактивировать",
@@ -326,7 +326,7 @@
     "loadFailed": "Не удалось загрузить субтитры"
   },
   "caption": {
-    "displayLabel": "Показ",
+    "displayLabel": "Отображение",
     "display": {
       "translation": "Только перевод",
       "bilingual": "Оригинал + перевод",
@@ -522,13 +522,13 @@
     "planCancel": "Отмена",
     "siteTitle": "Работать на {{site}}?",
     "siteHint": "Этот сайт новый для этой задачи",
-    "allowOnce": "Разрешить сейчас",
+    "allowOnce": "Разрешить один раз",
     "allowAlways": "Всегда разрешать этот сайт",
     "siteDenied": "Не разрешено на {{site}}",
     "alwaysAllowedNote": "{{site}} теперь всегда разрешён",
     "handoffTitle": "Ваш ход",
     "handoffHint": "Когда закончите на странице, нажмите «Продолжить» или напишите ниже",
-    "pointTitle": "Покажите где",
+    "pointTitle": "Покажите, где",
     "pointHint": "Нажмите на это на странице. Esc отменяет",
     "resume": "Продолжить",
     "cancelTurn": "Отказаться",
@@ -537,7 +537,7 @@
     "tipKeep": "Запомнить",
     "tipSkip": "Не нужно",
     "tipKept": "Совет для {{site}} запомнен",
-    "takeOver": "Перехватить",
+    "takeOver": "Взять управление",
     "showTab": "Показать его вкладку"
   },
   "bridge": {
@@ -546,7 +546,7 @@
     "confirmTitle": "Разрешить {{agent}} сделать это?",
     "agentFallback": "ИИ-агент",
     "title": "Внешние ИИ-агенты",
-    "description": "Claude Code, Codex и другие MCP-агенты видят и управляют только вкладками из группы вкладок «Shizue». Перетащите вкладку в группу, чтобы одолжить её, и из группы, чтобы забрать. «Стоп» на плашке во вкладке закрывает им доступ к ней.",
+    "description": "Claude Code, Codex и другие MCP-агенты видят только вкладки из группы вкладок «Shizue» и управляют только ими. Перетащите вкладку в группу, чтобы одолжить её, и из группы, чтобы забрать. Нажмите «Стоп» на плашке во вкладке, чтобы закрыть им доступ к этой вкладке.",
     "stopped": "Остановлен в этих вкладках",
     "resume": "Снова разрешить",
     "log": "Что он делал недавно",

@@ -1,7 +1,7 @@
 {
   "chatgpt": {
     "providerTitle": "ChatGPT দিয়ে সাইন ইন করুন",
-    "continue": "Continue with ChatGPT",
+    "continue": "ChatGPT দিয়ে চালিয়ে যান",
     "account": "ChatGPT অ্যাকাউন্ট",
     "accountAlreadyRegistered": "একটি ChatGPT সংযোগ ইতিমধ্যে সংরক্ষিত আছে। এর অবস্থা দেখতে সেটিংস আবার খুলুন।",
     "duplicateAccountRevocationPending": "আপনার বিদ্যমান ChatGPT সংযোগ রাখা হয়েছে। নতুন সেশন বাতিল হয়েছে কিনা নিশ্চিত করা যায়নি; ChatGPT সেটিংসে Shizue-এর সংযোগগুলো দেখুন।",
@@ -39,18 +39,18 @@
     "translatePageImages": "পৃষ্ঠার সব ছবি অনুবাদ করুন",
     "fillFormFromTab": "খোলা ট্যাব থেকে এই ফর্ম পূরণ করুন",
     "previewLink": "লিংকের প্রিভিউ",
-    "xraySelection": "এই পাতায় অর্থ খুঁজুন"
+    "xraySelection": "এই পৃষ্ঠায় অর্থ খুঁজুন"
   },
   "onboarding": {
     "greeting_0": "স্বাগতম!",
     "greeting_1": "আমি Shizue।",
-    "greeting_2": "কয়েকটি ধাপ আগে।",
+    "greeting_2": "শুরুতে কয়েকটি ধাপ।",
     "answer_0": "হ্যালো!",
     "continue": "চালিয়ে যান",
     "next": "পরবর্তী",
     "back": "পিছনে",
     "selectProvider": {
-      "title": "আপনার এআই প্রদানকারী নির্বাচন করুন",
+      "title": "আপনার AI প্রদানকারী নির্বাচন করুন",
       "openaiApiKey": {
         "title": "OpenAI API কী ব্যবহার করুন",
         "description_0": "API কী আছে এমন ব্যক্তিদের জন্য আদর্শ।",
@@ -79,7 +79,7 @@
     "connectionError": "বিপ বিপ...🚨 সিস্টেম ত্রুটি... 📡 🥺",
     "retry": "পুনরায় চেষ্টা করুন",
     "history": "ইতিহাস",
-    "empty": "এখনও কোন বার্তা নেই",
+    "empty": "এখনো কোনো বার্তা নেই",
     "newChat": "নতুন চ্যাট",
     "summaryRequestText": "এই পৃষ্ঠাটি সংক্ষেপ করুন! Shizue!",
     "summaryVideoRequestText": "এই ভিডিওটি সংক্ষেপ করুন! Shizue!",
@@ -105,12 +105,12 @@
     "askAboutVideos": "সংযুক্ত ভিডিও নিয়ে প্রশ্ন করুন",
     "attach": "সংযুক্ত করুন",
     "openTabs": "খোলা ট্যাব",
-    "noOpenTabs": "এই উইন্ডোতে কোনো ওয়েব পেজ খোলা নেই।",
+    "noOpenTabs": "এই উইন্ডোতে কোনো ওয়েব পৃষ্ঠা খোলা নেই।",
     "tabAsleep": "ঘুমন্ত · আগে খুলুন",
     "attachLimit": "সর্বোচ্চ {{max}}টি ট্যাব ও ফাইল সংযুক্ত করা যায়",
     "captureScreen": "স্ক্রিনশট",
     "captureFailed": "এই স্ক্রিনটি ক্যাপচার করা যাচ্ছে না।",
-    "searchChats": "কথোপকথন খুঁজুন",
+    "searchChats": "চ্যাট খুঁজুন",
     "attachFile": "ফাইল",
     "attachFileTypes": "PDF, Office, HWPX, EPUB, টেক্সট বা কোড",
     "pastedText": "পেস্ট করা টেক্সট",
@@ -185,14 +185,14 @@
     "pastFindsCancel": "প্রশ্নে ফিরে যান",
     "pastFindsTitle": "আগের চ্যাট ও ইতিহাস ({{count}})",
     "openPastChat": "এই চ্যাট খুলুন",
-    "continueTitle": "যেখানে থেমেছিলেন সেখান থেকে",
+    "continueTitle": "যেখানে থেমেছিলেন সেখান থেকে চালিয়ে যান",
     "continueTabsOpen": "খোলা ট্যাব: {{count}}",
     "attachmentOldHwp": "HWPX বা PDF হিসেবে সংরক্ষণ করুন",
-    "xraySelectionRequest": "এই পাতায় এর অর্থ কী?"
+    "xraySelectionRequest": "এই পৃষ্ঠায় এর অর্থ কী?"
   },
   "footer": {
     "joinDiscord": "Discord-এ আমার সাথে যোগ দিন!",
-    "rate": "আমার সম্পর্কে মন্তব্য করুন!"
+    "rate": "রেটিং দেবেন?"
   },
   "settings": {
     "title": "সেটিংস",
@@ -210,9 +210,9 @@
     "autoMemoryEnable": "চ্যাট থেকে মনে রাখুন",
     "autoMemoryDelete": "মুছুন",
     "autoMemoryClear": "সব মুছুন",
-    "autoMemoryEmpty": "এখনও কিছু মনে রাখা হয়নি।",
+    "autoMemoryEmpty": "এখনো কিছু মনে রাখা হয়নি।",
     "preferOpenRouter": "OpenRouter-কে অগ্রাধিকার দিন",
-    "aiProvider": "এআই প্রদানকারী",
+    "aiProvider": "AI প্রদানকারী",
     "chatModel": "চ্যাট মডেল",
     "translateModel": "অনুবাদ মডেল",
     "sourceLanguage": "উৎস ভাষা",
@@ -226,10 +226,10 @@
     "models": "মডেল",
     "layout": "লেআউট",
     "registered": "নিবন্ধিত",
-    "pageTranslation": "পেজ অনুবাদ",
-    "maskPrivateDescription": "ইমেল, ফোন নম্বর, কার্ড নম্বর আর API কী AI-কে পাঠানো হয় না। পেজে যেমন ছিল তেমনই দেখায়।",
+    "pageTranslation": "পৃষ্ঠা অনুবাদ",
+    "maskPrivateDescription": "ইমেল, ফোন নম্বর, কার্ড নম্বর আর API কী AI-কে পাঠানো হয় না। পৃষ্ঠায় যেমন ছিল তেমনই দেখায়।",
     "maskPrivate": "ব্যক্তিগত তথ্য পাঠাবেন না",
-    "savedTranslations": "{{number}}টি সংরক্ষিত অনুবাদ · ৩০ দিন",
+    "savedTranslations": "{{number}}টি সংরক্ষিত অনুবাদ · 30 দিন রাখা হয়",
     "savedTranslationsClear": "মুছুন",
     "browserAgent": "ব্রাউজার নিয়ন্ত্রণ",
     "browserAgentDescription": "কার্ডে যেসব সাইটে সব সময় অনুমতি দিয়েছেন, এবং সাইটের জন্য রাখা টিপ",
@@ -256,13 +256,13 @@
     "hideToggle": "বোতাম লুকান",
     "theme": "থিম",
     "lightMode": "হালকা",
-    "darkMode": "অন্ধকার",
+    "darkMode": "গাঢ়",
     "resetPosition": "অবস্থান রিসেট করুন",
     "menuButton": "মেনু বোতাম",
     "hideFromCurrentSite": "বর্তমান সাইট থেকে লুকান",
     "hideFromAllSites": "সব সাইট থেকে লুকান",
     "hiddenSites": "লুকানো সাইট",
-    "restore": "ফেরত"
+    "restore": "ফিরিয়ে আনুন"
   },
   "language": {
     "English": "ইংরেজি",
@@ -290,12 +290,12 @@
     "Thai": "থাই"
   },
   "youtube": {
-    "aiCaption": "Shizue এআই ক্যাপশন",
+    "aiCaption": "Shizue AI ক্যাপশন",
     "numCaptLines": "লাইনের সংখ্যা",
     "activate": "সক্রিয় করুন",
     "deactivate": "নিষ্ক্রিয় করুন",
-    "youtubeCaptionButton": "ইউটিউব ক্যাপশন বোতাম",
-    "captionSizeRatio": "ক্যাপশন সাইজ রেটিও",
+    "youtubeCaptionButton": "YouTube ক্যাপশন বোতাম",
+    "captionSizeRatio": "ক্যাপশনের আকার",
     "useKeyboardNavigate": "A/D দিয়ে সাবটাইটেল নেভিগেট করুন",
     "wordHighlight": "বলা শব্দ হাইলাইট করুন",
     "sourceTrack": "ইউটিউব ক্যাপশন",
@@ -355,7 +355,7 @@
     "error": "ত্রুটি",
     "fetchError": "টোকেন ব্যবহারের ডেটা আনতে একটি ত্রুটি ঘটেছে।",
     "retry": "পুনঃচেষ্টা",
-    "noData": "এখনও কোনো ব্যবহারের ডেটা নেই।"
+    "noData": "এখনো কোনো ব্যবহারের ডেটা নেই।"
   },
   "home": {
     "title": "হোমে যান"
@@ -388,7 +388,7 @@
     "serverAddress": "সার্ভারের ঠিকানা",
     "changeAddress": "ঠিকানা বদলান",
     "useOtherAddress": "অন্য ঠিকানা ব্যবহার করুন",
-    "findAutomatically": "নিজে থেকে খুঁজুন",
+    "findAutomatically": "স্বয়ংক্রিয়ভাবে খুঁজুন",
     "apiKeyOptional": "API কী (প্রয়োজন হলে)",
     "selectModel": "একটি মডেল বেছে নিন",
     "notFoundTitle": "কোনো সার্ভার চলছে না",
@@ -464,9 +464,9 @@
       "openTab": "নতুন ট্যাবে {{host}} খোলা",
       "switchTab": "{{tab}} নম্বর ট্যাবে যাওয়া",
       "tool": "সাইটের টুল ‘{{target}}’ ব্যবহার",
-      "press": "{{key}} চাপুন",
-      "pressOn": "‘{{target}}’-এ {{key}} চাপুন",
-      "hover": "‘{{target}}’-এর উপর পয়েন্টার রাখুন",
+      "press": "{{key}} চাপা",
+      "pressOn": "‘{{target}}’-এ {{key}} চাপা",
+      "hover": "‘{{target}}’-এর উপর পয়েন্টার রাখা",
       "upload": "‘{{target}}’-এ ছবি {{file}} আপলোড",
       "handoff": "আপনার পালা: {{text}}",
       "point": "আপনাকে দেখাতে বলেছে: {{text}}",
@@ -527,9 +527,9 @@
     "siteDenied": "{{site}}-এ অনুমতি নেই",
     "alwaysAllowedNote": "{{site}}-এ এখন থেকে সব সময় অনুমতি",
     "handoffTitle": "আপনার পালা",
-    "handoffHint": "পেজে কাজ শেষ হলে চালিয়ে যান চাপুন বা নিচে লিখুন",
+    "handoffHint": "পৃষ্ঠায় কাজ শেষ হলে চালিয়ে যান চাপুন বা নিচে লিখুন",
     "pointTitle": "কোথায় দেখান",
-    "pointHint": "পেজে সেটিতে ক্লিক করুন। Esc দিলে বাতিল",
+    "pointHint": "পৃষ্ঠায় সেটিতে ক্লিক করুন। Esc দিলে বাতিল",
     "resume": "চালিয়ে যান",
     "cancelTurn": "ছেড়ে দিন",
     "tipTitle": "{{site}}-এর এই টিপ মনে রাখবেন?",
@@ -546,7 +546,7 @@
     "confirmTitle": "{{agent}}-কে এটি করতে দেবেন?",
     "agentFallback": "AI এজেন্ট",
     "title": "বাইরের AI এজেন্ট",
-    "description": "Claude Code, Codex ও অন্যান্য MCP এজেন্ট শুধু “Shizue” নামের ট্যাব গ্রুপের ট্যাবগুলো দেখে ও চালায়। কোনো ট্যাব ধার দিতে গ্রুপে টেনে আনুন, ফেরত নিতে বাইরে টেনে নিন। কোনো ট্যাবের পিলে থামান চাপলে সেই ট্যাবে সেগুলো আর কাজ করতে পারে না।",
+    "description": "Claude Code, Codex ও অন্যান্য MCP এজেন্ট শুধু “Shizue” নামের ট্যাব গ্রুপের ট্যাবগুলো দেখে ও চালায়। কোনো ট্যাব ধার দিতে গ্রুপে টেনে আনুন, ফেরত নিতে বাইরে টেনে নিন। কোনো ট্যাবে দেখানো বিজ্ঞপ্তিতে ‘থামান’ চাপলে সেই ট্যাবে সেগুলো আর কাজ করতে পারে না।",
     "stopped": "এই ট্যাবগুলোতে থামানো হয়েছে",
     "resume": "আবার অনুমতি দিন",
     "log": "সম্প্রতি যা করেছে",
@@ -570,14 +570,14 @@
     "noSubmit": "Shizue কখনো ফর্ম জমা দেয় না। দেখে নিয়ে নিজে জমা দিন।",
     "filled": "পূরণ হয়েছে: {{count}}টি ঘর",
     "skipped": {
-      "gone": "পেজে আর নেই",
+      "gone": "পৃষ্ঠায় আর নেই",
       "changed": "রেখে দেওয়া হলো: পড়ার পরে বদলেছে",
       "failed": "পূরণ করা যায়নি"
     },
     "close": "বন্ধ করুন",
     "error": {
       "agent_running": "এই ট্যাবে ব্রাউজার নিয়ন্ত্রণ চলছে। শেষ হলে আবার চেষ্টা করুন।",
-      "unreadable": "Shizue এই পেজের ফর্ম পড়তে পারছে না।",
+      "unreadable": "Shizue এই পৃষ্ঠার ফর্ম পড়তে পারছে না।",
       "no_fields": "এখানে Shizue পূরণ করতে পারে এমন ঘর নেই। পাসওয়ার্ড, কার্ড নম্বর আর চেকবক্স আপনার হাতে।",
       "source_unreadable": "Shizue ওই ট্যাব পড়তে পারছে না।",
       "source_empty": "ওই ট্যাবে পূরণ করার মতো যথেষ্ট লেখা নেই।",
@@ -586,16 +586,16 @@
   },
   "linkPreview": {
     "title": "লিংক প্রিভিউ",
-    "loading": "পাতাটি পড়া হচ্ছে…",
+    "loading": "পৃষ্ঠাটি পড়া হচ্ছে…",
     "minutes": "পড়তে {{count}} মিনিট",
     "open": "খুলুন",
     "close": "বন্ধ করুন",
     "error": {
-      "notHttps": "শুধু https পাতার প্রিভিউ দেখা যায়",
-      "tooBig": "পাতাটি প্রিভিউয়ের জন্য খুব বড়",
-      "notPage": "এই লিংকটি কোনো ওয়েব পাতা নয়",
-      "noText": "এই পাতায় প্রিভিউ করার মতো লেখা নেই",
-      "failed": "এই পাতার প্রিভিউ দেখানো গেল না",
+      "notHttps": "শুধু https পৃষ্ঠার প্রিভিউ দেখা যায়",
+      "tooBig": "পৃষ্ঠাটি প্রিভিউয়ের জন্য খুব বড়",
+      "notPage": "এই লিংকটি কোনো ওয়েব পৃষ্ঠা নয়",
+      "noText": "এই পৃষ্ঠায় প্রিভিউ করার মতো লেখা নেই",
+      "failed": "এই পৃষ্ঠার প্রিভিউ দেখানো গেল না",
       "noModel": "লিংকের প্রিভিউয়ের জন্য একটি চ্যাট মডেল দরকার"
     }
   }

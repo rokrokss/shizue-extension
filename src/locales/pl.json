@@ -1,7 +1,7 @@
 {
   "chatgpt": {
     "providerTitle": "Zaloguj się przez ChatGPT",
-    "continue": "Continue with ChatGPT",
+    "continue": "Kontynuuj z ChatGPT",
     "account": "Konto ChatGPT",
     "accountAlreadyRegistered": "Połączenie z ChatGPT jest już zapisane. Otwórz ponownie ustawienia, aby sprawdzić jego stan.",
     "duplicateAccountRevocationPending": "Zachowano istniejące połączenie z ChatGPT. Nie udało się potwierdzić unieważnienia nowej sesji; sprawdź połączenia Shizue w ustawieniach ChatGPT.",
@@ -19,8 +19,8 @@
     "gotIt": "Rozumiem",
     "accountUnavailable": "Zapisane połączenie z ChatGPT uległo zmianie. Otwórz ponownie ustawienia, aby kontynuować."
   },
-  "extension_name": "Shizue: Tłumacz AI + Asystent Supermocy LLM",
-  "extension_description": "Tłumacz AI + Asystent Supermocy LLM",
+  "extension_name": "Shizue: Tłumacz AI + Asystent LLM z supermocami",
+  "extension_description": "Tłumacz AI + Asystent LLM z supermocami",
   "toggle_description": "Przełącz Shizue",
   "overlayMenu": {
     "shizue": "Shizue",
@@ -54,8 +54,8 @@
       "openaiApiKey": {
         "title": "Użyj klucza API OpenAI",
         "description_0": "Idealne dla osób posiadających klucz API.",
-        "description_1": "Stabilne i oparte na zużyciu ceny.",
-        "validate": "Zatwierdź"
+        "description_1": "Stabilne działanie, opłaty za użycie.",
+        "validate": "Sprawdź"
       },
       "geminiApiKey": "Użyj klucza API Gemini",
       "anthropicApiKey": "Użyj klucza API Anthropic",
@@ -150,7 +150,7 @@
     "reasoningEffortChip": "Myślenie: {{level}}",
     "suggestedQuestions": "Zapytaj dalej",
     "videoMoment": "Ta chwila",
-    "videoMomentHint": "Odpowiada o fragmencie, który właśnie leci",
+    "videoMomentHint": "Odpowiada na temat fragmentu, który właśnie leci",
     "videoMomentAt": "W {{time}}",
     "contextCompacted": "Rozmowa się wydłużyła, więc wcześniejsza część poszła jako podsumowanie.",
     "contextUsage": "Kontekst {{percent}}%",
@@ -161,7 +161,7 @@
     "agentSteerPlaceholder": "Uzupełnij zadanie lub odpowiedz na pytanie",
     "selectAllTabs": "Zaznacz wszystkie",
     "deselectAllTabs": "Odznacz wszystkie",
-    "browserControlHintTitle": "Shizue może zrobić to w Twojej karcie",
+    "browserControlHintTitle": "Shizue może zrobić to w twojej karcie",
     "browserControlHintBody": "Włącz „Sterowanie przeglądarką” w menu Narzędzia, a Shizue będzie klikać i pisać na tej stronie. Pyta przed wysłaniem lub płatnością.",
     "browserControlHintAction": "Włącz i spróbuj ponownie",
     "tools": "Narzędzia",
@@ -185,14 +185,14 @@
     "pastFindsCancel": "Wróć do pytania",
     "pastFindsTitle": "Poprzednie czaty i historia ({{count}})",
     "openPastChat": "Otwórz ten czat",
-    "continueTitle": "Wróć do tego, co zostało",
+    "continueTitle": "Kontynuuj od miejsca, w którym przerwano",
     "continueTabsOpen": "Otwarte karty: {{count}}",
     "attachmentOldHwp": "Zapisz jako HWPX lub PDF",
     "xraySelectionRequest": "Co to znaczy na tej stronie?"
   },
   "footer": {
     "joinDiscord": "Dołącz do mnie na Discordzie!",
-    "rate": "Oceń mnie!"
+    "rate": "Chcesz wystawić ocenę?"
   },
   "settings": {
     "title": "Ustawienia",
@@ -220,7 +220,7 @@
     "translationDisplay": "Wyświetlanie",
     "translationDisplayBilingual": "Oryginał + tłumaczenie",
     "translationDisplayTranslationOnly": "Tylko tłumaczenie",
-    "translateTargetLanguage": "Język Docelowy Tłumaczenia",
+    "translateTargetLanguage": "Język docelowy tłumaczenia",
     "auto": "Automatycznie",
     "general": "Ogólne",
     "models": "Modele",
@@ -229,10 +229,10 @@
     "pageTranslation": "Tłumaczenie stron",
     "maskPrivateDescription": "Adresy e-mail, numery telefonów i kart oraz klucze API nie trafiają do AI. Zostają takie, jak na stronie.",
     "maskPrivate": "Nie wysyłaj danych osobowych",
-    "savedTranslations": "Zapisane tłumaczenia: {{number}} · 30 dni",
+    "savedTranslations": "Zapisane tłumaczenia: {{number}} · przechowywane przez 30 dni",
     "savedTranslationsClear": "Wyczyść",
     "browserAgent": "Sterowanie przeglądarką",
-    "browserAgentDescription": "Witryny, na które zawsze zezwolono na kartach, i wskazówki zapamiętane dla witryn",
+    "browserAgentDescription": "Witryny zawsze dozwolone w prośbach o zgodę i wskazówki zapisane dla witryn",
     "agentAllowedSites": "Zawsze dozwolone witryny",
     "agentNoSites": "Na razie brak",
     "agentClearSites": "Usuń wszystkie witryny",
@@ -241,7 +241,7 @@
     "agentClearTips": "Usuń wszystkie wskazówki",
     "translationTone": "Styl tłumaczenia",
     "translationToneAuto": "Automatycznie (jak strona)",
-    "translationToneFormal": "oficjalny",
+    "translationToneFormal": "formalny",
     "translationTonePolite": "uprzejmy",
     "translationTonePlain": "neutralny, pisany",
     "translationToneHint": "Dotyczy tłumaczenia stron. Napisy w filmach i spotkaniach zachowują sposób mówienia każdej osoby."
@@ -261,14 +261,14 @@
     "menuButton": "Przycisk menu",
     "hideFromCurrentSite": "Ukryj na bieżącej stronie",
     "hideFromAllSites": "Ukryj na wszystkich stronach",
-    "hiddenSites": "Ukryte Strony",
+    "hiddenSites": "Ukryte strony",
     "restore": "Przywróć"
   },
   "language": {
     "English": "Angielski",
     "Korean": "Koreański",
-    "ChineseSimplified": "Chiński (Uproszczony)",
-    "ChineseTraditional": "Chiński (Tradycyjny)",
+    "ChineseSimplified": "Chiński (uproszczony)",
+    "ChineseTraditional": "Chiński (tradycyjny)",
     "Japanese": "Japoński",
     "Spanish": "Hiszpański",
     "French": "Francuski",
@@ -350,7 +350,7 @@
     "turnOnSiteCaptions": "Włącz napisy w filmie, aby zobaczyć ich tłumaczenie"
   },
   "usage": {
-    "title": "Wykorzystanie Tokenów",
+    "title": "Wykorzystanie tokenów",
     "total": "Łącznie",
     "error": "Błąd",
     "fetchError": "Wystąpił błąd podczas pobierania danych wykorzystania tokenów.",
@@ -362,15 +362,15 @@
   },
   "memo": {
     "memo": "Notatka",
-    "memoList": "Lista Notatek",
-    "newMemo": "Nowa Notatka",
+    "memoList": "Lista notatek",
+    "newMemo": "Nowa notatka",
     "save": "Zapisz",
     "delete": "Usuń",
     "pin": "Przypnij",
     "unpin": "Odepnij",
     "edit": "Edytuj",
     "cancel": "Anuluj",
-    "defaultTitle": "Nowa Notatka",
+    "defaultTitle": "Nowa notatka",
     "deleteConfirm": "Czy na pewno chcesz usunąć tę notatkę?",
     "memoContentPlaceholder": "Wprowadź treść notatki...",
     "memoTitlePlaceholder": "Tytuł",
@@ -383,7 +383,7 @@
   },
   "local": {
     "providerTitle": "Użyj modelu lokalnego",
-    "description": "Działa na Twoim komputerze. Klucz API nie jest potrzebny.",
+    "description": "Działa na twoim komputerze. Klucz API nie jest potrzebny.",
     "connect": "Połącz",
     "serverAddress": "Adres serwera",
     "changeAddress": "Zmień adres",
@@ -474,7 +474,7 @@
       "waitFor": "Czekaj, aż pojawi się „{{text}}”"
     },
     "approvalTitle": "Zezwolić na tę czynność?",
-    "approvalHint": "Może coś wysłać, usunąć lub opłacić i być trudne do cofnięcia",
+    "approvalHint": "Może coś wysłać, usunąć lub opłacić – i trudno będzie to cofnąć",
     "allow": "Zezwól",
     "deny": "Odmów",
     "denied": "Odrzucono",
@@ -487,7 +487,7 @@
       "not_select": "To nie jest lista rozwijana",
       "no_option": "Nie ma takiej opcji",
       "bad_url": "Nie można otworzyć tego adresu",
-      "unreachable": "Tej strony nie można sterować",
+      "unreachable": "Tą stroną nie można sterować",
       "not_visible": "Ta karta nie jest widoczna",
       "no_screenshot": "Najpierw trzeba spojrzeć na ekran",
       "no_tab": "Nie ma takiej karty",
@@ -500,11 +500,11 @@
     "outcome": {
       "stopped": "Zatrzymano",
       "max_steps": "Zatrzymano po zbyt wielu krokach. Spróbuj mniejszego zadania",
-      "unavailable": "Tej karty nie można sterować. Otwórz stronę internetową i spróbuj ponownie",
+      "unavailable": "Tą kartą nie można sterować. Otwórz stronę internetową i spróbuj ponownie",
       "failed": "Zatrzymano: nie wiadomo, co dalej",
       "looping": "Zatrzymano: powtarzał tę samą czynność",
       "unanswered": "Zatrzymano: brak odpowiedzi na pytanie",
-      "not_handed_back": "Zatrzymano: za długo czekał na Twoją kolej"
+      "not_handed_back": "Zatrzymano: za długo czekał na twoją kolej"
     },
     "overlayWorking": "Shizue działa w tej karcie",
     "overlayWaiting": "Czeka na zgodę w panelu",
@@ -542,11 +542,11 @@
   },
   "bridge": {
     "overlayWorking": "{{agent}} działa w tej karcie",
-    "overlayWaiting": "{{agent}} czeka na Twoją zgodę",
+    "overlayWaiting": "{{agent}} czeka na twoją zgodę",
     "confirmTitle": "Pozwolić {{agent}} na to?",
     "agentFallback": "Agent AI",
     "title": "Zewnętrzni agenci AI",
-    "description": "Claude Code, Codex i inni agenci MCP widzą i obsługują tylko karty w grupie kart o nazwie „Shizue”. Przeciągnij kartę do grupy, aby ją użyczyć, a na zewnątrz, aby ją odebrać. Zatrzymaj na pigułce w karcie odcina ich od tej karty.",
+    "description": "Claude Code, Codex i inni agenci MCP widzą i obsługują tylko karty w grupie kart o nazwie „Shizue”. Przeciągnij kartę do grupy, aby ją użyczyć, a na zewnątrz, aby ją odebrać. Naciśnij „Zatrzymaj” na plakietce w karcie, aby odciąć im dostęp do tej karty.",
     "stopped": "Zatrzymany w tych kartach",
     "resume": "Zezwól ponownie",
     "log": "Co ostatnio zrobił",
@@ -567,7 +567,7 @@
     "fill": "Wypełnij ({{count}})",
     "otherTab": "Wybierz inną kartę",
     "filling": "Wypełnianie formularza…",
-    "noSubmit": "Shizue nigdy nie wysyła formularza. Sprawdź go i wyślij sam.",
+    "noSubmit": "Shizue nigdy nie wysyła formularza. Sprawdź go i wyślij samodzielnie.",
     "filled": "Wypełnione pola: {{count}}",
     "skipped": {
       "gone": "nie ma go już na stronie",

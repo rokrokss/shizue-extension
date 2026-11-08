@@ -1,7 +1,7 @@
 {
   "chatgpt": {
     "providerTitle": "Entrar com o ChatGPT",
-    "continue": "Continue with ChatGPT",
+    "continue": "Continuar com o ChatGPT",
     "account": "Conta do ChatGPT",
     "accountAlreadyRegistered": "Já existe uma conexão do ChatGPT salva. Abra as configurações novamente para verificar o status.",
     "duplicateAccountRevocationPending": "Sua conexão existente com o ChatGPT foi mantida. Não foi possível confirmar a revogação da nova sessão; verifique as conexões do Shizue nas configurações do ChatGPT.",
@@ -19,8 +19,8 @@
     "gotIt": "Entendi",
     "accountUnavailable": "A conexão salva do ChatGPT mudou. Abra as configurações novamente para continuar."
   },
-  "extension_name": "Shizue: Tradutor IA + Assistente de Superpoderes LLM",
-  "extension_description": "Tradutor AI + Assistente de Superpoderes LLM",
+  "extension_name": "Shizue: Tradutor IA + Assistente LLM com superpoderes",
+  "extension_description": "Tradutor IA + Assistente LLM com superpoderes",
   "toggle_description": "Alternar Shizue",
   "overlayMenu": {
     "shizue": "Shizue",
@@ -37,13 +37,13 @@
     "removeTranslation": "Remover tradução",
     "translateImage": "Traduzir imagem",
     "translatePageImages": "Traduzir todas as imagens da página",
-    "fillFormFromTab": "Preencher este formulário com uma aba aberta",
+    "fillFormFromTab": "Preencher este formulário a partir de uma aba aberta",
     "previewLink": "Pré-visualizar link",
     "xraySelection": "Buscar o sentido nesta página"
   },
   "onboarding": {
     "greeting_0": "Bem-vindo!",
-    "greeting_1": "Eu sou Shizue.",
+    "greeting_1": "Eu sou o Shizue.",
     "greeting_2": "Alguns passos primeiro.",
     "answer_0": "Olá!",
     "continue": "Continuar",
@@ -57,7 +57,7 @@
         "description_1": "Estável e com preços baseados no uso.",
         "validate": "Validar"
       },
-      "geminiApiKey": "Usar chave de API da Gemini",
+      "geminiApiKey": "Usar chave de API do Gemini",
       "anthropicApiKey": "Usar chave de API da Anthropic",
       "openRouterApiKey": {
         "title": "Usar chave de API da OpenRouter",
@@ -192,7 +192,7 @@
   },
   "footer": {
     "joinDiscord": "Junte-se a mim no Discord!",
-    "rate": "Avalie-me!"
+    "rate": "Quer deixar uma avaliação?"
   },
   "settings": {
     "title": "Configurações",
@@ -200,13 +200,13 @@
     "shortcut": "Atalho do painel",
     "shortcutChange": "Alterar",
     "shortcutNotSet": "Não definido",
-    "shortcutHint": "Na guia que acabou de abrir, clique no lápis ao lado de “{{command}}” e pressione as novas teclas.",
+    "shortcutHint": "Na aba que acabou de abrir, clique no lápis ao lado de “{{command}}” e pressione as novas teclas.",
     "shortcutSaved": "Salvo",
     "customInstructions": "Instruções personalizadas",
     "customInstructionsDescription": "O Shizue segue estas instruções em todas as respostas do chat. Conte o que você faz, do que gosta e como prefere que ele responda.",
     "customInstructionsPlaceholder": "ex.: Sou desenvolvedor back-end. Responda de forma breve e escreva o código em TypeScript.",
     "autoMemory": "Memória automática",
-    "autoMemoryDescription": "A Shizue lembra o que é útil das suas conversas e usa isso nas seguintes.",
+    "autoMemoryDescription": "O Shizue lembra o que é útil das suas conversas e usa isso nas seguintes.",
     "autoMemoryEnable": "Lembrar das conversas",
     "autoMemoryDelete": "Excluir",
     "autoMemoryClear": "Limpar tudo",
@@ -220,7 +220,7 @@
     "translationDisplay": "Exibição",
     "translationDisplayBilingual": "Original + tradução",
     "translationDisplayTranslationOnly": "Só a tradução",
-    "translateTargetLanguage": "Idioma de Destino da Tradução",
+    "translateTargetLanguage": "Idioma de destino da tradução",
     "auto": "Automático",
     "general": "Geral",
     "models": "Modelos",
@@ -229,7 +229,7 @@
     "pageTranslation": "Tradução de página",
     "maskPrivateDescription": "E-mails, telefones, números de cartão e chaves de API não são enviados à IA. Eles aparecem como estavam na página.",
     "maskPrivate": "Não enviar dados pessoais",
-    "savedTranslations": "{{number}} traduções salvas · 30 dias",
+    "savedTranslations": "{{number}} traduções salvas · mantidas por 30 dias",
     "savedTranslationsClear": "Limpar",
     "browserAgent": "Controle do navegador",
     "browserAgentDescription": "Sites que você sempre permitiu nos cartões e dicas guardadas para sites",
@@ -259,10 +259,10 @@
     "darkMode": "Escuro",
     "resetPosition": "Redefinir posição",
     "menuButton": "Botão de menu",
-    "hideFromCurrentSite": "Ocultar do site atual",
-    "hideFromAllSites": "Ocultar de todos os sites",
-    "hiddenSites": "Sites Ocultos",
-    "restore": "Voltar"
+    "hideFromCurrentSite": "Ocultar neste site",
+    "hideFromAllSites": "Ocultar em todos os sites",
+    "hiddenSites": "Sites ocultos",
+    "restore": "Restaurar"
   },
   "language": {
     "English": "Inglês",
@@ -290,13 +290,13 @@
     "Thai": "Tailandês"
   },
   "youtube": {
-    "aiCaption": "Legenda IA de Shizue",
+    "aiCaption": "Legenda IA do Shizue",
     "numCaptLines": "Número de linhas",
     "activate": "Ativar",
     "deactivate": "Desativar",
-    "youtubeCaptionButton": "Botão de legenda YouTube",
+    "youtubeCaptionButton": "Botão de legenda do YouTube",
     "captionSizeRatio": "Tamanho da legenda",
-    "useKeyboardNavigate": "Navegar legendas com A/D",
+    "useKeyboardNavigate": "Navegar pelas legendas com A/D",
     "wordHighlight": "Destacar as palavras faladas",
     "sourceTrack": "Legendas do YouTube",
     "spokenLanguage": "Idioma falado",
@@ -306,7 +306,7 @@
     "autoActivateOtherLanguages": "Qualquer outro idioma"
   },
   "twitch": {
-    "twitchCaptionButton": "Botão de legenda Twitch",
+    "twitchCaptionButton": "Botão de legenda da Twitch",
     "source": "Origem da legenda",
     "sourceAuto": "Automático",
     "sourceCaptions": "Legendas do streamer",
@@ -321,7 +321,7 @@
     "chromeTranslation": "Tradução integrada do Chrome"
   },
   "netflix": {
-    "netflixCaptionButton": "Botão de legenda Netflix",
+    "netflixCaptionButton": "Botão de legenda da Netflix",
     "originalSubtitles": "Legenda original",
     "loadFailed": "Não foi possível carregar a legenda"
   },
@@ -350,7 +350,7 @@
     "turnOnSiteCaptions": "Ative as legendas do vídeo para vê-las traduzidas"
   },
   "usage": {
-    "title": "Uso de Tokens",
+    "title": "Uso de tokens",
     "total": "Total",
     "error": "Erro",
     "fetchError": "Ocorreu um erro ao buscar dados de uso de tokens.",
@@ -358,28 +358,28 @@
     "noData": "Ainda não há dados de uso."
   },
   "home": {
-    "title": "Ir para Home"
+    "title": "Ir para o início"
   },
   "memo": {
-    "memo": "Memo",
-    "memoList": "Lista de Notas",
-    "newMemo": "Novo Memo",
+    "memo": "Nota",
+    "memoList": "Lista de notas",
+    "newMemo": "Nova nota",
     "save": "Salvar",
     "delete": "Excluir",
     "pin": "Fixar",
     "unpin": "Desafixar",
     "edit": "Editar",
     "cancel": "Cancelar",
-    "defaultTitle": "Novo Memo",
-    "deleteConfirm": "Tem certeza de que deseja excluir este memo?",
-    "memoContentPlaceholder": "Digite o conteúdo do memo...",
+    "defaultTitle": "Nova nota",
+    "deleteConfirm": "Tem certeza de que deseja excluir esta nota?",
+    "memoContentPlaceholder": "Digite o conteúdo da nota...",
     "memoTitlePlaceholder": "Título",
-    "selectMemoOr": "Selecione um memo ou",
-    "createNewMemo": "Criar novo memo",
+    "selectMemoOr": "Selecione uma nota ou",
+    "createNewMemo": "Criar nova nota",
     "noContent": "Sem conteúdo",
     "noSearchResults": "Sem resultados de pesquisa",
-    "noMemos": "Sem memos",
-    "searchMemo": "Pesquisar memo"
+    "noMemos": "Sem notas",
+    "searchMemo": "Pesquisar notas"
   },
   "local": {
     "providerTitle": "Usar um modelo local",
@@ -483,7 +483,7 @@
     "questionHint": "Responda na caixa abaixo",
     "error": {
       "not_found": "Esse elemento não está mais na página",
-      "secret_field": "Digite senhas e dados do cartão você mesmo",
+      "secret_field": "Digite você mesmo as senhas e os dados do cartão",
       "not_select": "Não é uma lista suspensa",
       "no_option": "Essa opção não existe",
       "bad_url": "Não é possível abrir esse endereço",
@@ -517,7 +517,7 @@
     "groupTitle": "O Shizue trabalhando",
     "planTitle": "Este é o plano",
     "planSites": "Sites: {{sites}}",
-    "planHint": "Depois de iniciar, ele não perguntará de novo sobre esses sites. Enviar, pagar e excluir ainda são perguntados a cada vez",
+    "planHint": "Depois de iniciar, ele não perguntará de novo sobre esses sites. Para enviar, pagar ou excluir, ele ainda pergunta toda vez",
     "planStart": "Iniciar",
     "planCancel": "Cancelar",
     "siteTitle": "Trabalhar em {{site}}?",
@@ -527,7 +527,7 @@
     "siteDenied": "Não permitido em {{site}}",
     "alwaysAllowedNote": "{{site}} agora está sempre permitido",
     "handoffTitle": "Sua vez",
-    "handoffHint": "Quando terminar na página, toque em Continuar ou escreva abaixo",
+    "handoffHint": "Quando terminar na página, clique em Continuar ou escreva abaixo",
     "pointTitle": "Mostre onde",
     "pointHint": "Clique nele na página. Esc cancela",
     "resume": "Continuar",
@@ -546,7 +546,7 @@
     "confirmTitle": "Deixar {{agent}} fazer isto?",
     "agentFallback": "Agente de IA",
     "title": "Agentes de IA externos",
-    "description": "O Claude Code, o Codex e outros agentes MCP só veem e controlam as abas do grupo de abas chamado “Shizue”. Arraste uma aba para dentro para emprestá-la e para fora para pegá-la de volta. Parar na pílula de uma aba os bloqueia nela.",
+    "description": "O Claude Code, o Codex e outros agentes MCP só veem e controlam as abas do grupo de abas chamado “Shizue”. Arraste uma aba para dentro para emprestá-la e para fora para pegá-la de volta. Clique em “Parar” no aviso de uma aba para impedir que eles usem essa aba.",
     "stopped": "Parado nestas abas",
     "resume": "Permitir de novo",
     "log": "O que fez recentemente",
@@ -555,7 +555,7 @@
     "refusedStopped": "Recusado: você o parou aqui"
   },
   "formFill": {
-    "title": "Preencher com uma aba aberta",
+    "title": "Preencher a partir de uma aba aberta",
     "reading": "Lendo o formulário…",
     "fieldsFound": "Campos para preencher: {{count}}",
     "pickSource": "Escolha a aba de onde tirar os valores",

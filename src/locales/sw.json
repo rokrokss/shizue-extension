@@ -1,7 +1,7 @@
 {
   "chatgpt": {
-    "providerTitle": "Ingia kwa ChatGPT",
-    "continue": "Continue with ChatGPT",
+    "providerTitle": "Ingia ukitumia ChatGPT",
+    "continue": "Endelea ukitumia ChatGPT",
     "account": "Akaunti ya ChatGPT",
     "accountAlreadyRegistered": "Muunganisho wa ChatGPT tayari umehifadhiwa. Fungua mipangilio tena ili kuangalia hali yake.",
     "duplicateAccountRevocationPending": "Muunganisho wako uliopo wa ChatGPT umehifadhiwa. Haikuwezekana kuthibitisha kubatilishwa kwa kipindi kipya; kagua miunganisho ya Shizue katika mipangilio ya ChatGPT.",
@@ -19,15 +19,15 @@
     "gotIt": "Nimeelewa",
     "accountUnavailable": "Muunganisho wa ChatGPT uliohifadhiwa umebadilika. Fungua mipangilio tena ili kuendelea."
   },
-  "extension_name": "Shizue: Mfasiri wa AI + Msaidizi wa Nguvu za Kipekee za LLM",
-  "extension_description": "Mtafsiri wa AI + Msaidizi wa Nguvu za LLM",
-  "toggle_description": "Badilisha Shizue",
+  "extension_name": "Shizue: Mtafsiri wa AI + Msaidizi Mwenye Nguvu za LLM",
+  "extension_description": "Mtafsiri wa AI + Msaidizi Mwenye Nguvu za LLM",
+  "toggle_description": "Fungua/funga Shizue",
   "overlayMenu": {
     "shizue": "Shizue",
     "translateSettings": "Mipangilio ya kutafsiri",
     "translatePage": "Tafsiri ukurasa huu",
-    "summarizePage": "Muhtasari wa ukurasa huu",
-    "summarizeVideo": "Muhtasari wa video hii",
+    "summarizePage": "Fupisha ukurasa huu",
+    "summarizeVideo": "Fupisha video hii",
     "describeImage": "Eleza picha hii",
     "extractImageText": "Toa maandishi kutoka kwenye picha",
     "translateSelection": "Tafsiri maandishi yaliyochaguliwa",
@@ -37,7 +37,7 @@
     "removeTranslation": "Ondoa tafsiri",
     "translateImage": "Tafsiri picha",
     "translatePageImages": "Tafsiri picha zote za ukurasa",
-    "fillFormFromTab": "Jaza fomu hii kutoka kichupo kilicho wazi",
+    "fillFormFromTab": "Jaza fomu hii kutoka kwenye kichupo kilicho wazi",
     "previewLink": "Hakiki kiungo",
     "xraySelection": "Tafuta maana katika ukurasa huu"
   },
@@ -50,17 +50,17 @@
     "next": "Ifuatayo",
     "back": "Nyuma",
     "selectProvider": {
-      "title": "Chagua Mtoaji wa AI Wako",
+      "title": "Chagua Mtoaji Wako wa AI",
       "openaiApiKey": {
-        "title": "Tumia OpenAI API Key",
-        "description_0": "Bora kwa wale walio na API key.",
+        "title": "Tumia Ufunguo wa API wa OpenAI",
+        "description_0": "Bora kwa wale walio na ufunguo wa API.",
         "description_1": "Thabiti na bei ya matumizi.",
         "validate": "thibitisha"
       },
-      "geminiApiKey": "Tumia Gemini API Key",
-      "anthropicApiKey": "Tumia Anthropic API Key",
+      "geminiApiKey": "Tumia Ufunguo wa API wa Gemini",
+      "anthropicApiKey": "Tumia Ufunguo wa API wa Anthropic",
       "openRouterApiKey": {
-        "title": "Tumia OpenRouter API Key",
+        "title": "Tumia Ufunguo wa API wa OpenRouter",
         "description": "Ufunguo mmoja kwa GPT, Gemini na Claude."
       }
     },
@@ -68,7 +68,7 @@
       "title": "Chagua Lugha Yako"
     },
     "selectShortcut": {
-      "title": "Weka Shortcut ya Keyboard Yako ya Kufungua Panel ya Upande"
+      "title": "Weka Njia ya Mkato ya Kibodi ya Kufungua Paneli ya Pembeni"
     }
   },
   "chat": {
@@ -80,9 +80,9 @@
     "retry": "Jaribu tena",
     "history": "Historia",
     "empty": "Hakuna ujumbe bado",
-    "newChat": "Ongea Mpya",
-    "summaryRequestText": "Muhtasari wa ukurasa huu! Shizue!",
-    "summaryVideoRequestText": "Muhtasari wa video hii! Shizue!",
+    "newChat": "Gumzo Jipya",
+    "summaryRequestText": "Fupisha ukurasa huu! Shizue!",
+    "summaryVideoRequestText": "Fupisha video hii! Shizue!",
     "translateMode": "Hali ya Tafsiri",
     "describeImageRequest": "Tafadhali eleza picha hii.",
     "extractImageTextRequest": "Tafadhali toa maandishi kutoka kwenye picha hii.",
@@ -90,7 +90,7 @@
     "explainSelectionRequest": "Tafadhali eleza maandishi haya.",
     "summarizeSelectionRequest": "Tafadhali fupisha maandishi haya.",
     "fixGrammarSelectionRequest": "Tafadhali rekebisha sarufi ya maandishi haya.",
-    "translateModeDescription": "Kuanzia sasa, kwa kila ujumbe nitakaoutuma, tafadhali toa tafsiri na maelezo katika umbizo lifuatalo:\n\n1. ✅ Tafsiri: Toa tafsiri ya asili na inayofaa kwa muktadha.\n2. 📚 Maneno/Misemo ya Msingi\n    – Neno: Aina ya neno / Maana\n    – Mfano kutoka kwa nakala halisi\n3. 🧠 Maelezo ya Sarufi au Msemo: Inapohitajika, toa maelezo mafupi ya misemo au vifungu vya muhimu.\n\n- Onyesha matokeo katika umbizo lililoanzana kama kamusi.\n- Tumia uandishi wa ujasiri kwa maudhui muhimu.\n- Epuka maelezo yasiyohitajika na andika kwa uwazi na ufupi kwa kujifunza kileng'enevu.\n- Dumisha umbizo hili isipokuwa nipe maelekezo ya ziada.",
+    "translateModeDescription": "Kuanzia sasa, kwa kila ujumbe nitakaoutuma, tafadhali toa tafsiri na maelezo katika umbizo lifuatalo:\n\n1. ✅ Tafsiri: Toa tafsiri fasaha na inayofaa kwa muktadha.\n2. 📚 Maneno/Misemo ya Msingi\n    – Neno: Aina ya neno / Maana\n    – Mfano kutoka kwa nakala halisi\n3. 🧠 Maelezo ya Sarufi au Msemo: Inapohitajika, toa maelezo mafupi ya misemo au vifungu vya muhimu.\n\n- Onyesha matokeo katika umbizo lililopangwa kama kamusi.\n- Tumia herufi nzito kwa maudhui muhimu.\n- Epuka maelezo yasiyohitajika na andika kwa uwazi na ufupi ili kujifunza kwa umakini.\n- Dumisha umbizo hili isipokuwa nikikupa maelekezo ya ziada.",
     "activateTranslateMode": "Amilisha Hali ya Tafsiri..📡 🤖 📡",
     "imageUpload": "Picha",
     "imageUploadNotSupported": "Modeli ya sasa haitumii picha",
@@ -125,7 +125,7 @@
     "showChart": "Chati",
     "showTable": "Jedwali",
     "webSearch": "Utafutaji wa wavuti",
-    "webSearchNotSupported": "Miundo ya ndani haiwezi kutafuta kwenye wavuti",
+    "webSearchNotSupported": "Modeli za ndani haziwezi kutafuta kwenye wavuti",
     "sources": "Vyanzo",
     "withCaptions": "pamoja na manukuu",
     "withoutCaptions": "bila manukuu",
@@ -146,12 +146,12 @@
     "reasoningEffort_high": "High",
     "reasoningEffort_xhigh": "Extra",
     "reasoningEffort_max": "Max",
-    "reasoningEffortNotSupported": "Modeli hii haiwezi kubadilishwa",
+    "reasoningEffortNotSupported": "Kiwango cha kufikiri cha modeli hii hakiwezi kubadilishwa",
     "reasoningEffortChip": "Kufikiri: {{level}}",
     "suggestedQuestions": "Uliza zaidi",
     "videoMoment": "Wakati huu",
     "videoMomentHint": "Hujibu kuhusu sehemu inayochezwa sasa",
-    "videoMomentAt": "Saa {{time}}",
+    "videoMomentAt": "Kwenye {{time}}",
     "contextCompacted": "Mazungumzo yamekuwa marefu, kwa hiyo sehemu ya mwanzo imetumwa kama muhtasari.",
     "contextUsage": "Muktadha {{percent}}%",
     "contextUsageHint": "Mazungumzo haya yanajaza {{percent}}% ya kile ambacho modeli inaweza kusoma kwa mara moja. Zaidi ya 70%, sehemu ya mwanzo inatumwa kama muhtasari na mazungumzo ya karibuni pekee kama yalivyo.",
@@ -192,12 +192,12 @@
   },
   "footer": {
     "joinDiscord": "Jiunge nami kwenye Discord!",
-    "rate": "Weka rating!"
+    "rate": "Ungependa kutoa ukadiriaji?"
   },
   "settings": {
     "title": "Mipangilio",
     "language": "Lugha",
-    "shortcut": "Shortcut ya Panel",
+    "shortcut": "Njia ya Mkato ya Paneli",
     "shortcutChange": "Badilisha",
     "shortcutNotSet": "Haijawekwa",
     "shortcutHint": "Kwenye kichupo kilichofunguliwa sasa hivi, bofya penseli kando ya “{{command}}”, kisha bonyeza vitufe vipya.",
@@ -213,23 +213,23 @@
     "autoMemoryEmpty": "Bado hakuna kilichokumbukwa.",
     "preferOpenRouter": "Pendelea OpenRouter",
     "aiProvider": "Mtoaji wa AI",
-    "chatModel": "Mfano wa Ongea",
-    "translateModel": "Mfano wa Kutafsiri",
+    "chatModel": "Modeli ya Gumzo",
+    "translateModel": "Modeli ya Tafsiri",
     "sourceLanguage": "Lugha ya Chanzo",
-    "targetLanguage": "Lugha ya Lengwa",
+    "targetLanguage": "Lugha Lengwa",
     "translationDisplay": "Onyesho",
     "translationDisplayBilingual": "Asili + tafsiri",
     "translationDisplayTranslationOnly": "Tafsiri pekee",
-    "translateTargetLanguage": "Lugha ya Lengwa ya Kutafsiri",
-    "auto": "Moja kwa moja",
+    "translateTargetLanguage": "Lugha Lengwa ya Tafsiri",
+    "auto": "Kiotomatiki",
     "general": "Jumla",
-    "models": "Miundo",
+    "models": "Modeli",
     "layout": "Muundo",
     "registered": "Imeandikishwa",
     "pageTranslation": "Tafsiri ya ukurasa",
     "maskPrivateDescription": "Barua pepe, nambari za simu, nambari za kadi na funguo za API hazitumwi kwa AI. Zinaonekana kama zilivyokuwa kwenye ukurasa.",
     "maskPrivate": "Usitume taarifa binafsi",
-    "savedTranslations": "Tafsiri {{number}} zilizohifadhiwa · siku 30",
+    "savedTranslations": "Tafsiri {{number}} zilizohifadhiwa · huhifadhiwa siku 30",
     "savedTranslationsClear": "Futa",
     "browserAgent": "Udhibiti wa kivinjari",
     "browserAgentDescription": "Tovuti ulizoruhusu daima kwenye kadi zake, na vidokezo ulivyohifadhi vya tovuti",
@@ -240,10 +240,10 @@
     "agentNoTips": "Bado hakuna",
     "agentClearTips": "Ondoa vidokezo vyote",
     "translationTone": "Mtindo wa tafsiri",
-    "translationToneAuto": "Otomatiki (kufuata ukurasa)",
+    "translationToneAuto": "Kiotomatiki (kufuata ukurasa)",
     "translationToneFormal": "rasmi",
-    "translationTonePolite": "la heshima",
-    "translationTonePlain": "la kawaida, la maandishi",
+    "translationTonePolite": "wa heshima",
+    "translationTonePlain": "wa kawaida, wa maandishi",
     "translationToneHint": "Inatumika kwa tafsiri ya kurasa. Manukuu ya video na mikutano yanabaki na namna ya kuzungumza ya kila mzungumzaji."
   },
   "time": {
@@ -267,8 +267,8 @@
   "language": {
     "English": "Kiingereza",
     "Korean": "Kikorea",
-    "ChineseSimplified": "Kichina (Rahisi)",
-    "ChineseTraditional": "Kichina (Jadi)",
+    "ChineseSimplified": "Kichina (Kilichorahisishwa)",
+    "ChineseTraditional": "Kichina (cha Jadi)",
     "Japanese": "Kijapani",
     "Spanish": "Kihispania",
     "French": "Kifaransa",
@@ -290,12 +290,12 @@
     "Thai": "Kithai"
   },
   "youtube": {
-    "aiCaption": "Shizue AI Caption",
+    "aiCaption": "Manukuu ya AI ya Shizue",
     "numCaptLines": "Idadi ya Mistari",
     "activate": "Amilisha",
-    "deactivate": "Ondoa",
-    "youtubeCaptionButton": "Kitufe cha Caption ya Youtube",
-    "captionSizeRatio": "Kichwa cha Caption",
+    "deactivate": "Zima",
+    "youtubeCaptionButton": "Kitufe cha Manukuu ya YouTube",
+    "captionSizeRatio": "Ukubwa wa Manukuu",
     "useKeyboardNavigate": "Abiri Manukuu kwa A/D",
     "wordHighlight": "Angazia maneno yanayotamkwa",
     "sourceTrack": "Manukuu ya YouTube",
@@ -306,7 +306,7 @@
     "autoActivateOtherLanguages": "Lugha nyingine yoyote"
   },
   "twitch": {
-    "twitchCaptionButton": "Kitufe cha Caption ya Twitch",
+    "twitchCaptionButton": "Kitufe cha Manukuu ya Twitch",
     "source": "Chanzo cha manukuu",
     "sourceAuto": "Kiotomatiki",
     "sourceCaptions": "Manukuu ya mtiririshaji",
@@ -314,14 +314,14 @@
     "sourceSpeech": "Utambuzi wa sauti",
     "sourceUnavailable": "Hakuna kwenye mtiririko huu",
     "speechConsent": "Utambuzi wa sauti hutuma sauti ya kichupo hiki kwa huduma ya utambuzi wa sauti ya Google.",
-    "agreeAndActivate": "Kubali na amilisha",
+    "agreeAndActivate": "Kubali na uamilishe",
     "revokeSpeechConsent": "Ondoa idhini ya utambuzi wa sauti",
     "switchToSpeech": "Tumia utambuzi wa sauti",
     "speechStopped": "Utambuzi wa sauti umesimama",
     "chromeTranslation": "Tafsiri iliyojengwa ndani ya Chrome"
   },
   "netflix": {
-    "netflixCaptionButton": "Kitufe cha Caption ya Netflix",
+    "netflixCaptionButton": "Kitufe cha Manukuu ya Netflix",
     "originalSubtitles": "Manukuu asili",
     "loadFailed": "Imeshindwa kupakia manukuu"
   },
@@ -358,16 +358,16 @@
     "noData": "Hakuna data ya matumizi bado."
   },
   "home": {
-    "title": "Enda Nyumbani"
+    "title": "Nenda Nyumbani"
   },
   "memo": {
     "memo": "Memo",
-    "memoList": "Orodha ya Kumbuka",
+    "memoList": "Orodha ya Memo",
     "newMemo": "Memo Mpya",
     "save": "Hifadhi",
     "delete": "Futa",
     "pin": "Bandika",
-    "unpin": "Ondoa Ubandikaji",
+    "unpin": "Bandua",
     "edit": "Hariri",
     "cancel": "Ghairi",
     "defaultTitle": "Memo Mpya",
@@ -546,7 +546,7 @@
     "confirmTitle": "Ruhusu {{agent}} kufanya hili?",
     "agentFallback": "Wakala wa AI",
     "title": "Mawakala wa AI wa nje",
-    "description": "Claude Code, Codex na mawakala wengine wa MCP huona na kuendesha vichupo vilivyo kwenye kikundi cha vichupo kiitwacho “Shizue” pekee. Buruta kichupo ndani ili kukiazima, na nje ili kukirudisha. Simamisha kwenye kidonge cha kichupo huwazuia kwenye kichupo hicho.",
+    "description": "Claude Code, Codex na mawakala wengine wa MCP huona na kuendesha vichupo vilivyo kwenye kikundi cha vichupo kiitwacho “Shizue” pekee. Buruta kichupo ndani ili kukiazimisha, na nje ili kukichukua tena. Bonyeza Simamisha kwenye taarifa iliyo kwenye kichupo ili kuwazuia wasiingie kwenye kichupo hicho.",
     "stopped": "Imesimamishwa kwenye vichupo hivi",
     "resume": "Ruhusu tena",
     "log": "Ilichofanya hivi karibuni",
@@ -555,7 +555,7 @@
     "refusedStopped": "Imekataliwa: uliisimamisha hapa"
   },
   "formFill": {
-    "title": "Jaza kutoka kichupo kilicho wazi",
+    "title": "Jaza kutoka kwenye kichupo kilicho wazi",
     "reading": "Inasoma fomu…",
     "fieldsFound": "Sehemu za kujaza: {{count}}",
     "pickSource": "Chagua kichupo cha kuchukua thamani",
@@ -576,9 +576,9 @@
     },
     "close": "Funga",
     "error": {
-      "agent_running": "Udhibiti wa kivinjari unafanya kazi kwenye kichupo hiki. Jaribu tena ukimaliza.",
+      "agent_running": "Udhibiti wa kivinjari unafanya kazi kwenye kichupo hiki. Jaribu tena utakapokamilika.",
       "unreadable": "Shizue haiwezi kusoma fomu ya ukurasa huu.",
-      "no_fields": "Hakuna sehemu hapa ambayo Shizue inaweza kujaza. Nenosiri, namba za kadi na visanduku vya kuteua ni vyako.",
+      "no_fields": "Hakuna sehemu hapa ambayo Shizue inaweza kujaza. Nenosiri, nambari za kadi na visanduku vya kuteua ni vyako.",
       "source_unreadable": "Shizue haiwezi kusoma kichupo hicho.",
       "source_empty": "Kichupo hicho kina maandishi machache mno ya kujaza.",
       "failed": "Modeli haikuweza kujibu. Jaribu tena."
@@ -587,7 +587,7 @@
   "linkPreview": {
     "title": "Hakikisho la kiungo",
     "loading": "Inasoma ukurasa…",
-    "minutes": "Dakika {{count}} kusoma",
+    "minutes": "Dakika {{count}} za kusoma",
     "open": "Fungua",
     "close": "Funga",
     "error": {

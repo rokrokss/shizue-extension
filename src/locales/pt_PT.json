@@ -1,7 +1,7 @@
 {
   "chatgpt": {
     "providerTitle": "Iniciar sessão com o ChatGPT",
-    "continue": "Continue with ChatGPT",
+    "continue": "Continuar com o ChatGPT",
     "account": "Conta do ChatGPT",
     "accountAlreadyRegistered": "Já existe uma ligação ao ChatGPT guardada. Abra novamente as definições para verificar o estado.",
     "duplicateAccountRevocationPending": "A sua ligação existente ao ChatGPT foi mantida. Não foi possível confirmar a revogação da nova sessão; verifique as ligações do Shizue nas definições do ChatGPT.",
@@ -19,8 +19,8 @@
     "gotIt": "Entendido",
     "accountUnavailable": "A ligação guardada ao ChatGPT mudou. Abra novamente as definições para continuar."
   },
-  "extension_name": "Shizue: Tradutor IA + Assistente de Superpoderes LLM",
-  "extension_description": "Tradutor AI + Assistente de Superpoderes LLM",
+  "extension_name": "Shizue: Tradutor IA + Assistente LLM com superpoderes",
+  "extension_description": "Tradutor IA + Assistente LLM com superpoderes",
   "toggle_description": "Alternar Shizue",
   "overlayMenu": {
     "shizue": "Shizue",
@@ -43,7 +43,7 @@
   },
   "onboarding": {
     "greeting_0": "Bem-vindo!",
-    "greeting_1": "Sou a Shizue.",
+    "greeting_1": "Sou o Shizue.",
     "greeting_2": "Alguns passos primeiro.",
     "answer_0": "Olá!",
     "continue": "Continuar",
@@ -57,7 +57,7 @@
         "description_1": "Estável e com preços baseados no uso.",
         "validate": "Validar"
       },
-      "geminiApiKey": "Usar chave de API da Gemini",
+      "geminiApiKey": "Usar chave de API do Gemini",
       "anthropicApiKey": "Usar chave de API da Anthropic",
       "openRouterApiKey": {
         "title": "Usar chave de API da OpenRouter",
@@ -73,8 +73,8 @@
   },
   "chat": {
     "greeting": "Olá,",
-    "main_0": "Como está o teu dia?",
-    "askAnything": "Pergunta o que quiseres · @ para anexar separadores",
+    "main_0": "Como está o seu dia?",
+    "askAnything": "Pergunte o que quiser · @ para anexar separadores",
     "pageUnavailable": "Não foi possível ligar a esta página. Atualize a página e tente novamente. Páginas restritas, como as definições do navegador, não são suportadas.",
     "connectionError": "Bip bip...🚨 Erro do sistema... 📡 🥺",
     "retry": "Tentar novamente",
@@ -116,7 +116,7 @@
     "pastedText": "Texto colado",
     "pastedChars": "{{count}} caracteres",
     "captureRegion": "Capturar uma área",
-    "captureRegionHint": "Arrasta sobre a área a capturar · Esc para cancelar",
+    "captureRegionHint": "Arraste sobre a área a capturar · Esc para cancelar",
     "noMatchingTabs": "Nenhum separador corresponde.",
     "untitledGroup": "Grupo sem nome",
     "groupTabs": "Separadores: {{count}}",
@@ -175,9 +175,9 @@
     "searchPast": "Procurar no histórico",
     "searchPastChatsOnly": "Sem acesso ao histórico: só conversas anteriores",
     "searchingPast": "A procurar no histórico…",
-    "pastFindsFound": "Foram encontradas páginas visitadas ({{pages}}) e conversas anteriores ({{chats}}). Enviar com a tua pergunta?",
-    "pastFindsPagesOnly": "Foram encontradas páginas visitadas ({{pages}}). Enviar com a tua pergunta?",
-    "pastFindsChatsOnly": "Foram encontradas conversas anteriores ({{chats}}). Enviar com a tua pergunta?",
+    "pastFindsFound": "Foram encontradas páginas visitadas ({{pages}}) e conversas anteriores ({{chats}}). Enviar com a sua pergunta?",
+    "pastFindsPagesOnly": "Foram encontradas páginas visitadas ({{pages}}). Enviar com a sua pergunta?",
+    "pastFindsChatsOnly": "Foram encontradas conversas anteriores ({{chats}}). Enviar com a sua pergunta?",
     "pastFindsNone": "Nada encontrado em conversas anteriores nem no histórico.",
     "pastFindsSend": "Enviar",
     "pastFindsSkip": "Responder sem eles",
@@ -185,14 +185,14 @@
     "pastFindsCancel": "Voltar à pergunta",
     "pastFindsTitle": "Conversas anteriores e histórico ({{count}})",
     "openPastChat": "Abrir esta conversa",
-    "continueTitle": "Continua onde ficaste",
+    "continueTitle": "Continue onde ficou",
     "continueTabsOpen": "Separadores abertos: {{count}}",
     "attachmentOldHwp": "Guarde como HWPX ou PDF",
     "xraySelectionRequest": "O que significa isto nesta página?"
   },
   "footer": {
-    "joinDiscord": "Junta-te a mim no Discord!",
-    "rate": "Avalia-me!"
+    "joinDiscord": "Junte-se a mim no Discord!",
+    "rate": "Quer deixar uma avaliação?"
   },
   "settings": {
     "title": "Definições",
@@ -206,7 +206,7 @@
     "customInstructionsDescription": "O Shizue segue estas instruções em todas as respostas do chat. Indique o que faz, os seus interesses e como prefere que ele responda.",
     "customInstructionsPlaceholder": "ex.: Sou programador back-end. Responde de forma breve e escreve o código em TypeScript.",
     "autoMemory": "Memória automática",
-    "autoMemoryDescription": "A Shizue lembra o que é útil das tuas conversas e usa-o nas seguintes.",
+    "autoMemoryDescription": "O Shizue lembra o que é útil das suas conversas e usa-o nas seguintes.",
     "autoMemoryEnable": "Lembrar das conversas",
     "autoMemoryDelete": "Eliminar",
     "autoMemoryClear": "Limpar tudo",
@@ -220,7 +220,7 @@
     "translationDisplay": "Apresentação",
     "translationDisplayBilingual": "Original + tradução",
     "translationDisplayTranslationOnly": "Apenas a tradução",
-    "translateTargetLanguage": "Idioma de Destino da Tradução",
+    "translateTargetLanguage": "Idioma de destino da tradução",
     "auto": "Automático",
     "general": "Geral",
     "models": "Modelos",
@@ -229,7 +229,7 @@
     "pageTranslation": "Tradução de página",
     "maskPrivateDescription": "E-mails, números de telefone, números de cartão e chaves de API não são enviados à IA. Aparecem tal como estavam na página.",
     "maskPrivate": "Não enviar dados pessoais",
-    "savedTranslations": "{{number}} traduções guardadas · 30 dias",
+    "savedTranslations": "{{number}} traduções guardadas · mantidas durante 30 dias",
     "savedTranslationsClear": "Limpar",
     "browserAgent": "Controlo do navegador",
     "browserAgentDescription": "Sites que permitiu sempre nos cartões e dicas guardadas para sites",
@@ -259,9 +259,9 @@
     "darkMode": "Escuro",
     "resetPosition": "Repor posição",
     "menuButton": "Botão do menu",
-    "hideFromCurrentSite": "Ocultar do site atual",
-    "hideFromAllSites": "Ocultar de todos os sites",
-    "hiddenSites": "Sites Ocultos",
+    "hideFromCurrentSite": "Ocultar neste site",
+    "hideFromAllSites": "Ocultar em todos os sites",
+    "hiddenSites": "Sites ocultos",
     "restore": "Repor"
   },
   "language": {
@@ -290,13 +290,13 @@
     "Thai": "Tailandês"
   },
   "youtube": {
-    "aiCaption": "Legenda IA da Shizue",
+    "aiCaption": "Legenda IA do Shizue",
     "numCaptLines": "Número de linhas",
     "activate": "Ativar",
     "deactivate": "Desativar",
     "youtubeCaptionButton": "Botão de legenda do YouTube",
     "captionSizeRatio": "Tamanho da legenda",
-    "useKeyboardNavigate": "Navegar legendas com A/D",
+    "useKeyboardNavigate": "Navegar pelas legendas com A/D",
     "wordHighlight": "Destacar as palavras faladas",
     "sourceTrack": "Legendas do YouTube",
     "spokenLanguage": "Idioma falado",
@@ -350,7 +350,7 @@
     "turnOnSiteCaptions": "Ative as legendas do vídeo para as ver traduzidas"
   },
   "usage": {
-    "title": "Utilização de Tokens",
+    "title": "Utilização de tokens",
     "total": "Total",
     "error": "Erro",
     "fetchError": "Ocorreu um erro ao obter dados de utilização de tokens.",
@@ -361,25 +361,25 @@
     "title": "Ir para o Início"
   },
   "memo": {
-    "memo": "Memo",
-    "memoList": "Lista de Notas",
-    "newMemo": "Novo Memo",
+    "memo": "Nota",
+    "memoList": "Lista de notas",
+    "newMemo": "Nova nota",
     "save": "Guardar",
     "delete": "Eliminar",
     "pin": "Fixar",
     "unpin": "Desafixar",
     "edit": "Editar",
     "cancel": "Cancelar",
-    "defaultTitle": "Novo Memo",
-    "deleteConfirm": "Tem a certeza de que pretende eliminar este memo?",
-    "memoContentPlaceholder": "Introduza o conteúdo do memo...",
+    "defaultTitle": "Nova nota",
+    "deleteConfirm": "Tem a certeza de que pretende eliminar esta nota?",
+    "memoContentPlaceholder": "Introduza o conteúdo da nota...",
     "memoTitlePlaceholder": "Título",
-    "selectMemoOr": "Seleccione um memo ou",
-    "createNewMemo": "Criar novo memo",
+    "selectMemoOr": "Selecione uma nota ou",
+    "createNewMemo": "Criar nova nota",
     "noContent": "Sem conteúdo",
     "noSearchResults": "Sem resultados de pesquisa",
-    "noMemos": "Sem memos",
-    "searchMemo": "Pesquisar memo"
+    "noMemos": "Sem notas",
+    "searchMemo": "Pesquisar notas"
   },
   "local": {
     "providerTitle": "Utilizar um modelo local",
@@ -393,7 +393,7 @@
     "selectModel": "Escolha um modelo",
     "notFoundTitle": "Nenhum servidor em execução",
     "notFoundHint": "Inicie o Ollama ou o LM Studio e o Shizue liga-se automaticamente.",
-    "noModelsTitle": "Nenhum modelo de chat",
+    "noModelsTitle": "Nenhum modelo de conversa",
     "noModelsHintOllama": "Transfira um modelo com o comando abaixo e o Shizue liga-se automaticamente.",
     "noModelsHint": "Transfira um modelo na aplicação do servidor e o Shizue liga-se automaticamente.",
     "offlineTitle": "Não é possível ligar ao servidor",
@@ -438,7 +438,7 @@
     "noText": "Nenhum texto para traduzir",
     "failed": "Não foi possível traduzir",
     "retry": "Tentar novamente",
-    "noImageModel": "É necessário um modelo de chat que leia imagens",
+    "noImageModel": "É necessário um modelo de conversa que leia imagens",
     "close": "Fechar",
     "pageActive": "A traduzir as imagens da página",
     "stop": "Desligar"
@@ -483,7 +483,7 @@
     "questionHint": "Responda na caixa abaixo",
     "error": {
       "not_found": "Esse elemento já não está na página",
-      "secret_field": "Introduza palavras-passe e dados do cartão você mesmo",
+      "secret_field": "Introduza manualmente as palavras-passe e os dados do cartão",
       "not_select": "Não é uma lista pendente",
       "no_option": "Essa opção não existe",
       "bad_url": "Não é possível abrir esse endereço",
@@ -517,7 +517,7 @@
     "groupTitle": "O Shizue a trabalhar",
     "planTitle": "Este é o plano",
     "planSites": "Sites: {{sites}}",
-    "planHint": "Depois de iniciar, não voltará a perguntar por estes sites. Enviar, pagar e eliminar continuam a ser perguntados de cada vez",
+    "planHint": "Depois de iniciar, não volta a pedir autorização para estes sites. Para enviar, pagar ou eliminar, continua a perguntar sempre",
     "planStart": "Iniciar",
     "planCancel": "Cancelar",
     "siteTitle": "Trabalhar em {{site}}?",
@@ -546,7 +546,7 @@
     "confirmTitle": "Permitir que {{agent}} faça isto?",
     "agentFallback": "Agente de IA",
     "title": "Agentes de IA externos",
-    "description": "O Claude Code, o Codex e outros agentes MCP só veem e controlam os separadores do grupo de separadores chamado “Shizue”. Arraste um separador para dentro para o emprestar e para fora para o reaver. Parar na pílula de um separador bloqueia-os nesse separador.",
+    "description": "O Claude Code, o Codex e outros agentes MCP só veem e controlam os separadores do grupo de separadores chamado “Shizue”. Arraste um separador para dentro para o emprestar e para fora para o reaver. Clique em “Parar” no aviso de um separador para lhes retirar o acesso a esse separador.",
     "stopped": "Parado nestes separadores",
     "resume": "Permitir novamente",
     "log": "O que fez recentemente",
@@ -567,7 +567,7 @@
     "fill": "Preencher ({{count}})",
     "otherTab": "Escolher outro separador",
     "filling": "A preencher o formulário…",
-    "noSubmit": "O Shizue nunca submete o formulário. Verifique-o e submeta-o você.",
+    "noSubmit": "O Shizue nunca submete o formulário. Verifique-o e submeta-o manualmente.",
     "filled": "Campos preenchidos: {{count}}",
     "skipped": {
       "gone": "já não está na página",
@@ -596,7 +596,7 @@
       "notPage": "Esta ligação não é uma página web",
       "noText": "Esta página não tem texto para pré-visualizar",
       "failed": "Não foi possível pré-visualizar esta página",
-      "noModel": "É necessário um modelo de chat para pré-visualizar ligações"
+      "noModel": "É necessário um modelo de conversa para pré-visualizar ligações"
     }
   }
 }

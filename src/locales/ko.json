@@ -1,7 +1,7 @@
 {
   "chatgpt": {
-    "providerTitle": "ChatGPT 로그인",
-    "continue": "Continue with ChatGPT",
+    "providerTitle": "ChatGPT로 로그인",
+    "continue": "ChatGPT로 계속하기",
     "account": "ChatGPT 계정",
     "accountAlreadyRegistered": "이미 저장된 ChatGPT 연결이 있습니다. 설정을 다시 열어 연결 상태를 확인해 주세요.",
     "duplicateAccountRevocationPending": "기존 ChatGPT 연결을 유지했습니다. 새 연결의 원격 해제를 확인하지 못했으니 ChatGPT 설정에서 Shizue 연결을 확인해 주세요.",
@@ -10,7 +10,7 @@
     "signOut": "로그아웃",
     "retry": "연결 확인",
     "reconnectError": "ChatGPT 모델을 불러오지 못했습니다. 잠시 후 연결 확인을 다시 시도해 주세요.",
-    "timeout": "ChatGPT 연결 응답이 지연되고 있습니다. 다시 시도해 주세요.",
+    "timeout": "ChatGPT가 제때 응답하지 않았습니다. 다시 시도해 주세요.",
     "revocationPending": "이 기기에서는 로그아웃했습니다. 원격 연결 해제를 확인할 수 없으므로 ChatGPT 설정에서 Shizue 연결을 해제하세요.",
     "welcomeTitle": "ChatGPT 구독을 사용합니다",
     "welcomeDescription": "Shizue의 요청은 ChatGPT Work/Codex 사용량 한도에 포함됩니다. ChatGPT 설정에서 사용량을 확인하고 앱별 한도를 설정할 수 있습니다.",
@@ -21,7 +21,7 @@
   },
   "extension_name": "시즈에: AI 번역가 + LLM 슈퍼파워 어시스턴트",
   "extension_description": "AI 번역가 + LLM 슈퍼파워 어시스턴트",
-  "toggle_description": "시즈에를 부릅니다.",
+  "toggle_description": "시즈에 열기/닫기",
   "overlayMenu": {
     "shizue": "시즈에",
     "translateSettings": "번역 설정",
@@ -44,7 +44,7 @@
   "onboarding": {
     "greeting_0": "안녕하세요!",
     "greeting_1": "저는 시즈에입니다.",
-    "greeting_2": "저에겐 몇 가지 설정이 필요해요.",
+    "greeting_2": "먼저 몇 가지만 설정하겠습니다.",
     "answer_0": "반가워!",
     "continue": "계속",
     "next": "다음",
@@ -75,11 +75,11 @@
     "greeting": "안녕하세요.",
     "main_0": "좋은 하루 보내고 계신가요?",
     "askAnything": "무엇이든 부탁하세요 · @로 탭 첨부",
-    "pageUnavailable": "이 페이지와 연결할 수 없습니다. 웹페이지를 새로고침한 뒤 다시 시도하세요. 브라우저 설정 등 접근이 제한된 페이지에서는 사용할 수 없습니다.",
+    "pageUnavailable": "이 페이지와 연결할 수 없습니다. 웹 페이지를 새로고침한 뒤 다시 시도하세요. 브라우저 설정 등 접근이 제한된 페이지에서는 사용할 수 없습니다.",
     "connectionError": "뚜뚜...🚨 시스템 오류... 📡 🥺",
     "retry": "재시도",
     "history": "기록",
-    "empty": "아직 대화가 없어요.",
+    "empty": "아직 대화가 없습니다.",
     "newChat": "새 대화",
     "summaryRequestText": "페이지 요약을 부탁해! 시즈에!",
     "summaryVideoRequestText": "영상 요약을 부탁해! 시즈에!",
@@ -97,8 +97,8 @@
     "contextTruncated": "글이 로컬 모델이 한 번에 읽을 수 있는 양보다 길어서 앞부분만 사용했습니다.",
     "attachPage": "이 페이지 첨부",
     "attachVideo": "이 영상 첨부",
-    "attachmentUnreadable": "읽을 수 없는 페이지",
-    "attachmentEmpty": "읽을 글이 거의 없는 페이지",
+    "attachmentUnreadable": "읽을 수 없음",
+    "attachmentEmpty": "읽을 글이 거의 없음",
     "attachmentTruncated": "첨부한 페이지가 길어서 앞부분만 보냈습니다.",
     "attachmentTruncatedVideo": "첨부한 영상이 길어서 자막 앞부분만 보냈습니다.",
     "askAboutPages": "첨부한 페이지에 대해 물어보세요.",
@@ -112,7 +112,7 @@
     "captureFailed": "이 화면은 캡처할 수 없습니다.",
     "searchChats": "대화 검색",
     "attachFile": "파일",
-    "attachFileTypes": "PDF, 오피스, 한글(HWPX), EPUB, 텍스트, 코드",
+    "attachFileTypes": "PDF, Office, 한글(HWPX), EPUB, 텍스트, 코드",
     "pastedText": "붙여넣은 글",
     "pastedChars": "{{count}}자",
     "captureRegion": "영역 캡처",
@@ -127,7 +127,7 @@
     "webSearch": "웹 검색",
     "webSearchNotSupported": "로컬 모델은 웹 검색을 할 수 없습니다",
     "sources": "출처",
-    "withCaptions": "자막",
+    "withCaptions": "자막 포함",
     "withoutCaptions": "자막 없이",
     "playFromTime": "{{time}}부터 재생",
     "detailedAnalysis": "자세한 분석",
@@ -161,7 +161,7 @@
     "agentSteerPlaceholder": "덧붙일 말이나 질문의 답을 적어 주세요",
     "selectAllTabs": "전체 선택",
     "deselectAllTabs": "전체 해제",
-    "browserControlHintTitle": "이 탭에서 직접 해 드릴 수 있어요",
+    "browserControlHintTitle": "이 탭에서 직접 해 드릴 수 있습니다",
     "browserControlHintBody": "도구 메뉴의 ‘브라우저 조작’을 켜면 이 페이지에서 직접 누르고 입력합니다. 보내기·결제 전에는 먼저 묻습니다.",
     "browserControlHintAction": "켜고 다시 하기",
     "tools": "도구",
@@ -172,26 +172,26 @@
     "agentBackground": "별도 탭에서 실행",
     "findInTabs": "열린 탭에서 찾기",
     "findingInTabs": "열린 탭을 살펴보는 중…",
-    "searchPast": "히스토리에서 찾기",
-    "searchPastChatsOnly": "방문 기록 권한이 없어 지난 채팅만 찾습니다",
-    "searchingPast": "히스토리에서 찾는 중…",
-    "pastFindsFound": "방문한 페이지 {{pages}}개와 지난 채팅 {{chats}}개를 찾았습니다. 질문과 함께 보낼까요?",
+    "searchPast": "기록에서 찾기",
+    "searchPastChatsOnly": "방문 기록 권한이 없어 지난 대화만 찾습니다",
+    "searchingPast": "기록에서 찾는 중…",
+    "pastFindsFound": "방문한 페이지 {{pages}}개와 지난 대화 {{chats}}개를 찾았습니다. 질문과 함께 보낼까요?",
     "pastFindsPagesOnly": "방문한 페이지 {{pages}}개를 찾았습니다. 질문과 함께 보낼까요?",
-    "pastFindsChatsOnly": "지난 채팅 {{chats}}개를 찾았습니다. 질문과 함께 보낼까요?",
-    "pastFindsNone": "지난 채팅과 방문 기록에서 찾지 못했습니다.",
+    "pastFindsChatsOnly": "지난 대화 {{chats}}개를 찾았습니다. 질문과 함께 보낼까요?",
+    "pastFindsNone": "지난 대화와 방문 기록에서 찾지 못했습니다.",
     "pastFindsSend": "보내기",
     "pastFindsSkip": "빼고 답하기",
     "pastFindsAskAnyway": "그냥 묻기",
     "pastFindsCancel": "질문으로 돌아가기",
-    "pastFindsTitle": "지난 채팅·방문 기록 {{count}}개",
-    "openPastChat": "이 채팅 열기",
+    "pastFindsTitle": "지난 대화·방문 기록 {{count}}개",
+    "openPastChat": "이 대화 열기",
     "continueTitle": "이어서 하기",
     "continueTabsOpen": "열린 탭 {{count}}개",
     "attachmentOldHwp": "HWPX나 PDF로 저장해 주세요",
     "xraySelectionRequest": "이 글에서 이게 무슨 뜻인지 알려줘."
   },
   "footer": {
-    "joinDiscord": "디스코드로 놀러 오세요!",
+    "joinDiscord": "Discord로 놀러 오세요!",
     "rate": "별점 남기러 가실래요?"
   },
   "settings": {
@@ -244,15 +244,15 @@
     "translationToneFormal": "격식 존댓말",
     "translationTonePolite": "존댓말",
     "translationTonePlain": "글말",
-    "translationToneHint": "페이지 번역에 써요. 영상·회의 자막은 말하는 사람의 말투를 그대로 살려요."
+    "translationToneHint": "페이지 번역에 적용됩니다. 영상·회의 자막은 말하는 사람의 말투를 그대로 살립니다."
   },
   "usage": {
     "title": "토큰 사용량",
     "total": "총합",
     "error": "오류",
-    "fetchError": "토큰 사용량을 불러오는 중 오류가 발생했어요.",
+    "fetchError": "토큰 사용량을 불러오는 중 오류가 발생했습니다.",
     "retry": "재시도",
-    "noData": "아직 사용량이 없어요."
+    "noData": "아직 사용량이 없습니다."
   },
   "time": {
     "justNow": "방금 전",
@@ -300,38 +300,38 @@
   "youtube": {
     "aiCaption": "시즈에 AI 자막",
     "numCaptLines": "자막 줄 수",
-    "activate": "생성",
-    "deactivate": "해제",
-    "youtubeCaptionButton": "유튜브 자막 버튼",
+    "activate": "켜기",
+    "deactivate": "끄기",
+    "youtubeCaptionButton": "YouTube 자막 버튼",
     "captionSizeRatio": "자막 크기",
     "useKeyboardNavigate": "A/D 자막 이동",
     "wordHighlight": "말하는 단어 강조",
-    "sourceTrack": "유튜브 자막",
+    "sourceTrack": "YouTube 자막",
     "spokenLanguage": "원본 언어",
-    "speechUnavailable": "이 언어는 이 기기에서 음성 인식을 할 수 없어요",
+    "speechUnavailable": "이 언어는 이 기기에서 음성 인식을 할 수 없습니다",
     "autoActivate": "자동으로 켜기",
     "autoActivateOff": "끔",
     "autoActivateOtherLanguages": "대상 언어가 아닌 모든 영상"
   },
   "twitch": {
-    "twitchCaptionButton": "트위치 자막 버튼",
+    "twitchCaptionButton": "Twitch 자막 버튼",
     "source": "원문 출처",
     "sourceAuto": "자동",
     "sourceCaptions": "스트리머 자막",
     "sourceScc": "Stream CC",
     "sourceSpeech": "음성 인식",
     "sourceUnavailable": "이 방송에는 없음",
-    "speechConsent": "음성 인식을 켜면 이 탭의 소리가 Google 음성 인식 서버로 전송돼요.",
-    "agreeAndActivate": "동의하고 생성",
+    "speechConsent": "음성 인식을 켜면 이 탭의 소리가 Google 음성 인식 서버로 전송됩니다.",
+    "agreeAndActivate": "동의하고 켜기",
     "revokeSpeechConsent": "음성 인식 동의 취소",
     "switchToSpeech": "음성 인식으로 바꾸기",
-    "speechStopped": "음성 인식이 멈췄어요",
-    "chromeTranslation": "크롬 내장 번역"
+    "speechStopped": "음성 인식이 멈췄습니다",
+    "chromeTranslation": "Chrome 내장 번역"
   },
   "netflix": {
-    "netflixCaptionButton": "넷플릭스 자막 버튼",
+    "netflixCaptionButton": "Netflix 자막 버튼",
     "originalSubtitles": "원문 자막",
-    "loadFailed": "자막을 불러오지 못했어요"
+    "loadFailed": "자막을 불러오지 못했습니다"
   },
   "caption": {
     "displayLabel": "표시 방식",
@@ -393,7 +393,7 @@
     "selectModel": "모델 선택",
     "notFoundTitle": "실행 중인 서버가 없습니다",
     "notFoundHint": "Ollama나 LM Studio를 켜면 자동으로 연결됩니다.",
-    "noModelsTitle": "채팅 모델이 없습니다",
+    "noModelsTitle": "대화 모델이 없습니다",
     "noModelsHintOllama": "아래 명령으로 모델을 받으면 자동으로 연결됩니다.",
     "noModelsHint": "서버 앱에서 모델을 받으면 자동으로 연결됩니다.",
     "offlineTitle": "서버에 연결할 수 없습니다",
@@ -427,7 +427,7 @@
     "waiting": "말소리가 들리면 번역해서 보여 드립니다",
     "turnOnCaptions": "회의 자막(CC)을 켜면 번역해서 보여 드립니다",
     "unreadable": "이 회의의 자막을 읽지 못했습니다. 사이트 화면이 바뀐 것 같습니다.",
-    "preparing": "크롬 번역 모델을 받는 중입니다"
+    "preparing": "Chrome 번역 모델을 받는 중입니다"
   },
   "imageTranslation": {
     "translating": "이미지 번역 중…",
@@ -438,7 +438,7 @@
     "noText": "번역할 글자가 없습니다",
     "failed": "번역하지 못했습니다",
     "retry": "다시 시도",
-    "noImageModel": "이미지를 읽을 수 있는 채팅 모델이 필요합니다",
+    "noImageModel": "이미지를 읽을 수 있는 대화 모델이 필요합니다",
     "close": "닫기",
     "pageActive": "페이지의 이미지를 번역하는 중",
     "stop": "끄기"
@@ -474,7 +474,7 @@
       "waitFor": "“{{text}}” 표시 기다리기"
     },
     "approvalTitle": "이 작업을 해도 될까요?",
-    "approvalHint": "보내기, 삭제, 결제처럼 되돌리기 어려울 수 있습니다",
+    "approvalHint": "보내기·삭제·결제처럼 되돌리기 어려운 작업일 수 있습니다",
     "allow": "허용",
     "deny": "거부",
     "denied": "거부함",
@@ -535,53 +535,53 @@
     "tipTitle": "{{site}} 요령을 기억할까요?",
     "tipHint": "다음에 이 사이트를 조작할 때 시즈에가 읽습니다. 설정에서 지울 수 있습니다",
     "tipKeep": "기억하기",
-    "tipSkip": "괜찮습니다",
+    "tipSkip": "기억하지 않기",
     "tipKept": "{{site}} 요령을 기억했습니다",
     "takeOver": "넘겨받기",
     "showTab": "작업한 탭 보기"
   },
   "bridge": {
-    "overlayWorking": "{{agent}}에서 이 탭을 조작하고 있어요",
-    "overlayWaiting": "{{agent}}에서 허락을 기다려요",
-    "confirmTitle": "{{agent}}에서 이걸 해도 될까요?",
+    "overlayWorking": "{{agent}}에서 이 탭을 조작하고 있습니다",
+    "overlayWaiting": "{{agent}}에서 허락을 기다리고 있습니다",
+    "confirmTitle": "{{agent}}의 이 작업을 허용할까요?",
     "agentFallback": "AI 에이전트",
     "title": "외부 AI 에이전트",
-    "description": "Claude Code, Codex 같은 MCP 에이전트는 이름이 “Shizue”인 탭 그룹 안의 탭만 보고 조작해요. 탭을 그룹에 끌어 넣으면 빌려주고, 빼면 돌려받아요. 탭 위 알약의 중지를 누르면 그 탭에서는 막혀요.",
+    "description": "Claude Code, Codex 같은 MCP 에이전트는 이름이 “Shizue”인 탭 그룹 안의 탭만 보고 조작합니다. 탭을 그룹에 끌어 넣으면 빌려주고, 빼면 돌려받습니다. 탭에 뜬 안내에서 ‘중지’를 누르면 그 탭은 조작할 수 없습니다.",
     "stopped": "멈춘 탭",
     "resume": "다시 허용",
     "log": "최근에 한 일",
-    "logEmpty": "아직 없어요",
+    "logEmpty": "아직 없습니다",
     "clearLog": "지우기",
-    "refusedStopped": "거부됨: 이 탭에서 멈추셨어요"
+    "refusedStopped": "거부됨: 이 탭은 중지된 상태입니다"
   },
   "formFill": {
     "title": "열린 탭으로 채우기",
     "reading": "양식을 읽는 중…",
     "fieldsFound": "채울 수 있는 칸: {{count}}개",
     "pickSource": "값을 가져올 탭을 고르세요",
-    "noTabs": "이 창에 열린 다른 웹 탭이 없어요.",
-    "proposing": "‘{{title}}’을 읽고 양식에 맞추는 중…",
+    "noTabs": "이 창에 열린 다른 웹 탭이 없습니다.",
+    "proposing": "‘{{title}}’ 페이지를 읽고 양식에 맞추는 중…",
     "reviewSource": "가져온 곳: {{title}}",
-    "reviewHint": "값을 확인하세요. 체크한 칸만 채워요.",
-    "nothingFound": "그 탭에는 이 양식에 넣을 값이 없어요.",
+    "reviewHint": "값을 확인하세요. 체크한 칸만 채웁니다.",
+    "nothingFound": "그 탭에는 이 양식에 넣을 값이 없습니다.",
     "fill": "채우기 ({{count}})",
     "otherTab": "다른 탭 고르기",
     "filling": "양식을 채우는 중…",
-    "noSubmit": "시즈에는 양식을 제출하지 않아요. 확인한 뒤 직접 제출하세요.",
-    "filled": "{{count}}칸을 채웠어요.",
+    "noSubmit": "시즈에는 양식을 제출하지 않습니다. 확인한 뒤 직접 제출하세요.",
+    "filled": "{{count}}칸을 채웠습니다.",
     "skipped": {
-      "gone": "페이지에서 사라졌어요",
-      "changed": "그대로 뒀어요: 읽은 뒤에 바뀌었어요",
-      "failed": "채우지 못했어요"
+      "gone": "페이지에서 사라졌습니다",
+      "changed": "그대로 두었습니다: 읽은 뒤에 바뀌었습니다",
+      "failed": "채우지 못했습니다"
     },
     "close": "닫기",
     "error": {
-      "agent_running": "이 탭에서 브라우저 조작이 진행 중이에요. 끝난 뒤 다시 해 주세요.",
-      "unreadable": "시즈에가 이 페이지의 양식을 읽을 수 없어요.",
-      "no_fields": "시즈에가 채울 수 있는 칸이 없어요. 비밀번호·카드 번호·체크박스는 직접 채워 주세요.",
-      "source_unreadable": "시즈에가 그 탭을 읽을 수 없어요.",
-      "source_empty": "그 탭에는 채울 만한 글이 거의 없어요.",
-      "failed": "모델이 답하지 못했어요. 다시 해 주세요."
+      "agent_running": "이 탭에서 브라우저 조작이 진행 중입니다. 끝난 뒤 다시 시도해 주세요.",
+      "unreadable": "시즈에가 이 페이지의 양식을 읽을 수 없습니다.",
+      "no_fields": "시즈에가 채울 수 있는 칸이 없습니다. 비밀번호·카드 번호·체크박스는 직접 채워 주세요.",
+      "source_unreadable": "시즈에가 그 탭을 읽을 수 없습니다.",
+      "source_empty": "그 탭에는 채울 만한 글이 거의 없습니다.",
+      "failed": "모델이 답하지 못했습니다. 다시 시도해 주세요."
     }
   },
   "linkPreview": {
@@ -596,7 +596,7 @@
       "notPage": "웹 페이지가 아닌 링크입니다",
       "noText": "이 페이지에는 미리 볼 글이 없습니다",
       "failed": "이 페이지를 미리 보지 못했습니다",
-      "noModel": "링크를 미리 보려면 채팅 모델이 필요합니다"
+      "noModel": "링크를 미리 보려면 대화 모델이 필요합니다"
     }
   }
 }

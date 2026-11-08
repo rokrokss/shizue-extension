@@ -1,7 +1,7 @@
 {
   "chatgpt": {
     "providerTitle": "ลงชื่อเข้าใช้ด้วย ChatGPT",
-    "continue": "Continue with ChatGPT",
+    "continue": "ดำเนินการต่อด้วย ChatGPT",
     "account": "บัญชี ChatGPT",
     "accountAlreadyRegistered": "มีการเชื่อมต่อ ChatGPT ที่บันทึกไว้แล้ว เปิดการตั้งค่าอีกครั้งเพื่อตรวจสอบสถานะ",
     "duplicateAccountRevocationPending": "เก็บการเชื่อมต่อ ChatGPT เดิมไว้แล้ว ไม่สามารถยืนยันการเพิกถอนเซสชันใหม่ได้ โปรดตรวจสอบการเชื่อมต่อของ Shizue ในการตั้งค่า ChatGPT",
@@ -19,9 +19,9 @@
     "gotIt": "เข้าใจแล้ว",
     "accountUnavailable": "การเชื่อมต่อ ChatGPT ที่บันทึกไว้มีการเปลี่ยนแปลง เปิดการตั้งค่าอีกครั้งเพื่อดำเนินการต่อ"
   },
-  "extension_name": "Shizue: ผู้แปลภาษา AI + ผู้ช่วย LLM ซุปเปอร์พาวเวอร์",
-  "extension_description": "AI แปลภาษา + ผู้ช่วยพิเศษ LLM",
-  "toggle_description": "สลับการทำงาน Shizue",
+  "extension_name": "Shizue: AI แปลภาษา + ผู้ช่วย LLM ซุปเปอร์พาวเวอร์",
+  "extension_description": "AI แปลภาษา + ผู้ช่วย LLM ซุปเปอร์พาวเวอร์",
+  "toggle_description": "เปิด/ปิด Shizue",
   "overlayMenu": {
     "shizue": "Shizue",
     "translateSettings": "การตั้งค่าการแปล",
@@ -52,15 +52,15 @@
     "selectProvider": {
       "title": "เลือกผู้ให้บริการ AI ของคุณ",
       "openaiApiKey": {
-        "title": "ใช้ OpenAI API Key",
-        "description_0": "เหมาะสำหรับผู้ที่มี API key",
+        "title": "ใช้คีย์ API ของ OpenAI",
+        "description_0": "เหมาะสำหรับผู้ที่มีคีย์ API",
         "description_1": "เสถียรและคิดค่าบริการตามการใช้งาน",
         "validate": "ตรวจสอบ"
       },
-      "geminiApiKey": "ใช้ Gemini API Key",
-      "anthropicApiKey": "ใช้ Anthropic API Key",
+      "geminiApiKey": "ใช้คีย์ API ของ Gemini",
+      "anthropicApiKey": "ใช้คีย์ API ของ Anthropic",
       "openRouterApiKey": {
-        "title": "ใช้ OpenRouter API Key",
+        "title": "ใช้คีย์ API ของ OpenRouter",
         "description": "คีย์เดียวใช้ได้ทั้ง GPT, Gemini และ Claude"
       }
     },
@@ -72,7 +72,7 @@
     }
   },
   "chat": {
-    "greeting": "สวัสดี,",
+    "greeting": "สวัสดี",
     "main_0": "วันนี้เป็นอย่างไรบ้าง",
     "askAnything": "ถามอะไรก็ได้ · พิมพ์ @ เพื่อแนบแท็บ",
     "pageUnavailable": "ไม่สามารถเชื่อมต่อกับหน้านี้ได้ โปรดรีเฟรชหน้าแล้วลองอีกครั้ง ไม่รองรับหน้าที่จำกัดการเข้าถึง เช่น การตั้งค่าเบราว์เซอร์",
@@ -84,12 +84,12 @@
     "summaryRequestText": "สรุปหน้านี้ให้หน่อย! Shizue!",
     "summaryVideoRequestText": "สรุปวิดีโอนี้ให้หน่อย! Shizue!",
     "translateMode": "โหมดแปล",
-    "describeImageRequest": "โปรดอธิบายภาพนี้ให้ฟังด้วยครับ",
-    "extractImageTextRequest": "โปรดดึงข้อความจากภาพนี้ด้วยครับ",
-    "translateSelectionRequest": "โปรดแปลข้อความนี้ด้วยครับ",
-    "explainSelectionRequest": "โปรดอธิบายข้อความนี้ด้วยครับ",
-    "summarizeSelectionRequest": "โปรดสรุปข้อความนี้ด้วยครับ",
-    "fixGrammarSelectionRequest": "โปรดแก้ไวยากรณ์ของข้อความนี้ด้วยครับ",
+    "describeImageRequest": "โปรดอธิบายภาพนี้",
+    "extractImageTextRequest": "โปรดดึงข้อความจากภาพนี้",
+    "translateSelectionRequest": "โปรดแปลข้อความนี้",
+    "explainSelectionRequest": "โปรดอธิบายข้อความนี้",
+    "summarizeSelectionRequest": "โปรดสรุปข้อความนี้",
+    "fixGrammarSelectionRequest": "โปรดแก้ไวยากรณ์ของข้อความนี้",
     "translateModeDescription": "จากนี้เป็นต้นไป สำหรับทุกข้อความที่ฉันส่ง โปรดให้คำแปลและคำอธิบายในรูปแบบต่อไปนี้:\n\n1. ✅ คำแปล: ให้คำแปลที่เป็นธรรมชาติและเหมาะสมกับบริบท\n2. 📚 คำศัพท์/สำนวนสำคัญ\n    – คำ: ชนิดของคำ / ความหมาย\n    – ตัวอย่างจากข้อความต้นฉบับ\n3. 🧠 คำอธิบายไวยากรณ์หรือสำนวน: เมื่อจำเป็น ให้คำอธิบายสั้นๆ เกี่ยวกับสำนวนหรือวลีสำคัญ\n\n- นำเสนอผลลัพธ์ในรูปแบบที่เป็นระเบียบเหมือนพจนานุกรม\n- ใช้การจัดรูปแบบตัวหนาสำหรับเนื้อหาที่สำคัญ\n- ละเว้นคำอธิบายที่ไม่จำเป็น และเขียนอย่างชัดเจนและกระชับเพื่อการเรียนรู้ที่มีโฟกัส\n- รักษารูปแบบนี้เว้นแต่ฉันจะให้คำแนะนำเพิ่มเติม",
     "activateTranslateMode": "เปิดใช้โหมดแปล..📡 🤖 📡",
     "imageUpload": "รูปภาพ",
@@ -138,7 +138,7 @@
     "backToPage": "กลับไปที่หน้าเว็บ",
     "deleteMessage": "ลบข้อความ",
     "thinking": "กำลังคิด · {{seconds}} วินาที",
-    "thoughtFor": "คิดอยู่ {{seconds}} วินาที",
+    "thoughtFor": "คิดไป {{seconds}} วินาที",
     "thought": "ความคิด",
     "reasoningEffort": "ระดับการคิด",
     "reasoningEffort_low": "Low",
@@ -160,14 +160,14 @@
     "browserAgentPlaceholder": "ให้ทำอะไรในแท็บนี้",
     "agentSteerPlaceholder": "เพิ่มเติมงานหรือตอบคำถาม",
     "selectAllTabs": "เลือกทั้งหมด",
-    "deselectAllTabs": "ยกเลิกทั้งหมด",
+    "deselectAllTabs": "ไม่เลือกทั้งหมด",
     "browserControlHintTitle": "Shizue ทำสิ่งนี้ในแท็บของคุณได้",
     "browserControlHintBody": "เปิด ‘ควบคุมเบราว์เซอร์’ ในเมนูเครื่องมือ แล้ว Shizue จะคลิกและพิมพ์ในหน้านี้ให้ ถามก่อนส่งหรือชำระเงิน",
     "browserControlHintAction": "เปิดแล้วลองอีกครั้ง",
     "tools": "เครื่องมือ",
     "study": "การเรียน",
     "autoApprove": "ทำโดยไม่ถาม",
-    "autoApproveHint": "ในแชทนี้จะส่ง ชำระเงิน และลบโดยไม่ถาม แต่ยังไม่พิมพ์รหัสผ่านหรือเลขบัตร",
+    "autoApproveHint": "ในแชทนี้จะส่ง ชำระเงิน และลบโดยไม่ถาม แต่จะไม่พิมพ์รหัสผ่านหรือเลขบัตร",
     "browserAgentAutoApprove": "ควบคุมเบราว์เซอร์ · ไม่ถาม",
     "agentBackground": "ทำงานในแท็บแยก",
     "findInTabs": "ค้นหาในแท็บที่เปิดอยู่",
@@ -197,7 +197,7 @@
   "settings": {
     "title": "การตั้งค่า",
     "language": "ภาษา",
-    "shortcut": "ปุ่มลัดแผงควบคุม",
+    "shortcut": "ปุ่มลัดเปิดแผงด้านข้าง",
     "shortcutChange": "เปลี่ยน",
     "shortcutNotSet": "ยังไม่ได้ตั้ง",
     "shortcutHint": "ในแท็บที่เพิ่งเปิด ให้คลิกไอคอนดินสอข้าง “{{command}}” แล้วกดปุ่มลัดใหม่",
@@ -229,7 +229,7 @@
     "pageTranslation": "แปลหน้าเว็บ",
     "maskPrivateDescription": "อีเมล เบอร์โทร เลขบัตร และคีย์ API จะไม่ถูกส่งให้ AI และแสดงตามเดิมบนหน้าเว็บ",
     "maskPrivate": "ไม่ส่งข้อมูลส่วนตัว",
-    "savedTranslations": "คำแปลที่บันทึก {{number}} รายการ · 30 วัน",
+    "savedTranslations": "คำแปลที่บันทึก {{number}} รายการ · เก็บไว้ 30 วัน",
     "savedTranslationsClear": "ล้าง",
     "browserAgent": "การควบคุมเบราว์เซอร์",
     "browserAgentDescription": "ไซต์ที่คุณอนุญาตเสมอบนการ์ด และเคล็ดลับที่จำไว้สำหรับไซต์",
@@ -262,7 +262,7 @@
     "hideFromCurrentSite": "ซ่อนจากไซต์ปัจจุบัน",
     "hideFromAllSites": "ซ่อนจากทุกไซต์",
     "hiddenSites": "เว็บไซต์ที่ซ่อน",
-    "restore": "คืน"
+    "restore": "เลิกซ่อน"
   },
   "language": {
     "English": "อังกฤษ",
@@ -294,9 +294,9 @@
     "numCaptLines": "จำนวนบรรทัด",
     "activate": "เปิดใช้งาน",
     "deactivate": "ปิดใช้งาน",
-    "youtubeCaptionButton": "ปุ่มคำบรรยาย Youtube",
+    "youtubeCaptionButton": "ปุ่มคำบรรยาย YouTube",
     "captionSizeRatio": "ขนาดคำบรรยาย",
-    "useKeyboardNavigate": "นำทางคำบรรยายด้วย A/D",
+    "useKeyboardNavigate": "ข้ามคำบรรยายด้วยปุ่ม A/D",
     "wordHighlight": "ไฮไลต์คำที่กำลังพูด",
     "sourceTrack": "คำบรรยาย YouTube",
     "spokenLanguage": "ภาษาที่พูด",
@@ -361,25 +361,25 @@
     "title": "ไปยังหน้าแรก"
   },
   "memo": {
-    "memo": "บันทึก",
-    "memoList": "รายการบันทึก",
-    "newMemo": "บันทึกใหม่",
+    "memo": "โน้ต",
+    "memoList": "รายการโน้ต",
+    "newMemo": "โน้ตใหม่",
     "save": "บันทึก",
     "delete": "ลบ",
     "pin": "ปักหมุด",
     "unpin": "เลิกปักหมุด",
     "edit": "แก้ไข",
     "cancel": "ยกเลิก",
-    "defaultTitle": "บันทึกใหม่",
-    "deleteConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบบันทึกนี้?",
-    "memoContentPlaceholder": "กรอกเนื้อหาของบันทึก...",
+    "defaultTitle": "โน้ตใหม่",
+    "deleteConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบโน้ตนี้",
+    "memoContentPlaceholder": "กรอกเนื้อหาของโน้ต...",
     "memoTitlePlaceholder": "หัวข้อ",
-    "selectMemoOr": "เลือกบันทึกหรือ",
-    "createNewMemo": "สร้างบันทึกใหม่",
+    "selectMemoOr": "เลือกโน้ตหรือ",
+    "createNewMemo": "สร้างโน้ตใหม่",
     "noContent": "ไม่มีเนื้อหา",
     "noSearchResults": "ไม่มีผลการค้นหา",
-    "noMemos": "ไม่มีบันทึก",
-    "searchMemo": "ค้นหาบันทึก"
+    "noMemos": "ไม่มีโน้ต",
+    "searchMemo": "ค้นหาโน้ต"
   },
   "local": {
     "providerTitle": "ใช้โมเดลในเครื่อง",
@@ -393,7 +393,7 @@
     "selectModel": "เลือกโมเดล",
     "notFoundTitle": "ไม่มีเซิร์ฟเวอร์ที่ทำงานอยู่",
     "notFoundHint": "เปิด Ollama หรือ LM Studio แล้ว Shizue จะเชื่อมต่อให้อัตโนมัติ",
-    "noModelsTitle": "ไม่มีโมเดลแชต",
+    "noModelsTitle": "ไม่มีโมเดลแชท",
     "noModelsHintOllama": "ดาวน์โหลดโมเดลด้วยคำสั่งด้านล่าง แล้ว Shizue จะเชื่อมต่อให้อัตโนมัติ",
     "noModelsHint": "ดาวน์โหลดโมเดลในแอปเซิร์ฟเวอร์ แล้ว Shizue จะเชื่อมต่อให้อัตโนมัติ",
     "offlineTitle": "เชื่อมต่อเซิร์ฟเวอร์ไม่ได้",
@@ -438,7 +438,7 @@
     "noText": "ไม่มีข้อความให้แปล",
     "failed": "แปลไม่สำเร็จ",
     "retry": "ลองอีกครั้ง",
-    "noImageModel": "ต้องใช้โมเดลแชตที่อ่านรูปภาพได้",
+    "noImageModel": "ต้องใช้โมเดลแชทที่อ่านรูปภาพได้",
     "close": "ปิด",
     "pageActive": "กำลังแปลรูปภาพในหน้านี้",
     "stop": "ปิด"
@@ -538,7 +538,7 @@
     "tipSkip": "ไม่เป็นไร",
     "tipKept": "จำเคล็ดลับของ {{site}} แล้ว",
     "takeOver": "เข้าควบคุม",
-    "showTab": "แสดงแท็บของมัน"
+    "showTab": "แสดงแท็บที่ทำงานอยู่"
   },
   "bridge": {
     "overlayWorking": "{{agent}} กำลังทำงานในแท็บนี้",
@@ -546,7 +546,7 @@
     "confirmTitle": "อนุญาตให้ {{agent}} ทำสิ่งนี้ไหม",
     "agentFallback": "เอเจนต์ AI",
     "title": "เอเจนต์ AI ภายนอก",
-    "description": "Claude Code, Codex และเอเจนต์ MCP อื่น ๆ เห็นและควบคุมได้เฉพาะแท็บในกลุ่มแท็บชื่อ “Shizue” ลากแท็บเข้าไปเพื่อให้ยืม และลากออกเพื่อเอาคืน กดหยุดบนแถบในแท็บใดจะกันไม่ให้ทำงานในแท็บนั้น",
+    "description": "Claude Code, Codex และเอเจนต์ MCP อื่น ๆ เห็นและควบคุมได้เฉพาะแท็บในกลุ่มแท็บชื่อ “Shizue” ลากแท็บเข้าไปเพื่อให้ยืม และลากออกเพื่อเอาคืน กด ‘หยุด’ บนป้ายแจ้งในแท็บใด จะกันไม่ให้เอเจนต์ทำงานในแท็บนั้นอีก",
     "stopped": "หยุดในแท็บเหล่านี้",
     "resume": "อนุญาตอีกครั้ง",
     "log": "สิ่งที่ทำล่าสุด",
@@ -567,7 +567,7 @@
     "fill": "กรอก ({{count}})",
     "otherTab": "เลือกแท็บอื่น",
     "filling": "กำลังกรอกฟอร์ม…",
-    "noSubmit": "Shizue ไม่ส่งฟอร์มให้ ตรวจดูแล้วกดส่งเองนะ",
+    "noSubmit": "Shizue ไม่ส่งฟอร์มให้ ตรวจดูแล้วกดส่งเอง",
     "filled": "กรอกแล้ว {{count}} ช่อง",
     "skipped": {
       "gone": "ไม่อยู่ในหน้าแล้ว",
@@ -596,7 +596,7 @@
       "notPage": "ลิงก์นี้ไม่ใช่หน้าเว็บ",
       "noText": "หน้านี้ไม่มีข้อความให้ดูตัวอย่าง",
       "failed": "ดูตัวอย่างหน้านี้ไม่ได้",
-      "noModel": "ต้องมีโมเดลแชตจึงจะดูตัวอย่างลิงก์ได้"
+      "noModel": "ต้องมีโมเดลแชทจึงจะดูตัวอย่างลิงก์ได้"
     }
   }
 }

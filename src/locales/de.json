@@ -1,7 +1,7 @@
 {
   "chatgpt": {
     "providerTitle": "Mit ChatGPT anmelden",
-    "continue": "Continue with ChatGPT",
+    "continue": "Weiter mit ChatGPT",
     "account": "ChatGPT-Konto",
     "accountAlreadyRegistered": "Es ist bereits eine ChatGPT-Verbindung gespeichert. Öffne die Einstellungen erneut, um ihren Status zu prüfen.",
     "duplicateAccountRevocationPending": "Deine bestehende ChatGPT-Verbindung wurde beibehalten. Der Widerruf der neuen Sitzung konnte nicht bestätigt werden; prüfe die Shizue-Verbindungen in den ChatGPT-Einstellungen.",
@@ -19,8 +19,8 @@
     "gotIt": "Verstanden",
     "accountUnavailable": "Die gespeicherte ChatGPT-Verbindung hat sich geändert. Öffne die Einstellungen erneut, um fortzufahren."
   },
-  "extension_name": "Shizue: KI-Übersetzer + LLM-Superkraft-Assistent",
-  "extension_description": "KI-Übersetzer + LLM-Superkraft-Assistent",
+  "extension_name": "Shizue: KI-Übersetzer + LLM-Assistent mit Superkräften",
+  "extension_description": "KI-Übersetzer + LLM-Assistent mit Superkräften",
   "toggle_description": "Shizue umschalten",
   "overlayMenu": {
     "shizue": "Shizue",
@@ -47,28 +47,28 @@
     "greeting_2": "Zuerst ein paar Schritte.",
     "answer_0": "Hallo!",
     "continue": "Weiter",
-    "next": "Nächste",
+    "next": "Weiter",
     "back": "Zurück",
     "selectProvider": {
-      "title": "Wählen Sie Ihren KI-Anbieter",
+      "title": "Wähle deinen KI-Anbieter",
       "openaiApiKey": {
-        "title": "OpenAI API-Schlüssel verwenden",
-        "description_0": "Ideal für diejenigen mit einem API-Schlüssel.",
-        "description_1": "Stabil und nutzungsbasierte Preise.",
+        "title": "OpenAI-API-Schlüssel verwenden",
+        "description_0": "Ideal, wenn du schon einen API-Schlüssel hast.",
+        "description_1": "Stabil, mit nutzungsbasierter Abrechnung.",
         "validate": "Validieren"
       },
-      "geminiApiKey": "Gemini API-Schlüssel verwenden",
-      "anthropicApiKey": "Anthropic API-Schlüssel verwenden",
+      "geminiApiKey": "Gemini-API-Schlüssel verwenden",
+      "anthropicApiKey": "Anthropic-API-Schlüssel verwenden",
       "openRouterApiKey": {
-        "title": "OpenRouter API-Schlüssel verwenden",
+        "title": "OpenRouter-API-Schlüssel verwenden",
         "description": "Ein Schlüssel für GPT, Gemini und Claude."
       }
     },
     "selectLanguage": {
-      "title": "Wählen Sie Ihre Sprache"
+      "title": "Wähle deine Sprache"
     },
     "selectShortcut": {
-      "title": "Legen Sie Ihr Tastaturkürzel zum Öffnen des Seitenbereichs fest"
+      "title": "Lege dein Tastaturkürzel zum Öffnen der Seitenleiste fest"
     }
   },
   "chat": {
@@ -84,13 +84,13 @@
     "summaryRequestText": "Fasse diese Seite zusammen! Shizue!",
     "summaryVideoRequestText": "Fasse dieses Video zusammen! Shizue!",
     "translateMode": "Übersetzungsmodus",
-    "describeImageRequest": "Bitte beschreiben Sie dieses Bild.",
-    "extractImageTextRequest": "Bitte extrahieren Sie Text aus diesem Bild.",
-    "translateSelectionRequest": "Bitte übersetzen Sie diesen Text.",
-    "explainSelectionRequest": "Bitte erklären Sie diesen Text.",
-    "summarizeSelectionRequest": "Bitte fassen Sie diesen Text zusammen.",
-    "fixGrammarSelectionRequest": "Bitte korrigieren Sie die Grammatik in diesem Text.",
-    "translateModeDescription": "Von nun an sollen Sie für jede Nachricht, die ich sende, Übersetzung und Erklärung im folgenden Format bereitstellen:\n\n1. ✅ Übersetzung: Bieten Sie eine natürliche und kontextuell angemessene Übersetzung.\n2. 📚 Schlüsselwörter/-ausdrücke\n    – Wort: Wortart / Bedeutung\n    – Beispiel aus dem Originaltext\n3. 🧠 Grammatik- oder Ausdruckserklärung: Falls erforderlich, geben Sie eine kurze Erklärung zu Schlüsselausdrücken oder Phrasen.\n\n- Präsentieren Sie die Ausgabe in einem wörterbuchähnlichen organisierten Format.\n- Verwenden Sie Fettformatierung für wichtige Inhalte.\n- Lassen Sie unnötige Erklärungen weg und schreiben Sie sauber und prägnant für fokussiertes Lernen.\n- Behalten Sie dieses Format bei, es sei denn, ich gebe zusätzliche Anweisungen.",
+    "describeImageRequest": "Bitte beschreibe dieses Bild.",
+    "extractImageTextRequest": "Bitte extrahiere den Text aus diesem Bild.",
+    "translateSelectionRequest": "Bitte übersetze diesen Text.",
+    "explainSelectionRequest": "Bitte erkläre diesen Text.",
+    "summarizeSelectionRequest": "Bitte fasse diesen Text zusammen.",
+    "fixGrammarSelectionRequest": "Bitte korrigiere die Grammatik in diesem Text.",
+    "translateModeDescription": "Von nun an sollst du für jede Nachricht, die ich sende, Übersetzung und Erklärung im folgenden Format bereitstellen:\n\n1. ✅ Übersetzung: Biete eine natürliche und kontextuell angemessene Übersetzung.\n2. 📚 Schlüsselwörter/-ausdrücke\n    – Wort: Wortart / Bedeutung\n    – Beispiel aus dem Originaltext\n3. 🧠 Grammatik- oder Ausdruckserklärung: Falls erforderlich, gib eine kurze Erklärung zu Schlüsselausdrücken oder Phrasen.\n\n- Präsentiere die Ausgabe in einem wörterbuchähnlichen organisierten Format.\n- Verwende Fettformatierung für wichtige Inhalte.\n- Lass unnötige Erklärungen weg und schreibe sauber und prägnant für fokussiertes Lernen.\n- Behalte dieses Format bei, es sei denn, ich gebe zusätzliche Anweisungen.",
     "activateTranslateMode": "Übersetzungsmodus aktivieren..📡 🤖 📡",
     "imageUpload": "Bild",
     "imageUploadNotSupported": "Das aktuelle Modell unterstützt keine Bilder",
@@ -152,9 +152,9 @@
     "videoMoment": "Diese Stelle",
     "videoMomentHint": "Antwortet zur Stelle, die gerade läuft",
     "videoMomentAt": "Bei {{time}}",
-    "contextCompacted": "Der Chat wurde lang, daher ging der frühere Teil als Zusammenfassung mit.",
+    "contextCompacted": "Der Chat wurde lang, daher wurde der frühere Teil als Zusammenfassung gesendet.",
     "contextUsage": "Kontext {{percent}} %",
-    "contextUsageHint": "Dieser Chat füllt {{percent}} % dessen, was das Modell auf einmal lesen kann. Ab 70 % geht der frühere Teil als Zusammenfassung mit, nur die letzten Runden unverändert.",
+    "contextUsageHint": "Dieser Chat füllt {{percent}} % dessen, was das Modell auf einmal lesen kann. Ab 70 % wird der frühere Teil als Zusammenfassung gesendet, nur die letzten Runden unverändert.",
     "browserAgent": "Browsersteuerung",
     "browserAgentHint": "Shizue klickt und tippt im aktuellen Tab",
     "browserAgentPlaceholder": "Was soll ich in diesem Tab tun?",
@@ -162,7 +162,7 @@
     "selectAllTabs": "Alle auswählen",
     "deselectAllTabs": "Alle abwählen",
     "browserControlHintTitle": "Shizue kann das in deinem Tab erledigen",
-    "browserControlHintBody": "Schalte im Werkzeuge-Menü „Browsersteuerung“ ein, dann klickt und tippt Shizue auf dieser Seite. Vor Senden oder Bezahlen fragt es nach.",
+    "browserControlHintBody": "Schalte „Browsersteuerung“ im Menü „Werkzeuge“ ein, dann klickt und tippt Shizue auf dieser Seite. Vor Senden oder Bezahlen fragt es nach.",
     "browserControlHintAction": "Einschalten und erneut versuchen",
     "tools": "Werkzeuge",
     "study": "Lernen",
@@ -192,12 +192,12 @@
   },
   "footer": {
     "joinDiscord": "Tritt mir auf Discord bei!",
-    "rate": "Bewerten Sie mich!"
+    "rate": "Möchtest du eine Bewertung abgeben?"
   },
   "settings": {
     "title": "Einstellungen",
     "language": "Sprache",
-    "shortcut": "Panel-Kürzel",
+    "shortcut": "Seitenleisten-Kürzel",
     "shortcutChange": "Ändern",
     "shortcutNotSet": "Nicht festgelegt",
     "shortcutHint": "Klicke im gerade geöffneten Tab auf den Stift neben „{{command}}“ und drücke dann die neuen Tasten.",
@@ -229,10 +229,10 @@
     "pageTranslation": "Seitenübersetzung",
     "maskPrivateDescription": "E-Mail-Adressen, Telefonnummern, Kartennummern und API-Schlüssel werden nicht an die KI gesendet. Sie bleiben, wie sie auf der Seite standen.",
     "maskPrivate": "Persönliche Daten nicht senden",
-    "savedTranslations": "{{number}} gespeicherte Übersetzungen · 30 Tage",
+    "savedTranslations": "{{number}} gespeicherte Übersetzungen · 30 Tage aufbewahrt",
     "savedTranslationsClear": "Leeren",
     "browserAgent": "Browsersteuerung",
-    "browserAgentDescription": "Websites, die Sie auf seinen Karten immer erlaubt haben, und Tipps, die Sie für Websites gemerkt haben",
+    "browserAgentDescription": "Websites, die du auf seinen Karten immer erlaubt hast, und Tipps, die du dir für Websites gemerkt hast",
     "agentAllowedSites": "Immer erlaubte Websites",
     "agentNoSites": "Noch keine",
     "agentClearSites": "Alle Websites entfernen",
@@ -253,22 +253,22 @@
     "daysAgo": "T. her"
   },
   "layout": {
-    "hideToggle": "Button ausblenden",
-    "theme": "Thema",
+    "hideToggle": "Schaltfläche ausblenden",
+    "theme": "Design",
     "lightMode": "Hell",
     "darkMode": "Dunkel",
     "resetPosition": "Position zurücksetzen",
     "menuButton": "Menü-Schaltfläche",
-    "hideFromCurrentSite": "Von aktueller Seite ausblenden",
-    "hideFromAllSites": "Von allen Seiten ausblenden",
-    "hiddenSites": "Versteckte Seiten",
-    "restore": "Zurück"
+    "hideFromCurrentSite": "Auf dieser Website ausblenden",
+    "hideFromAllSites": "Auf allen Websites ausblenden",
+    "hiddenSites": "Ausgeblendete Websites",
+    "restore": "Einblenden"
   },
   "language": {
     "English": "Englisch",
     "Korean": "Koreanisch",
-    "ChineseSimplified": "Chinesisch (Vereinfacht)",
-    "ChineseTraditional": "Chinesisch (Traditionell)",
+    "ChineseSimplified": "Chinesisch (vereinfacht)",
+    "ChineseTraditional": "Chinesisch (traditionell)",
     "Japanese": "Japanisch",
     "Spanish": "Spanisch",
     "French": "Französisch",
@@ -290,7 +290,7 @@
     "Thai": "Thailändisch"
   },
   "youtube": {
-    "aiCaption": "Shizue KI-Untertitel",
+    "aiCaption": "Shizue-KI-Untertitel",
     "numCaptLines": "Anzahl der Zeilen",
     "activate": "Aktivieren",
     "deactivate": "Deaktivieren",
@@ -353,7 +353,7 @@
     "title": "Token-Verbrauch",
     "total": "Gesamt",
     "error": "Fehler",
-    "fetchError": "Ein Fehler ist beim Abrufen der Token-Verbrauchsdaten aufgetreten.",
+    "fetchError": "Beim Abrufen des Token-Verbrauchs ist ein Fehler aufgetreten.",
     "retry": "Wiederholen",
     "noData": "Noch keine Verbrauchsdaten vorhanden."
   },
@@ -371,10 +371,10 @@
     "edit": "Bearbeiten",
     "cancel": "Abbrechen",
     "defaultTitle": "Neues Memo",
-    "deleteConfirm": "Sind Sie sicher, dass Sie dieses Memo löschen möchten?",
+    "deleteConfirm": "Möchtest du dieses Memo wirklich löschen?",
     "memoContentPlaceholder": "Memo-Inhalt eingeben...",
     "memoTitlePlaceholder": "Titel",
-    "selectMemoOr": "Wählen Sie ein Memo oder",
+    "selectMemoOr": "Wähle ein Memo oder",
     "createNewMemo": "Neues Memo erstellen",
     "noContent": "Kein Inhalt",
     "noSearchResults": "Keine Suchergebnisse",
@@ -419,11 +419,11 @@
     "saveFailed": "Konnte nicht gespeichert werden."
   },
   "pageTranslation": {
-    "failed": "Nicht übersetzt",
+    "failed": "Übersetzung fehlgeschlagen",
     "retry": "Erneut versuchen"
   },
   "meeting": {
-    "liveTranslation": "Shizue Besprechungsübersetzung",
+    "liveTranslation": "Shizue-Besprechungsübersetzung",
     "waiting": "Übersetzungen erscheinen hier, sobald jemand spricht",
     "turnOnCaptions": "Schalte die Untertitel (CC) der Besprechung ein, um sie übersetzt zu sehen",
     "unreadable": "Die Untertitel dieser Besprechung konnten nicht gelesen werden. Die Seite hat sich vielleicht geändert.",
@@ -438,7 +438,7 @@
     "noText": "Kein Text zum Übersetzen",
     "failed": "Übersetzung fehlgeschlagen",
     "retry": "Erneut versuchen",
-    "noImageModel": "Ein Chatmodell mit Bildunterstützung wird benötigt",
+    "noImageModel": "Ein Chat-Modell mit Bildunterstützung wird benötigt",
     "close": "Schließen",
     "pageActive": "Bilder dieser Seite werden übersetzt",
     "stop": "Ausschalten"
@@ -460,7 +460,7 @@
       "ask": "Frage: {{text}}",
       "steer": "Ergänzt: „{{text}}“",
       "look": "Bildschirm ansehen",
-      "clickAt": "Auf eine Stelle im Bild klicken",
+      "clickAt": "Auf eine Stelle auf dem Bildschirm klicken",
       "openTab": "{{host}} in neuem Tab öffnen",
       "switchTab": "Zu Tab {{tab}} wechseln",
       "tool": "Werkzeug der Website ‚{{target}}‘ verwenden",
@@ -468,8 +468,8 @@
       "pressOn": "{{key}} auf ‚{{target}}‘ drücken",
       "hover": "Mit der Maus auf ‚{{target}}‘ zeigen",
       "upload": "Bild {{file}} zu ‚{{target}}‘ hochladen",
-      "handoff": "Sie sind dran: {{text}}",
-      "point": "Hat Sie gebeten, auf {{text}} zu zeigen",
+      "handoff": "Du bist dran: {{text}}",
+      "point": "Hat dich gebeten, auf {{text}} zu zeigen",
       "plan": "Plan",
       "waitFor": "Warten, bis „{{text}}“ erscheint"
     },
@@ -489,7 +489,7 @@
       "bad_url": "Diese Adresse kann nicht geöffnet werden",
       "unreachable": "Diese Seite kann nicht gesteuert werden",
       "not_visible": "Dieser Tab ist nicht sichtbar",
-      "no_screenshot": "Zuerst den Bildschirm ansehen",
+      "no_screenshot": "Muss zuerst den Bildschirm ansehen",
       "no_tab": "Diesen Tab gibt es nicht",
       "no_tool": "Die Website bietet dieses Werkzeug nicht",
       "repeated": "Gleiche Aktion erneut auf unveränderter Seite",
@@ -504,14 +504,14 @@
       "failed": "Gestoppt: nächster Schritt unklar",
       "looping": "Gestoppt: wiederholte immer dieselbe Aktion",
       "unanswered": "Gestoppt: Frage blieb unbeantwortet",
-      "not_handed_back": "Angehalten: Es hat zu lange auf Sie gewartet"
+      "not_handed_back": "Gestoppt: hat zu lange auf dich gewartet"
     },
     "overlayWorking": "Shizue arbeitet in diesem Tab",
-    "overlayWaiting": "Wartet im Panel auf deine Zustimmung",
-    "overlayAsking": "Wartet im Panel auf deine Antwort",
+    "overlayWaiting": "Wartet in der Seitenleiste auf deine Zustimmung",
+    "overlayAsking": "Wartet in der Seitenleiste auf deine Antwort",
     "overlayStop": "Stopp",
     "autoApproved": "Ohne Nachfrage ausgeführt",
-    "overlayHandoff": "Sie sind dran",
+    "overlayHandoff": "Du bist dran",
     "overlayPoint": "Zum Zeigen klicken",
     "overlayResume": "Fertig, weiter",
     "groupTitle": "Shizue bei der Arbeit",
@@ -526,14 +526,14 @@
     "allowAlways": "Diese Website immer erlauben",
     "siteDenied": "Auf {{site}} nicht erlaubt",
     "alwaysAllowedNote": "{{site}} ist jetzt immer erlaubt",
-    "handoffTitle": "Sie sind dran",
-    "handoffHint": "Wenn Sie auf der Seite fertig sind, tippen Sie auf Weiter oder schreiben Sie unten",
-    "pointTitle": "Zeigen Sie mir, wo",
-    "pointHint": "Klicken Sie auf der Seite darauf. Esc bricht ab",
+    "handoffTitle": "Du bist dran",
+    "handoffHint": "Wenn du auf der Seite fertig bist, klicke auf Weiter oder schreib unten",
+    "pointTitle": "Zeig mir, wo",
+    "pointHint": "Klicke auf der Seite darauf. Esc bricht ab",
     "resume": "Weiter",
     "cancelTurn": "Aufgeben",
     "tipTitle": "Diesen Tipp für {{site}} merken?",
-    "tipHint": "Shizue liest ihn beim nächsten Mal auf dieser Website. Sie können ihn in den Einstellungen löschen",
+    "tipHint": "Shizue liest ihn beim nächsten Mal auf dieser Website. Du kannst ihn in den Einstellungen löschen",
     "tipKeep": "Merken",
     "tipSkip": "Nein, danke",
     "tipKept": "Tipp für {{site}} gemerkt",
@@ -546,7 +546,7 @@
     "confirmTitle": "Darf {{agent}} das tun?",
     "agentFallback": "KI-Agent",
     "title": "Externe KI-Agenten",
-    "description": "Claude Code, Codex und andere MCP-Agenten sehen und bedienen nur die Tabs in der Tabgruppe „Shizue“. Zieh einen Tab hinein, um ihn zu leihen, und heraus, um ihn zurückzunehmen. „Stopp“ auf der Leiste in einem Tab sperrt sie dort aus.",
+    "description": "Claude Code, Codex und andere MCP-Agenten sehen und bedienen nur die Tabs in der Tab-Gruppe „Shizue“. Zieh einen Tab hinein, um ihn freizugeben, und heraus, um ihn zurückzunehmen. Klicke im Hinweis in einem Tab auf „Stopp“, um sie aus diesem Tab auszusperren.",
     "stopped": "In diesen Tabs gestoppt",
     "resume": "Wieder zulassen",
     "log": "Was es zuletzt getan hat",
@@ -556,17 +556,17 @@
   },
   "formFill": {
     "title": "Aus einem offenen Tab ausfüllen",
-    "reading": "Formular wird gelesen …",
+    "reading": "Formular wird gelesen…",
     "fieldsFound": "Ausfüllbare Felder: {{count}}",
     "pickSource": "Wähle den Tab, aus dem die Werte kommen",
     "noTabs": "In diesem Fenster ist kein anderer Web-Tab offen.",
-    "proposing": "„{{title}}“ wird gelesen und dem Formular zugeordnet …",
+    "proposing": "„{{title}}“ wird gelesen und dem Formular zugeordnet…",
     "reviewSource": "Aus: {{title}}",
     "reviewHint": "Prüfe die Werte. Nur angehakte Felder werden ausgefüllt.",
     "nothingFound": "Dieser Tab enthält für kein Feld des Formulars einen Wert.",
     "fill": "Ausfüllen ({{count}})",
     "otherTab": "Anderen Tab wählen",
-    "filling": "Formular wird ausgefüllt …",
+    "filling": "Formular wird ausgefüllt…",
     "noSubmit": "Shizue sendet das Formular nie ab. Prüfe es und sende es selbst ab.",
     "filled": "Ausgefüllte Felder: {{count}}",
     "skipped": {
@@ -596,7 +596,7 @@
       "notPage": "Dieser Link führt nicht zu einer Webseite",
       "noText": "Auf dieser Seite gibt es keinen Text für eine Vorschau",
       "failed": "Vorschau der Seite fehlgeschlagen",
-      "noModel": "Für die Linkvorschau wird ein Chatmodell benötigt"
+      "noModel": "Für die Link-Vorschau wird ein Chat-Modell benötigt"
     }
   }
 }

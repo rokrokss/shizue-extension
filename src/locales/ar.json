@@ -1,7 +1,7 @@
 {
   "chatgpt": {
     "providerTitle": "تسجيل الدخول باستخدام ChatGPT",
-    "continue": "Continue with ChatGPT",
+    "continue": "المتابعة باستخدام ChatGPT",
     "account": "حساب ChatGPT",
     "accountAlreadyRegistered": "يوجد اتصال ChatGPT محفوظ بالفعل. أعد فتح الإعدادات للتحقق من حالته.",
     "duplicateAccountRevocationPending": "تم الإبقاء على اتصال ChatGPT الحالي. تعذّر تأكيد إلغاء الجلسة الجديدة؛ راجع اتصالات Shizue في إعدادات ChatGPT.",
@@ -19,8 +19,8 @@
     "gotIt": "حسنًا",
     "accountUnavailable": "تغيّر اتصال ChatGPT المحفوظ. أعد فتح الإعدادات للمتابعة."
   },
-  "extension_name": "Shizue: مترجم الذكاء الاصطناعي + مساعد القوة الخارقة LLM",
-  "extension_description": "مترجم ذكي + مساعد خارق LLM",
+  "extension_name": "Shizue: مترجم بالذكاء الاصطناعي + مساعد LLM خارق",
+  "extension_description": "مترجم بالذكاء الاصطناعي + مساعد LLM خارق",
   "toggle_description": "تبديل Shizue",
   "overlayMenu": {
     "shizue": "Shizue",
@@ -68,7 +68,7 @@
       "title": "اختر لغتك"
     },
     "selectShortcut": {
-      "title": "قم بتعيين اختصار لوحة المفاتيح لفتح اللوحة الجانبية"
+      "title": "عيّن اختصار لوحة المفاتيح لفتح اللوحة الجانبية"
     }
   },
   "chat": {
@@ -80,7 +80,7 @@
     "retry": "إعادة المحاولة",
     "history": "السجل",
     "empty": "لا توجد رسائل بعد",
-    "newChat": "دردشة جديدة",
+    "newChat": "محادثة جديدة",
     "summaryRequestText": "لخص هذه الصفحة! Shizue!",
     "summaryVideoRequestText": "لخص هذا الفيديو! Shizue!",
     "translateMode": "وضع الترجمة",
@@ -100,14 +100,14 @@
     "attachmentUnreadable": "تتعذر قراءتها",
     "attachmentEmpty": "لا يوجد نص يُذكر",
     "attachmentTruncated": "كانت الصفحات المرفقة طويلة، لذا أُرسل جزؤها الأول فقط.",
-    "attachmentTruncatedVideo": "كانت مقاطع الفيديو المرفقة طويلة، لذا أُرسل الجزء الأول من ترجمتها فقط.",
+    "attachmentTruncatedVideo": "كانت مقاطع الفيديو المرفقة طويلة، لذا أُرسل الجزء الأول من تعليقاتها التوضيحية فقط.",
     "askAboutPages": "اسأل عن الصفحات المرفقة",
     "askAboutVideos": "اسأل عن مقاطع الفيديو المرفقة",
     "attach": "إرفاق",
     "openTabs": "علامات التبويب المفتوحة",
     "noOpenTabs": "لا توجد صفحات ويب مفتوحة في هذه النافذة.",
     "tabAsleep": "نائمة · افتحها أولًا",
-    "attachLimit": "يمكن إرفاق {{max}} علامات تبويب وملفات كحد أقصى",
+    "attachLimit": "الحد الأقصى لعلامات التبويب والملفات: {{max}}",
     "captureScreen": "لقطة شاشة",
     "captureFailed": "لا يمكن التقاط هذه الشاشة.",
     "searchChats": "البحث في المحادثات",
@@ -127,8 +127,8 @@
     "webSearch": "البحث في الويب",
     "webSearchNotSupported": "لا تستطيع النماذج المحلية البحث في الويب",
     "sources": "المصادر",
-    "withCaptions": "مع الترجمة",
-    "withoutCaptions": "بدون ترجمة",
+    "withCaptions": "مع التعليقات التوضيحية",
+    "withoutCaptions": "بدون تعليقات توضيحية",
     "playFromTime": "تشغيل من {{time}}",
     "detailedAnalysis": "تحليل مفصل",
     "detailedAnalysisWithWebSearch": "تحليل مفصل + البحث في الويب",
@@ -148,7 +148,7 @@
     "reasoningEffort_max": "Max",
     "reasoningEffortNotSupported": "لا يمكن تغييره في هذا النموذج",
     "reasoningEffortChip": "التفكير: {{level}}",
-    "suggestedQuestions": "اسأل بعد ذلك",
+    "suggestedQuestions": "أسئلة مقترحة",
     "videoMoment": "هذه اللحظة",
     "videoMomentHint": "يجيب عمّا يُعرض في الفيديو الآن",
     "videoMomentAt": "عند {{time}}",
@@ -175,9 +175,9 @@
     "searchPast": "البحث في السجل",
     "searchPastChatsOnly": "لا وصول إلى سجل التصفح: المحادثات السابقة فقط",
     "searchingPast": "جارٍ البحث في السجل…",
-    "pastFindsFound": "عُثر على صفحات تمت زيارتها: {{pages}}، ومحادثات سابقة: {{chats}}. هل تُرسل مع سؤالك؟",
-    "pastFindsPagesOnly": "عُثر على صفحات تمت زيارتها: {{pages}}. هل تُرسل مع سؤالك؟",
-    "pastFindsChatsOnly": "عُثر على محادثات سابقة: {{chats}}. هل تُرسل مع سؤالك؟",
+    "pastFindsFound": "عُثر على صفحات تمت زيارتها: {{pages}}، ومحادثات سابقة: {{chats}}. هل تريد إرسالها مع سؤالك؟",
+    "pastFindsPagesOnly": "عُثر على صفحات تمت زيارتها: {{pages}}. هل تريد إرسالها مع سؤالك؟",
+    "pastFindsChatsOnly": "عُثر على محادثات سابقة: {{chats}}. هل تريد إرسالها مع سؤالك؟",
     "pastFindsNone": "لم يُعثر على شيء في المحادثات السابقة أو سجل التصفح.",
     "pastFindsSend": "إرسال",
     "pastFindsSkip": "الإجابة من دونها",
@@ -203,17 +203,17 @@
     "shortcutHint": "في علامة التبويب التي فُتحت للتو، انقر على القلم بجوار «{{command}}»، ثم اضغط المفاتيح الجديدة.",
     "shortcutSaved": "تم الحفظ",
     "customInstructions": "تعليمات مخصصة",
-    "customInstructionsDescription": "يتبع Shizue هذه التعليمات في كل رد في الدردشة. اكتب ما تعمل به، وما يهمك، والطريقة التي تفضّل أن يجيبك بها.",
+    "customInstructionsDescription": "يتبع Shizue هذه التعليمات في كل رد في المحادثة. اكتب ما تعمل به، وما يهمك، والطريقة التي تفضّل أن يجيبك بها.",
     "customInstructionsPlaceholder": "مثال: أنا مطوّر واجهات خلفية. اجعل الإجابات قصيرة واكتب الشيفرة بلغة TypeScript.",
     "autoMemory": "الذاكرة التلقائية",
-    "autoMemoryDescription": "تتذكر Shizue ما يفيد من محادثاتك وتستخدمه في المحادثات التالية.",
+    "autoMemoryDescription": "يتذكر Shizue ما يفيد من محادثاتك ويستخدمه في المحادثات التالية.",
     "autoMemoryEnable": "التذكر من المحادثات",
     "autoMemoryDelete": "حذف",
     "autoMemoryClear": "مسح الكل",
     "autoMemoryEmpty": "لم يُحفظ شيء بعد.",
     "preferOpenRouter": "تفضيل OpenRouter",
     "aiProvider": "مزود الذكاء الاصطناعي",
-    "chatModel": "نموذج الدردشة",
+    "chatModel": "نموذج المحادثة",
     "translateModel": "نموذج الترجمة",
     "sourceLanguage": "اللغة المصدر",
     "targetLanguage": "اللغة الهدف",
@@ -229,7 +229,7 @@
     "pageTranslation": "ترجمة الصفحة",
     "maskPrivateDescription": "لا تُرسَل عناوين البريد وأرقام الهواتف والبطاقات ومفاتيح API إلى الذكاء الاصطناعي، وتظهر كما كانت في الصفحة.",
     "maskPrivate": "عدم إرسال البيانات الشخصية",
-    "savedTranslations": "{{number}} ترجمة محفوظة · 30 يومًا",
+    "savedTranslations": "الترجمات المحفوظة: {{number}} · تُحفظ 30 يومًا",
     "savedTranslationsClear": "مسح",
     "browserAgent": "التحكم في المتصفح",
     "browserAgentDescription": "المواقع التي سمحت بها دائمًا في بطاقاته، والنصائح التي حفظتها للمواقع",
@@ -255,8 +255,8 @@
   "layout": {
     "hideToggle": "إخفاء الزر",
     "theme": "السمة",
-    "lightMode": "فضاء",
-    "darkMode": "مظلم",
+    "lightMode": "فاتح",
+    "darkMode": "داكن",
     "resetPosition": "إعادة تعيين الموضع",
     "menuButton": "زر القائمة",
     "hideFromCurrentSite": "إخفاء من الموقع الحالي",
@@ -291,12 +291,12 @@
   },
   "youtube": {
     "aiCaption": "تعليقات توضيحية بالذكاء الاصطناعي من Shizue",
-    "numCaptLines": "عدد الخطوط",
+    "numCaptLines": "عدد الأسطر",
     "activate": "تنشيط",
     "deactivate": "تعطيل",
-    "youtubeCaptionButton": "زر التعليقات التوضيحية لليوتيوب",
+    "youtubeCaptionButton": "زر التعليقات التوضيحية في YouTube",
     "captionSizeRatio": "حجم التعليقات التوضيحية",
-    "useKeyboardNavigate": "التنقل في الترجمة بـ A/D",
+    "useKeyboardNavigate": "التنقل بين التعليقات التوضيحية بـ A/D",
     "wordHighlight": "إبراز الكلمات المنطوقة",
     "sourceTrack": "تعليقات يوتيوب التوضيحية",
     "spokenLanguage": "اللغة المنطوقة",
@@ -307,9 +307,9 @@
   },
   "twitch": {
     "twitchCaptionButton": "زر التعليقات التوضيحية لتويتش",
-    "source": "مصدر التعليقات",
+    "source": "مصدر التعليقات التوضيحية",
     "sourceAuto": "تلقائي",
-    "sourceCaptions": "تعليقات المذيع",
+    "sourceCaptions": "التعليقات التوضيحية للمذيع",
     "sourceScc": "Stream CC",
     "sourceSpeech": "التعرف على الكلام",
     "sourceUnavailable": "غير متوفر في هذا البث",
@@ -322,8 +322,8 @@
   },
   "netflix": {
     "netflixCaptionButton": "زر التعليقات التوضيحية لنتفليكس",
-    "originalSubtitles": "الترجمة الأصلية",
-    "loadFailed": "تعذّر تحميل الترجمة"
+    "originalSubtitles": "التعليقات التوضيحية الأصلية",
+    "loadFailed": "تعذّر تحميل التعليقات التوضيحية"
   },
   "caption": {
     "displayLabel": "طريقة العرض",
@@ -337,17 +337,17 @@
     "style": {
       "default": "افتراضي",
       "translucent": "شفاف جزئيًا",
-      "outline": "محدد",
+      "outline": "بحدود خارجية",
       "yellow": "ترجمة بلون النعناع"
     },
-    "download": "حفظ الترجمة",
+    "download": "حفظ التعليقات التوضيحية",
     "translating": "جارٍ الترجمة {{percent}}٪",
     "file": {
       "original": "الأصل",
       "translation": "الترجمة",
       "bilingual": "الأصل + الترجمة"
     },
-    "turnOnSiteCaptions": "شغّل ترجمة الفيديو لتراها مترجمة"
+    "turnOnSiteCaptions": "شغّل التعليقات التوضيحية للفيديو لتراها مترجمة"
   },
   "usage": {
     "title": "استخدام الرموز",
@@ -408,7 +408,7 @@
     "title": "قائمة الكلمات",
     "search": "ابحث عن كلمات",
     "exportCsv": "تنزيل بصيغة CSV",
-    "empty": "انقر على كلمة في الترجمة الأصلية لفيديو واحفظها لتجتمع هنا.",
+    "empty": "انقر على كلمة في التعليقات التوضيحية الأصلية لفيديو واحفظها لتجتمع هنا.",
     "noResults": "لا توجد كلمات مطابقة.",
     "delete": "حذف",
     "close": "إغلاق",
@@ -425,8 +425,8 @@
   "meeting": {
     "liveTranslation": "ترجمة الاجتماعات من Shizue",
     "waiting": "تظهر الترجمة هنا عندما يتحدث أحد",
-    "turnOnCaptions": "شغّل ترجمة الاجتماع المكتوبة (CC) لتراها مترجمة",
-    "unreadable": "تعذّرت قراءة ترجمة هذا الاجتماع. ربما تغيّر الموقع.",
+    "turnOnCaptions": "شغّل التعليقات التوضيحية للاجتماع (CC) لتراها مترجمة",
+    "unreadable": "تعذّرت قراءة التعليقات التوضيحية لهذا الاجتماع. ربما تغيّر الموقع.",
     "preparing": "جارٍ تنزيل نموذج الترجمة في Chrome"
   },
   "imageTranslation": {
@@ -438,7 +438,7 @@
     "noText": "لا يوجد نص للترجمة",
     "failed": "تعذّرت الترجمة",
     "retry": "إعادة المحاولة",
-    "noImageModel": "يلزم نموذج دردشة يقرأ الصور",
+    "noImageModel": "يلزم نموذج محادثة يقرأ الصور",
     "close": "إغلاق",
     "pageActive": "جارٍ ترجمة صور الصفحة",
     "stop": "إيقاف"
@@ -464,9 +464,9 @@
       "openTab": "فتح {{host}} في علامة تبويب جديدة",
       "switchTab": "الانتقال إلى علامة التبويب {{tab}}",
       "tool": "استخدام أداة الموقع «{{target}}»",
-      "press": "اضغط {{key}}",
-      "pressOn": "اضغط {{key}} على «{{target}}»",
-      "hover": "مرّر المؤشر فوق «{{target}}»",
+      "press": "الضغط على {{key}}",
+      "pressOn": "الضغط على {{key}} في «{{target}}»",
+      "hover": "تمرير المؤشر فوق «{{target}}»",
       "upload": "رفع الصورة {{file}} إلى «{{target}}»",
       "handoff": "دورك: {{text}}",
       "point": "طلب منك الإشارة إلى {{text}}",
@@ -514,7 +514,7 @@
     "overlayHandoff": "دورك",
     "overlayPoint": "انقر للإشارة",
     "overlayResume": "انتهيت، تابع",
-    "groupTitle": "Shizue تعمل",
+    "groupTitle": "Shizue يعمل",
     "planTitle": "هذه هي الخطة",
     "planSites": "المواقع: {{sites}}",
     "planHint": "بعد البدء لن يسأل مجددًا عن هذه المواقع. الإرسال والدفع والحذف يطلب إذنك في كل مرة",
@@ -546,7 +546,7 @@
     "confirmTitle": "هل تسمح لـ {{agent}} بفعل هذا؟",
     "agentFallback": "وكيل ذكاء اصطناعي",
     "title": "وكلاء ذكاء اصطناعي خارجيون",
-    "description": "يرى Claude Code وCodex وغيرهما من وكلاء MCP علامات التبويب الموجودة في مجموعة علامات التبويب المسماة “Shizue” فقط ويتحكمون فيها. اسحب علامة تبويب إليها لإعارتها، وأخرجها لاستعادتها. زر الإيقاف على الشريط في علامة تبويب يمنعهم منها.",
+    "description": "يرى Claude Code وCodex وغيرهما من وكلاء MCP علامات التبويب الموجودة في مجموعة علامات التبويب المسماة «Shizue» فقط ويتحكمون فيها. اسحب علامة تبويب إليها لإعارتها، وأخرجها لاستعادتها. اضغط «إيقاف» على الإشعار الظاهر في علامة تبويب لمنعهم من العمل فيها.",
     "stopped": "أُوقف في علامات التبويب هذه",
     "resume": "السماح مجددًا",
     "log": "ما فعله مؤخرًا",
@@ -587,7 +587,7 @@
   "linkPreview": {
     "title": "معاينة الرابط",
     "loading": "جارٍ قراءة الصفحة…",
-    "minutes": "قراءة في {{count}} دقيقة",
+    "minutes": "مدة القراءة: {{count}} د",
     "open": "فتح",
     "close": "إغلاق",
     "error": {
@@ -596,7 +596,7 @@
       "notPage": "هذا الرابط ليس صفحة ويب",
       "noText": "لا يوجد نص لمعاينته في هذه الصفحة",
       "failed": "تعذّرت معاينة هذه الصفحة",
-      "noModel": "يلزم نموذج دردشة لمعاينة الروابط"
+      "noModel": "يلزم نموذج محادثة لمعاينة الروابط"
     }
   }
 }

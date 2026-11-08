@@ -1,7 +1,7 @@
 {
   "chatgpt": {
     "providerTitle": "Iniciar sesión con ChatGPT",
-    "continue": "Continue with ChatGPT",
+    "continue": "Continuar con ChatGPT",
     "account": "Cuenta de ChatGPT",
     "accountAlreadyRegistered": "Ya hay una conexión de ChatGPT guardada. Vuelve a abrir la configuración para comprobar su estado.",
     "duplicateAccountRevocationPending": "Se mantuvo tu conexión de ChatGPT actual. No se pudo confirmar la revocación de la nueva sesión; revisa las conexiones de Shizue en la configuración de ChatGPT.",
@@ -19,8 +19,8 @@
     "gotIt": "Entendido",
     "accountUnavailable": "La conexión de ChatGPT guardada cambió. Vuelve a abrir la configuración para continuar."
   },
-  "extension_name": "Shizue: Traductor IA + Asistente de Súper Poderes LLM",
-  "extension_description": "Traductor IA + Asistente de Súper Poderes LLM",
+  "extension_name": "Shizue: Traductor IA + Asistente LLM con superpoderes",
+  "extension_description": "Traductor IA + Asistente LLM con superpoderes",
   "toggle_description": "Alternar Shizue",
   "overlayMenu": {
     "shizue": "Shizue",
@@ -39,7 +39,7 @@
     "translatePageImages": "Traducir todas las imágenes de la página",
     "fillFormFromTab": "Rellenar este formulario desde una pestaña abierta",
     "previewLink": "Vista previa del enlace",
-    "xraySelection": "Buscar su sentido en esta página"
+    "xraySelection": "Buscar el significado en esta página"
   },
   "onboarding": {
     "greeting_0": "¡Bienvenido!",
@@ -53,7 +53,7 @@
       "title": "Elige tu proveedor de IA",
       "openaiApiKey": {
         "title": "Usar clave API de OpenAI",
-        "description_0": "Ideal para aquellos con una clave API.",
+        "description_0": "Ideal si ya tienes una clave API.",
         "description_1": "Estable y con precios basados en el uso.",
         "validate": "Validar"
       },
@@ -192,7 +192,7 @@
   },
   "footer": {
     "joinDiscord": "¡Únete a mí en Discord!",
-    "rate": "¿Quieres dejar un comentario?"
+    "rate": "¿Quieres dejar una valoración?"
   },
   "settings": {
     "title": "Configuración",
@@ -220,7 +220,7 @@
     "translationDisplay": "Mostrar",
     "translationDisplayBilingual": "Original + traducción",
     "translationDisplayTranslationOnly": "Solo traducción",
-    "translateTargetLanguage": "Idioma de Destino de Traducción",
+    "translateTargetLanguage": "Idioma de destino de la traducción",
     "auto": "Automático",
     "general": "General",
     "models": "Modelos",
@@ -229,7 +229,7 @@
     "pageTranslation": "Traducción de páginas",
     "maskPrivateDescription": "Los correos, teléfonos, números de tarjeta y claves de API no se envían a la IA. Se muestran tal como estaban en la página.",
     "maskPrivate": "No enviar datos personales",
-    "savedTranslations": "{{number}} traducciones guardadas · 30 días",
+    "savedTranslations": "{{number}} traducciones guardadas · se conservan 30 días",
     "savedTranslationsClear": "Borrar",
     "browserAgent": "Control del navegador",
     "browserAgentDescription": "Sitios que permitiste siempre en sus tarjetas y consejos que guardaste para sitios",
@@ -259,16 +259,16 @@
     "darkMode": "Oscuro",
     "resetPosition": "Restablecer posición",
     "menuButton": "Botón de menú",
-    "hideFromCurrentSite": "Ocultar del sitio actual",
-    "hideFromAllSites": "Ocultar de todos los sitios",
-    "hiddenSites": "Sitios Ocultos",
-    "restore": "Volver"
+    "hideFromCurrentSite": "Ocultar en este sitio",
+    "hideFromAllSites": "Ocultar en todos los sitios",
+    "hiddenSites": "Sitios ocultos",
+    "restore": "Restaurar"
   },
   "language": {
     "English": "Inglés",
     "Korean": "Coreano",
-    "ChineseSimplified": "Chino (Simplificado)",
-    "ChineseTraditional": "Chino (Tradicional)",
+    "ChineseSimplified": "Chino (simplificado)",
+    "ChineseTraditional": "Chino (tradicional)",
     "Japanese": "Japonés",
     "Spanish": "Español",
     "French": "Francés",
@@ -350,7 +350,7 @@
     "turnOnSiteCaptions": "Activa los subtítulos del vídeo para verlos traducidos"
   },
   "usage": {
-    "title": "Uso de Tokens",
+    "title": "Uso de tokens",
     "total": "Total",
     "error": "Error",
     "fetchError": "Ocurrió un error al obtener los datos de uso de tokens.",
@@ -358,28 +358,28 @@
     "noData": "Aún no hay datos de uso."
   },
   "home": {
-    "title": "Ir al Inicio"
+    "title": "Ir al inicio"
   },
   "memo": {
-    "memo": "Memo",
-    "memoList": "Lista de Notas",
-    "newMemo": "Nuevo Memo",
+    "memo": "Nota",
+    "memoList": "Lista de notas",
+    "newMemo": "Nueva nota",
     "save": "Guardar",
     "delete": "Eliminar",
     "pin": "Fijar",
     "unpin": "Desfijar",
     "edit": "Editar",
     "cancel": "Cancelar",
-    "defaultTitle": "Nuevo Memo",
-    "deleteConfirm": "¿Estás seguro de que quieres eliminar este memo?",
-    "memoContentPlaceholder": "Ingresa el contenido del memo...",
+    "defaultTitle": "Nueva nota",
+    "deleteConfirm": "¿Estás seguro de que quieres eliminar esta nota?",
+    "memoContentPlaceholder": "Introduce el contenido de la nota...",
     "memoTitlePlaceholder": "Título",
-    "selectMemoOr": "Selecciona un memo o",
-    "createNewMemo": "Crear nuevo memo",
+    "selectMemoOr": "Selecciona una nota o",
+    "createNewMemo": "Crear nueva nota",
     "noContent": "Sin contenido",
     "noSearchResults": "Sin resultados de búsqueda",
-    "noMemos": "Sin memos",
-    "searchMemo": "Buscar memo"
+    "noMemos": "Sin notas",
+    "searchMemo": "Buscar nota"
   },
   "local": {
     "providerTitle": "Usar un modelo local",
@@ -448,7 +448,7 @@
     "stepsDone": "Pasos en {{host}}: {{count}}",
     "readPage": "Página de {{host}} leída",
     "step": {
-      "click": "Clic en «{{target}}»",
+      "click": "Hacer clic en «{{target}}»",
       "type": "Escribir «{{text}}» en «{{target}}»",
       "typeSubmit": "Escribir «{{text}}» en «{{target}}» y pulsar Intro",
       "select": "Elegir «{{text}}» en «{{target}}»",
@@ -460,7 +460,7 @@
       "ask": "Pregunta: {{text}}",
       "steer": "Dijiste: «{{text}}»",
       "look": "Mirar la pantalla",
-      "clickAt": "Clic en un punto de la pantalla",
+      "clickAt": "Hacer clic en un punto de la pantalla",
       "openTab": "Abrir {{host}} en una pestaña nueva",
       "switchTab": "Ir a la pestaña {{tab}}",
       "tool": "Usar la herramienta del sitio «{{target}}»",
@@ -504,7 +504,7 @@
       "failed": "Se detuvo: no supo qué hacer a continuación",
       "looping": "Se detuvo: repetía la misma acción",
       "unanswered": "Se detuvo: la pregunta no tuvo respuesta",
-      "not_handed_back": "Detenido: esperó demasiado tu turno"
+      "not_handed_back": "Se detuvo: esperó demasiado tu turno"
     },
     "overlayWorking": "Shizue está trabajando en esta pestaña",
     "overlayWaiting": "Esperando tu permiso en el panel",
@@ -533,7 +533,7 @@
     "resume": "Continuar",
     "cancelTurn": "Abandonar",
     "tipTitle": "¿Recordar este consejo para {{site}}?",
-    "tipHint": "Shizue lo leerá la próxima vez que trabaje en este sitio. Puedes borrarlo en Ajustes",
+    "tipHint": "Shizue lo leerá la próxima vez que trabaje en este sitio. Puedes eliminarlo en Configuración",
     "tipKeep": "Recordar",
     "tipSkip": "No, gracias",
     "tipKept": "Consejo recordado para {{site}}",
@@ -546,7 +546,7 @@
     "confirmTitle": "¿Dejar que {{agent}} haga esto?",
     "agentFallback": "Agente de IA",
     "title": "Agentes de IA externos",
-    "description": "Claude Code, Codex y otros agentes MCP solo ven y manejan las pestañas del grupo de pestañas llamado «Shizue». Arrastra una pestaña dentro para prestarla y fuera para recuperarla. Detener en la píldora de una pestaña los deja fuera de ella.",
+    "description": "Claude Code, Codex y otros agentes MCP solo ven y manejan las pestañas del grupo de pestañas llamado «Shizue». Arrastra una pestaña dentro para prestarla y fuera para recuperarla. Pulsa «Detener» en el aviso de una pestaña para dejarlos fuera de ella.",
     "stopped": "Detenido en estas pestañas",
     "resume": "Permitir de nuevo",
     "log": "Lo que hizo últimamente",

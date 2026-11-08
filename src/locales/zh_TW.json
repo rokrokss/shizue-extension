@@ -1,7 +1,7 @@
 {
   "chatgpt": {
     "providerTitle": "使用 ChatGPT 登入",
-    "continue": "Continue with ChatGPT",
+    "continue": "使用 ChatGPT 繼續",
     "account": "ChatGPT 帳號",
     "accountAlreadyRegistered": "已儲存一個 ChatGPT 連線。請重新開啟設定以查看其狀態。",
     "duplicateAccountRevocationPending": "已保留你現有的 ChatGPT 連線。無法確認新的工作階段已被撤銷，請在 ChatGPT 設定中檢查 Shizue 的連線。",
@@ -19,8 +19,8 @@
     "gotIt": "知道了",
     "accountUnavailable": "已儲存的 ChatGPT 連線已變更。請重新開啟設定以繼續。"
   },
-  "extension_name": "Shizue: AI翻譯員 + LLM超能力助手",
-  "extension_description": "AI翻譯員 + LLM超能力助手",
+  "extension_name": "Shizue: AI 翻譯 + LLM 超能力助手",
+  "extension_description": "AI 翻譯 + LLM 超能力助手",
   "toggle_description": "切換 Shizue",
   "overlayMenu": {
     "shizue": "Shizue",
@@ -50,7 +50,7 @@
     "next": "下一步",
     "back": "返回",
     "selectProvider": {
-      "title": "選擇您的AI提供商",
+      "title": "選擇 AI 供應商",
       "openaiApiKey": {
         "title": "使用 OpenAI API 金鑰",
         "description_0": "非常適合擁有 API 金鑰的使用者。",
@@ -65,10 +65,10 @@
       }
     },
     "selectLanguage": {
-      "title": "選擇您的語言"
+      "title": "選擇語言"
     },
     "selectShortcut": {
-      "title": "設定開啟側邊欄的鍵盤快捷鍵"
+      "title": "設定開啟側邊欄的鍵盤快速鍵"
     }
   },
   "chat": {
@@ -90,7 +90,7 @@
     "explainSelectionRequest": "請解釋這段文字。",
     "summarizeSelectionRequest": "請總結這段文字。",
     "fixGrammarSelectionRequest": "請修正這段文字的文法。",
-    "translateModeDescription": "從現在開始，對於我發送的每一條訊息，請按以下格式提供翻譯和解釋：\n\n1. ✅ 翻譯文：提供自然且符合語境的翻譯。\n2. 📚 核心詞彙/表達整理\n    – 單詞：詞性 / 含義\n    – 原文中的例句\n3. 🧠 語法或表達解釋：必要時，對核心表達或句型提供簡單說明。\n\n- 輸出要像詞典一樣條理清晰。\n- 重要內容要加粗處理。\n- 省略不必要的解釋，簡潔明瞭地編寫，以便專注學習。\n- 除非我另行指示，否則請保持此格式。",
+    "translateModeDescription": "從現在開始，對於我發送的每一條訊息，請按以下格式提供翻譯和解釋：\n\n1. ✅ 譯文：提供自然且符合語境的翻譯。\n2. 📚 核心詞彙與表達\n    – 單字：詞性 / 含義\n    – 原文中的例句\n3. 🧠 文法或表達解釋：必要時，對核心表達或句型提供簡單說明。\n\n- 輸出要像詞典一樣條理清晰。\n- 重要內容要加粗處理。\n- 省略不必要的解釋，簡潔明瞭地編寫，以便專注學習。\n- 除非我另行指示，否則請保持此格式。",
     "activateTranslateMode": "啟動翻譯模式..📡 🤖 📡",
     "imageUpload": "圖片",
     "imageUploadNotSupported": "目前的模型不支援圖片",
@@ -152,7 +152,7 @@
     "videoMoment": "目前畫面",
     "videoMomentHint": "依影片目前播放的畫面回答",
     "videoMomentAt": "{{time}} 的畫面",
-    "contextCompacted": "對話變長了，前面的部分已改為摘要繼續。",
+    "contextCompacted": "對話較長，前面的內容已濃縮為摘要。",
     "contextUsage": "上下文 {{percent}}%",
     "contextUsageHint": "此對話占用了模型一次可讀取量的 {{percent}}%。超過 70% 後，前面的部分會改為摘要，只原樣傳送最近的對話。",
     "browserAgent": "瀏覽器操作",
@@ -173,18 +173,18 @@
     "findInTabs": "在開啟的分頁中尋找",
     "findingInTabs": "正在查看開啟的分頁…",
     "searchPast": "在歷史記錄中尋找",
-    "searchPastChatsOnly": "無權讀取瀏覽記錄：只搜尋過去的聊天",
+    "searchPastChatsOnly": "無權讀取瀏覽記錄：只搜尋先前的對話",
     "searchingPast": "正在歷史記錄中尋找…",
-    "pastFindsFound": "找到 {{pages}} 個造訪過的頁面和 {{chats}} 個過去的聊天。要隨問題一起傳送嗎？",
+    "pastFindsFound": "找到 {{pages}} 個造訪過的頁面和 {{chats}} 個先前的對話。要隨問題一起傳送嗎？",
     "pastFindsPagesOnly": "找到 {{pages}} 個造訪過的頁面。要隨問題一起傳送嗎？",
-    "pastFindsChatsOnly": "找到 {{chats}} 個過去的聊天。要隨問題一起傳送嗎？",
-    "pastFindsNone": "在過去的聊天和瀏覽記錄中找不到。",
+    "pastFindsChatsOnly": "找到 {{chats}} 個先前的對話。要隨問題一起傳送嗎？",
+    "pastFindsNone": "在先前的對話和瀏覽記錄中找不到。",
     "pastFindsSend": "傳送",
-    "pastFindsSkip": "不帶這些回答",
+    "pastFindsSkip": "不附帶，直接回答",
     "pastFindsAskAnyway": "直接提問",
     "pastFindsCancel": "返回問題",
-    "pastFindsTitle": "過去的聊天和瀏覽記錄（{{count}}）",
-    "openPastChat": "開啟這個聊天",
+    "pastFindsTitle": "先前的對話和瀏覽記錄（{{count}}）",
+    "openPastChat": "開啟此對話",
     "continueTitle": "從上次繼續",
     "continueTabsOpen": "開啟的分頁：{{count}}",
     "attachmentOldHwp": "請另存為 HWPX 或 PDF",
@@ -197,7 +197,7 @@
   "settings": {
     "title": "設定",
     "language": "語言",
-    "shortcut": "面板快捷鍵",
+    "shortcut": "面板快速鍵",
     "shortcutChange": "變更",
     "shortcutNotSet": "未設定",
     "shortcutHint": "在剛開啟的分頁中，點選「{{command}}」旁的鉛筆圖示，然後按下新的快速鍵。",
@@ -212,7 +212,7 @@
     "autoMemoryClear": "全部清除",
     "autoMemoryEmpty": "還沒有記住任何內容。",
     "preferOpenRouter": "優先使用 OpenRouter",
-    "aiProvider": "AI 提供商",
+    "aiProvider": "AI 供應商",
     "chatModel": "對話模型",
     "translateModel": "翻譯模型",
     "sourceLanguage": "來源語言",
@@ -225,13 +225,13 @@
     "general": "一般",
     "models": "模型",
     "layout": "版面配置",
-    "registered": "已註冊",
+    "registered": "已設定",
     "pageTranslation": "網頁翻譯",
     "maskPrivateDescription": "電子郵件、電話號碼、卡號和 API 金鑰不會傳送給 AI，依頁面原樣顯示。",
     "maskPrivate": "不傳送個人資訊",
     "savedTranslations": "已儲存 {{number}} 則譯文 · 保留 30 天",
     "savedTranslationsClear": "清除",
-    "browserAgent": "瀏覽器操控",
+    "browserAgent": "瀏覽器操作",
     "browserAgentDescription": "你在操作卡片上一律允許的網站，以及為網站記住的技巧",
     "agentAllowedSites": "一律允許的網站",
     "agentNoSites": "尚無",
@@ -243,7 +243,7 @@
     "translationToneAuto": "自動（依照網頁）",
     "translationToneFormal": "正式敬語",
     "translationTonePolite": "禮貌體",
-    "translationTonePlain": "書面平敘體",
+    "translationTonePlain": "書面常體",
     "translationToneHint": "用於網頁翻譯。影片和會議字幕會保留每位說話者自己的語氣。"
   },
   "time": {
@@ -296,10 +296,10 @@
     "deactivate": "停用",
     "youtubeCaptionButton": "YouTube 字幕按鈕",
     "captionSizeRatio": "字幕大小",
-    "useKeyboardNavigate": "使用A/D鍵導航字幕",
+    "useKeyboardNavigate": "用 A/D 鍵跳轉字幕",
     "wordHighlight": "醒目標示正在說的詞",
     "sourceTrack": "YouTube 字幕",
-    "spokenLanguage": "所說語言",
+    "spokenLanguage": "語音語言",
     "speechUnavailable": "此裝置無法辨識這種語言的語音",
     "autoActivate": "自動啟用",
     "autoActivateOff": "關閉",
@@ -350,36 +350,36 @@
     "turnOnSiteCaptions": "開啟影片字幕即可看到譯文"
   },
   "usage": {
-    "title": "權杖使用量",
+    "title": "Token 用量",
     "total": "總計",
     "error": "錯誤",
-    "fetchError": "擷取權杖使用量資料時發生錯誤。",
+    "fetchError": "擷取 Token 用量時發生錯誤。",
     "retry": "重試",
     "noData": "尚無使用量資料。"
   },
   "home": {
-    "title": "前往主頁"
+    "title": "前往首頁"
   },
   "memo": {
     "memo": "備忘錄",
-    "memoList": "備忘錄列表",
-    "newMemo": "新建備忘錄",
-    "save": "保存",
+    "memoList": "備忘錄清單",
+    "newMemo": "新增備忘錄",
+    "save": "儲存",
     "delete": "刪除",
     "pin": "置頂",
     "unpin": "取消置頂",
     "edit": "編輯",
     "cancel": "取消",
-    "defaultTitle": "新建備忘錄",
+    "defaultTitle": "新備忘錄",
     "deleteConfirm": "確定要刪除這條備忘錄嗎？",
-    "memoContentPlaceholder": "請輸入備忘錄內容...",
+    "memoContentPlaceholder": "請輸入備忘錄內容…",
     "memoTitlePlaceholder": "標題",
     "selectMemoOr": "選擇備忘錄或",
-    "createNewMemo": "創建新備忘錄",
+    "createNewMemo": "建立新備忘錄",
     "noContent": "無內容",
-    "noSearchResults": "無搜索結果",
+    "noSearchResults": "無搜尋結果",
     "noMemos": "無備忘錄",
-    "searchMemo": "搜索備忘錄"
+    "searchMemo": "搜尋備忘錄"
   },
   "local": {
     "providerTitle": "使用本機模型",
@@ -425,7 +425,7 @@
   "meeting": {
     "liveTranslation": "Shizue 會議翻譯",
     "waiting": "有人說話時，譯文會顯示在這裡",
-    "turnOnCaptions": "開啟會議字幕 (CC) 即可看到譯文",
+    "turnOnCaptions": "開啟會議字幕（CC）即可看到譯文",
     "unreadable": "無法讀取此會議的字幕，網站介面可能已變更。",
     "preparing": "正在下載 Chrome 翻譯模型"
   },
@@ -521,7 +521,7 @@
     "planStart": "開始",
     "planCancel": "取消",
     "siteTitle": "要在 {{site}} 上操作嗎？",
-    "siteHint": "這個網站對本次任務來說是新的",
+    "siteHint": "本次任務首次用到此網站",
     "allowOnce": "僅這次允許",
     "allowAlways": "一律允許此網站",
     "siteDenied": "不在 {{site}} 上操作",
@@ -546,7 +546,7 @@
     "confirmTitle": "允許 {{agent}} 執行此操作嗎？",
     "agentFallback": "AI 代理",
     "title": "外部 AI 代理",
-    "description": "Claude Code、Codex 等 MCP 代理只能查看和操作名為「Shizue」的分頁群組中的分頁。把分頁拖進群組即可借給它們，拖出來即可收回。在某個分頁的膠囊上按停止，它們就無法再操作該分頁。",
+    "description": "Claude Code、Codex 等 MCP 代理只能查看和操作名為「Shizue」的分頁群組中的分頁。把分頁拖進群組即可借給它們，拖出來即可收回。在分頁中的提示列上按「停止」，它們就無法再操作該分頁。",
     "stopped": "已在這些分頁中停止",
     "resume": "重新允許",
     "log": "最近的操作",
@@ -576,7 +576,7 @@
     },
     "close": "關閉",
     "error": {
-      "agent_running": "瀏覽器操控正在此分頁中執行。結束後再試一次。",
+      "agent_running": "瀏覽器操作正在此分頁中執行。結束後再試一次。",
       "unreadable": "Shizue 無法讀取此頁面的表單。",
       "no_fields": "這裡沒有 Shizue 能填寫的欄位。密碼、卡號和核取方塊請自行填寫。",
       "source_unreadable": "Shizue 無法讀取那個分頁。",
