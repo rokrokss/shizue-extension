@@ -124,6 +124,9 @@ function createGemini(spec: ModelSpec, opts: ModelOptions) {
   return instance;
 }
 
+// What LangChain gives the Claude models it knows (claude-opus-5, claude-sonnet-5).
+const ADAPTIVE_ANSWER_TOKENS = 16_384;
+
 function createAnthropic(spec: ModelSpec, opts: ModelOptions) {
   const { maxTokens, temperature, streaming, fast, reasoningEffort, modelPreset } = opts;
   throwIfMissing(modelPreset.anthropicKey, 'anthropic-api-key');
@@ -140,7 +143,16 @@ function createAnthropic(spec: ModelSpec, opts: ModelOptions) {
     apiKey: modelPreset.anthropicKey!,
     streaming: Boolean(streaming),
     ...temperatureFor(spec, temperature),
-    ...(maxTokens ? { maxTokens } : thinking ? { maxTokens: thinkingRoom } : {}),
+    // Without thinking, an adaptive model still gets room of its own: LangChain's default comes from
+    // a table of model prefixes, and a model missing from it (claude-haiku-5-5) falls to 4,096
+    // tokens, which cut long answers off without a word.
+    ...(maxTokens
+      ? { maxTokens }
+      : thinking
+        ? { maxTokens: thinkingRoom }
+        : adaptive
+          ? { maxTokens: ADAPTIVE_ANSWER_TOKENS }
+          : {}),
     ...(effort ? { outputConfig: { effort } } : {}),
     ...(thinking ? { thinking: { type: 'adaptive' as const, display: 'summarized' as const } } : {}),
   });

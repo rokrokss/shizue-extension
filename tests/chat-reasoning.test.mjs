@@ -144,6 +144,10 @@ test('Extra and Max are offered only for the models that take them, and a choice
     ['max', { type: 'adaptive', display: 'summarized' }, 64_000]);
   const xhigh = params('claude-haiku', 'xhigh');
   assert.deepEqual([xhigh.output_config?.effort ?? xhigh.outputConfig?.effort, xhigh.max_tokens], ['xhigh', 64_000]);
+  // Without thinking, Haiku 5.5 isn't left at LangChain's 4,096 fallback, which cut answers short.
+  assert.equal(params('claude-haiku', undefined).max_tokens, 16_384);
+  assert.equal(params('claude-haiku', 'low').max_tokens, 16_384);
+  assert.equal(params('claude-sonnet', undefined).max_tokens, 16_384);
 });
 
 test('A chat with a Claude API key caches its turns; one-off requests and other providers send no cache_control', () => {
