@@ -16,6 +16,7 @@ import {
   getLocalModelFor,
   getCurrentOpenaiKey,
   getCurrentOpenrouterKey,
+  getCurrentTranslateModel,
 } from '@/entrypoints/background/states/models';
 import { ActionType } from '@/hooks/global';
 import type { UserMemory } from '@/hooks/userMemory';
@@ -72,12 +73,11 @@ import {
   SystemMessage,
 } from '@langchain/core/messages';
 
-export function getChatModelPreset(): ModelPreset {
+export function getChatModelPreset(modelName: ChatModel = getCurrentChatModel()): ModelPreset {
   const openaiKey = getCurrentOpenaiKey();
   const geminiKey = getCurrentGeminiKey();
   const anthropicKey = getCurrentAnthropicKey();
   const openrouterKey = getCurrentOpenrouterKey();
-  const modelName = getCurrentChatModel();
   const localModel = getLocalModelFor(modelName);
   const connectionMode = getConnectionModeFor(modelName);
   return {
@@ -90,6 +90,13 @@ export function getChatModelPreset(): ModelPreset {
     modelName,
   };
 }
+
+// The model for the next answer: once translate mode is turned on in a chat, its answers are
+// translations, so they go to the translation model.
+const answerModelFor = (history: Message[]): ChatModel =>
+  history.some((m) => m.role === 'human' && m.translateMode)
+    ? getCurrentTranslateModel()
+    : getCurrentChatModel();
 
 // The chat's thinking effort, for a model that takes one, lowered to the highest the model has.
 // 'medium' is the effort the model list sets the model to think at by default, else undefined: the
@@ -304,12 +311,13 @@ export class ChatModelHandler {
     port: chrome.runtime.Port,
     abortController: AbortController,
     actionType: ActionType,
+    modelName: ChatModel,
     webSearchRequested = false
   ) {
     let fullResponseContent = '';
 
     try {
-      const modelPreset = getChatModelPreset();
+      const modelPreset = getChatModelPreset(modelName);
       const provider = providerFromName(modelPreset.modelName);
       // The model may have been switched to a local one since the question was asked.
       const webSearch = webSearchRequested && modelSupportsWebSearch(modelPreset.modelName);
@@ -512,13 +520,15 @@ export class ChatModelHandler {
       );
       const initialAIMessage = getInitialAIMessage(currentLang);
 
+      const modelName = answerModelFor(threadHistory);
       const messages = await this.compactedMessages(
         threadId,
         messageId,
         threadHistory,
         initialSystemMessage,
         initialAIMessage,
-        port
+        port,
+        modelName
       );
 
       await this._executeStreamAndUpdate(
@@ -527,6 +537,7 @@ export class ChatModelHandler {
         port,
         abortController,
         actionType,
+        modelName,
         asksForWebSearch(threadHistory)
       );
     } catch (err) {
@@ -620,9 +631,9 @@ export class ChatModelHandler {
     history: Message[],
     systemMessage: string,
     greeting: string,
-    port: chrome.runtime.Port
+    port: chrome.runtime.Port,
+    modelName: ChatModel
   ): Promise<BaseMessage[]> {
-    const modelName = getCurrentChatModel();
     const connectionMode = getConnectionModeFor(modelName);
     const localServer = getCurrentLocalServer();
     const local = getLocalModelFor(modelName);
@@ -822,13 +833,15 @@ export class ChatModelHandler {
       );
       const initialAIMessage = getInitialAIMessage(currentLang);
 
+      const modelName = answerModelFor(historyForModelInput);
       const messagesForModel = await this.compactedMessages(
         threadId,
         messageIdToRetry,
         historyForModelInput,
         initialSystemMessage,
         initialAIMessage,
-        port
+        port,
+        modelName
       );
 
       await this._executeStreamAndUpdate(
@@ -837,6 +850,7 @@ export class ChatModelHandler {
         port,
         abortController,
         actionType,
+        modelName,
         asksForWebSearch(historyForModelInput)
       );
     } catch (err) {
