@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "Uliza hata hivyo",
     "pastFindsCancel": "Rudi kwenye swali",
     "pastFindsTitle": "Gumzo za zamani na historia ({{count}})",
-    "openPastChat": "Fungua gumzo hili"
+    "openPastChat": "Fungua gumzo hili",
+    "continueTitle": "Endelea ulipoachia",
+    "continueTabsOpen": "Vichupo vilivyo wazi: {{count}}"
   },
   "footer": {
     "joinDiscord": "Jiunge nami kwenye Discord!",

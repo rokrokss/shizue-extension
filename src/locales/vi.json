@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "Vẫn hỏi",
     "pastFindsCancel": "Quay lại câu hỏi",
     "pastFindsTitle": "Cuộc trò chuyện trước và lịch sử ({{count}})",
-    "openPastChat": "Mở cuộc trò chuyện này"
+    "openPastChat": "Mở cuộc trò chuyện này",
+    "continueTitle": "Tiếp tục từ chỗ đã dừng",
+    "continueTabsOpen": "Tab đang mở: {{count}}"
   },
   "footer": {
     "joinDiscord": "Tham gia cùng tôi trên Discord!",

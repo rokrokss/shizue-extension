@@ -60,6 +60,10 @@ export const threadIdAtom = atom<string | undefined>(undefined);
 // on and clears it.
 export const browserControlRequestedAtom = atom(false);
 
+// A continue card in the new chat's greeting (components/Chat/ChatGreeting.tsx) opened its chat:
+// these tabs, still open from it, go into the chat box as attachments.
+export const continueTabsAtom = atom<number[]>([]);
+
 // Set when a form field's menu asks to fill its form from another tab; the chat shows the form fill
 // card for it (components/FormFill/FormFillCard.tsx) and clears it when the card closes.
 export const formFillRequestAtom = atom<{ tabId: number; frameId: number; at: number } | null>(null);

@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "Chiedi comunque",
     "pastFindsCancel": "Torna alla domanda",
     "pastFindsTitle": "Chat precedenti e cronologia ({{count}})",
-    "openPastChat": "Apri questa chat"
+    "openPastChat": "Apri questa chat",
+    "continueTitle": "Riprendi da dove avevi lasciato",
+    "continueTabsOpen": "Schede aperte: {{count}}"
   },
   "footer": {
     "joinDiscord": "Unisciti a me su Discord!",

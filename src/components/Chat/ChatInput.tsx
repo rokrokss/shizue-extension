@@ -9,7 +9,7 @@ import { requestPageSummary } from '@/services/pageSummary';
 import { useActiveWebTab } from '@/hooks/activeTab';
 import { ChatStatus, isChatWaiting, useReasoningEffort } from '@/hooks/chat';
 import { useThemeValue } from '@/hooks/layout';
-import { threadIdAtom } from '@/hooks/global';
+import { continueTabsAtom, threadIdAtom } from '@/hooks/global';
 import { draftKeyOf, loadChatDraft, saveChatDraft } from '@/lib/chatDrafts';
 import { pastFindsText, type PastFinds } from '@/lib/chatLookup';
 import { findOpenTabPages, requestHistoryPermission, searchPast } from '@/services/chatLookup';
@@ -50,7 +50,7 @@ import {
   UnorderedListOutlined,
 } from '@ant-design/icons';
 import { Alert, Button, Input, Tooltip } from 'antd';
-import { useAtomValue } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -504,6 +504,21 @@ const ChatInput = ({
       );
     }
   };
+
+  // Tabs a continue card in the greeting brought along: attached once their chat is open, as many
+  // as still fit.
+  const [continueTabs, setContinueTabs] = useAtom(continueTabsAtom);
+  useEffect(() => {
+    if (continueTabs.length === 0) return;
+    setContinueTabs([]);
+    void Promise.all(continueTabs.map((id) => chrome.tabs.get(id).catch(() => null))).then((tabs) =>
+      tabs
+        .filter((tab): tab is chrome.tabs.Tab => !!tab && /^https?:/.test(tab.url ?? ''))
+        .filter((tab) => !attached.some((item) => item.tabId === tab.id))
+        .slice(0, Math.max(0, MAX_ATTACHED_TABS - attached.length))
+        .forEach(attachTab)
+    );
+  }, [continueTabs]);
 
   // ↑ in an empty chat box brings back this chat's earlier questions, newest first; ↓ goes the
   // other way and past the newest clears the box. Inside a recalled question of several lines

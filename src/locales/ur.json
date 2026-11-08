@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "پھر بھی پوچھیں",
     "pastFindsCancel": "سوال پر واپس جائیں",
     "pastFindsTitle": "پچھلی چیٹس اور ہسٹری ({{count}})",
-    "openPastChat": "یہ چیٹ کھولیں"
+    "openPastChat": "یہ چیٹ کھولیں",
+    "continueTitle": "جہاں چھوڑا تھا وہیں سے جاری رکھیں",
+    "continueTabsOpen": "کھلے ٹیبز: {{count}}"
   },
   "footer": {
     "joinDiscord": "Discord پر میرے ساتھ شامل ہوں!",

@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "ถามต่อเลย",
     "pastFindsCancel": "กลับไปที่คำถาม",
     "pastFindsTitle": "แชทก่อนหน้าและประวัติ ({{count}})",
-    "openPastChat": "เปิดแชทนี้"
+    "openPastChat": "เปิดแชทนี้",
+    "continueTitle": "ทำต่อจากที่ค้างไว้",
+    "continueTabsOpen": "แท็บที่เปิดอยู่: {{count}}"
   },
   "footer": {
     "joinDiscord": "เข้าร่วมกับฉันบน Discord!",

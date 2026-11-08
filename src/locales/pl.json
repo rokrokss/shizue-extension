@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "Zapytaj mimo to",
     "pastFindsCancel": "Wróć do pytania",
     "pastFindsTitle": "Poprzednie czaty i historia ({{count}})",
-    "openPastChat": "Otwórz ten czat"
+    "openPastChat": "Otwórz ten czat",
+    "continueTitle": "Wróć do tego, co zostało",
+    "continueTabsOpen": "Otwarte karty: {{count}}"
   },
   "footer": {
     "joinDiscord": "Dołącz do mnie na Discordzie!",

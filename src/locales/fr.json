@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "Demander quand même",
     "pastFindsCancel": "Revenir à la question",
     "pastFindsTitle": "Discussions passées et historique ({{count}})",
-    "openPastChat": "Ouvrir cette discussion"
+    "openPastChat": "Ouvrir cette discussion",
+    "continueTitle": "Reprendre là où vous en étiez",
+    "continueTabsOpen": "Onglets ouverts : {{count}}"
   },
   "footer": {
     "joinDiscord": "Rejoignez-moi sur Discord !",

@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "그냥 묻기",
     "pastFindsCancel": "질문으로 돌아가기",
     "pastFindsTitle": "지난 채팅·방문 기록 {{count}}개",
-    "openPastChat": "이 채팅 열기"
+    "openPastChat": "이 채팅 열기",
+    "continueTitle": "이어서 하기",
+    "continueTabsOpen": "열린 탭 {{count}}개"
   },
   "footer": {
     "joinDiscord": "디스코드로 놀러 오세요!",

@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "Itanong pa rin",
     "pastFindsCancel": "Bumalik sa tanong",
     "pastFindsTitle": "Mga nakaraang chat at history ({{count}})",
-    "openPastChat": "Buksan ang chat na ito"
+    "openPastChat": "Buksan ang chat na ito",
+    "continueTitle": "Ituloy kung saan ka huminto",
+    "continueTabsOpen": "Mga bukas na tab: {{count}}"
   },
   "footer": {
     "joinDiscord": "Sumali sa akin sa Discord!",

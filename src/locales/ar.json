@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "اسأل على أي حال",
     "pastFindsCancel": "العودة إلى السؤال",
     "pastFindsTitle": "المحادثات السابقة والسجل ({{count}})",
-    "openPastChat": "فتح هذه المحادثة"
+    "openPastChat": "فتح هذه المحادثة",
+    "continueTitle": "تابع من حيث توقفت",
+    "continueTabsOpen": "علامات تبويب مفتوحة: {{count}}"
   },
   "footer": {
     "joinDiscord": "انضم إلي على Discord!",

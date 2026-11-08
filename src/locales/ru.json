@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "Всё равно спросить",
     "pastFindsCancel": "Вернуться к вопросу",
     "pastFindsTitle": "Прошлые чаты и история ({{count}})",
-    "openPastChat": "Открыть этот чат"
+    "openPastChat": "Открыть этот чат",
+    "continueTitle": "Продолжить с того места",
+    "continueTabsOpen": "Открытых вкладок: {{count}}"
   },
   "footer": {
     "joinDiscord": "Присоединяйтесь ко мне в Discord!",

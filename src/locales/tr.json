@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "Yine de sor",
     "pastFindsCancel": "Soruya dön",
     "pastFindsTitle": "Geçmiş sohbetler ve geçmiş ({{count}})",
-    "openPastChat": "Bu sohbeti aç"
+    "openPastChat": "Bu sohbeti aç",
+    "continueTitle": "Kaldığın yerden devam et",
+    "continueTabsOpen": "Açık sekmeler: {{count}}"
   },
   "footer": {
     "joinDiscord": "Discord'da bana katılın!",

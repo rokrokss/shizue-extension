@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "به هر حال بپرس",
     "pastFindsCancel": "بازگشت به پرسش",
     "pastFindsTitle": "گفتگوهای قبلی و تاریخچه ({{count}})",
-    "openPastChat": "باز کردن این گفتگو"
+    "openPastChat": "باز کردن این گفتگو",
+    "continueTitle": "از همان‌جا که ماندید ادامه دهید",
+    "continueTabsOpen": "زبانه‌های باز: {{count}}"
   },
   "footer": {
     "joinDiscord": "به من در Discord بپیوندید!",

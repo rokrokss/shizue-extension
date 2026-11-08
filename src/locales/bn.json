@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "তবুও জিজ্ঞাসা করুন",
     "pastFindsCancel": "প্রশ্নে ফিরে যান",
     "pastFindsTitle": "আগের চ্যাট ও ইতিহাস ({{count}})",
-    "openPastChat": "এই চ্যাট খুলুন"
+    "openPastChat": "এই চ্যাট খুলুন",
+    "continueTitle": "যেখানে থেমেছিলেন সেখান থেকে",
+    "continueTabsOpen": "খোলা ট্যাব: {{count}}"
   },
   "footer": {
     "joinDiscord": "Discord-এ আমার সাথে যোগ দিন!",

@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "このまま質問",
     "pastFindsCancel": "質問に戻る",
     "pastFindsTitle": "過去のチャットと閲覧履歴（{{count}}件）",
-    "openPastChat": "このチャットを開く"
+    "openPastChat": "このチャットを開く",
+    "continueTitle": "続きから",
+    "continueTabsOpen": "開いているタブ {{count}}件"
   },
   "footer": {
     "joinDiscord": "Discordに参加してください！",

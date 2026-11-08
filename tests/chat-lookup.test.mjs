@@ -38,6 +38,7 @@ const {
 const { draftKeyOf, draftTextOf, withDraft, DRAFT_KEEP_MS, DRAFT_LIMIT, NEW_CHAT_DRAFT } = await load(
   '../src/lib/chatDrafts.ts'
 );
+const { continueCards, CONTINUE_DAYS_MS } = await load('../src/lib/continueCards.ts');
 
 test('Banking, payments, health and mail sites are left out of what the chat looks through', () => {
   for (const url of [
@@ -156,4 +157,32 @@ test('A draft is kept per chat until it is sent, and old or extra ones are dropp
   assert.equal(Object.keys(many).length, DRAFT_LIMIT);
   assert.equal(draftTextOf(many, 't0', now + 100), '');
   assert.equal(draftTextOf(many, `t${DRAFT_LIMIT + 4}`, now + 100), `draft ${DRAFT_LIMIT + 4}`);
+});
+
+test("Continue cards: the past week's chats whose pages are still open, latest first, three at most", () => {
+  const now = 2_000_000_000_000;
+  const chats = [
+    { threadId: 'a', title: 'Tokyo hotels', updatedAt: now - 1000, urls: ['https://booking.com/a', 'https://agoda.com/b'] },
+    { threadId: 'b', title: 'Old trip', updatedAt: now - CONTINUE_DAYS_MS - 1, urls: ['https://booking.com/a'] },
+    { threadId: 'c', title: 'Nothing open', updatedAt: now - 500, urls: ['https://closed.example/'] },
+    { threadId: 'd', title: 'Paper', updatedAt: now - 2000, urls: ['', 'https://arxiv.org/abs/1'] },
+    { threadId: 'e', title: 'Paper 2', updatedAt: now - 3000, urls: ['https://arxiv.org/abs/1'] },
+    { threadId: 'f', title: 'Paper 3', updatedAt: now - 4000, urls: ['https://arxiv.org/abs/1'] },
+  ];
+  const tabs = [
+    { id: 1, url: 'https://booking.com/a#map', lastAccessed: 5 },
+    { id: 2, url: 'https://agoda.com/b', lastAccessed: 9 },
+    { id: 3, url: 'https://arxiv.org/abs/1', lastAccessed: 1 },
+    { id: 4, url: 'https://booking.com/a', lastAccessed: 1 },
+  ];
+  const cards = continueCards(chats, tabs, now, 5);
+  assert.deepEqual(
+    cards.map((card) => [card.threadId, card.tabIds]),
+    [
+      ['a', [2, 1]],
+      ['d', [3]],
+      ['e', [3]],
+    ]
+  );
+  assert.deepEqual(continueCards(chats.slice(0, 1), tabs, now, 1)[0].tabIds, [2]);
 });

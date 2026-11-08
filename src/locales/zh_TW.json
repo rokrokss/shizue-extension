@@ -179,7 +179,9 @@
     "pastFindsAskAnyway": "直接提問",
     "pastFindsCancel": "返回問題",
     "pastFindsTitle": "過去的聊天和瀏覽記錄（{{count}}）",
-    "openPastChat": "開啟這個聊天"
+    "openPastChat": "開啟這個聊天",
+    "continueTitle": "從上次繼續",
+    "continueTabsOpen": "開啟的分頁：{{count}}"
   },
   "footer": {
     "joinDiscord": "加入我的 Discord！",
