@@ -165,6 +165,7 @@
     "browserControlHintBody": "Bật “Điều khiển trình duyệt” trong menu Công cụ để Shizue nhấp và nhập trên trang này. Hỏi trước khi gửi hoặc thanh toán.",
     "browserControlHintAction": "Bật và thử lại",
     "tools": "Công cụ",
+    "study": "Học tập",
     "autoApprove": "Không hỏi trước",
     "autoApproveHint": "Trong cuộc trò chuyện này, gửi, thanh toán và xóa mà không hỏi. Vẫn không nhập mật khẩu hay số thẻ",
     "browserAgentAutoApprove": "Điều khiển trình duyệt · không hỏi",

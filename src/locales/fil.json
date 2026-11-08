@@ -165,6 +165,7 @@
     "browserControlHintBody": "I-on ang Kontrol ng browser sa menu na Mga tool at magki-click at magta-type si Shizue sa page na ito. Nagtatanong muna bago magpadala o magbayad.",
     "browserControlHintAction": "I-on at subukan ulit",
     "tools": "Mga tool",
+    "study": "Pag-aaral",
     "autoApprove": "Huwag nang magtanong",
     "autoApproveHint": "Sa chat na ito, nagpapadala, nagbabayad at nagbubura nang hindi nagtatanong. Hindi pa rin nagta-type ng password o numero ng card",
     "browserAgentAutoApprove": "Kontrol ng browser · walang tanong",

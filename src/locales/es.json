@@ -165,6 +165,7 @@
     "browserControlHintBody": "Activa «Control del navegador» en el menú Herramientas y Shizue hará clic y escribirá en esta página. Pregunta antes de enviar o pagar.",
     "browserControlHintAction": "Activar y reintentar",
     "tools": "Herramientas",
+    "study": "Estudio",
     "autoApprove": "Sin preguntar",
     "autoApproveHint": "En este chat envía, paga y elimina sin preguntar. Aun así no escribe contraseñas ni números de tarjeta",
     "browserAgentAutoApprove": "Control del navegador · sin preguntar",

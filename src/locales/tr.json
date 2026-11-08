@@ -165,6 +165,7 @@
     "browserControlHintBody": "Araçlar menüsünde Tarayıcı kontrolünü aç, Shizue bu sayfada tıklayıp yazsın. Göndermeden veya ödemeden önce sorar.",
     "browserControlHintAction": "Aç ve yeniden dene",
     "tools": "Araçlar",
+    "study": "Öğrenme",
     "autoApprove": "Sormadan yap",
     "autoApproveHint": "Bu sohbette sormadan gönderir, öder ve siler. Şifre ve kart numarasını yine de yazmaz",
     "browserAgentAutoApprove": "Tarayıcı kontrolü · sormadan",

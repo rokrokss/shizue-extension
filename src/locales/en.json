@@ -165,6 +165,7 @@
     "browserControlHintBody": "Turn on Browser control in the Tools menu and Shizue clicks and types on this page. It asks before sending or paying.",
     "browserControlHintAction": "Turn on and try again",
     "tools": "Tools",
+    "study": "Study",
     "autoApprove": "Don't ask first",
     "autoApproveHint": "In this chat it sends, pays and deletes without asking. It still won't type passwords or card numbers",
     "browserAgentAutoApprove": "Browser control · no asking",

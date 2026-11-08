@@ -165,6 +165,7 @@
     "browserControlHintBody": "Włącz „Sterowanie przeglądarką” w menu Narzędzia, a Shizue będzie klikać i pisać na tej stronie. Pyta przed wysłaniem lub płatnością.",
     "browserControlHintAction": "Włącz i spróbuj ponownie",
     "tools": "Narzędzia",
+    "study": "Nauka",
     "autoApprove": "Bez pytania",
     "autoApproveHint": "W tym czacie wysyła, płaci i usuwa bez pytania. Nadal nie wpisuje haseł ani numerów kart",
     "browserAgentAutoApprove": "Sterowanie przeglądarką · bez pytania",

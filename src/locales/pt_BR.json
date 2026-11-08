@@ -165,6 +165,7 @@
     "browserControlHintBody": "Ative “Controle do navegador” no menu Ferramentas e o Shizue clica e digita nesta página. Pergunta antes de enviar ou pagar.",
     "browserControlHintAction": "Ativar e tentar de novo",
     "tools": "Ferramentas",
+    "study": "Estudo",
     "autoApprove": "Sem perguntar",
     "autoApproveHint": "Nesta conversa, envia, paga e exclui sem perguntar. Ainda não digita senhas nem números de cartão",
     "browserAgentAutoApprove": "Controle do navegador · sem perguntar",

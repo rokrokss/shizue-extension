@@ -2,6 +2,7 @@ import AttachMenu, { toolbarButtonStyle } from '@/components/Chat/AttachMenu';
 import AttachmentChips, { AttachedItem } from '@/components/Chat/AttachmentChips';
 import TabMentionPicker, { TabMentionPickerHandle } from '@/components/Chat/TabMentionPicker';
 import PastFindsCard from '@/components/Chat/PastFindsCard';
+import StudyMenu from '@/components/Chat/StudyMenu';
 import ToolsMenu from '@/components/Chat/ToolsMenu';
 import Footer from '@/components/Footer';
 import { LONG_PASTE_CHARS, MAX_ATTACHED_TABS, SUMMARY_PAGE_TEXT_MAX_CHARS } from '@/config/constants';
@@ -42,12 +43,9 @@ import { currentVideoTime } from '@/lib/videoSeek';
 import type { VideoMoment } from '@/components/Chat';
 import { debugLog } from '@/logs';
 import {
-  EditOutlined,
   FolderOutlined,
-  ReadOutlined,
   ScissorOutlined,
   SmileOutlined,
-  TranslationOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons';
 import { Alert, Button, Input, Tooltip } from 'antd';
@@ -736,35 +734,12 @@ const ChatInput = ({
                 style={toolbarButtonStyle}
               ></Button>
             </Tooltip>
-            <Tooltip
-              placement="top"
-              title={
-                <div
-                  className={`sz:font-ycom sz:z-2147483647 ${
-                    theme == 'dark' ? 'sz:text-white' : 'sz:text-black'
-                  }`}
-                >
-                  {t('chat.translateMode')}
-                </div>
-              }
-              color={theme == 'dark' ? '#505362' : 'white'}
-              className="sz:font-ycom"
-            >
-              <Button
-                onClick={() => handleTranslateModeClick()}
-                type="text"
-                icon={
-                  <TranslationOutlined
-                    style={{
-                      fontSize: '20px',
-                      color: iconColor,
-                    }}
-                  />
-                }
-                size="middle"
-                style={toolbarButtonStyle}
-              ></Button>
-            </Tooltip>
+            <StudyMenu
+              iconColor={iconColor}
+              onTranslateMode={handleTranslateModeClick}
+              onMemo={handleMemoClick}
+              onWordList={handleWordListClick}
+            />
             <Tooltip
               placement="top"
               title={
@@ -807,64 +782,6 @@ const ChatInput = ({
               onPickImages={handlePickImages}
               onCapture={handleCapture}
             />
-            <Tooltip
-              placement="top"
-              title={
-                <div
-                  className={`sz:font-ycom sz:z-2147483647 ${
-                    theme == 'dark' ? 'sz:text-white' : 'sz:text-black'
-                  }`}
-                >
-                  {t('memo.memo')}
-                </div>
-              }
-              color={theme == 'dark' ? '#505362' : 'white'}
-              className="sz:font-ycom"
-            >
-              <Button
-                onClick={() => handleMemoClick()}
-                type="text"
-                icon={
-                  <EditOutlined
-                    style={{
-                      fontSize: '20px',
-                      color: iconColor,
-                    }}
-                  />
-                }
-                size="middle"
-                style={toolbarButtonStyle}
-              ></Button>
-            </Tooltip>
-            <Tooltip
-              placement="top"
-              title={
-                <div
-                  className={`sz:font-ycom sz:z-2147483647 ${
-                    theme == 'dark' ? 'sz:text-white' : 'sz:text-black'
-                  }`}
-                >
-                  {t('words.title')}
-                </div>
-              }
-              color={theme == 'dark' ? '#505362' : 'white'}
-              className="sz:font-ycom"
-            >
-              <Button
-                onClick={() => handleWordListClick()}
-                type="text"
-                icon={
-                  <ReadOutlined
-                    style={{
-                      fontSize: '20px',
-                      color: iconColor,
-                    }}
-                  />
-                }
-                size="middle"
-                style={toolbarButtonStyle}
-              ></Button>
-            </Tooltip>
             <Tooltip
               placement="top"
               title={

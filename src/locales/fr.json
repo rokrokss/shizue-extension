@@ -165,6 +165,7 @@
     "browserControlHintBody": "Activez « Contrôle du navigateur » dans le menu Outils et Shizue clique et tape sur cette page. Il demande avant d’envoyer ou de payer.",
     "browserControlHintAction": "Activer et réessayer",
     "tools": "Outils",
+    "study": "Étude",
     "autoApprove": "Sans demander",
     "autoApproveHint": "Dans cette discussion, il envoie, paie et supprime sans demander. Il ne tape toujours pas de mots de passe ni de numéros de carte",
     "browserAgentAutoApprove": "Contrôle du navigateur · sans demander",

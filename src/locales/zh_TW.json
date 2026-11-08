@@ -165,6 +165,7 @@
     "browserControlHintBody": "在工具選單中開啟「瀏覽器操作」，Shizue 就會在此頁面上點擊和輸入。傳送或付款前會先詢問。",
     "browserControlHintAction": "開啟並重試",
     "tools": "工具",
+    "study": "學習",
     "autoApprove": "不再詢問",
     "autoApproveHint": "在此對話中，傳送、付款、刪除也不再詢問，直接執行。仍不會輸入密碼或卡號",
     "browserAgentAutoApprove": "瀏覽器操作 · 不詢問",

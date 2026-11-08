@@ -165,6 +165,7 @@
     "browserControlHintBody": "Schalte im Werkzeuge-Menü „Browsersteuerung“ ein, dann klickt und tippt Shizue auf dieser Seite. Vor Senden oder Bezahlen fragt es nach.",
     "browserControlHintAction": "Einschalten und erneut versuchen",
     "tools": "Werkzeuge",
+    "study": "Lernen",
     "autoApprove": "Ohne Nachfrage ausführen",
     "autoApproveHint": "In diesem Chat sendet, bezahlt und löscht es ohne Nachfrage. Passwörter und Kartennummern tippt es weiterhin nicht",
     "browserAgentAutoApprove": "Browsersteuerung · ohne Nachfrage",
