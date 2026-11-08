@@ -53,7 +53,7 @@ const MODEL_COLORS = {
   default: '#32CCBC',
 };
 
-const TokenUsageModalContent = () => {
+const TokenUsageSettings = () => {
   const theme = useThemeValue();
   const { t } = useTranslation();
   const [usageData, setUsageData] = useState<DailyUsage[]>([]);
@@ -188,8 +188,8 @@ const TokenUsageModalContent = () => {
         `}
       </style>
       <div
-        className={`sz:text-lg sz:font-semibold sz:mb-4 sz:text-center ${
-          theme == 'dark' ? 'sz:text-white' : 'sz:text-black'
+        className={`sz:text-base sz:mb-2 sz:text-center ${
+          theme == 'dark' ? 'sz:text-gray-200' : 'sz:text-gray-800'
         } sz:flex sz:justify-center sz:items-center sz:gap-1`}
       >
         {t('usage.title')}
@@ -270,4 +270,4 @@ const TokenUsageModalContent = () => {
   );
 };
 
-export default TokenUsageModalContent;
+export default TokenUsageSettings;

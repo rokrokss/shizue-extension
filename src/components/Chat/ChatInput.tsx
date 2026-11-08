@@ -44,7 +44,6 @@ import { debugLog } from '@/logs';
 import {
   EditOutlined,
   FolderOutlined,
-  LineChartOutlined,
   ReadOutlined,
   ScissorOutlined,
   SmileOutlined,
@@ -77,7 +76,6 @@ const ChatInput = ({
   onCancel,
   onOpenHistory,
   onNewChat,
-  onOpenUsage,
   onTranslateMode,
 }: {
   chatStatus: ChatStatus;
@@ -107,7 +105,6 @@ const ChatInput = ({
   onCancel: () => Promise<void>;
   onOpenHistory: () => void;
   onNewChat: () => Promise<void>;
-  onOpenUsage: () => void;
   onTranslateMode: () => Promise<void>;
 }) => {
   const { t } = useTranslation();
@@ -729,35 +726,6 @@ const ChatInput = ({
                 type="text"
                 icon={
                   <SmileOutlined
-                    style={{
-                      fontSize: '20px',
-                      color: iconColor,
-                    }}
-                  />
-                }
-                size="middle"
-                style={toolbarButtonStyle}
-              ></Button>
-            </Tooltip>
-            <Tooltip
-              placement="top"
-              title={
-                <div
-                  className={`sz:font-ycom sz:z-2147483647 ${
-                    theme == 'dark' ? 'sz:text-white' : 'sz:text-black'
-                  }`}
-                >
-                  {t('usage.title')}
-                </div>
-              }
-              color={theme == 'dark' ? '#505362' : 'white'}
-              className="sz:font-ycom"
-            >
-              <Button
-                onClick={() => onOpenUsage()}
-                type="text"
-                icon={
-                  <LineChartOutlined
                     style={{
                       fontSize: '20px',
                       color: iconColor,

@@ -36,7 +36,6 @@ import { useTranslation } from 'react-i18next';
 
 const ChatContainer = lazy(() => import('@/components/Chat/ChatContainer'));
 const ThreadListModalContent = lazy(() => import('@/components/Chat/ThreadListModalContent'));
-const TokenUsageModalContent = lazy(() => import('@/components/Chat/TokenUsageModalContent'));
 const FormFillCard = lazy(() => import('@/components/FormFill/FormFillCard'));
 
 export interface Message {
@@ -84,7 +83,6 @@ const Chat = () => {
   const [messagesThreadId, setMessagesThreadId] = useState<string>();
   const [chatStatus, setChatStatus] = useAtom(chatStatusAtom);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
-  const [isUsageOpen, setIsUsageOpen] = useState(false);
 
   const [threadId, setThreadId] = useAtom(threadIdAtom);
   const switchThread = useSetAtom(switchThreadAtom);
@@ -784,14 +782,6 @@ const Chat = () => {
     switchThread(undefined);
   };
 
-  const handleOpenUsage = () => {
-    setIsUsageOpen(true);
-  };
-
-  const handleCloseUsage = () => {
-    setIsUsageOpen(false);
-  };
-
   const handleTranslateMode = async () => {
     threadLoader.invalidate();
     setChatStatus('waiting');
@@ -904,7 +894,6 @@ const Chat = () => {
           onCancel={handleCancel}
           onOpenHistory={handleOpenHistory}
           onNewChat={handleNewChat}
-          onOpenUsage={handleOpenUsage}
           onTranslateMode={handleTranslateMode}
         />
       </div>
@@ -923,13 +912,6 @@ const Chat = () => {
           onClose={closeFormFill}
           size="large"
           content={<FormFillCard key={formFillRequest.at} request={formFillRequest} onClose={closeFormFill} />}
-        />
-      )}
-      {isUsageOpen && (
-        <SidePanelFullModal
-          onClose={handleCloseUsage}
-          size="large"
-          content={<TokenUsageModalContent />}
         />
       )}
     </div>

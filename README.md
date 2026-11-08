@@ -134,7 +134,7 @@ Shizue provides a free, open-source alternative to commercial services (e.g., [S
 Choose **AI provider → Sign in with ChatGPT** to use your ChatGPT plan with the existing chat, summary, image, and translation features. Click **Continue with ChatGPT** and finish OpenAI's sign-in in the tab that opens; there is nothing to install. Available models come from your signed-in account; usage and app limits are managed in [ChatGPT settings](https://chatgpt.com/settings/usage).
 
 **Is it really free?**
-Yes, and it will stay free. There is no Shizue account, paid plan, or ads. You can use your AI provider's API, a local model, or your ChatGPT plan. The Token Usage chart (the chart button below the chat box) shows how many tokens each model used; ChatGPT plan limits are managed in [ChatGPT settings](https://chatgpt.com/settings/usage).
+Yes, and it will stay free. There is no Shizue account, paid plan, or ads. You can use your AI provider's API, a local model, or your ChatGPT plan. The Token Usage chart (at the bottom of Settings → Models) shows how many tokens each model used; ChatGPT plan limits are managed in [ChatGPT settings](https://chatgpt.com/settings/usage).
 
 **Is the whole thing open source?**
 Yes. The full source of the extension is in this repository under the [MIT License](LICENSE). The repository was private for a period after mid-2025 and is public again. It was AGPL-3.0 from June 2025 to October 2026 and is MIT as of v0.2.9. The PDF translation feature, which was built on AGPL-licensed BabelDOC, has been removed.

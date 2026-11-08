@@ -1,3 +1,4 @@
+import { DotCycle } from '@/components/Loader/DotCycle';
 import { LoadingLabel } from '@/components/Loader/LoadingLabel';
 import LocalModelSettings from '@/components/Setting/LocalModelSettings';
 import ChatGPTSettings from '@/components/Setting/ChatGPTSettings';
@@ -53,8 +54,11 @@ import { debugLog } from '@/logs';
 import { SmileOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Input, List, Select, Tabs, Tag } from 'antd';
 import { useSetAtom } from 'jotai';
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+// recharts loads only when the models tab first opens, not with the preloaded settings.
+const TokenUsageSettings = lazy(() => import('@/components/Setting/TokenUsageSettings'));
 
 const SettingsModalContent = () => {
   const { t } = useTranslation();
@@ -526,6 +530,9 @@ const SettingsModalContent = () => {
                     options={modelOptions}
                   />
                 </div>
+                <Suspense fallback={<div aria-busy="true"><DotCycle /></div>}>
+                  <TokenUsageSettings />
+                </Suspense>
               </div>
             ),
           },
