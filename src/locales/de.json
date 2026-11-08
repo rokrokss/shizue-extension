@@ -246,12 +246,6 @@
     "translationTonePlain": "sachlich, Schriftsprache",
     "translationToneHint": "Gilt für die Seitenübersetzung. Video- und Meeting-Untertitel behalten den Ton der Sprechenden."
   },
-  "time": {
-    "justNow": "gerade eben",
-    "minutesAgo": "Min. her",
-    "hoursAgo": "Std. her",
-    "daysAgo": "T. her"
-  },
   "layout": {
     "hideToggle": "Schaltfläche ausblenden",
     "theme": "Design",

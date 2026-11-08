@@ -246,12 +246,6 @@
     "translationTonePlain": "wa kawaida, wa maandishi",
     "translationToneHint": "Inatumika kwa tafsiri ya kurasa. Manukuu ya video na mikutano yanabaki na namna ya kuzungumza ya kila mzungumzaji."
   },
-  "time": {
-    "justNow": "sasa hivi",
-    "minutesAgo": "dakika zilizopita",
-    "hoursAgo": "saa zilizopita",
-    "daysAgo": "siku zilizopita"
-  },
   "layout": {
     "hideToggle": "Ficha Kitufe",
     "theme": "Mandhari",

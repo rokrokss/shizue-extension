@@ -246,12 +246,6 @@
     "translationTonePlain": "yalın, yazı dili",
     "translationToneHint": "Sayfa çevirisi için geçerlidir. Video ve toplantı altyazıları her konuşanın kendi üslubunu korur."
   },
-  "time": {
-    "justNow": "az önce",
-    "minutesAgo": "dk önce",
-    "hoursAgo": "sa önce",
-    "daysAgo": "gün önce"
-  },
   "layout": {
     "hideToggle": "Düğmeyi Gizle",
     "theme": "Tema",

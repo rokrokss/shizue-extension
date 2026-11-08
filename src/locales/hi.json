@@ -246,12 +246,6 @@
     "translationTonePlain": "सादा, लिखित",
     "translationToneHint": "पेज अनुवाद पर लागू होता है। वीडियो और मीटिंग कैप्शन हर बोलने वाले का अपना लहजा रखते हैं।"
   },
-  "time": {
-    "justNow": "अभी-अभी",
-    "minutesAgo": "मिनट पहले",
-    "hoursAgo": "घंटे पहले",
-    "daysAgo": "दिन पहले"
-  },
   "layout": {
     "hideToggle": "बटन छिपाएँ",
     "theme": "थीम",

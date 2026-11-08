@@ -246,12 +246,6 @@
     "translationTonePlain": "常体",
     "translationToneHint": "ページ翻訳で使います。動画や会議の字幕は、話し手それぞれの口調のままです。"
   },
-  "time": {
-    "justNow": "たった今",
-    "minutesAgo": "分前",
-    "hoursAgo": "時間前",
-    "daysAgo": "日前"
-  },
   "layout": {
     "hideToggle": "ボタンを非表示",
     "theme": "テーマ",

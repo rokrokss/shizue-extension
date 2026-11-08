@@ -246,12 +246,6 @@
     "translationTonePlain": "كتابي محايد",
     "translationToneHint": "يُستخدم في ترجمة الصفحات. تحتفظ ترجمات الفيديو والاجتماعات بأسلوب كل متحدث."
   },
-  "time": {
-    "justNow": "الآن",
-    "minutesAgo": "دقيقة مضت",
-    "hoursAgo": "ساعة مضت",
-    "daysAgo": "يوم مضت"
-  },
   "layout": {
     "hideToggle": "إخفاء الزر",
     "theme": "السمة",

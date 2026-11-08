@@ -246,12 +246,6 @@
     "translationTonePlain": "trung tính, văn viết",
     "translationToneHint": "Áp dụng cho dịch trang. Phụ đề video và cuộc họp giữ nguyên cách nói của từng người."
   },
-  "time": {
-    "justNow": "vừa xong",
-    "minutesAgo": "phút trước",
-    "hoursAgo": "giờ trước",
-    "daysAgo": "ngày trước"
-  },
   "layout": {
     "hideToggle": "Ẩn nút",
     "theme": "Chủ đề",

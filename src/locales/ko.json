@@ -254,12 +254,6 @@
     "retry": "재시도",
     "noData": "아직 사용량이 없습니다."
   },
-  "time": {
-    "justNow": "방금 전",
-    "minutesAgo": "분 전",
-    "hoursAgo": "시간 전",
-    "daysAgo": "일 전"
-  },
   "layout": {
     "hideToggle": "버튼 숨기기",
     "theme": "테마",

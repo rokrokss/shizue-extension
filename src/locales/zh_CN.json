@@ -246,12 +246,6 @@
     "translationTonePlain": "书面常体",
     "translationToneHint": "用于网页翻译。视频和会议字幕会保留每位说话者自己的语气。"
   },
-  "time": {
-    "justNow": "刚刚",
-    "minutesAgo": "分钟前",
-    "hoursAgo": "小时前",
-    "daysAgo": "天前"
-  },
   "layout": {
     "hideToggle": "隐藏按钮",
     "theme": "主题",

@@ -246,12 +246,6 @@
     "translationTonePlain": "সাধারণ লিখিত",
     "translationToneHint": "পৃষ্ঠা অনুবাদে ব্যবহার হয়। ভিডিও ও মিটিংয়ের ক্যাপশনে প্রত্যেক বক্তার নিজের ভঙ্গি থাকে।"
   },
-  "time": {
-    "justNow": "এইমাত্র",
-    "minutesAgo": "মিনিট আগে",
-    "hoursAgo": "ঘন্টা আগে",
-    "daysAgo": "দিন আগে"
-  },
   "layout": {
     "hideToggle": "বোতাম লুকান",
     "theme": "থিম",

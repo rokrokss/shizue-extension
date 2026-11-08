@@ -246,12 +246,6 @@
     "translationTonePlain": "neutre, écrit",
     "translationToneHint": "S’applique à la traduction des pages. Les sous-titres de vidéos et de réunions gardent la façon de parler de chacun."
   },
-  "time": {
-    "justNow": "à l’instant",
-    "minutesAgo": "il y a min",
-    "hoursAgo": "il y a h",
-    "daysAgo": "il y a j"
-  },
   "layout": {
     "hideToggle": "Masquer le bouton",
     "theme": "Thème",

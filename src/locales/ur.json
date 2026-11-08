@@ -246,12 +246,6 @@
     "translationTonePlain": "سادہ، تحریری",
     "translationToneHint": "صفحے کے ترجمے پر لاگو ہوتا ہے۔ ویڈیو اور میٹنگ کے کیپشن ہر بولنے والے کا اپنا انداز برقرار رکھتے ہیں۔"
   },
-  "time": {
-    "justNow": "ابھی ابھی",
-    "minutesAgo": "منٹ پہلے",
-    "hoursAgo": "گھنٹے پہلے",
-    "daysAgo": "دن پہلے"
-  },
   "layout": {
     "hideToggle": "بٹن چھپائیں",
     "theme": "تھیم",

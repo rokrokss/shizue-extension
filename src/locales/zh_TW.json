@@ -246,12 +246,6 @@
     "translationTonePlain": "書面常體",
     "translationToneHint": "用於網頁翻譯。影片和會議字幕會保留每位說話者自己的語氣。"
   },
-  "time": {
-    "justNow": "剛剛",
-    "minutesAgo": "分鐘前",
-    "hoursAgo": "小時前",
-    "daysAgo": "天前"
-  },
   "layout": {
     "hideToggle": "隱藏按鈕",
     "theme": "主題",

@@ -254,12 +254,6 @@
     "retry": "Retry",
     "noData": "No usage data yet."
   },
-  "time": {
-    "justNow": "just now",
-    "minutesAgo": "m ago",
-    "hoursAgo": "h ago",
-    "daysAgo": "d ago"
-  },
   "layout": {
     "hideToggle": "Hide Button",
     "theme": "Theme",

@@ -246,12 +246,6 @@
     "translationTonePlain": "neutro, escrito",
     "translationToneHint": "Vale para a tradução de páginas. Legendas de vídeos e reuniões mantêm o jeito de falar de cada pessoa."
   },
-  "time": {
-    "justNow": "agora mesmo",
-    "minutesAgo": "min atrás",
-    "hoursAgo": "h atrás",
-    "daysAgo": "d atrás"
-  },
   "layout": {
     "hideToggle": "Ocultar botão",
     "theme": "Tema",

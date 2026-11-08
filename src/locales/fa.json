@@ -246,12 +246,6 @@
     "translationTonePlain": "نوشتاری ساده",
     "translationToneHint": "برای ترجمهٔ صفحه به کار می‌رود. زیرنویس ویدیو و جلسه لحن هر گوینده را حفظ می‌کند."
   },
-  "time": {
-    "justNow": "همین الان",
-    "minutesAgo": "دقیقه پیش",
-    "hoursAgo": "ساعت پیش",
-    "daysAgo": "روز پیش"
-  },
   "layout": {
     "hideToggle": "پنهان کردن دکمه",
     "theme": "تم",

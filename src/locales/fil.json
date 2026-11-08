@@ -246,12 +246,6 @@
     "translationTonePlain": "simple, pasulat",
     "translationToneHint": "Para sa pagsasalin ng pahina. Pinananatili ng captions ng video at pulong ang paraan ng pagsasalita ng bawat isa."
   },
-  "time": {
-    "justNow": "ngayon lang",
-    "minutesAgo": "m ang nakalipas",
-    "hoursAgo": "h ang nakalipas",
-    "daysAgo": "d ang nakalipas"
-  },
   "layout": {
     "hideToggle": "Itago ang Button",
     "theme": "Tema",

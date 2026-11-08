@@ -246,12 +246,6 @@
     "translationTonePlain": "neutro, escrito",
     "translationToneHint": "Se aplica a la traducción de páginas. Los subtítulos de vídeos y reuniones conservan la forma de hablar de cada persona."
   },
-  "time": {
-    "justNow": "justo ahora",
-    "minutesAgo": "hace min",
-    "hoursAgo": "hace h",
-    "daysAgo": "hace d"
-  },
   "layout": {
     "hideToggle": "Ocultar botón",
     "theme": "Tema",

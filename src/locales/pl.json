@@ -246,12 +246,6 @@
     "translationTonePlain": "neutralny, pisany",
     "translationToneHint": "Dotyczy tłumaczenia stron. Napisy w filmach i spotkaniach zachowują sposób mówienia każdej osoby."
   },
-  "time": {
-    "justNow": "przed chwilą",
-    "minutesAgo": "min temu",
-    "hoursAgo": "godz. temu",
-    "daysAgo": "dni temu"
-  },
   "layout": {
     "hideToggle": "Ukryj przycisk",
     "theme": "Motyw",
