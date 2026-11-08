@@ -20,6 +20,9 @@ const StudyMenu = ({
   const { t } = useTranslation();
   const theme = useThemeValue();
   const [open, setOpen] = useState(false);
+  // The hover title is off while the menu is open and stays off until the pointer comes back, so
+  // closing the menu doesn't flash it.
+  const [hint, setHint] = useState(false);
   const rowClass = attachRowClass(false, theme);
   const pick = (action: () => void) => () => {
     setOpen(false);
@@ -44,11 +47,21 @@ const StudyMenu = ({
   );
 
   return (
-    <Popover content={content} trigger="click" placement="topLeft" open={open} onOpenChange={setOpen}>
+    <Popover
+      content={content}
+      trigger="click"
+      placement="topLeft"
+      open={open}
+      onOpenChange={(next) => {
+        setHint(false);
+        setOpen(next);
+      }}
+    >
       <span className="sz:inline-flex">
         <Tooltip
           placement="top"
-          open={open ? false : undefined}
+          open={hint}
+          onOpenChange={(next) => setHint(next && !open)}
           title={
             <div
               className={`sz:font-ycom sz:z-2147483647 ${

@@ -75,11 +75,15 @@ const AttachMenu = ({
   const { t } = useTranslation();
   const theme = useThemeValue();
   const [open, setOpen] = useState(false);
+  // The hover title is off while the menu is open and stays off until the pointer comes back, so
+  // closing the menu doesn't flash it.
+  const [hint, setHint] = useState(false);
   const [tabs, setTabs] = useState<chrome.tabs.Tab[]>([]);
   const fileInput = useRef<HTMLInputElement>(null);
   const imageInput = useRef<HTMLInputElement>(null);
 
   const handleOpenChange = async (next: boolean) => {
+    setHint(false);
     if (next) setTabs((await chrome.tabs.query({ currentWindow: true })).filter(isWebTab));
     setOpen(next);
   };
@@ -226,7 +230,8 @@ const AttachMenu = ({
       <span className="sz:inline-flex">
         <Tooltip
           placement="top"
-          open={open ? false : undefined}
+          open={hint}
+          onOpenChange={(next) => setHint(next && !open)}
           title={
             <div
               className={`sz:font-ycom sz:z-2147483647 ${

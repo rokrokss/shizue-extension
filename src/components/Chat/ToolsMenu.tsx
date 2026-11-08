@@ -70,6 +70,9 @@ const ToolsMenu = ({
   const { t } = useTranslation();
   const theme = useThemeValue();
   const [open, setOpen] = useState(false);
+  // The hover title is off while the menu is open and stays off until the pointer comes back, so
+  // closing the menu doesn't flash it.
+  const [hint, setHint] = useState(false);
   const [agentBackground, setAgentBackground] = useAgentBackground();
   // Its tabs go in a group of their own when the user grants tab groups, asked here inside the
   // click; without them it works all the same.
@@ -258,11 +261,21 @@ const ToolsMenu = ({
   );
 
   return (
-    <Popover content={content} trigger="click" placement="topRight" open={open} onOpenChange={setOpen}>
+    <Popover
+      content={content}
+      trigger="click"
+      placement="topRight"
+      open={open}
+      onOpenChange={(next) => {
+        setHint(false);
+        setOpen(next);
+      }}
+    >
       <span className="sz:inline-flex">
         <Tooltip
           placement="top"
-          open={open ? false : undefined}
+          open={hint}
+          onOpenChange={(next) => setHint(next && !open)}
           title={
             <div
               className={`sz:font-ycom sz:z-2147483647 ${
