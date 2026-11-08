@@ -17,6 +17,7 @@
 - Attach Office files: Word (.docx), Excel (.xlsx), PowerPoint (.pptx), HWPX and EPUB files can be attached and asked about. An old .hwp file gets a note to save it as HWPX or PDF
 - Translation style for Korean and Japanese: in Settings → Page translation, choose formal, polite or plain written style for page translation, or Auto to follow the page. Video and meeting captions keep each speaker's own way of talking
 - Fix meeting captions not starting in company Teams that goes through Microsoft Defender for Cloud Apps
+- Fix Stop on browser control's pill doing nothing on pages that catch every click
 - Fix Claude Haiku 5.5 answers stopping at 4,096 tokens with a Claude API key
 
 ## v0.4.2
