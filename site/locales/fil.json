@@ -1,8 +1,8 @@
 {
   "language": "Filipino",
   "language_label": "Wika",
-  "title": "Shizue: libre at open source na AI side panel para sa Chrome",
-  "description": "Mag-chat, magbuod, at magsalin ng mga pahina sa side panel ng Chrome, manood ng YouTube, Twitch, at Netflix na may caption sa dalawang wika, at ipaubaya sa Shizue ang pag-click para matapos ang isang gawain sa tab mo. Libre at open source (MIT). Mag-sign in gamit ang ChatGPT para magamit ang iyong plan, o gamitin ang sarili mong API key.",
+  "title": "Shizue: libreng AI translator at side panel na Chrome extension",
+  "description": "Libre at open source na Chrome extension: AI chat, buod at salin ng mga pahina sa side panel, at caption sa dalawang wika sa YouTube, Twitch, at Netflix.",
   "og_title": "Shizue: ang AI katuwang mo sa bawat pahina",
   "og_description": "Libre at open source na side panel sa Chrome: AI chat, kontrol ng browser, buod ng pahina, bilingual na salin ng mga pahina, at bilingual na caption sa YouTube, Twitch, at Netflix. Mag-sign in gamit ang ChatGPT o gamitin ang sarili mong API key.",
   "nav_features": "Mga Feature",

@@ -1,8 +1,8 @@
 {
   "language": "日本語",
   "language_label": "言語",
-  "title": "シズエ：Chromeで使える無料・オープンソースのAIサイドパネル",
-  "description": "Chromeのサイドパネルで、AIとのチャット、ページの要約と翻訳ができ、YouTube・Twitch・Netflixはバイリンガル字幕で見られます。タブでの作業も、シズエがクリックして進めてくれます。無料のオープンソース（MIT）で、ChatGPTでログインしてご契約中のプランで使うか、お手持ちのOpenAI、Claude、Gemini、OpenRouterのキーで使えます。",
+  "title": "シズエ：AIサイドパネル・翻訳・バイリンガル字幕の無料Chrome拡張機能",
+  "description": "無料・オープンソースのChrome拡張機能。サイドパネルでAIチャット、要約、ウェブページ翻訳ができ、YouTube・Twitch・Netflixをバイリンガル字幕で見られます。",
   "og_title": "シズエ：どのページでもそばにいるAIアシスタント",
   "og_description": "AIチャット、ブラウザ操作、ページ要約、ウェブページのバイリンガル翻訳、YouTube・Twitch・Netflixのバイリンガル字幕が使える、無料でオープンソースのChromeサイドパネルです。ChatGPTでログインするか、お手持ちのAPIキーで使えます。",
   "nav_features": "機能",

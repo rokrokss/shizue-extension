@@ -4,8 +4,45 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 
 const ORIGIN = 'https://shizue.net';
-const STORE_URL = 'https://chromewebstore.google.com/detail/mpcbgfkoholfgapcgcmfjobnfcbnfanm?utm_source=shizue.net';
+const STORE = 'https://chromewebstore.google.com/detail/mpcbgfkoholfgapcgcmfjobnfcbnfanm';
+const STORE_URL = `${STORE}?utm_source=shizue.net`;
 const RTL = ['ar', 'fa', 'ur'];
+const VERSION = JSON.parse(readFileSync('package.json', 'utf8')).version;
+
+// schema.org data, so search engines and AI answers tie the site, the store listings and the repository to one product.
+const jsonLd = ({ lang, url, img, description }) =>
+  JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${ORIGIN}/#org`,
+        name: 'Shizue',
+        url: `${ORIGIN}/`,
+        logo: `${ORIGIN}/icon.svg`,
+        sameAs: ['https://github.com/rokrokss/shizue', 'https://discord.gg/ukfPmxsyEy'],
+      },
+      {
+        '@type': 'SoftwareApplication',
+        '@id': `${ORIGIN}/#app`,
+        name: 'Shizue',
+        alternateName: ['시즈에', 'シズエ'],
+        url,
+        inLanguage: lang,
+        description,
+        applicationCategory: 'BrowserApplication',
+        operatingSystem: 'Chrome, Firefox',
+        softwareVersion: VERSION,
+        license: 'https://opensource.org/licenses/MIT',
+        image: `${ORIGIN}/img/github-social-1280x640.png`,
+        screenshot: `${ORIGIN}${img}/screenshot-6-youtube.png`,
+        installUrl: STORE,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        publisher: { '@id': `${ORIGIN}/#org` },
+        sameAs: [STORE, 'https://addons.mozilla.org/firefox/addon/shizue-ai-translator-assistant/'],
+      },
+    ],
+  }).replace(/</g, '\\u003c');
 
 const template = readFileSync('site/index.html', 'utf8');
 const locales = readdirSync('site/locales')
@@ -43,6 +80,7 @@ for (const { lang, path, strings } of locales) {
       return `<li><a href="${l.path}" hreflang="${l.lang}" lang="${l.lang}"${current}>${l.strings.language}</a></li>`;
     })
     .join('\n          ');
+  const img = lang === 'en' ? '/img' : `/img/${storeCode(lang)}`;
   const vars = {
     // A quote outside a tag is text, and some text lands in attributes (alt, meta content).
     ...Object.fromEntries(Object.entries(strings).map(([key, value]) => [key, value.replace(/"(?![^<]*>)/g, '&quot;')])),
@@ -50,8 +88,9 @@ for (const { lang, path, strings } of locales) {
     dir: RTL.includes(lang) ? 'rtl' : 'ltr',
     code: lang.toUpperCase(),
     home: path,
-    img: lang === 'en' ? '/img' : `/img/${storeCode(lang)}`,
+    img,
     url: ORIGIN + path,
+    json_ld: jsonLd({ lang, url: ORIGIN + path, img, description: strings.description }),
     alternates,
     lang_menu: menu,
     langs: JSON.stringify(locales.map((l) => l.lang)),

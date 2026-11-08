@@ -1,8 +1,8 @@
 {
   "language": "简体中文",
   "language_label": "语言",
-  "title": "Shizue：免费开源的 Chrome 侧边栏 AI 助手",
-  "description": "在 Chrome 侧边栏中与 AI 聊天，总结和翻译网页，以双语字幕观看 YouTube、Twitch 和 Netflix，还能让 Shizue 在标签页里替你点击完成任务。免费开源（MIT），可以使用 ChatGPT 登录用自己的套餐，也可以使用自备的 OpenAI、Claude、Gemini 或 OpenRouter 密钥。",
+  "title": "Shizue：免费开源的 AI 侧边栏、网页翻译与双语字幕 Chrome 插件",
+  "description": "免费开源的 Chrome 插件：在侧边栏中与 AI 聊天、总结和翻译网页，并以双语字幕观看 YouTube、Twitch 和 Netflix。",
   "og_title": "Shizue：你的 AI 助手，就在每个页面",
   "og_description": "免费开源的 Chrome 侧边栏，支持 AI 聊天、浏览器操作、页面总结、网页双语对照翻译，以及 YouTube、Twitch 和 Netflix 双语字幕。使用 ChatGPT 登录，或使用自备的 API 密钥。",
   "nav_features": "功能",

@@ -1,8 +1,8 @@
 {
   "language": "한국어",
   "language_label": "언어",
-  "title": "시즈에: Chrome 사이드 패널의 무료 오픈소스 AI 도우미",
-  "description": "Chrome 사이드 패널에서 AI와 대화하고 페이지를 요약·번역하며, YouTube·Twitch·Netflix는 이중 언어 자막으로 보고, 탭에서 할 일은 시즈에한테 맡길 수 있습니다. 무료 오픈소스(MIT)이며, ChatGPT로 로그인해 내 구독으로 쓰거나 직접 발급받은 OpenAI, Claude, Gemini, OpenRouter 키로 쓸 수 있습니다.",
+  "title": "시즈에: 무료 AI 사이드 패널·번역·이중 자막 크롬 확장 프로그램",
+  "description": "무료 오픈소스 크롬 확장 프로그램. 사이드 패널에서 AI 채팅·요약·웹페이지 번역을 하고, YouTube·Twitch·Netflix를 이중 자막으로 봅니다.",
   "og_title": "시즈에: 모든 페이지에서 함께하는 AI 도우미",
   "og_description": "AI 채팅, 브라우저 조작, 페이지 요약, 웹페이지 이중 언어 번역, YouTube·Twitch·Netflix 이중 자막을 지원하는 무료 오픈소스 Chrome 사이드 패널입니다. ChatGPT로 로그인하거나 직접 발급받은 API 키로 쓸 수 있습니다.",
   "nav_features": "기능",

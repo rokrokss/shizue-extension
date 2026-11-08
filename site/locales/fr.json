@@ -1,8 +1,8 @@
 {
   "language": "Français",
   "language_label": "Langue",
-  "title": "Shizue : panneau latéral IA gratuit et open source pour Chrome",
-  "description": "Discutez, résumez et traduisez les pages web dans le panneau latéral de Chrome, regardez YouTube, Twitch et Netflix avec des sous-titres en deux langues, et laissez Shizue cliquer à votre place pour accomplir une tâche dans votre onglet. Gratuit et open source (MIT). Connectez-vous avec ChatGPT pour utiliser votre forfait, ou utilisez votre propre clé API.",
+  "title": "Shizue : extension Chrome gratuite, traducteur et panneau IA",
+  "description": "Extension Chrome gratuite et open source : chat IA, résumés et traduction de pages dans le panneau latéral, sous-titres bilingues sur YouTube, Twitch, Netflix.",
   "og_title": "Shizue : votre assistant IA sur toutes les pages",
   "og_description": "Panneau latéral Chrome gratuit et open source : chat IA, contrôle du navigateur, résumés de pages, traduction bilingue des pages web et sous-titres bilingues sur YouTube, Twitch et Netflix. Connectez-vous avec ChatGPT ou utilisez votre propre clé API.",
   "nav_features": "Fonctionnalités",

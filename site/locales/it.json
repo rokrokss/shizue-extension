@@ -1,8 +1,8 @@
 {
   "language": "Italiano",
   "language_label": "Lingua",
-  "title": "Shizue: pannello laterale AI gratis e open source per Chrome",
-  "description": "Chatta, riassumi e traduci pagine web nel pannello laterale di Chrome, guarda YouTube, Twitch e Netflix con i sottotitoli in due lingue, e lascia che Shizue svolga un compito nella tua scheda clic dopo clic. Gratis e open source (MIT). Accedi con ChatGPT per usare il tuo piano, oppure usa la tua chiave API.",
+  "title": "Shizue: estensione Chrome gratis con traduttore e pannello AI",
+  "description": "Estensione Chrome gratis e open source: chat AI, riassunti e traduzione delle pagine nel pannello laterale, sottotitoli bilingui su YouTube, Twitch e Netflix.",
   "og_title": "Shizue: il tuo assistente AI su ogni pagina",
   "og_description": "Pannello laterale per Chrome gratis e open source: chat AI, controllo del browser, riassunti, traduzione bilingue di pagine web e sottotitoli bilingui su YouTube, Twitch e Netflix. Accedi con ChatGPT o usa la tua chiave API.",
   "nav_features": "Funzionalità",

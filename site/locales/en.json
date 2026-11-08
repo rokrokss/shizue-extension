@@ -1,8 +1,8 @@
 {
   "language": "English",
   "language_label": "Language",
-  "title": "Shizue: free, open-source AI side panel for Chrome",
-  "description": "Chat, summarize, and translate pages in a Chrome side panel, watch YouTube, Twitch, and Netflix with captions in two languages, and let Shizue click through a task in your tab. Free and open source (MIT). Sign in with ChatGPT to use your plan, or bring your own OpenAI, Claude, Gemini, or OpenRouter key.",
+  "title": "Shizue: free AI side panel & translator extension for Chrome",
+  "description": "Free, open-source Chrome extension: AI chat, summaries, and page translation in a side panel, plus dual subtitles on YouTube, Twitch, and Netflix.",
   "og_title": "Shizue: your AI sidekick on every page",
   "og_description": "Free, open-source Chrome side panel for AI chat, browser control, page summaries, bilingual page translation, and bilingual captions on YouTube, Twitch, and Netflix. Sign in with ChatGPT or bring your own API key.",
   "nav_features": "Features",

@@ -1,8 +1,8 @@
 {
   "language": "Deutsch",
   "language_label": "Sprache",
-  "title": "Shizue: kostenlose KI-Seitenleiste für Chrome, Open Source",
-  "description": "Chatten, zusammenfassen und Webseiten übersetzen, in der Seitenleiste von Chrome. Dazu YouTube, Twitch und Netflix mit Untertiteln in zwei Sprachen schauen und Shizue Klick für Klick eine Aufgabe in deinem Tab erledigen lassen. Kostenlos und Open Source (MIT). Melde dich mit ChatGPT an und nutze deinen Plan, oder verwende deinen eigenen API-Schlüssel.",
+  "title": "Shizue: KI-Übersetzer und Seitenleiste als Chrome-Erweiterung",
+  "description": "Kostenlose Open-Source-Chrome-Erweiterung: KI-Chat, Zusammenfassen und Übersetzen in der Seitenleiste, zweisprachige Untertitel auf YouTube, Twitch, Netflix.",
   "og_title": "Shizue: dein KI-Assistent auf jeder Seite",
   "og_description": "Kostenlose Open-Source-Seitenleiste für Chrome: KI-Chat, Browsersteuerung, Zusammenfassungen, zweisprachige Webseiten und zweisprachige Untertitel für YouTube, Twitch und Netflix. Mit ChatGPT anmelden oder den eigenen API-Schlüssel nutzen.",
   "nav_features": "Funktionen",

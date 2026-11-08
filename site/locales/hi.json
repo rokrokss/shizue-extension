@@ -1,8 +1,8 @@
 {
   "language": "हिंदी",
   "language_label": "भाषा",
-  "title": "Shizue: Chrome के लिए मुफ़्त, ओपन सोर्स AI साइड पैनल",
-  "description": "Chrome के साइड पैनल में चैट करें, पेज का सारांश पाएँ, पेज का अनुवाद करें, YouTube, Twitch व Netflix दो भाषाओं के कैप्शन के साथ देखें, और अपने टैब का कोई काम Shizue को सौंपकर क्लिक उसी पर छोड़ दें। मुफ़्त और ओपन सोर्स (MIT)। ChatGPT से साइन इन करके अपना प्लान इस्तेमाल करें, या अपनी OpenAI, Claude, Gemini या OpenRouter कुंजी से चलाएँ।",
+  "title": "Shizue: मुफ़्त AI अनुवाद और साइड पैनल वाला Chrome एक्सटेंशन",
+  "description": "मुफ़्त, ओपन सोर्स Chrome एक्सटेंशन: साइड पैनल में AI चैट, पेज का सारांश और अनुवाद, और YouTube, Twitch व Netflix पर दो भाषाओं के कैप्शन।",
   "og_title": "Shizue: हर पेज पर आपका AI साथी",
   "og_description": "Chrome के लिए मुफ़्त, ओपन सोर्स साइड पैनल: AI चैट, ब्राउज़र नियंत्रण, पेज का सारांश, वेब पेज का द्विभाषी अनुवाद, और YouTube, Twitch व Netflix पर द्विभाषी कैप्शन। ChatGPT से साइन इन करें या अपनी API कुंजी से चलाएँ।",
   "nav_features": "सुविधाएँ",

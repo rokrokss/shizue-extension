@@ -1,8 +1,8 @@
 {
   "language": "繁體中文",
   "language_label": "語言",
-  "title": "Shizue：免費開源的 Chrome 側邊欄 AI 助理",
-  "description": "在 Chrome 側邊欄中與 AI 對話，總結和翻譯網頁，以雙語字幕觀看 YouTube、Twitch 和 Netflix，還能讓 Shizue 在分頁裡替你點擊完成任務。免費開源（MIT），可以使用 ChatGPT 登入用自己的方案，也可以使用自備的 OpenAI、Claude、Gemini 或 OpenRouter 金鑰。",
+  "title": "Shizue：免費開源的 AI 側邊欄、網頁翻譯與雙語字幕 Chrome 擴充功能",
+  "description": "免費開源的 Chrome 擴充功能：在側邊欄與 AI 對話、摘要和翻譯網頁，並以雙語字幕觀看 YouTube、Twitch 和 Netflix。",
   "og_title": "Shizue：你的 AI 助理，就在每個網頁",
   "og_description": "免費開源的 Chrome 側邊欄，支援 AI 對話、瀏覽器操作、頁面總結、網頁雙語對照翻譯，以及 YouTube、Twitch 和 Netflix 雙語字幕。使用 ChatGPT 登入，或使用自備的 API 金鑰。",
   "nav_features": "功能",

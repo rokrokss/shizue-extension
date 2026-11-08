@@ -1,8 +1,8 @@
 {
   "language": "Türkçe",
   "language_label": "Dil",
-  "title": "Shizue: Chrome için ücretsiz, açık kaynaklı yapay zeka yan paneli",
-  "description": "Chrome'un yan panelinde sohbet edin, sayfa özeti alın, sayfaları çevirin; YouTube, Twitch ve Netflix'i iki dilli altyazıyla izleyin; sekmenizdeki bir işi de sizin yerinize tıklayan Shizue'ye bırakın. Ücretsiz, açık kaynaklı (MIT). ChatGPT ile giriş yaparak planınızla ya da kendi API anahtarınızla kullanın.",
+  "title": "Shizue: Chrome için ücretsiz yapay zeka çeviri eklentisi",
+  "description": "Ücretsiz, açık kaynaklı Chrome eklentisi: yan panelde yapay zeka sohbeti, sayfa özeti ve çeviri; YouTube, Twitch ve Netflix'te iki dilli altyazı.",
   "og_title": "Shizue: her sayfada yapay zeka asistanınız",
   "og_description": "Ücretsiz, açık kaynaklı Chrome yan paneli: yapay zeka sohbeti, tarayıcı kontrolü, sayfa özeti, sayfalar için iki dilli çeviri ve YouTube, Twitch ile Netflix'te iki dilli altyazı. ChatGPT ile giriş yapın ya da kendi API anahtarınızı kullanın.",
   "nav_features": "Özellikler",

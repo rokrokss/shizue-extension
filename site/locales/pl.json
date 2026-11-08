@@ -1,8 +1,8 @@
 {
   "language": "Polski",
   "language_label": "Język",
-  "title": "Shizue: darmowy panel boczny z AI dla Chrome, open source",
-  "description": "Czat z AI, podsumowania i tłumaczenie stron w panelu bocznym Chrome, YouTube, Twitch i Netflix z napisami w dwóch językach, a do tego zadania w karcie, które Shizue wykona za Ciebie klik po kliku. Darmowe i open source (MIT). Zaloguj się przez ChatGPT, aby korzystać ze swojego planu, albo użyj własnego klucza API.",
+  "title": "Shizue: darmowe rozszerzenie Chrome z tłumaczem i panelem AI",
+  "description": "Darmowe rozszerzenie Chrome open source: czat z AI, podsumowania i tłumaczenie stron w panelu bocznym oraz dwujęzyczne napisy na YouTube, Twitch i Netflix.",
   "og_title": "Shizue: Twój asystent AI na każdej stronie",
   "og_description": "Darmowy panel boczny open source dla Chrome: czat z AI, sterowanie przeglądarką, podsumowania stron, dwujęzyczne tłumaczenie stron oraz dwujęzyczne napisy w serwisach YouTube, Twitch i Netflix. Zaloguj się przez ChatGPT albo użyj własnego klucza API.",
   "nav_features": "Funkcje",

@@ -3,7 +3,7 @@ name: Deploy shizue.net
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'store/out/**', 'src/public/icon.svg', '.github/workflows/pages.yml']
+    paths: ['site/**', 'store/out/**', 'src/public/icon.svg', 'package.json', '.github/workflows/pages.yml']
   workflow_dispatch:
 
 permissions:
