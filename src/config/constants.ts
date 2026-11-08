@@ -132,8 +132,9 @@ export const STORAGE_TRANSLATION_TONE = 'TRANSLATION_TONE';
 // tab it was last opened from.
 export const STORAGE_PANEL_TAB = 'PANEL_TAB';
 export const STORAGE_PANEL_SOURCE_TAB = 'PANEL_SOURCE_TAB';
-// chrome.storage.session, the Claude Code bridge (services/background/nativeBridge.ts): what it
-// did lately, the tabs whose pill the user stopped it in, and the tabs it opened itself.
+// The agent bridge (services/background/nativeBridge.ts): what it did lately and the tabs it opened
+// itself, in chrome.storage.session, and the tabs whose pill the user stopped it in, in
+// chrome.storage.local so they stay stopped when the extension reloads.
 export const STORAGE_BRIDGE_LOG = 'BRIDGE_LOG';
 export const STORAGE_BRIDGE_PAUSED_TABS = 'BRIDGE_PAUSED_TABS';
 export const STORAGE_BRIDGE_OPENED_TABS = 'BRIDGE_OPENED_TABS';

@@ -110,21 +110,25 @@ const hostOf = (url: string | undefined) => {
   }
 };
 
-const sessionList = async <T>(key: string) =>
-  ((await chrome.storage.session.get(key))[key] as T[] | undefined) ?? [];
+// The stopped tabs outlast an extension reload, which empties session storage and keeps tab ids;
+// the browser gives tabs new ids when it starts, so they go then (nativeBridgeListeners).
+const storeOf = (key: string) =>
+  key === STORAGE_BRIDGE_PAUSED_TABS ? chrome.storage.local : chrome.storage.session;
+const storedList = async <T>(key: string) =>
+  ((await storeOf(key).get(key))[key] as T[] | undefined) ?? [];
 
-const pausedTabs = () => sessionList<number>(STORAGE_BRIDGE_PAUSED_TABS);
-const openedTabs = () => sessionList<number>(STORAGE_BRIDGE_OPENED_TABS);
+const pausedTabs = () => storedList<number>(STORAGE_BRIDGE_PAUSED_TABS);
+const openedTabs = () => storedList<number>(STORAGE_BRIDGE_OPENED_TABS);
 
 // Changes to the stored tab lists, one after another, so calls running together don't drop each
 // other's.
 let listWrites: Promise<unknown> = Promise.resolve();
 const changeList = (key: string, change: (ids: number[]) => number[]) =>
   (listWrites = listWrites.then(async () => {
-    const ids = await sessionList<number>(key);
+    const ids = await storedList<number>(key);
     const next = change(ids);
     if (next.length !== ids.length || next.some((id, index) => id !== ids[index])) {
-      await chrome.storage.session.set({ [key]: next });
+      await storeOf(key).set({ [key]: next });
     }
   }).catch(() => {}));
 
@@ -132,7 +136,7 @@ const changeList = (key: string, change: (ids: number[]) => number[]) =>
 // settings clear it there. Each entry builds on the one before, even when calls run together.
 let log: Promise<BridgeLogEntry[]> | null = null;
 const record = async (entry: Omit<BridgeLogEntry, 'at'>) => {
-  log = (log ?? sessionList<BridgeLogEntry>(STORAGE_BRIDGE_LOG)).then((entries) =>
+  log = (log ?? storedList<BridgeLogEntry>(STORAGE_BRIDGE_LOG)).then((entries) =>
     [...entries, { at: Date.now(), ...entry }].slice(-LOG_LIMIT)
   );
   await chrome.storage.session.set({ [STORAGE_BRIDGE_LOG]: await log }).catch(() => {});
@@ -620,9 +624,15 @@ const connect = () => {
 
 export const nativeBridgeListeners = () => {
   if (!bridgeBuild()) return;
-  // Starts the worker with the browser; the open port then keeps it awake.
-  chrome.runtime.onStartup.addListener(() => {});
+  // Starts the worker with the browser; the open port then keeps it awake. The tabs have new ids
+  // now, so the stopped ones from before would stop the wrong tabs.
+  chrome.runtime.onStartup.addListener(() => void changeList(STORAGE_BRIDGE_PAUSED_TABS, () => []));
   chrome.tabs.onRemoved.addListener((tabId) => void forgetTab(tabId));
+  // Tabs closed while the extension was off or reloading.
+  void chrome.tabs.query({}).then((tabs) => {
+    const open = new Set(tabs.map((tab) => tab.id));
+    return changeList(STORAGE_BRIDGE_PAUSED_TABS, (paused) => paused.filter((id) => open.has(id)));
+  });
   // The settings clearing the log.
   chrome.storage.session.onChanged.addListener((changes) => {
     if (STORAGE_BRIDGE_LOG in changes) log = Promise.resolve(changes[STORAGE_BRIDGE_LOG].newValue ?? []);

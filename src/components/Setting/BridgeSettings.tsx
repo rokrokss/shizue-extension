@@ -12,8 +12,9 @@ const isBridgeBuild = () =>
 
 // Only in the bridge build (`pnpm build:bridge`): which tabs an agent such as Claude Code or Codex
 // reaches, the tabs whose pill the user stopped it in, with a way to let it back in, and what it
-// did lately. The background keeps both in session storage (services/background/nativeBridge.ts),
-// so they last until the browser closes.
+// did lately. The background (services/background/nativeBridge.ts) keeps the log in session
+// storage and the stopped tabs in local storage, so the stopped ones stay stopped when the
+// extension reloads; both go when the browser closes.
 export default function BridgeSettings() {
   const { t } = useTranslation();
   const theme = useThemeValue();
@@ -23,10 +24,10 @@ export default function BridgeSettings() {
   useEffect(() => {
     if (!isBridgeBuild()) return;
     const load = async () => {
-      const stored = await chrome.storage.session.get([
-        STORAGE_BRIDGE_LOG,
-        STORAGE_BRIDGE_PAUSED_TABS,
-      ]);
+      const stored = {
+        ...(await chrome.storage.session.get(STORAGE_BRIDGE_LOG)),
+        ...(await chrome.storage.local.get(STORAGE_BRIDGE_PAUSED_TABS)),
+      };
       setLog(
         ((stored[STORAGE_BRIDGE_LOG] as BridgeLogEntry[] | undefined) ?? []).slice().reverse()
       );
@@ -43,15 +44,19 @@ export default function BridgeSettings() {
       if (STORAGE_BRIDGE_LOG in changes || STORAGE_BRIDGE_PAUSED_TABS in changes) void load();
     };
     chrome.storage.session.onChanged.addListener(onChanged);
-    return () => chrome.storage.session.onChanged.removeListener(onChanged);
+    chrome.storage.local.onChanged.addListener(onChanged);
+    return () => {
+      chrome.storage.session.onChanged.removeListener(onChanged);
+      chrome.storage.local.onChanged.removeListener(onChanged);
+    };
   }, []);
 
   if (!isBridgeBuild()) return null;
 
   const letBackIn = async (tabId: number) => {
-    const stored = await chrome.storage.session.get(STORAGE_BRIDGE_PAUSED_TABS);
+    const stored = await chrome.storage.local.get(STORAGE_BRIDGE_PAUSED_TABS);
     const ids = (stored[STORAGE_BRIDGE_PAUSED_TABS] as number[] | undefined) ?? [];
-    await chrome.storage.session.set({
+    await chrome.storage.local.set({
       [STORAGE_BRIDGE_PAUSED_TABS]: ids.filter((id) => id !== tabId),
     });
   };
