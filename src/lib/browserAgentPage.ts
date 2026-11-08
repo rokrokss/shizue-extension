@@ -569,8 +569,10 @@ export function markElements(on: boolean): { width: number; height: number } {
   const globals = globalThis as unknown as AgentGlobals;
   globals.__shizueAgentMarks?.remove();
   globals.__shizueAgentMarks = undefined;
+  // Taken out of the page and put back: no style of its own may hide it (showAgentOverlay).
   const overlay = globals.__shizueAgentOverlay?.host;
-  if (overlay) overlay.style.visibility = on ? 'hidden' : '';
+  if (overlay && on) overlay.remove();
+  else if (overlay && !overlay.isConnected) document.documentElement.append(overlay);
   const size = { width: window.innerWidth, height: window.innerHeight };
   if (!on) return size;
   const host = document.createElement('div');
@@ -714,6 +716,8 @@ export function showAgentOverlay(
     const style = document.createElement('style');
     style.textContent = `
       :host { all: initial; }
+      /* The page's own !important rules can't hide the frame and its stop button: the shadow's win. */
+      :host { display: block !important; opacity: 1 !important; visibility: visible !important; transform: none !important; filter: none !important; clip-path: none !important; }
       .frame { position: fixed; inset: 0; pointer-events: none; box-shadow: inset 0 0 0 2px rgba(50, 204, 188, 0.85), inset 0 0 28px rgba(50, 204, 188, 0.28); animation: breathe 2.4s ease-in-out infinite; }
       .pill { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 10px; box-sizing: border-box; height: 36px; padding: 0 5px 0 14px; border-radius: 9999px; background: rgba(17, 17, 17, 0.88); color: #fff; font: 500 13px/1 system-ui, -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; white-space: nowrap; pointer-events: auto; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25); backdrop-filter: blur(8px); animation: drop 240ms ease-out both; }
       .dot { width: 8px; height: 8px; border-radius: 50%; background: #32ccbc; color: rgba(50, 204, 188, 0.6); animation: pulse 1.6s ease-out infinite; flex: none; }

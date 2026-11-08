@@ -510,5 +510,18 @@
     "tipKept": "Đã ghi nhớ mẹo cho {{site}}",
     "takeOver": "Tiếp quản",
     "showTab": "Xem thẻ của nó"
+  },
+  "bridge": {
+    "overlayWorking": "Claude Code đang làm việc trong thẻ này",
+    "overlayWaiting": "Claude Code đang chờ bạn cho phép",
+    "confirmTitle": "Cho phép Claude Code làm việc này?",
+    "title": "Claude Code",
+    "description": "Claude Code chỉ thấy và thao tác các thẻ trong nhóm thẻ tên “Shizue”. Kéo một thẻ vào để cho mượn, kéo ra để lấy lại. Nhấn Dừng trên viên thuốc của một thẻ sẽ chặn nó ở thẻ đó.",
+    "stopped": "Đã dừng ở các thẻ này",
+    "resume": "Cho phép lại",
+    "log": "Việc đã làm gần đây",
+    "logEmpty": "Chưa có gì",
+    "clearLog": "Xóa",
+    "refusedStopped": "Bị từ chối: bạn đã dừng ở đây"
   }
 }

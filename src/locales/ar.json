@@ -510,5 +510,18 @@
     "tipKept": "تم تذكّر نصيحة لموقع {{site}}",
     "takeOver": "تولَّ التحكم",
     "showTab": "عرض علامة تبويبه"
+  },
+  "bridge": {
+    "overlayWorking": "يعمل Claude Code في علامة التبويب هذه",
+    "overlayWaiting": "ينتظر Claude Code موافقتك",
+    "confirmTitle": "هل تسمح لـ Claude Code بفعل هذا؟",
+    "title": "Claude Code",
+    "description": "يرى Claude Code ويتحكم فقط في علامات التبويب الموجودة في مجموعة علامات التبويب المسماة “Shizue”. اسحب علامة تبويب إليها لإعارتها، وأخرجها لاستعادتها. زر الإيقاف على الشريط في علامة تبويب يمنعه منها.",
+    "stopped": "أُوقف في علامات التبويب هذه",
+    "resume": "السماح مجددًا",
+    "log": "ما فعله مؤخرًا",
+    "logEmpty": "لا شيء بعد",
+    "clearLog": "مسح",
+    "refusedStopped": "مرفوض: أوقفته هنا"
   }
 }

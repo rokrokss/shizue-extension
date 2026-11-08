@@ -510,5 +510,18 @@
     "tipKept": "Zapamiętano wskazówkę dla {{site}}",
     "takeOver": "Przejmij",
     "showTab": "Pokaż jego kartę"
+  },
+  "bridge": {
+    "overlayWorking": "Claude Code działa w tej karcie",
+    "overlayWaiting": "Claude Code czeka na Twoją zgodę",
+    "confirmTitle": "Pozwolić Claude Code na to?",
+    "title": "Claude Code",
+    "description": "Claude Code widzi i obsługuje tylko karty w grupie kart o nazwie „Shizue”. Przeciągnij kartę do grupy, aby ją użyczyć, a na zewnątrz, aby ją odebrać. Zatrzymaj na pigułce w karcie odcina go od tej karty.",
+    "stopped": "Zatrzymany w tych kartach",
+    "resume": "Zezwól ponownie",
+    "log": "Co ostatnio zrobił",
+    "logEmpty": "Na razie nic",
+    "clearLog": "Wyczyść",
+    "refusedStopped": "Odrzucono: zatrzymano go tutaj"
   }
 }

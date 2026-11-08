@@ -32,6 +32,7 @@ import { parsePlayerResponse } from '@/lib/youtube';
 import { getChatModelHandler } from '@/services/background/chatModelHandler';
 import { translateImage } from '@/services/background/imageTranslationHandler';
 import { resumeAgentInTab, stopAgentInTab } from '@/services/background/browserAgentHandler';
+import { pauseBridgeInTab } from '@/services/background/nativeBridge';
 import { getTranslationHandler } from '@/services/background/translationHandler';
 import { openPanelForSummary, waitForPanelSummary } from '@/services/background/panelSummary';
 
@@ -270,7 +271,7 @@ async function handleTranslateImage(msg: any, sendResponse: (response?: any) => 
   sendResponse(await translateImage(msg.srcUrl, msg.dataUrl, msg.targetLanguage, msg.title ?? ''));
 }
 
-// The stop button of the browser agent's pill on the page.
+// The stop button of the browser agent's pill on the page, which Claude Code's bridge shows too.
 async function handleAgentStop(
   msg: any,
   sendResponse: (response?: any) => void,
@@ -282,6 +283,7 @@ async function handleAgentStop(
     return sendResponse({ status: 'success' });
   }
   stopAgentInTab(sender.tab?.id);
+  await pauseBridgeInTab(sender.tab?.id);
   sendResponse({ status: 'success' });
 }
 

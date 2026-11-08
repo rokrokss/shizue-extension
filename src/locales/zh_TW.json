@@ -510,5 +510,18 @@
     "tipKept": "已記住 {{site}} 的技巧",
     "takeOver": "接管",
     "showTab": "顯示其分頁"
+  },
+  "bridge": {
+    "overlayWorking": "Claude Code 正在此分頁中操作",
+    "overlayWaiting": "Claude Code 正在等待你的許可",
+    "confirmTitle": "允許 Claude Code 執行此操作嗎？",
+    "title": "Claude Code",
+    "description": "Claude Code 只能查看和操作名為「Shizue」的分頁群組中的分頁。把分頁拖進群組即可借給它，拖出來即可收回。在某個分頁的膠囊上按停止，它就無法再操作該分頁。",
+    "stopped": "已在這些分頁中停止",
+    "resume": "重新允許",
+    "log": "最近的操作",
+    "logEmpty": "尚無",
+    "clearLog": "清除",
+    "refusedStopped": "已拒絕：你已在此停止"
   }
 }

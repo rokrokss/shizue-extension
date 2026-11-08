@@ -510,5 +510,18 @@
     "tipKept": "{{site}} 요령을 기억했습니다",
     "takeOver": "넘겨받기",
     "showTab": "작업한 탭 보기"
+  },
+  "bridge": {
+    "overlayWorking": "Claude Code가 이 탭에서 작업 중이에요",
+    "overlayWaiting": "Claude Code가 허락을 기다려요",
+    "confirmTitle": "Claude Code가 이걸 해도 될까요?",
+    "title": "Claude Code",
+    "description": "Claude Code는 이름이 “Shizue”인 탭 그룹 안의 탭만 보고 조작해요. 탭을 그룹에 끌어 넣으면 빌려주고, 빼면 돌려받아요. 탭 위 알약의 멈추기를 누르면 그 탭에서는 막혀요.",
+    "stopped": "멈춘 탭",
+    "resume": "다시 허용",
+    "log": "최근에 한 일",
+    "logEmpty": "아직 없어요",
+    "clearLog": "지우기",
+    "refusedStopped": "거부됨: 이 탭에서 멈추셨어요"
   }
 }

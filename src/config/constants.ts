@@ -29,6 +29,8 @@ export const MESSAGE_AGENT_STEER = 'action_agent_steer';
 export const MESSAGE_AGENT_STOP = 'action_agent_stop';
 // The hand-back button of the agent's pill, when it is the user's turn on the page.
 export const MESSAGE_AGENT_RESUME = 'action_agent_resume';
+// Background → the Claude Code bridge's offscreen page: a PDF tab's text (entrypoints/offscreen-pdf).
+export const MESSAGE_BRIDGE_READ_PDF = 'action_bridge_read_pdf';
 export const MESSAGE_CONTEXT_MENU_TRANSLATE_IMAGE = 'action_context_menu_translate_image';
 export const MESSAGE_CONTEXT_MENU_TRANSLATE_PAGE_IMAGES = 'action_context_menu_translate_page_images';
 export const MESSAGE_FRAME_TRANSLATION_STATE = 'frame_translation_state';
@@ -116,6 +118,11 @@ export const STORAGE_TRANSLATION_MASK_PRIVATE = 'TRANSLATION_MASK_PRIVATE';
 // tab it was last opened from.
 export const STORAGE_PANEL_TAB = 'PANEL_TAB';
 export const STORAGE_PANEL_SOURCE_TAB = 'PANEL_SOURCE_TAB';
+// chrome.storage.session, the Claude Code bridge (services/background/nativeBridge.ts): what it
+// did lately, the tabs whose pill the user stopped it in, and the tabs it opened itself.
+export const STORAGE_BRIDGE_LOG = 'BRIDGE_LOG';
+export const STORAGE_BRIDGE_PAUSED_TABS = 'BRIDGE_PAUSED_TABS';
+export const STORAGE_BRIDGE_OPENED_TABS = 'BRIDGE_OPENED_TABS';
 
 /* parameters */
 export const STREAM_FLUSH_THRESHOLD_0 = 5;

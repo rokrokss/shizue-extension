@@ -64,6 +64,11 @@ test('summary panel intent is sent with the synchronous open request', async () 
   });
 });
 
+// The handlers the background added for the Claude Code bridge, which these tests don't reach.
+const newHandlerStubs = {
+  '@/services/background/nativeBridge': 'export const pauseBridgeInTab = async () => {};',
+};
+
 const panelSummaryStubs = {
   '@/entrypoints/background/sidepanel': 'export const openPanel = id => globalThis.openSummaryPanel(id);',
   '@/services/pageSummary': 'export const requestPageSummary = id => globalThis.deliverSummary(id);',
@@ -154,6 +159,7 @@ test('background routes summary opens and panel readiness through the same hando
     '@/services/background/chatModelHandler': 'export const getChatModelHandler = () => ({});',
     '@/services/background/imageTranslationHandler': 'export const translateImage = async () => ({});',
     '@/services/background/browserAgentHandler': 'export const stopAgentInTab = () => {}; export const resumeAgentInTab = () => {};',
+    ...newHandlerStubs,
   });
 });
 
@@ -295,6 +301,7 @@ test('background relays a tab\'s own transcript request to that tab\'s top frame
     '@/services/background/chatModelHandler': 'export const getChatModelHandler = () => ({});',
     '@/services/background/imageTranslationHandler': 'export const translateImage = async () => ({});',
     '@/services/background/browserAgentHandler': 'export const stopAgentInTab = () => {}; export const resumeAgentInTab = () => {};',
+    ...newHandlerStubs,
   });
 });
 

@@ -4,6 +4,7 @@ import ChatGPTSettings from '@/components/Setting/ChatGPTSettings';
 import AutoMemorySettings from '@/components/Setting/AutoMemorySettings';
 import CustomInstructionsSettings from '@/components/Setting/CustomInstructionsSettings';
 import ShortcutSettings from '@/components/Setting/ShortcutSettings';
+import BridgeSettings from '@/components/Setting/BridgeSettings';
 import BrowserAgentSettings from '@/components/Setting/BrowserAgentSettings';
 import TranslationSettings from '@/components/Setting/TranslationSettings';
 import { useReasoningEffort } from '@/hooks/chat';
@@ -287,6 +288,7 @@ const SettingsModalContent = () => {
                 <AutoMemorySettings />
                 <ShortcutSettings />
                 <BrowserAgentSettings />
+                <BridgeSettings />
                 {toggleHiddenSiteList.length > 0 && (
                   <div className="sz:flex sz:flex-col sz:items-center sz:justify-center sz:gap-2 sz:w-full">
                     <div

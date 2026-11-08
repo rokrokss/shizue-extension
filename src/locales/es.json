@@ -510,5 +510,18 @@
     "tipKept": "Consejo recordado para {{site}}",
     "takeOver": "Tomar el control",
     "showTab": "Mostrar su pestaña"
+  },
+  "bridge": {
+    "overlayWorking": "Claude Code está trabajando en esta pestaña",
+    "overlayWaiting": "Claude Code espera tu permiso",
+    "confirmTitle": "¿Dejar que Claude Code haga esto?",
+    "title": "Claude Code",
+    "description": "Claude Code solo ve y maneja las pestañas del grupo de pestañas llamado «Shizue». Arrastra una pestaña dentro para prestarla y fuera para recuperarla. Detener en la píldora de una pestaña lo deja fuera de ella.",
+    "stopped": "Detenido en estas pestañas",
+    "resume": "Permitir de nuevo",
+    "log": "Lo que hizo últimamente",
+    "logEmpty": "Nada todavía",
+    "clearLog": "Borrar",
+    "refusedStopped": "Rechazado: lo detuviste aquí"
   }
 }

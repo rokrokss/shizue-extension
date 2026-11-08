@@ -510,5 +510,18 @@
     "tipKept": "已记住 {{site}} 的技巧",
     "takeOver": "接管",
     "showTab": "显示其标签页"
+  },
+  "bridge": {
+    "overlayWorking": "Claude Code 正在此标签页中操作",
+    "overlayWaiting": "Claude Code 正在等待你的许可",
+    "confirmTitle": "允许 Claude Code 执行此操作吗？",
+    "title": "Claude Code",
+    "description": "Claude Code 只能查看和操作名为“Shizue”的标签页组中的标签页。把标签页拖进组里即可借给它，拖出来即可收回。在某个标签页的胶囊上按停止，它就无法再操作该标签页。",
+    "stopped": "已在这些标签页中停止",
+    "resume": "重新允许",
+    "log": "最近的操作",
+    "logEmpty": "暂无",
+    "clearLog": "清除",
+    "refusedStopped": "已拒绝：你已在此停止"
   }
 }

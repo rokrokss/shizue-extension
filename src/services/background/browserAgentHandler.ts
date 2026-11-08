@@ -193,6 +193,9 @@ export const screenshot = async (tabId: number): Promise<{ dataUrl: string; scal
     if (!viewport) return null;
     const captured = await chrome.tabs.captureVisibleTab(tab.windowId, { format: 'jpeg', quality: 70 });
     await mark(false);
+    // The user may have moved to another tab meanwhile, and that one isn't the agent's to see.
+    const [showing] = await chrome.tabs.query({ active: true, windowId: tab.windowId });
+    if (showing?.id !== tabId) return null;
     const scale = Math.min(1, SHOT_WIDTH / viewport.width);
     const width = Math.round(viewport.width * scale);
     const height = Math.round(viewport.height * scale);
@@ -298,7 +301,11 @@ export const execute = async (
       return { status: 'done' };
     }
     if (action.kind === 'back') {
-      await chrome.tabs.goBack(tabId);
+      // Chrome finds nothing to go back to when the page was left without the user's gesture, as
+      // after the agent's own clicks. The page's history still goes there.
+      await chrome.tabs
+        .goBack(tabId)
+        .catch(() => chrome.scripting.executeScript({ target: { tabId }, func: () => history.back() }));
       return { status: 'done' };
     }
     // The time is settle's, which ends it early if the page answers.

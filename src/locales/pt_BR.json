@@ -510,5 +510,18 @@
     "tipKept": "Dica lembrada para {{site}}",
     "takeOver": "Assumir o controle",
     "showTab": "Mostrar a aba dele"
+  },
+  "bridge": {
+    "overlayWorking": "O Claude Code está trabalhando nesta aba",
+    "overlayWaiting": "O Claude Code está esperando sua permissão",
+    "confirmTitle": "Deixar o Claude Code fazer isto?",
+    "title": "Claude Code",
+    "description": "O Claude Code só vê e controla as abas do grupo de abas chamado “Shizue”. Arraste uma aba para dentro para emprestá-la e para fora para pegá-la de volta. Parar na pílula de uma aba o bloqueia nela.",
+    "stopped": "Parado nestas abas",
+    "resume": "Permitir de novo",
+    "log": "O que fez recentemente",
+    "logEmpty": "Nada ainda",
+    "clearLog": "Limpar",
+    "refusedStopped": "Recusado: você o parou aqui"
   }
 }

@@ -14,6 +14,7 @@
   "scripts": {
     "dev": "wxt",
     "build": "wxt build",
+    "build:bridge": "wxt build --mode bridge",
     "zip": "wxt zip",
     "compile": "tsc --noEmit",
     "test:chat": "node --experimental-strip-types --test tests/chat-*.test.mjs",
@@ -26,6 +27,8 @@
     "test:lecture-captions": "node --experimental-strip-types --test tests/lecture-captions.test.mjs",
     "test:meeting-captions": "node --experimental-strip-types --test tests/meeting-captions.test.mjs",
     "test:browser-agent": "node --experimental-strip-types --test tests/browser-agent.test.mjs",
+    "test:bridge": "node --test tests/native-bridge.test.mjs",
+    "test:bridge-e2e": "node --test tests/native-bridge-e2e.test.mjs",
     "test:image-translation": "node --experimental-strip-types --test tests/image-translation.test.mjs",
     "test:youtube-captions": "node --experimental-strip-types --test tests/youtube-captions.test.mjs",
     "test:page-translation": "node --experimental-strip-types --test tests/page-translation.test.mjs",

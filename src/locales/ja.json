@@ -510,5 +510,18 @@
     "tipKept": "{{site}} のコツを覚えました",
     "takeOver": "引き継ぐ",
     "showTab": "作業したタブを表示"
+  },
+  "bridge": {
+    "overlayWorking": "Claude Code がこのタブで作業中です",
+    "overlayWaiting": "Claude Code が許可を待っています",
+    "confirmTitle": "Claude Code にこの操作を許可しますか？",
+    "title": "Claude Code",
+    "description": "Claude Code が見て操作できるのは、「Shizue」という名前のタブグループ内のタブだけです。タブをグループにドラッグすると貸し出し、外すと戻ります。タブ上のピルの停止を押すと、そのタブでは操作できなくなります。",
+    "stopped": "停止したタブ",
+    "resume": "再び許可",
+    "log": "最近の操作",
+    "logEmpty": "まだありません",
+    "clearLog": "消去",
+    "refusedStopped": "拒否：このタブで停止されています"
   }
 }

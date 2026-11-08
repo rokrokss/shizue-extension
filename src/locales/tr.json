@@ -510,5 +510,18 @@
     "tipKept": "{{site}} için ipucu hatırlandı",
     "takeOver": "Devral",
     "showTab": "Sekmesini göster"
+  },
+  "bridge": {
+    "overlayWorking": "Claude Code bu sekmede çalışıyor",
+    "overlayWaiting": "Claude Code onayınızı bekliyor",
+    "confirmTitle": "Claude Code bunu yapsın mı?",
+    "title": "Claude Code",
+    "description": "Claude Code yalnızca “Shizue” adlı sekme grubundaki sekmeleri görür ve kullanır. Bir sekmeyi ödünç vermek için gruba sürükleyin, geri almak için dışarı sürükleyin. Bir sekmedeki haptaki Durdur, onu o sekmeden uzak tutar.",
+    "stopped": "Bu sekmelerde durduruldu",
+    "resume": "Yeniden izin ver",
+    "log": "Son yaptıkları",
+    "logEmpty": "Henüz bir şey yok",
+    "clearLog": "Temizle",
+    "refusedStopped": "Reddedildi: burada durdurdunuz"
   }
 }

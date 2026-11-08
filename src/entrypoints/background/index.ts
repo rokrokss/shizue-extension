@@ -11,6 +11,7 @@ import { whenBackgroundStateReady } from '@/entrypoints/background/states/ready'
 import { backgroundLog, errorLog } from '@/logs';
 import { captionPortListeners } from '@/services/background/captionPort';
 import { messageHandlers } from '@/services/background/messageHandlers';
+import { nativeBridgeListeners } from '@/services/background/nativeBridge';
 import { CHATGPT_CALLBACK_MESSAGE, CHATGPT_SETTINGS_MESSAGE } from '@/lib/chatgpt';
 import { handleChatGPTCallback, handleChatGPTSettings } from '@/services/background/chatgpt';
 import { RECOVER_CONTENT_SCRIPTS } from '@/lib/contentScriptConnection';
@@ -69,6 +70,7 @@ export default defineBackground(() => {
     return true;
   });
   contentScriptRecoveryListeners();
+  nativeBridgeListeners();
 
   // Shizue Plot's login page asks whether Shizue is here to carry its sign-in (see plotSignIn.ts).
   chrome.runtime.onMessageExternal.addListener((msg, sender, sendResponse) => {

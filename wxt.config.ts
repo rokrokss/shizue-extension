@@ -36,10 +36,14 @@ export default defineConfig({
         'activeTab',
         'contextMenus',
         'declarativeNetRequestWithHostAccess',
+        // Only `pnpm build:bridge`: Claude Code's way in (src/services/background/nativeBridge.ts).
+        // It reaches only the tabs in its own tab group, and reads a PDF tab in an offscreen page.
+        // Neither adds an install warning.
+        ...(mode === 'bridge' ? ['nativeMessaging', 'tabGroups', 'offscreen'] : []),
       ],
       // Asked for when the user first lists tab groups in the chat box's @ list, so the install
-      // and update prompts stay as they are.
-      optional_permissions: ['tabGroups'],
+      // and update prompts stay as they are. The bridge build has it from the start.
+      optional_permissions: [...(mode === 'bridge' ? [] : (['tabGroups'] as const))],
       // Reconnect the same web pages our declarative content scripts already run on.
       // This also covers the local model endpoints. chrome.tabs.captureVisibleTab needs <all_urls>
       // itself rather than http and https; the content scripts' <all_urls> already warns of it.
