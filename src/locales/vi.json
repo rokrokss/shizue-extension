@@ -112,7 +112,7 @@
     "captureFailed": "Không thể chụp màn hình này.",
     "searchChats": "Tìm cuộc trò chuyện",
     "attachFile": "Tệp",
-    "attachFileTypes": "PDF, văn bản hoặc mã",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, văn bản hoặc mã",
     "pastedText": "Văn bản đã dán",
     "pastedChars": "{{count}} ký tự",
     "captureRegion": "Chụp một vùng",
@@ -184,6 +184,7 @@
     "openPastChat": "Mở cuộc trò chuyện này",
     "continueTitle": "Tiếp tục từ chỗ đã dừng",
     "continueTabsOpen": "Tab đang mở: {{count}}",
+    "attachmentOldHwp": "Hãy lưu thành HWPX hoặc PDF",
     "xraySelectionRequest": "Từ này có nghĩa gì trong trang này?"
   },
   "footer": {

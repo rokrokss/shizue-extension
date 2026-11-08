@@ -112,7 +112,7 @@
     "captureFailed": "इस स्क्रीन को कैप्चर नहीं किया जा सकता।",
     "searchChats": "चैट खोजें",
     "attachFile": "फ़ाइल",
-    "attachFileTypes": "PDF, टेक्स्ट या कोड",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, टेक्स्ट या कोड",
     "pastedText": "चिपकाया गया टेक्स्ट",
     "pastedChars": "{{count}} अक्षर",
     "captureRegion": "हिस्सा कैप्चर करें",
@@ -184,6 +184,7 @@
     "openPastChat": "यह चैट खोलें",
     "continueTitle": "जहाँ छोड़ा था वहीं से जारी रखें",
     "continueTabsOpen": "खुले टैब: {{count}}",
+    "attachmentOldHwp": "इसे HWPX या PDF के रूप में सहेजें",
     "xraySelectionRequest": "इस पेज में इसका क्या मतलब है?"
   },
   "footer": {

@@ -26,7 +26,8 @@ export async function proposeFormFill(
   sourceTabId: number
 ): Promise<FormFillProposeResult> {
   const read = await readTabPage(sourceTabId, true);
-  if ('error' in read) return { success: false, error: read.error };
+  // A tab is never an old .hwp file, the one other reason a read fails.
+  if ('error' in read) return { success: false, error: read.error === 'hwp' ? 'unreadable' : read.error };
   const source = { ...read.page, text: read.page.text.slice(0, FORM_FILL_SOURCE_CHARS) };
   try {
     const modelPreset = getChatModelPreset();

@@ -112,7 +112,7 @@
     "captureFailed": "اس اسکرین کی تصویر نہیں لی جا سکتی۔",
     "searchChats": "چیٹس تلاش کریں",
     "attachFile": "فائل",
-    "attachFileTypes": "PDF، متن یا کوڈ",
+    "attachFileTypes": "PDF، Office، HWPX، EPUB، متن یا کوڈ",
     "pastedText": "چسپاں کیا گیا متن",
     "pastedChars": "{{count}} حروف",
     "captureRegion": "حصے کا اسکرین شاٹ",
@@ -184,6 +184,7 @@
     "openPastChat": "یہ چیٹ کھولیں",
     "continueTitle": "جہاں چھوڑا تھا وہیں سے جاری رکھیں",
     "continueTabsOpen": "کھلے ٹیبز: {{count}}",
+    "attachmentOldHwp": "اسے HWPX یا PDF کے طور پر محفوظ کریں",
     "xraySelectionRequest": "اس صفحے میں اس کا کیا مطلب ہے؟"
   },
   "footer": {

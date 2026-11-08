@@ -112,7 +112,7 @@
     "captureFailed": "এই স্ক্রিনটি ক্যাপচার করা যাচ্ছে না।",
     "searchChats": "কথোপকথন খুঁজুন",
     "attachFile": "ফাইল",
-    "attachFileTypes": "PDF, টেক্সট বা কোড",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, টেক্সট বা কোড",
     "pastedText": "পেস্ট করা টেক্সট",
     "pastedChars": "{{count}} অক্ষর",
     "captureRegion": "একটি অংশ ক্যাপচার",
@@ -184,6 +184,7 @@
     "openPastChat": "এই চ্যাট খুলুন",
     "continueTitle": "যেখানে থেমেছিলেন সেখান থেকে",
     "continueTabsOpen": "খোলা ট্যাব: {{count}}",
+    "attachmentOldHwp": "HWPX বা PDF হিসেবে সংরক্ষণ করুন",
     "xraySelectionRequest": "এই পাতায় এর অর্থ কী?"
   },
   "footer": {

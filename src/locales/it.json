@@ -112,7 +112,7 @@
     "captureFailed": "Impossibile catturare questa schermata.",
     "searchChats": "Cerca nelle chat",
     "attachFile": "File",
-    "attachFileTypes": "PDF, testo o codice",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, testo o codice",
     "pastedText": "Testo incollato",
     "pastedChars": "{{count}} caratteri",
     "captureRegion": "Cattura un'area",
@@ -184,6 +184,7 @@
     "openPastChat": "Apri questa chat",
     "continueTitle": "Riprendi da dove avevi lasciato",
     "continueTabsOpen": "Schede aperte: {{count}}",
+    "attachmentOldHwp": "Salvalo come HWPX o PDF",
     "xraySelectionRequest": "Che cosa significa in questa pagina?"
   },
   "footer": {

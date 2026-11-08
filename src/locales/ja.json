@@ -112,7 +112,7 @@
     "captureFailed": "この画面はキャプチャできません。",
     "searchChats": "チャットを検索",
     "attachFile": "ファイル",
-    "attachFileTypes": "PDF、テキスト、コード",
+    "attachFileTypes": "PDF、Office、HWPX、EPUB、テキスト、コード",
     "pastedText": "貼り付けたテキスト",
     "pastedChars": "{{count}}文字",
     "captureRegion": "範囲を指定してキャプチャ",
@@ -184,6 +184,7 @@
     "openPastChat": "このチャットを開く",
     "continueTitle": "続きから",
     "continueTabsOpen": "開いているタブ {{count}}件",
+    "attachmentOldHwp": "HWPXかPDFで保存してください",
     "xraySelectionRequest": "このページでの意味を教えてください。"
   },
   "footer": {

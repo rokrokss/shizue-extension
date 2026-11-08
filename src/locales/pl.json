@@ -112,7 +112,7 @@
     "captureFailed": "Nie można przechwycić tego ekranu.",
     "searchChats": "Szukaj w czatach",
     "attachFile": "Plik",
-    "attachFileTypes": "PDF, tekst lub kod",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, tekst lub kod",
     "pastedText": "Wklejony tekst",
     "pastedChars": "Znaków: {{count}}",
     "captureRegion": "Zrzut obszaru",
@@ -184,6 +184,7 @@
     "openPastChat": "Otwórz ten czat",
     "continueTitle": "Wróć do tego, co zostało",
     "continueTabsOpen": "Otwarte karty: {{count}}",
+    "attachmentOldHwp": "Zapisz jako HWPX lub PDF",
     "xraySelectionRequest": "Co to znaczy na tej stronie?"
   },
   "footer": {

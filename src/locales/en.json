@@ -112,7 +112,7 @@
     "captureFailed": "This screen can't be captured.",
     "searchChats": "Search chats",
     "attachFile": "File",
-    "attachFileTypes": "PDF, text or code",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, text or code",
     "pastedText": "Pasted text",
     "pastedChars": "{{count}} chars",
     "captureRegion": "Capture an area",
@@ -184,6 +184,7 @@
     "openPastChat": "Open this chat",
     "continueTitle": "Pick up where you left off",
     "continueTabsOpen": "Open tabs: {{count}}",
+    "attachmentOldHwp": "Save it as HWPX or PDF",
     "xraySelectionRequest": "What does this mean in this page?"
   },
   "footer": {

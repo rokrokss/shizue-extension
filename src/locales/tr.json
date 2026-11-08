@@ -112,7 +112,7 @@
     "captureFailed": "Bu ekranın görüntüsü alınamıyor.",
     "searchChats": "Sohbetlerde ara",
     "attachFile": "Dosya",
-    "attachFileTypes": "PDF, metin veya kod",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, metin veya kod",
     "pastedText": "Yapıştırılan metin",
     "pastedChars": "{{count}} karakter",
     "captureRegion": "Alan yakala",
@@ -184,6 +184,7 @@
     "openPastChat": "Bu sohbeti aç",
     "continueTitle": "Kaldığın yerden devam et",
     "continueTabsOpen": "Açık sekmeler: {{count}}",
+    "attachmentOldHwp": "HWPX veya PDF olarak kaydedin",
     "xraySelectionRequest": "Bu, bu sayfada ne anlama geliyor?"
   },
   "footer": {

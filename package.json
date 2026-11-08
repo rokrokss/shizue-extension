@@ -32,6 +32,7 @@
     "test:image-translation": "node --experimental-strip-types --test tests/image-translation.test.mjs",
     "test:youtube-captions": "node --experimental-strip-types --test tests/youtube-captions.test.mjs",
     "test:page-translation": "node --experimental-strip-types --test tests/page-translation.test.mjs",
+    "test:office-files": "node --experimental-strip-types --test tests/office-files.test.mjs",
     "postinstall": "wxt prepare"
   },
   "dependencies": {

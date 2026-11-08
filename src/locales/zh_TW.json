@@ -112,7 +112,7 @@
     "captureFailed": "無法擷取此畫面。",
     "searchChats": "搜尋對話",
     "attachFile": "檔案",
-    "attachFileTypes": "PDF、文字、程式碼",
+    "attachFileTypes": "PDF、Office、HWPX、EPUB、文字、程式碼",
     "pastedText": "貼上的文字",
     "pastedChars": "{{count}} 字",
     "captureRegion": "區域截圖",
@@ -184,6 +184,7 @@
     "openPastChat": "開啟這個聊天",
     "continueTitle": "從上次繼續",
     "continueTabsOpen": "開啟的分頁：{{count}}",
+    "attachmentOldHwp": "請另存為 HWPX 或 PDF",
     "xraySelectionRequest": "這在本頁中是什麼意思？"
   },
   "footer": {

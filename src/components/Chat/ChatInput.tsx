@@ -25,10 +25,12 @@ import { BASE_REASONING_EFFORTS, effortWithin } from '@/lib/reasoning';
 import { panelPageTabId, withPageShown } from '@/lib/panelHost';
 import { cropCapture, selectRegion } from '@/lib/regionCapture';
 import {
+  isOfficeFile,
   isPdfFile,
   isTextFile,
   PageRead,
   PageText,
+  readOfficeFile,
   readPdfPage,
   readTabPage,
   readTextFile,
@@ -395,6 +397,8 @@ const ChatInput = ({
     ]);
     const result = pdf
       ? await readPdfPage(await file.arrayBuffer(), file.name, '')
+      : isOfficeFile(file)
+      ? await readOfficeFile(file)
       : await readTextFile(file);
     setAttached((current) =>
       current.map((item) =>
@@ -405,9 +409,11 @@ const ChatInput = ({
     );
   };
 
-  // PDF, text and code files, picked or dropped, until the message holds MAX_ATTACHED_TABS.
+  // PDF, office, text and code files, picked or dropped, until the message holds MAX_ATTACHED_TABS.
   const handlePickFiles = (files: File[]) => {
-    const readable = files.filter((file) => isPdfFile(file) || isTextFile(file));
+    const readable = files.filter(
+      (file) => isPdfFile(file) || isOfficeFile(file) || isTextFile(file)
+    );
     readable.slice(0, MAX_ATTACHED_TABS - attached.length).forEach((file) => void attachFile(file));
   };
 

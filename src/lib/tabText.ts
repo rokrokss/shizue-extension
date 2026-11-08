@@ -2,12 +2,14 @@ import { MESSAGE_READ_VIDEO_TRANSCRIPT, SUMMARY_PAGE_TEXT_MAX_CHARS } from '@/co
 import { RECOVER_CONTENT_SCRIPTS } from '@/lib/contentScriptConnection';
 import type { PageAttachment } from '@/lib/indexDB';
 import { MAIN_TEXT_EXCLUDE, readPageContent } from '@/lib/mainText';
+import { officeKind, readOfficeText } from '@/lib/officeText';
 import { readPdfText } from '@/lib/pdfText';
 import { transcriptText, type VideoTranscript } from '@/lib/videoTranscript';
 
 export type PageText = Omit<PageAttachment, 'truncated'>;
 
-export type PageReadError = 'unreadable' | 'empty';
+// 'hwp': an old binary HWP file, which isn't read; HWPX or PDF is.
+export type PageReadError = 'unreadable' | 'empty' | 'hwp';
 
 export type PageRead = { page: PageText } | { error: PageReadError };
 
@@ -33,6 +35,14 @@ const TEXT_FILE_EXTENSIONS = [
 
 export const TEXT_FILE_ACCEPT = TEXT_FILE_EXTENSIONS.map((extension) => `.${extension}`).join(',');
 
+// Word, Excel, PowerPoint, HWPX and EPUB, read in lib/officeText.ts. Old HWP is accepted only to
+// say it should be saved as HWPX or PDF.
+export const OFFICE_FILE_ACCEPT = '.docx,.xlsx,.pptx,.hwpx,.epub,.hwp';
+
+const isOldHwp = (file: File) => /\.hwp$/i.test(file.name);
+
+export const isOfficeFile = (file: File) => officeKind(file.name) !== null || isOldHwp(file);
+
 export const isPdfFile = (file: File) =>
   file.type === 'application/pdf' || /\.pdf$/i.test(file.name);
 
@@ -48,6 +58,22 @@ export const readTextFile = async (file: File): Promise<PageRead> => {
     const text = await file.text();
     // A NUL character means a binary file under a text name.
     if (text.includes('\u0000')) return { error: 'unreadable' };
+    if (!text.trim()) return { error: 'empty' };
+    return { page: { title: file.name, url: '', text, file: true } };
+  } catch {
+    return { error: 'unreadable' };
+  }
+};
+
+// A Word, Excel, PowerPoint, HWPX or EPUB file's text. Only its XML is inflated, so a deck heavy
+// with images is fine up to the PDF limit.
+export const readOfficeFile = async (file: File): Promise<PageRead> => {
+  const kind = officeKind(file.name);
+  if (!kind) return { error: isOldHwp(file) ? 'hwp' : 'unreadable' };
+  if (file.size > MAX_PDF_BYTES) return { error: 'unreadable' };
+  try {
+    const bytes = new Uint8Array(await file.arrayBuffer());
+    const text = await readOfficeText(kind, bytes, SUMMARY_PAGE_TEXT_MAX_CHARS);
     if (!text.trim()) return { error: 'empty' };
     return { page: { title: file.name, url: '', text, file: true } };
   } catch {

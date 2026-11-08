@@ -112,7 +112,7 @@
     "captureFailed": "Dieser Bildschirm kann nicht aufgenommen werden.",
     "searchChats": "Chats durchsuchen",
     "attachFile": "Datei",
-    "attachFileTypes": "PDF, Text oder Code",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, Text oder Code",
     "pastedText": "Eingefügter Text",
     "pastedChars": "{{count}} Zeichen",
     "captureRegion": "Bereich aufnehmen",
@@ -184,6 +184,7 @@
     "openPastChat": "Diesen Chat öffnen",
     "continueTitle": "Weitermachen, wo du aufgehört hast",
     "continueTabsOpen": "Offene Tabs: {{count}}",
+    "attachmentOldHwp": "Als HWPX oder PDF speichern",
     "xraySelectionRequest": "Was bedeutet das auf dieser Seite?"
   },
   "footer": {

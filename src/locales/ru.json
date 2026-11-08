@@ -112,7 +112,7 @@
     "captureFailed": "Этот экран нельзя снять.",
     "searchChats": "Поиск по чатам",
     "attachFile": "Файл",
-    "attachFileTypes": "PDF, текст или код",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, текст или код",
     "pastedText": "Вставленный текст",
     "pastedChars": "Символов: {{count}}",
     "captureRegion": "Снимок области",
@@ -184,6 +184,7 @@
     "openPastChat": "Открыть этот чат",
     "continueTitle": "Продолжить с того места",
     "continueTabsOpen": "Открытых вкладок: {{count}}",
+    "attachmentOldHwp": "Сохраните в HWPX или PDF",
     "xraySelectionRequest": "Что это значит на этой странице?"
   },
   "footer": {

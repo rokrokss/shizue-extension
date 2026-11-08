@@ -112,7 +112,7 @@
     "captureFailed": "از این صفحه نمی‌توان نماگرفت گرفت.",
     "searchChats": "جستجوی گفتگوها",
     "attachFile": "فایل",
-    "attachFileTypes": "PDF، متن یا کد",
+    "attachFileTypes": "PDF، Office، HWPX، EPUB، متن یا کد",
     "pastedText": "متن چسبانده‌شده",
     "pastedChars": "{{count}} نویسه",
     "captureRegion": "نماگرفت از یک بخش",
@@ -184,6 +184,7 @@
     "openPastChat": "باز کردن این گفتگو",
     "continueTitle": "از همان‌جا که ماندید ادامه دهید",
     "continueTabsOpen": "زبانه‌های باز: {{count}}",
+    "attachmentOldHwp": "آن را با قالب HWPX یا PDF ذخیره کنید",
     "xraySelectionRequest": "این در این صفحه چه معنایی دارد؟"
   },
   "footer": {

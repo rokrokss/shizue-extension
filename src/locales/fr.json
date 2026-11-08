@@ -112,7 +112,7 @@
     "captureFailed": "Impossible de capturer cet écran.",
     "searchChats": "Rechercher dans les discussions",
     "attachFile": "Fichier",
-    "attachFileTypes": "PDF, texte ou code",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, texte ou code",
     "pastedText": "Texte collé",
     "pastedChars": "{{count}} caractères",
     "captureRegion": "Capturer une zone",
@@ -184,6 +184,7 @@
     "openPastChat": "Ouvrir cette discussion",
     "continueTitle": "Reprendre là où vous en étiez",
     "continueTabsOpen": "Onglets ouverts : {{count}}",
+    "attachmentOldHwp": "Enregistrez-le en HWPX ou PDF",
     "xraySelectionRequest": "Que signifie ceci dans cette page ?"
   },
   "footer": {

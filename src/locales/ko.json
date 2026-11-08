@@ -112,7 +112,7 @@
     "captureFailed": "이 화면은 캡처할 수 없습니다.",
     "searchChats": "대화 검색",
     "attachFile": "파일",
-    "attachFileTypes": "PDF, 텍스트, 코드",
+    "attachFileTypes": "PDF, 오피스, 한글(HWPX), EPUB, 텍스트, 코드",
     "pastedText": "붙여넣은 글",
     "pastedChars": "{{count}}자",
     "captureRegion": "영역 캡처",
@@ -184,6 +184,7 @@
     "openPastChat": "이 채팅 열기",
     "continueTitle": "이어서 하기",
     "continueTabsOpen": "열린 탭 {{count}}개",
+    "attachmentOldHwp": "HWPX나 PDF로 저장해 주세요",
     "xraySelectionRequest": "이 글에서 이게 무슨 뜻인지 알려줘."
   },
   "footer": {

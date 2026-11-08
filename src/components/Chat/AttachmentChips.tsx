@@ -324,7 +324,11 @@ const AttachmentChips = ({
           {item.error ? (
             <span className="sz:ml-1">
               ·{' '}
-              {item.error === 'empty' ? t('chat.attachmentEmpty') : t('chat.attachmentUnreadable')}
+              {item.error === 'empty'
+                ? t('chat.attachmentEmpty')
+                : item.error === 'hwp'
+                ? t('chat.attachmentOldHwp')
+                : t('chat.attachmentUnreadable')}
             </span>
           ) : null}
         </Tag>

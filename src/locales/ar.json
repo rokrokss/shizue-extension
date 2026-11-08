@@ -112,7 +112,7 @@
     "captureFailed": "لا يمكن التقاط هذه الشاشة.",
     "searchChats": "البحث في المحادثات",
     "attachFile": "ملف",
-    "attachFileTypes": "PDF أو نص أو كود",
+    "attachFileTypes": "PDF أو Office أو HWPX أو EPUB أو نص أو كود",
     "pastedText": "نص ملصق",
     "pastedChars": "عدد الأحرف: {{count}}",
     "captureRegion": "التقاط منطقة",
@@ -184,6 +184,7 @@
     "openPastChat": "فتح هذه المحادثة",
     "continueTitle": "تابع من حيث توقفت",
     "continueTabsOpen": "علامات تبويب مفتوحة: {{count}}",
+    "attachmentOldHwp": "احفظه بصيغة HWPX أو PDF",
     "xraySelectionRequest": "ماذا يعني هذا في هذه الصفحة؟"
   },
   "footer": {

@@ -112,7 +112,7 @@
     "captureFailed": "无法截取此屏幕。",
     "searchChats": "搜索对话",
     "attachFile": "文件",
-    "attachFileTypes": "PDF、文本、代码",
+    "attachFileTypes": "PDF、Office、HWPX、EPUB、文本、代码",
     "pastedText": "粘贴的文本",
     "pastedChars": "{{count}} 字",
     "captureRegion": "区域截图",
@@ -184,6 +184,7 @@
     "openPastChat": "打开这个聊天",
     "continueTitle": "接着上次继续",
     "continueTabsOpen": "打开的标签页：{{count}}",
+    "attachmentOldHwp": "请另存为 HWPX 或 PDF",
     "xraySelectionRequest": "这在本页中是什么意思？"
   },
   "footer": {

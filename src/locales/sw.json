@@ -112,7 +112,7 @@
     "captureFailed": "Skrini hii haiwezi kunaswa.",
     "searchChats": "Tafuta mazungumzo",
     "attachFile": "Faili",
-    "attachFileTypes": "PDF, maandishi au msimbo",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, maandishi au msimbo",
     "pastedText": "Maandishi yaliyobandikwa",
     "pastedChars": "Herufi {{count}}",
     "captureRegion": "Piga picha ya eneo",
@@ -184,6 +184,7 @@
     "openPastChat": "Fungua gumzo hili",
     "continueTitle": "Endelea ulipoachia",
     "continueTabsOpen": "Vichupo vilivyo wazi: {{count}}",
+    "attachmentOldHwp": "Ihifadhi kama HWPX au PDF",
     "xraySelectionRequest": "Hii ina maana gani katika ukurasa huu?"
   },
   "footer": {

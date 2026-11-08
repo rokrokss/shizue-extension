@@ -112,7 +112,7 @@
     "captureFailed": "Hindi ma-capture ang screen na ito.",
     "searchChats": "Maghanap sa mga chat",
     "attachFile": "File",
-    "attachFileTypes": "PDF, text o code",
+    "attachFileTypes": "PDF, Office, HWPX, EPUB, text o code",
     "pastedText": "Na-paste na text",
     "pastedChars": "{{count}} character",
     "captureRegion": "I-capture ang isang bahagi",
@@ -184,6 +184,7 @@
     "openPastChat": "Buksan ang chat na ito",
     "continueTitle": "Ituloy kung saan ka huminto",
     "continueTabsOpen": "Mga bukas na tab: {{count}}",
+    "attachmentOldHwp": "I-save ito bilang HWPX o PDF",
     "xraySelectionRequest": "Ano ang ibig sabihin nito sa pahinang ito?"
   },
   "footer": {

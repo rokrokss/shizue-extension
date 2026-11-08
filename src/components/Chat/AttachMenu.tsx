@@ -1,6 +1,6 @@
 import { MAX_ATTACHED_TABS } from '@/config/constants';
 import { useThemeValue } from '@/hooks/layout';
-import { TEXT_FILE_ACCEPT } from '@/lib/tabText';
+import { OFFICE_FILE_ACCEPT, TEXT_FILE_ACCEPT } from '@/lib/tabText';
 import {
   CameraOutlined,
   FileAddOutlined,
@@ -143,7 +143,7 @@ const AttachMenu = ({
         <input
           ref={fileInput}
           type="file"
-          accept={`application/pdf,.pdf,text/*,${TEXT_FILE_ACCEPT}`}
+          accept={`application/pdf,.pdf,${OFFICE_FILE_ACCEPT},text/*,${TEXT_FILE_ACCEPT}`}
           multiple
           hidden
           onChange={(e) => {
