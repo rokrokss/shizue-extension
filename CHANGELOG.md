@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.5.0
+
+- Browser control does more per step: it can do several actions at once (filling in a whole form in one step), press keys such as Enter, Escape and the arrows, point at a menu to open it, and put one of your images into an upload field
+- Your turn: when a page needs you (a sign-in, a CAPTCHA, a choice only you can make), browser control hands the tab over with "Your turn" on the pill and goes on when you press Continue. It can also ask you to click the thing it should use, when it can't tell which one you mean
+- Site permission and a plan: before working on a site that is new to the task, browser control asks on a card ("Allow this time" or "Always allow this site"). A longer task, or one that goes to other sites, shows its plan and the sites first, and once you start it, it doesn't ask again for those sites. Sending, paying and deleting still ask each time. Always allowed sites can be removed in Settings → Browser control
+- Site tips: when browser control had to search for how to do something on a site (a hidden menu, an unusual flow), it offers a short tip at the end. Remember it, and it reads the tip the next time it works there. Tips can be deleted in Settings
+- Run in a separate tab: under browser control in the Tools menu, turn on "Run in a separate tab" and it works in a copy of your tab, in a "Shizue at work" tab group, while you keep using yours. Show its tab or take over at any time
+- Fill a form from another tab: right-click a field and choose "Fill this form from an open tab", pick the tab that has the details (a résumé, an order, an email), check the values Shizue proposes and fill them. Shizue never submits the form, and leaves passwords, card numbers and checkboxes to you
+- Find in open tabs: turn it on in the Tools menu, and each question looks through your open tabs for the ones that answer it and attaches them
+- Search history: turn it on in the Tools menu, and each question looks through your past chats and the pages you visited. You see what was found and choose whether to send it with the question. The search runs on your computer, and banking, payment, health and mail sites are passed over
+- Pick up where you left off: a new chat shows your recent chats whose pages are still open, and picking one opens it with those tabs attached again
+- Unsent questions are kept: what you typed in a chat box stays there for 7 days, even when you switch chats, open the memo or close the browser
+- Link preview: right-click a link and choose "Preview link" to see three key lines of the page and its reading time without opening it
+- Look up in this page: select a name or term and choose "Look up in this page" to have it explained from the passages of the page that mention it, each point linked to its passage. Only what you've read so far is used, so nothing ahead is given away
+- Attach Office files: Word (.docx), Excel (.xlsx), PowerPoint (.pptx), HWPX and EPUB files can be attached and asked about. An old .hwp file gets a note to save it as HWPX or PDF
+- Translation style for Korean and Japanese: in Settings → Page translation, choose formal, polite or plain written style for page translation, or Auto to follow the page. Video and meeting captions keep each speaker's own way of talking
+- Fix meeting captions not starting in company Teams that goes through Microsoft Defender for Cloud Apps
+- Fix Claude Haiku 5.5 answers stopping at 4,096 tokens with a Claude API key
+
 ## v0.4.2
 
 - Browser control moves faster: it no longer sits through the same pause after every action. It reads the page again as soon as the page has answered, about half a second after a click that changes it instead of more than a second, and waits longer when a new spinner shows more is coming
