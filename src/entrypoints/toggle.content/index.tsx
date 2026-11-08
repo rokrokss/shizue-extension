@@ -1,6 +1,7 @@
 import '@/assets/global.css';
 import '@/assets/tailwind.css';
 import Toggle from '@/components/Toggle';
+import LinkPreview from '@/components/Toggle/LinkPreview';
 import { contentScriptLog, errorLog } from '@/logs';
 import AntdProvider from '@/providers/AntdProvider';
 import LanguageProvider from '@/providers/LanguageProvider';
@@ -75,6 +76,7 @@ export default defineContentScript({
                     <AntdProvider>
                       <ConfigProvider getPopupContainer={() => portalContainer}>
                         <Toggle portalContainer={portalContainer} />
+                        <LinkPreview />
                       </ConfigProvider>
                     </AntdProvider>
                   </AntdStyleProvider>

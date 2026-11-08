@@ -37,7 +37,9 @@
     "removeTranslation": "翻訳を削除",
     "translateImage": "画像を翻訳",
     "translatePageImages": "ページの画像をすべて翻訳",
-    "fillFormFromTab": "開いているタブからこのフォームに入力"
+    "fillFormFromTab": "開いているタブからこのフォームに入力",
+    "previewLink": "リンクをプレビュー",
+    "xraySelection": "このページでの意味を調べる"
   },
   "onboarding": {
     "greeting_0": "ようこそ！",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "過去のチャットと閲覧履歴（{{count}}件）",
     "openPastChat": "このチャットを開く",
     "continueTitle": "続きから",
-    "continueTabsOpen": "開いているタブ {{count}}件"
+    "continueTabsOpen": "開いているタブ {{count}}件",
+    "xraySelectionRequest": "このページでの意味を教えてください。"
   },
   "footer": {
     "joinDiscord": "Discordに参加してください！",
@@ -568,6 +571,21 @@
       "source_unreadable": "シズエはそのタブを読み取れません。",
       "source_empty": "そのタブには入力に使えるテキストがほとんどありません。",
       "failed": "モデルが応答できませんでした。もう一度お試しください。"
+    }
+  },
+  "linkPreview": {
+    "title": "リンクのプレビュー",
+    "loading": "ページを読んでいます…",
+    "minutes": "{{count}}分で読めます",
+    "open": "開く",
+    "close": "閉じる",
+    "error": {
+      "notHttps": "プレビューできるのは https のページだけです",
+      "tooBig": "ページが大きすぎてプレビューできません",
+      "notPage": "このリンクはウェブページではありません",
+      "noText": "このページにはプレビューする文章がありません",
+      "failed": "このページをプレビューできませんでした",
+      "noModel": "リンクのプレビューにはチャットモデルが必要です"
     }
   }
 }

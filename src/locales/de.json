@@ -37,7 +37,9 @@
     "removeTranslation": "Übersetzung entfernen",
     "translateImage": "Bild übersetzen",
     "translatePageImages": "Alle Bilder der Seite übersetzen",
-    "fillFormFromTab": "Dieses Formular aus einem offenen Tab ausfüllen"
+    "fillFormFromTab": "Dieses Formular aus einem offenen Tab ausfüllen",
+    "previewLink": "Link-Vorschau",
+    "xraySelection": "Bedeutung auf dieser Seite nachschlagen"
   },
   "onboarding": {
     "greeting_0": "Willkommen!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "Frühere Chats und Verlauf ({{count}})",
     "openPastChat": "Diesen Chat öffnen",
     "continueTitle": "Weitermachen, wo du aufgehört hast",
-    "continueTabsOpen": "Offene Tabs: {{count}}"
+    "continueTabsOpen": "Offene Tabs: {{count}}",
+    "xraySelectionRequest": "Was bedeutet das auf dieser Seite?"
   },
   "footer": {
     "joinDiscord": "Tritt mir auf Discord bei!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue kann diesen Tab nicht lesen.",
       "source_empty": "Dieser Tab hat zu wenig Text zum Ausfüllen.",
       "failed": "Das Modell konnte nicht antworten. Versuche es erneut."
+    }
+  },
+  "linkPreview": {
+    "title": "Link-Vorschau",
+    "loading": "Seite wird gelesen…",
+    "minutes": "{{count}} Min. Lesezeit",
+    "open": "Öffnen",
+    "close": "Schließen",
+    "error": {
+      "notHttps": "Nur https-Seiten lassen sich in der Vorschau zeigen",
+      "tooBig": "Die Seite ist zu groß für eine Vorschau",
+      "notPage": "Dieser Link führt nicht zu einer Webseite",
+      "noText": "Auf dieser Seite gibt es keinen Text für eine Vorschau",
+      "failed": "Vorschau der Seite fehlgeschlagen",
+      "noModel": "Für die Linkvorschau wird ein Chatmodell benötigt"
     }
   }
 }

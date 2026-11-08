@@ -39,6 +39,7 @@ import {
 import { hashStringToIndex } from '@/lib/hash';
 import { getImageTranslator, ImageTranslationLabels } from '@/lib/imageTranslator';
 import { videoKey } from '@/lib/videoTranscript';
+import { xrayOfPage } from '@/lib/xrayPage';
 import {
   initDescribeImageContent,
   initBrowserControlContent,
@@ -295,7 +296,10 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
       );
       if (!text) return;
       setPanelOpen();
-      await initSelectionActionContent(actionType, text, document.title, window.location.href);
+      // An X-ray reads the page's passages that mention the selection (lib/xrayPage.ts). This script
+      // can read only the top frame, so a selection in a frame (an e-book reader) goes without them.
+      const xray = actionType === 'xraySelection' && frameId === 0 ? xrayOfPage(text) : undefined;
+      await initSelectionActionContent(actionType, text, document.title, window.location.href, xray);
       void chrome.runtime.sendMessage({ action: MESSAGE_UPDATE_PANEL_INIT_DATA }).catch((err) => {
         debugLog('handleSelectionAction: Panel not opened yet', err);
       });

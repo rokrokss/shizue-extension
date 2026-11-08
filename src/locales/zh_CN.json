@@ -37,7 +37,9 @@
     "removeTranslation": "移除翻译",
     "translateImage": "翻译图片",
     "translatePageImages": "翻译页面上的所有图片",
-    "fillFormFromTab": "用打开的标签页填写此表单"
+    "fillFormFromTab": "用打开的标签页填写此表单",
+    "previewLink": "预览链接",
+    "xraySelection": "在本页中查含义"
   },
   "onboarding": {
     "greeting_0": "欢迎！",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "过去的聊天和浏览记录（{{count}}）",
     "openPastChat": "打开这个聊天",
     "continueTitle": "接着上次继续",
-    "continueTabsOpen": "打开的标签页：{{count}}"
+    "continueTabsOpen": "打开的标签页：{{count}}",
+    "xraySelectionRequest": "这在本页中是什么意思？"
   },
   "footer": {
     "joinDiscord": "加入我的 Discord！",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue 无法读取那个标签页。",
       "source_empty": "那个标签页的文字太少，无法用来填写。",
       "failed": "模型未能回答。请重试。"
+    }
+  },
+  "linkPreview": {
+    "title": "链接预览",
+    "loading": "正在读取页面…",
+    "minutes": "约 {{count}} 分钟读完",
+    "open": "打开",
+    "close": "关闭",
+    "error": {
+      "notHttps": "只能预览 https 页面",
+      "tooBig": "页面太大，无法预览",
+      "notPage": "这个链接不是网页",
+      "noText": "这个页面没有可预览的文字",
+      "failed": "无法预览这个页面",
+      "noModel": "需要聊天模型才能预览链接"
     }
   }
 }

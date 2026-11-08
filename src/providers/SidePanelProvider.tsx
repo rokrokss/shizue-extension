@@ -53,6 +53,7 @@ const SidePanelProvider = ({
       summaryPageLink: undefined,
       summaryText: undefined,
       selectionText: undefined,
+      xray: undefined,
       imageBase64: undefined,
       imageUrl: undefined,
       formFillTabId: undefined,
@@ -155,7 +156,7 @@ const SidePanelProvider = ({
         // Clear the action immediately to prevent duplicate processing
         await rollbackActionType();
         const actionType = initData.actionType;
-        const { selectionText, summaryTitle, summaryPageLink } = initData;
+        const { selectionText, summaryTitle, summaryPageLink, xray } = initData;
 
         debugLog('SidePanelProvider: [getInitData] selection action', actionType);
         debugLog('SidePanelProvider: [getInitData] threadId', threadId);
@@ -181,7 +182,8 @@ const SidePanelProvider = ({
             actionType,
             selectionText!,
             summaryTitle ?? '',
-            targetLanguage
+            targetLanguage,
+            xray
           ),
           createdAt: Date.now(),
           done: true,

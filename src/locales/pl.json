@@ -37,7 +37,9 @@
     "removeTranslation": "Usuń tłumaczenie",
     "translateImage": "Przetłumacz obraz",
     "translatePageImages": "Przetłumacz wszystkie obrazy na stronie",
-    "fillFormFromTab": "Wypełnij ten formularz z otwartej karty"
+    "fillFormFromTab": "Wypełnij ten formularz z otwartej karty",
+    "previewLink": "Podgląd linku",
+    "xraySelection": "Sprawdź znaczenie na tej stronie"
   },
   "onboarding": {
     "greeting_0": "Witaj!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "Poprzednie czaty i historia ({{count}})",
     "openPastChat": "Otwórz ten czat",
     "continueTitle": "Wróć do tego, co zostało",
-    "continueTabsOpen": "Otwarte karty: {{count}}"
+    "continueTabsOpen": "Otwarte karty: {{count}}",
+    "xraySelectionRequest": "Co to znaczy na tej stronie?"
   },
   "footer": {
     "joinDiscord": "Dołącz do mnie na Discordzie!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue nie może odczytać tej karty.",
       "source_empty": "Ta karta ma za mało tekstu, by z niej wypełnić.",
       "failed": "Model nie odpowiedział. Spróbuj ponownie."
+    }
+  },
+  "linkPreview": {
+    "title": "Podgląd linku",
+    "loading": "Czytanie strony…",
+    "minutes": "{{count}} min czytania",
+    "open": "Otwórz",
+    "close": "Zamknij",
+    "error": {
+      "notHttps": "Podgląd działa tylko dla stron https",
+      "tooBig": "Strona jest za duża na podgląd",
+      "notPage": "Ten link nie prowadzi do strony internetowej",
+      "noText": "Na tej stronie nie ma tekstu do podglądu",
+      "failed": "Nie udało się wyświetlić podglądu strony",
+      "noModel": "Do podglądu linków potrzebny jest model czatu"
     }
   }
 }

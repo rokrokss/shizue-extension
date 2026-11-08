@@ -37,7 +37,9 @@
     "removeTranslation": "Eliminar traducción",
     "translateImage": "Traducir imagen",
     "translatePageImages": "Traducir todas las imágenes de la página",
-    "fillFormFromTab": "Rellenar este formulario desde una pestaña abierta"
+    "fillFormFromTab": "Rellenar este formulario desde una pestaña abierta",
+    "previewLink": "Vista previa del enlace",
+    "xraySelection": "Buscar su sentido en esta página"
   },
   "onboarding": {
     "greeting_0": "¡Bienvenido!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "Chats anteriores e historial ({{count}})",
     "openPastChat": "Abrir este chat",
     "continueTitle": "Sigue donde lo dejaste",
-    "continueTabsOpen": "Pestañas abiertas: {{count}}"
+    "continueTabsOpen": "Pestañas abiertas: {{count}}",
+    "xraySelectionRequest": "¿Qué significa esto en esta página?"
   },
   "footer": {
     "joinDiscord": "¡Únete a mí en Discord!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue no puede leer esa pestaña.",
       "source_empty": "Esa pestaña tiene muy poco texto para rellenar.",
       "failed": "El modelo no pudo responder. Inténtalo de nuevo."
+    }
+  },
+  "linkPreview": {
+    "title": "Vista previa del enlace",
+    "loading": "Leyendo la página…",
+    "minutes": "{{count}} min de lectura",
+    "open": "Abrir",
+    "close": "Cerrar",
+    "error": {
+      "notHttps": "Solo se pueden previsualizar páginas https",
+      "tooBig": "La página es demasiado grande para previsualizarla",
+      "notPage": "Este enlace no es una página web",
+      "noText": "Esta página no tiene texto para previsualizar",
+      "failed": "No se pudo previsualizar esta página",
+      "noModel": "Se necesita un modelo de chat para previsualizar enlaces"
     }
   }
 }

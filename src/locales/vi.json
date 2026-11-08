@@ -37,7 +37,9 @@
     "removeTranslation": "Xóa bản dịch",
     "translateImage": "Dịch hình ảnh",
     "translatePageImages": "Dịch tất cả hình ảnh trên trang",
-    "fillFormFromTab": "Điền biểu mẫu này từ một thẻ đang mở"
+    "fillFormFromTab": "Điền biểu mẫu này từ một thẻ đang mở",
+    "previewLink": "Xem trước liên kết",
+    "xraySelection": "Tra nghĩa trong trang này"
   },
   "onboarding": {
     "greeting_0": "Chào mừng!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "Cuộc trò chuyện trước và lịch sử ({{count}})",
     "openPastChat": "Mở cuộc trò chuyện này",
     "continueTitle": "Tiếp tục từ chỗ đã dừng",
-    "continueTabsOpen": "Tab đang mở: {{count}}"
+    "continueTabsOpen": "Tab đang mở: {{count}}",
+    "xraySelectionRequest": "Từ này có nghĩa gì trong trang này?"
   },
   "footer": {
     "joinDiscord": "Tham gia cùng tôi trên Discord!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue không đọc được thẻ đó.",
       "source_empty": "Thẻ đó có quá ít nội dung để điền.",
       "failed": "Mô hình không trả lời được. Hãy thử lại."
+    }
+  },
+  "linkPreview": {
+    "title": "Xem trước liên kết",
+    "loading": "Đang đọc trang…",
+    "minutes": "{{count}} phút đọc",
+    "open": "Mở",
+    "close": "Đóng",
+    "error": {
+      "notHttps": "Chỉ xem trước được trang https",
+      "tooBig": "Trang quá lớn để xem trước",
+      "notPage": "Liên kết này không phải trang web",
+      "noText": "Trang này không có nội dung để xem trước",
+      "failed": "Không xem trước được trang này",
+      "noModel": "Cần mô hình trò chuyện để xem trước liên kết"
     }
   }
 }

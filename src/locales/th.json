@@ -37,7 +37,9 @@
     "removeTranslation": "ลบการแปล",
     "translateImage": "แปลรูปภาพ",
     "translatePageImages": "แปลรูปภาพทั้งหมดในหน้า",
-    "fillFormFromTab": "กรอกฟอร์มนี้จากแท็บที่เปิดอยู่"
+    "fillFormFromTab": "กรอกฟอร์มนี้จากแท็บที่เปิดอยู่",
+    "previewLink": "ดูตัวอย่างลิงก์",
+    "xraySelection": "หาความหมายในหน้านี้"
   },
   "onboarding": {
     "greeting_0": "ยินดีต้อนรับ!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "แชทก่อนหน้าและประวัติ ({{count}})",
     "openPastChat": "เปิดแชทนี้",
     "continueTitle": "ทำต่อจากที่ค้างไว้",
-    "continueTabsOpen": "แท็บที่เปิดอยู่: {{count}}"
+    "continueTabsOpen": "แท็บที่เปิดอยู่: {{count}}",
+    "xraySelectionRequest": "คำนี้หมายถึงอะไรในหน้านี้"
   },
   "footer": {
     "joinDiscord": "เข้าร่วมกับฉันบน Discord!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue อ่านแท็บนั้นไม่ได้",
       "source_empty": "แท็บนั้นมีข้อความน้อยเกินไปที่จะใช้กรอก",
       "failed": "โมเดลตอบไม่ได้ ลองอีกครั้ง"
+    }
+  },
+  "linkPreview": {
+    "title": "ตัวอย่างลิงก์",
+    "loading": "กำลังอ่านหน้าเว็บ…",
+    "minutes": "อ่าน {{count}} นาที",
+    "open": "เปิด",
+    "close": "ปิด",
+    "error": {
+      "notHttps": "ดูตัวอย่างได้เฉพาะหน้า https",
+      "tooBig": "หน้านี้ใหญ่เกินกว่าจะดูตัวอย่างได้",
+      "notPage": "ลิงก์นี้ไม่ใช่หน้าเว็บ",
+      "noText": "หน้านี้ไม่มีข้อความให้ดูตัวอย่าง",
+      "failed": "ดูตัวอย่างหน้านี้ไม่ได้",
+      "noModel": "ต้องมีโมเดลแชตจึงจะดูตัวอย่างลิงก์ได้"
     }
   }
 }

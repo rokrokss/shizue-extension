@@ -37,7 +37,9 @@
     "removeTranslation": "Alisin ang pagsasalin",
     "translateImage": "Isalin ang larawan",
     "translatePageImages": "Isalin ang lahat ng larawan sa pahina",
-    "fillFormFromTab": "Punan ang form na ito mula sa bukas na tab"
+    "fillFormFromTab": "Punan ang form na ito mula sa bukas na tab",
+    "previewLink": "I-preview ang link",
+    "xraySelection": "Hanapin ang kahulugan sa pahinang ito"
   },
   "onboarding": {
     "greeting_0": "Maligayang pagdating!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "Mga nakaraang chat at history ({{count}})",
     "openPastChat": "Buksan ang chat na ito",
     "continueTitle": "Ituloy kung saan ka huminto",
-    "continueTabsOpen": "Mga bukas na tab: {{count}}"
+    "continueTabsOpen": "Mga bukas na tab: {{count}}",
+    "xraySelectionRequest": "Ano ang ibig sabihin nito sa pahinang ito?"
   },
   "footer": {
     "joinDiscord": "Sumali sa akin sa Discord!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Hindi mabasa ng Shizue ang tab na iyon.",
       "source_empty": "Masyadong kaunti ang teksto sa tab na iyon para pagkunan.",
       "failed": "Hindi nakasagot ang model. Subukan ulit."
+    }
+  },
+  "linkPreview": {
+    "title": "Preview ng link",
+    "loading": "Binabasa ang pahina…",
+    "minutes": "{{count}} min na pagbasa",
+    "open": "Buksan",
+    "close": "Isara",
+    "error": {
+      "notHttps": "Mga https na pahina lang ang maipi-preview",
+      "tooBig": "Masyadong malaki ang pahina para i-preview",
+      "notPage": "Hindi web page ang link na ito",
+      "noText": "Walang tekstong maipi-preview sa pahinang ito",
+      "failed": "Hindi ma-preview ang pahinang ito",
+      "noModel": "Kailangan ng chat model para ma-preview ang mga link"
     }
   }
 }

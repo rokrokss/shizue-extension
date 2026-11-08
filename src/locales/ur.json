@@ -37,7 +37,9 @@
     "removeTranslation": "ترجمہ ہٹائیں",
     "translateImage": "تصویر کا ترجمہ کریں",
     "translatePageImages": "صفحے کی تمام تصاویر کا ترجمہ کریں",
-    "fillFormFromTab": "کھلے ٹیب سے یہ فارم بھریں"
+    "fillFormFromTab": "کھلے ٹیب سے یہ فارم بھریں",
+    "previewLink": "لنک کا پیش منظر",
+    "xraySelection": "اس صفحے میں معنی تلاش کریں"
   },
   "onboarding": {
     "greeting_0": "خوش آمدید!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "پچھلی چیٹس اور ہسٹری ({{count}})",
     "openPastChat": "یہ چیٹ کھولیں",
     "continueTitle": "جہاں چھوڑا تھا وہیں سے جاری رکھیں",
-    "continueTabsOpen": "کھلے ٹیبز: {{count}}"
+    "continueTabsOpen": "کھلے ٹیبز: {{count}}",
+    "xraySelectionRequest": "اس صفحے میں اس کا کیا مطلب ہے؟"
   },
   "footer": {
     "joinDiscord": "Discord پر میرے ساتھ شامل ہوں!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue وہ ٹیب نہیں پڑھ سکتا۔",
       "source_empty": "اس ٹیب میں بھرنے کے لیے بہت کم متن ہے۔",
       "failed": "ماڈل جواب نہیں دے سکا۔ دوبارہ کوشش کریں۔"
+    }
+  },
+  "linkPreview": {
+    "title": "لنک کا پیش منظر",
+    "loading": "صفحہ پڑھا جا رہا ہے…",
+    "minutes": "{{count}} منٹ کا مطالعہ",
+    "open": "کھولیں",
+    "close": "بند کریں",
+    "error": {
+      "notHttps": "صرف https صفحات کا پیش منظر دیکھا جا سکتا ہے",
+      "tooBig": "یہ صفحہ پیش منظر کے لیے بہت بڑا ہے",
+      "notPage": "یہ لنک ویب صفحہ نہیں ہے",
+      "noText": "اس صفحے پر پیش منظر کے لیے کوئی متن نہیں",
+      "failed": "اس صفحے کا پیش منظر نہیں دکھایا جا سکا",
+      "noModel": "لنک کے پیش منظر کے لیے چیٹ ماڈل درکار ہے"
     }
   }
 }

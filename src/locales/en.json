@@ -37,7 +37,9 @@
     "removeTranslation": "Remove translation",
     "translateImage": "Translate image",
     "translatePageImages": "Translate all images on page",
-    "fillFormFromTab": "Fill this form from an open tab"
+    "fillFormFromTab": "Fill this form from an open tab",
+    "previewLink": "Preview link",
+    "xraySelection": "Look up in this page"
   },
   "onboarding": {
     "greeting_0": "Welcome!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "Past chats and history ({{count}})",
     "openPastChat": "Open this chat",
     "continueTitle": "Pick up where you left off",
-    "continueTabsOpen": "Open tabs: {{count}}"
+    "continueTabsOpen": "Open tabs: {{count}}",
+    "xraySelectionRequest": "What does this mean in this page?"
   },
   "footer": {
     "joinDiscord": "Join me on Discord!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue can't read that tab.",
       "source_empty": "That tab has too little text to fill from.",
       "failed": "The model couldn't answer. Try again."
+    }
+  },
+  "linkPreview": {
+    "title": "Link preview",
+    "loading": "Reading the page…",
+    "minutes": "{{count}} min read",
+    "open": "Open",
+    "close": "Close",
+    "error": {
+      "notHttps": "Only https pages can be previewed",
+      "tooBig": "This page is too large to preview",
+      "notPage": "This link isn’t a web page",
+      "noText": "There’s no text to preview on this page",
+      "failed": "Couldn’t preview this page",
+      "noModel": "Pick a chat model to preview links"
     }
   }
 }

@@ -37,7 +37,9 @@
     "removeTranslation": "إزالة الترجمة",
     "translateImage": "ترجمة الصورة",
     "translatePageImages": "ترجمة كل صور الصفحة",
-    "fillFormFromTab": "املأ هذا النموذج من علامة تبويب مفتوحة"
+    "fillFormFromTab": "املأ هذا النموذج من علامة تبويب مفتوحة",
+    "previewLink": "معاينة الرابط",
+    "xraySelection": "ابحث عن معناه في هذه الصفحة"
   },
   "onboarding": {
     "greeting_0": "مرحبًا!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "المحادثات السابقة والسجل ({{count}})",
     "openPastChat": "فتح هذه المحادثة",
     "continueTitle": "تابع من حيث توقفت",
-    "continueTabsOpen": "علامات تبويب مفتوحة: {{count}}"
+    "continueTabsOpen": "علامات تبويب مفتوحة: {{count}}",
+    "xraySelectionRequest": "ماذا يعني هذا في هذه الصفحة؟"
   },
   "footer": {
     "joinDiscord": "انضم إلي على Discord!",
@@ -568,6 +571,21 @@
       "source_unreadable": "لا يستطيع Shizue قراءة علامة التبويب هذه.",
       "source_empty": "في علامة التبويب هذه نص قليل جدًا للملء منه.",
       "failed": "لم يتمكن النموذج من الإجابة. حاول مرة أخرى."
+    }
+  },
+  "linkPreview": {
+    "title": "معاينة الرابط",
+    "loading": "جارٍ قراءة الصفحة…",
+    "minutes": "قراءة في {{count}} دقيقة",
+    "open": "فتح",
+    "close": "إغلاق",
+    "error": {
+      "notHttps": "يمكن معاينة صفحات https فقط",
+      "tooBig": "هذه الصفحة أكبر من أن تُعاين",
+      "notPage": "هذا الرابط ليس صفحة ويب",
+      "noText": "لا يوجد نص لمعاينته في هذه الصفحة",
+      "failed": "تعذّرت معاينة هذه الصفحة",
+      "noModel": "يلزم نموذج دردشة لمعاينة الروابط"
     }
   }
 }

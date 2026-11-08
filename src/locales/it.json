@@ -37,7 +37,9 @@
     "removeTranslation": "Rimuovi traduzione",
     "translateImage": "Traduci immagine",
     "translatePageImages": "Traduci tutte le immagini della pagina",
-    "fillFormFromTab": "Compila questo modulo da una scheda aperta"
+    "fillFormFromTab": "Compila questo modulo da una scheda aperta",
+    "previewLink": "Anteprima del link",
+    "xraySelection": "Cerca il significato in questa pagina"
   },
   "onboarding": {
     "greeting_0": "Benvenuto!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "Chat precedenti e cronologia ({{count}})",
     "openPastChat": "Apri questa chat",
     "continueTitle": "Riprendi da dove avevi lasciato",
-    "continueTabsOpen": "Schede aperte: {{count}}"
+    "continueTabsOpen": "Schede aperte: {{count}}",
+    "xraySelectionRequest": "Che cosa significa in questa pagina?"
   },
   "footer": {
     "joinDiscord": "Unisciti a me su Discord!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue non riesce a leggere quella scheda.",
       "source_empty": "Quella scheda ha troppo poco testo per compilare.",
       "failed": "Il modello non è riuscito a rispondere. Riprova."
+    }
+  },
+  "linkPreview": {
+    "title": "Anteprima del link",
+    "loading": "Lettura della pagina…",
+    "minutes": "{{count}} min di lettura",
+    "open": "Apri",
+    "close": "Chiudi",
+    "error": {
+      "notHttps": "Si possono vedere in anteprima solo pagine https",
+      "tooBig": "La pagina è troppo grande per l’anteprima",
+      "notPage": "Questo link non è una pagina web",
+      "noText": "Questa pagina non ha testo da mostrare in anteprima",
+      "failed": "Impossibile mostrare l’anteprima di questa pagina",
+      "noModel": "Serve un modello di chat per l’anteprima dei link"
     }
   }
 }

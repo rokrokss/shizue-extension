@@ -110,6 +110,14 @@ const ChatContainer = ({
     for (let i = idx - 1; i >= 0; i--) {
       const m = messages[i];
       if (m.role !== 'human') continue;
+      // An X-ray's passages are numbered like a summary's lines (lib/xray.ts). Its numbers hold for
+      // its own answer; later answers in the chat keep to the summary before it, if any.
+      if (m.actionType === 'xraySelection') {
+        if (i !== idx - 1) continue;
+        return m.summaryPageLink && hasPageLines(m.content)
+          ? { page: { url: m.summaryPageLink, prompt: m.content } }
+          : {};
+      }
       if (m.actionType === 'askForSummary') {
         if (m.summaryCaptions) {
           return { video: videoKey(m.summaryPageLink), storyboard: m.summaryStoryboard };

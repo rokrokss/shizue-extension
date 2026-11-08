@@ -37,7 +37,9 @@
     "removeTranslation": "অনুবাদ সরান",
     "translateImage": "ছবি অনুবাদ করুন",
     "translatePageImages": "পৃষ্ঠার সব ছবি অনুবাদ করুন",
-    "fillFormFromTab": "খোলা ট্যাব থেকে এই ফর্ম পূরণ করুন"
+    "fillFormFromTab": "খোলা ট্যাব থেকে এই ফর্ম পূরণ করুন",
+    "previewLink": "লিংকের প্রিভিউ",
+    "xraySelection": "এই পাতায় অর্থ খুঁজুন"
   },
   "onboarding": {
     "greeting_0": "স্বাগতম!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "আগের চ্যাট ও ইতিহাস ({{count}})",
     "openPastChat": "এই চ্যাট খুলুন",
     "continueTitle": "যেখানে থেমেছিলেন সেখান থেকে",
-    "continueTabsOpen": "খোলা ট্যাব: {{count}}"
+    "continueTabsOpen": "খোলা ট্যাব: {{count}}",
+    "xraySelectionRequest": "এই পাতায় এর অর্থ কী?"
   },
   "footer": {
     "joinDiscord": "Discord-এ আমার সাথে যোগ দিন!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue ওই ট্যাব পড়তে পারছে না।",
       "source_empty": "ওই ট্যাবে পূরণ করার মতো যথেষ্ট লেখা নেই।",
       "failed": "মডেল উত্তর দিতে পারেনি। আবার চেষ্টা করুন।"
+    }
+  },
+  "linkPreview": {
+    "title": "লিংক প্রিভিউ",
+    "loading": "পাতাটি পড়া হচ্ছে…",
+    "minutes": "পড়তে {{count}} মিনিট",
+    "open": "খুলুন",
+    "close": "বন্ধ করুন",
+    "error": {
+      "notHttps": "শুধু https পাতার প্রিভিউ দেখা যায়",
+      "tooBig": "পাতাটি প্রিভিউয়ের জন্য খুব বড়",
+      "notPage": "এই লিংকটি কোনো ওয়েব পাতা নয়",
+      "noText": "এই পাতায় প্রিভিউ করার মতো লেখা নেই",
+      "failed": "এই পাতার প্রিভিউ দেখানো গেল না",
+      "noModel": "লিংকের প্রিভিউয়ের জন্য একটি চ্যাট মডেল দরকার"
     }
   }
 }

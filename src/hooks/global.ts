@@ -26,6 +26,9 @@ export type GlobalState = {
   // The video's preview frames, for the scenes its summary shows (lib/storyboard.ts).
   summaryStoryboard?: string;
   selectionText?: string;
+  // An X-ray's passages of the page that mention the selection, and whether they stop where the
+  // reader is (lib/xray.ts).
+  xray?: { passages: string; cut: boolean };
   imageBase64?: string;
   imageUrl?: string;
   // The form to fill from another tab: the tab and frame of the right-clicked field.

@@ -1,6 +1,8 @@
 import {
   MESSAGE_CANCEL_NOT_STARTED_MESSAGE,
   MESSAGE_FETCH_YOUTUBE_PLAYER,
+  MESSAGE_FETCH_LINK_PREVIEW,
+  MESSAGE_SUMMARIZE_LINK_PREVIEW,
   MESSAGE_FRAME_TRANSLATION_STATE,
   MESSAGE_INJECT_NETFLIX_BRIDGE,
   MESSAGE_INJECT_TRACK_CAPTIONS,
@@ -36,6 +38,7 @@ import { getChatModelHandler } from '@/services/background/chatModelHandler';
 import { historySearchTerms, pickOpenTabs } from '@/services/background/chatLookupHandler';
 import { translateImage } from '@/services/background/imageTranslationHandler';
 import { proposeFormFill } from '@/services/background/formFillHandler';
+import { fetchLinkPreview, summarizeLinkPreview } from '@/services/background/linkPreview';
 import { resumeAgentInTab, stopAgentInTab } from '@/services/background/browserAgentHandler';
 import { pauseBridgeInTab } from '@/services/background/nativeBridge';
 import { getTranslationHandler } from '@/services/background/translationHandler';
@@ -287,6 +290,15 @@ async function handleTranslateImage(msg: any, sendResponse: (response?: any) => 
   sendResponse(await translateImage(msg.srcUrl, msg.dataUrl, msg.targetLanguage, msg.title ?? ''));
 }
 
+// A link's preview card (components/Toggle/LinkPreview.tsx): its page, then its key lines.
+async function handleFetchLinkPreview(msg: any, sendResponse: (response?: any) => void) {
+  sendResponse(await fetchLinkPreview(String(msg.url ?? '')));
+}
+
+async function handleSummarizeLinkPreview(msg: any, sendResponse: (response?: any) => void) {
+  sendResponse(await summarizeLinkPreview(String(msg.title ?? ''), String(msg.text ?? '')));
+}
+
 // Values for a form from another tab (components/FormFill/FormFillCard.tsx).
 async function handleFormFillPropose(msg: any, sendResponse: (response?: any) => void) {
   sendResponse(await proposeFormFill(msg.fields, msg.form, msg.sourceTabId));
@@ -369,6 +381,8 @@ export const messageHandlers = {
   [MESSAGE_PICK_OPEN_TABS]: handlePickOpenTabs,
   [MESSAGE_HISTORY_SEARCH_TERMS]: handleHistorySearchTerms,
   [MESSAGE_TRANSLATE_IMAGE]: handleTranslateImage,
+  [MESSAGE_FETCH_LINK_PREVIEW]: handleFetchLinkPreview,
+  [MESSAGE_SUMMARIZE_LINK_PREVIEW]: handleSummarizeLinkPreview,
   [MESSAGE_AGENT_STOP]: handleAgentStop,
   [MESSAGE_AGENT_RESUME]: handleAgentResume,
   [MESSAGE_FORM_FILL_PROPOSE]: handleFormFillPropose,

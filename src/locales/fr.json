@@ -37,7 +37,9 @@
     "removeTranslation": "Supprimer la traduction",
     "translateImage": "Traduire l’image",
     "translatePageImages": "Traduire toutes les images de la page",
-    "fillFormFromTab": "Remplir ce formulaire depuis un onglet ouvert"
+    "fillFormFromTab": "Remplir ce formulaire depuis un onglet ouvert",
+    "previewLink": "Aperçu du lien",
+    "xraySelection": "Chercher son sens dans cette page"
   },
   "onboarding": {
     "greeting_0": "Bienvenue !",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "Discussions passées et historique ({{count}})",
     "openPastChat": "Ouvrir cette discussion",
     "continueTitle": "Reprendre là où vous en étiez",
-    "continueTabsOpen": "Onglets ouverts : {{count}}"
+    "continueTabsOpen": "Onglets ouverts : {{count}}",
+    "xraySelectionRequest": "Que signifie ceci dans cette page ?"
   },
   "footer": {
     "joinDiscord": "Rejoignez-moi sur Discord !",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue ne peut pas lire cet onglet.",
       "source_empty": "Cet onglet contient trop peu de texte pour remplir le formulaire.",
       "failed": "Le modèle n'a pas pu répondre. Réessayez."
+    }
+  },
+  "linkPreview": {
+    "title": "Aperçu du lien",
+    "loading": "Lecture de la page…",
+    "minutes": "{{count}} min de lecture",
+    "open": "Ouvrir",
+    "close": "Fermer",
+    "error": {
+      "notHttps": "Seules les pages https peuvent être prévisualisées",
+      "tooBig": "La page est trop volumineuse pour un aperçu",
+      "notPage": "Ce lien ne mène pas à une page web",
+      "noText": "Cette page n’a pas de texte à prévisualiser",
+      "failed": "Impossible de prévisualiser cette page",
+      "noModel": "Un modèle de chat est requis pour prévisualiser les liens"
     }
   }
 }

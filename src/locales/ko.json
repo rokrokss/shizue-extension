@@ -37,7 +37,9 @@
     "removeTranslation": "번역 없애기",
     "translateImage": "이미지 번역",
     "translatePageImages": "페이지의 이미지 모두 번역",
-    "fillFormFromTab": "열린 탭으로 이 양식 채우기"
+    "fillFormFromTab": "열린 탭으로 이 양식 채우기",
+    "previewLink": "링크 미리보기",
+    "xraySelection": "이 글에서 뜻 찾기"
   },
   "onboarding": {
     "greeting_0": "안녕하세요!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "지난 채팅·방문 기록 {{count}}개",
     "openPastChat": "이 채팅 열기",
     "continueTitle": "이어서 하기",
-    "continueTabsOpen": "열린 탭 {{count}}개"
+    "continueTabsOpen": "열린 탭 {{count}}개",
+    "xraySelectionRequest": "이 글에서 이게 무슨 뜻인지 알려줘."
   },
   "footer": {
     "joinDiscord": "디스코드로 놀러 오세요!",
@@ -568,6 +571,21 @@
       "source_unreadable": "시즈에가 그 탭을 읽을 수 없어요.",
       "source_empty": "그 탭에는 채울 만한 글이 거의 없어요.",
       "failed": "모델이 답하지 못했어요. 다시 해 주세요."
+    }
+  },
+  "linkPreview": {
+    "title": "링크 미리보기",
+    "loading": "페이지를 읽는 중…",
+    "minutes": "{{count}}분 분량",
+    "open": "열기",
+    "close": "닫기",
+    "error": {
+      "notHttps": "https 페이지만 미리 볼 수 있습니다",
+      "tooBig": "페이지가 너무 커서 미리 볼 수 없습니다",
+      "notPage": "웹 페이지가 아닌 링크입니다",
+      "noText": "이 페이지에는 미리 볼 글이 없습니다",
+      "failed": "이 페이지를 미리 보지 못했습니다",
+      "noModel": "링크를 미리 보려면 채팅 모델이 필요합니다"
     }
   }
 }

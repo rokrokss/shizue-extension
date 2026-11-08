@@ -37,7 +37,9 @@
     "removeTranslation": "移除翻譯",
     "translateImage": "翻譯圖片",
     "translatePageImages": "翻譯頁面上的所有圖片",
-    "fillFormFromTab": "用開啟的分頁填寫此表單"
+    "fillFormFromTab": "用開啟的分頁填寫此表單",
+    "previewLink": "預覽連結",
+    "xraySelection": "在本頁中查含義"
   },
   "onboarding": {
     "greeting_0": "歡迎！",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "過去的聊天和瀏覽記錄（{{count}}）",
     "openPastChat": "開啟這個聊天",
     "continueTitle": "從上次繼續",
-    "continueTabsOpen": "開啟的分頁：{{count}}"
+    "continueTabsOpen": "開啟的分頁：{{count}}",
+    "xraySelectionRequest": "這在本頁中是什麼意思？"
   },
   "footer": {
     "joinDiscord": "加入我的 Discord！",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue 無法讀取那個分頁。",
       "source_empty": "那個分頁的文字太少，無法用來填寫。",
       "failed": "模型無法回答。請再試一次。"
+    }
+  },
+  "linkPreview": {
+    "title": "連結預覽",
+    "loading": "正在讀取頁面…",
+    "minutes": "約 {{count}} 分鐘讀完",
+    "open": "開啟",
+    "close": "關閉",
+    "error": {
+      "notHttps": "只能預覽 https 頁面",
+      "tooBig": "頁面太大，無法預覽",
+      "notPage": "這個連結不是網頁",
+      "noText": "這個頁面沒有可預覽的文字",
+      "failed": "無法預覽這個頁面",
+      "noModel": "需要聊天模型才能預覽連結"
     }
   }
 }

@@ -37,7 +37,9 @@
     "removeTranslation": "Remover tradução",
     "translateImage": "Traduzir imagem",
     "translatePageImages": "Traduzir todas as imagens da página",
-    "fillFormFromTab": "Preencher este formulário a partir de um separador aberto"
+    "fillFormFromTab": "Preencher este formulário a partir de um separador aberto",
+    "previewLink": "Pré-visualizar ligação",
+    "xraySelection": "Procurar o sentido nesta página"
   },
   "onboarding": {
     "greeting_0": "Bem-vindo!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "Conversas anteriores e histórico ({{count}})",
     "openPastChat": "Abrir esta conversa",
     "continueTitle": "Continua onde ficaste",
-    "continueTabsOpen": "Separadores abertos: {{count}}"
+    "continueTabsOpen": "Separadores abertos: {{count}}",
+    "xraySelectionRequest": "O que significa isto nesta página?"
   },
   "footer": {
     "joinDiscord": "Junta-te a mim no Discord!",
@@ -568,6 +571,21 @@
       "source_unreadable": "O Shizue não consegue ler esse separador.",
       "source_empty": "Esse separador tem pouco texto para preencher.",
       "failed": "O modelo não conseguiu responder. Tente de novo."
+    }
+  },
+  "linkPreview": {
+    "title": "Pré-visualização da ligação",
+    "loading": "A ler a página…",
+    "minutes": "{{count}} min de leitura",
+    "open": "Abrir",
+    "close": "Fechar",
+    "error": {
+      "notHttps": "Só é possível pré-visualizar páginas https",
+      "tooBig": "A página é demasiado grande para pré-visualizar",
+      "notPage": "Esta ligação não é uma página web",
+      "noText": "Esta página não tem texto para pré-visualizar",
+      "failed": "Não foi possível pré-visualizar esta página",
+      "noModel": "É necessário um modelo de chat para pré-visualizar ligações"
     }
   }
 }

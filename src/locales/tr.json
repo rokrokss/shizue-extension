@@ -37,7 +37,9 @@
     "removeTranslation": "Çeviriyi kaldır",
     "translateImage": "Görseli çevir",
     "translatePageImages": "Sayfadaki tüm görselleri çevir",
-    "fillFormFromTab": "Bu formu açık bir sekmeden doldur"
+    "fillFormFromTab": "Bu formu açık bir sekmeden doldur",
+    "previewLink": "Bağlantıyı önizle",
+    "xraySelection": "Bu sayfadaki anlamını bul"
   },
   "onboarding": {
     "greeting_0": "Hoş geldiniz!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "Geçmiş sohbetler ve geçmiş ({{count}})",
     "openPastChat": "Bu sohbeti aç",
     "continueTitle": "Kaldığın yerden devam et",
-    "continueTabsOpen": "Açık sekmeler: {{count}}"
+    "continueTabsOpen": "Açık sekmeler: {{count}}",
+    "xraySelectionRequest": "Bu, bu sayfada ne anlama geliyor?"
   },
   "footer": {
     "joinDiscord": "Discord'da bana katılın!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue o sekmeyi okuyamıyor.",
       "source_empty": "O sekmede doldurmak için çok az metin var.",
       "failed": "Model yanıt veremedi. Tekrar deneyin."
+    }
+  },
+  "linkPreview": {
+    "title": "Bağlantı önizlemesi",
+    "loading": "Sayfa okunuyor…",
+    "minutes": "{{count}} dk okuma",
+    "open": "Aç",
+    "close": "Kapat",
+    "error": {
+      "notHttps": "Yalnızca https sayfaları önizlenebilir",
+      "tooBig": "Sayfa önizleme için çok büyük",
+      "notPage": "Bu bağlantı bir web sayfası değil",
+      "noText": "Bu sayfada önizlenecek metin yok",
+      "failed": "Bu sayfa önizlenemedi",
+      "noModel": "Bağlantı önizlemesi için bir sohbet modeli gerekli"
     }
   }
 }

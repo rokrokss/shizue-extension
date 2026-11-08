@@ -37,7 +37,9 @@
     "removeTranslation": "अनुवाद हटाएं",
     "translateImage": "छवि का अनुवाद करें",
     "translatePageImages": "पेज की सभी छवियों का अनुवाद करें",
-    "fillFormFromTab": "खुले टैब से यह फ़ॉर्म भरें"
+    "fillFormFromTab": "खुले टैब से यह फ़ॉर्म भरें",
+    "previewLink": "लिंक का पूर्वावलोकन",
+    "xraySelection": "इस पेज में अर्थ खोजें"
   },
   "onboarding": {
     "greeting_0": "आपका स्वागत है!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "पिछली चैट और इतिहास ({{count}})",
     "openPastChat": "यह चैट खोलें",
     "continueTitle": "जहाँ छोड़ा था वहीं से जारी रखें",
-    "continueTabsOpen": "खुले टैब: {{count}}"
+    "continueTabsOpen": "खुले टैब: {{count}}",
+    "xraySelectionRequest": "इस पेज में इसका क्या मतलब है?"
   },
   "footer": {
     "joinDiscord": "Discord पर मुझसे जुड़ें!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue उस टैब को नहीं पढ़ सकता।",
       "source_empty": "उस टैब में भरने लायक पर्याप्त टेक्स्ट नहीं है।",
       "failed": "मॉडल जवाब नहीं दे सका। फिर कोशिश करें।"
+    }
+  },
+  "linkPreview": {
+    "title": "लिंक पूर्वावलोकन",
+    "loading": "पेज पढ़ा जा रहा है…",
+    "minutes": "{{count}} मिनट में पढ़ें",
+    "open": "खोलें",
+    "close": "बंद करें",
+    "error": {
+      "notHttps": "केवल https पेज का पूर्वावलोकन हो सकता है",
+      "tooBig": "यह पेज पूर्वावलोकन के लिए बहुत बड़ा है",
+      "notPage": "यह लिंक कोई वेब पेज नहीं है",
+      "noText": "इस पेज में पूर्वावलोकन के लिए कोई पाठ नहीं है",
+      "failed": "इस पेज का पूर्वावलोकन नहीं हो सका",
+      "noModel": "लिंक पूर्वावलोकन के लिए चैट मॉडल चाहिए"
     }
   }
 }

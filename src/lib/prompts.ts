@@ -250,6 +250,14 @@ export const getFollowUpQuestionsPrompt = (lang: Language, title: string, summar
 ${summary}
 ===end of summary===`;
 
+// A link's preview card: three key lines of the page behind it (lib/linkPreview.ts).
+export const getLinkPreviewPrompt = (lang: Language, title: string, text: string) =>
+  `Below is the text of a web page, "${title}", that the reader is deciding whether to open. Give its 3 key points in ${lang}: 3 lines, each one sentence under 120 characters, saying what the page actually says or offers, not that it "discusses" something. If the text is only an error, sign-in or cookie notice, say so in one line. Answer with only a JSON object: {"lines": ["...", "...", "..."]}.
+
+===page text===
+${text}
+===end of page text===`;
+
 // A question asked while the video was at `time` ([12:34]), about what is on screen around then.
 export const getVideoMomentPrompt = (time: string, question: string) =>
   `(I'm watching the video at [${time}] right now. If my question is about what is happening, being said or shown here, answer from the captions around [${time}] and cite their times.)
@@ -460,9 +468,28 @@ export const getSelectionActionPrompt = (
   actionType: SelectionActionType,
   text: string,
   pageTitle: string,
-  targetLanguage: Language
+  targetLanguage: Language,
+  // For an X-ray: the page's passages that mention the selection, numbered [¶1]… (lib/xray.ts), and
+  // whether they stop where the reader is.
+  xray?: { passages: string; cut: boolean }
 ) => {
   switch (actionType) {
+    case 'xraySelection':
+      return `I selected "${text}" while reading a web page. Using the passages of the page that mention it, tell me what it means or who it is in this text, which may differ from its usual sense.
+- Start with one or two sentences: what or who it is here.
+- Then list what the text says about it (its role, relations, how it is used, how it changes), each point followed by the number of the passage it comes from, like [¶3].
+- Use only what the passages say. If they don't explain it, say so, and add what it generally means, marked as general knowledge.${
+        xray?.cut
+          ? "\n- The passages stop where I am reading. Don't reveal or guess anything that may come later."
+          : ''
+      }
+- Keep it concise.
+
+===title of the page===
+${pageTitle}
+
+===passages that mention it===
+${xray ? xray.passages || '(It appears nowhere else on the page.)' : "(The page's passages could not be read.)"}`;
     case 'translateSelection':
       return `Translate the following text into ${targetLanguage}. Keep its line breaks and formatting. Output only the translation, without any explanation.
 

@@ -2,6 +2,7 @@ import {
   isSelectionActionType,
   MESSAGE_CONTEXT_MENU_DESCRIBE_IMAGE,
   MESSAGE_CONTEXT_MENU_EXTRACT_IMAGE_TEXT,
+  MESSAGE_CONTEXT_MENU_PREVIEW_LINK,
   MESSAGE_CONTEXT_MENU_SELECTION_ACTION,
   MESSAGE_CONTEXT_MENU_TRANSLATE_IMAGE,
   MESSAGE_CONTEXT_MENU_TRANSLATE_PAGE,
@@ -80,6 +81,13 @@ export const createContextMenu = async () => {
           action: MESSAGE_CONTEXT_MENU_EXTRACT_IMAGE_TEXT,
           srcUrl: info.srcUrl,
         }).catch((error) => errorLog('Page action receiver unavailable; reload the page', error));
+      } else if (info.menuItemId === 'previewLink') {
+        // The card shows in the top frame, beside the link when the link is there.
+        void chrome.tabs.sendMessage(tab.id, {
+          action: MESSAGE_CONTEXT_MENU_PREVIEW_LINK,
+          linkUrl: info.linkUrl,
+          frameId: info.frameId,
+        }, { frameId: 0 }).catch((error) => errorLog('Page action receiver unavailable; reload the page', error));
       } else if (isSelectionActionType(info.menuItemId)) {
         void chrome.tabs.sendMessage(tab.id, {
           action: MESSAGE_CONTEXT_MENU_SELECTION_ACTION,
@@ -128,6 +136,12 @@ export const createContextMenu = async () => {
       contexts: ['selection'],
     },
     {
+      id: 'xraySelection',
+      parentId: 'shizue-parent',
+      title: i18n.t('overlayMenu.xraySelection'),
+      contexts: ['selection'],
+    },
+    {
       id: 'summarizeSelection',
       parentId: 'shizue-parent',
       title: i18n.t('overlayMenu.summarizeSelection'),
@@ -138,6 +152,12 @@ export const createContextMenu = async () => {
       parentId: 'shizue-parent',
       title: i18n.t('overlayMenu.fixGrammarSelection'),
       contexts: ['selection'],
+    },
+    {
+      id: 'previewLink',
+      parentId: 'shizue-parent',
+      title: i18n.t('overlayMenu.previewLink'),
+      contexts: ['link'],
     },
     {
       id: 'fillFormFromTab',

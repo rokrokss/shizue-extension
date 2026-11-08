@@ -37,7 +37,9 @@
     "removeTranslation": "ترجمه را حذف کنید",
     "translateImage": "ترجمه تصویر",
     "translatePageImages": "ترجمه همه تصاویر صفحه",
-    "fillFormFromTab": "پر کردن این فرم از یک زبانهٔ باز"
+    "fillFormFromTab": "پر کردن این فرم از یک زبانهٔ باز",
+    "previewLink": "پیش‌نمایش پیوند",
+    "xraySelection": "یافتن معنا در این صفحه"
   },
   "onboarding": {
     "greeting_0": "خوش آمدید!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "گفتگوهای قبلی و تاریخچه ({{count}})",
     "openPastChat": "باز کردن این گفتگو",
     "continueTitle": "از همان‌جا که ماندید ادامه دهید",
-    "continueTabsOpen": "زبانه‌های باز: {{count}}"
+    "continueTabsOpen": "زبانه‌های باز: {{count}}",
+    "xraySelectionRequest": "این در این صفحه چه معنایی دارد؟"
   },
   "footer": {
     "joinDiscord": "به من در Discord بپیوندید!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue نمی‌تواند آن زبانه را بخواند.",
       "source_empty": "آن زبانه متن کافی برای پر کردن ندارد.",
       "failed": "مدل نتوانست پاسخ دهد. دوباره امتحان کنید."
+    }
+  },
+  "linkPreview": {
+    "title": "پیش‌نمایش پیوند",
+    "loading": "در حال خواندن صفحه…",
+    "minutes": "{{count}} دقیقه مطالعه",
+    "open": "باز کردن",
+    "close": "بستن",
+    "error": {
+      "notHttps": "فقط صفحه‌های https پیش‌نمایش می‌شوند",
+      "tooBig": "این صفحه برای پیش‌نمایش خیلی بزرگ است",
+      "notPage": "این پیوند یک صفحهٔ وب نیست",
+      "noText": "این صفحه متنی برای پیش‌نمایش ندارد",
+      "failed": "پیش‌نمایش این صفحه ممکن نشد",
+      "noModel": "برای پیش‌نمایش پیوندها یک مدل گفتگو لازم است"
     }
   }
 }

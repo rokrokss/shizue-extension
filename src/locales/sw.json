@@ -37,7 +37,9 @@
     "removeTranslation": "Ondoa tafsiri",
     "translateImage": "Tafsiri picha",
     "translatePageImages": "Tafsiri picha zote za ukurasa",
-    "fillFormFromTab": "Jaza fomu hii kutoka kichupo kilicho wazi"
+    "fillFormFromTab": "Jaza fomu hii kutoka kichupo kilicho wazi",
+    "previewLink": "Hakiki kiungo",
+    "xraySelection": "Tafuta maana katika ukurasa huu"
   },
   "onboarding": {
     "greeting_0": "Karibu!",
@@ -181,7 +183,8 @@
     "pastFindsTitle": "Gumzo za zamani na historia ({{count}})",
     "openPastChat": "Fungua gumzo hili",
     "continueTitle": "Endelea ulipoachia",
-    "continueTabsOpen": "Vichupo vilivyo wazi: {{count}}"
+    "continueTabsOpen": "Vichupo vilivyo wazi: {{count}}",
+    "xraySelectionRequest": "Hii ina maana gani katika ukurasa huu?"
   },
   "footer": {
     "joinDiscord": "Jiunge nami kwenye Discord!",
@@ -568,6 +571,21 @@
       "source_unreadable": "Shizue haiwezi kusoma kichupo hicho.",
       "source_empty": "Kichupo hicho kina maandishi machache mno ya kujaza.",
       "failed": "Modeli haikuweza kujibu. Jaribu tena."
+    }
+  },
+  "linkPreview": {
+    "title": "Hakikisho la kiungo",
+    "loading": "Inasoma ukurasa…",
+    "minutes": "Dakika {{count}} kusoma",
+    "open": "Fungua",
+    "close": "Funga",
+    "error": {
+      "notHttps": "Kurasa za https pekee ndizo zinaweza kuhakikiwa",
+      "tooBig": "Ukurasa ni mkubwa mno kuhakikiwa",
+      "notPage": "Kiungo hiki si ukurasa wa wavuti",
+      "noText": "Hakuna maandishi ya kuhakiki kwenye ukurasa huu",
+      "failed": "Imeshindikana kuhakiki ukurasa huu",
+      "noModel": "Inahitaji modeli ya gumzo ili kuhakiki viungo"
     }
   }
 }

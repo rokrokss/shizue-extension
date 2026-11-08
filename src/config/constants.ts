@@ -44,6 +44,10 @@ export const MESSAGE_CONTEXT_MENU_SUMMARIZE_PAGE = 'context_menu_summarize_page'
 export const MESSAGE_CONTEXT_MENU_DESCRIBE_IMAGE = 'context_menu_describe_image';
 export const MESSAGE_CONTEXT_MENU_EXTRACT_IMAGE_TEXT = 'context_menu_extract_image_text';
 export const MESSAGE_CONTEXT_MENU_SELECTION_ACTION = 'context_menu_selection_action';
+export const MESSAGE_CONTEXT_MENU_PREVIEW_LINK = 'context_menu_preview_link';
+// Page → background: a link's page for its preview card, then its key lines (lib/linkPreview.ts).
+export const MESSAGE_FETCH_LINK_PREVIEW = 'fetch_link_preview';
+export const MESSAGE_SUMMARIZE_LINK_PREVIEW = 'summarize_link_preview';
 // Side panel → YouTube or Netflix tab: the captions of the video it shows (lib/youtubeTranscript.ts,
 // lib/netflix/netflixTranscript.ts).
 export const MESSAGE_READ_VIDEO_TRANSCRIPT = 'read_video_transcript';
@@ -150,6 +154,8 @@ export const SELECTION_ACTION_TYPES = [
   'explainSelection',
   'summarizeSelection',
   'fixGrammarSelection',
+  // A term or name, explained by the passages of the page that mention it (lib/xray.ts).
+  'xraySelection',
 ] as const;
 
 export type SelectionActionType = (typeof SELECTION_ACTION_TYPES)[number];
