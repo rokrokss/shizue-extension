@@ -80,18 +80,42 @@ export function askInPage(state: {
       { threshold: 1, trackVisibility: true, delay: 100 } as IntersectionObserverInit
     );
     watcher.observe(card);
+    const globals = globalThis as { __shizueBridgeCardPress?: (event: MouseEvent) => boolean };
     const finish = (answer: boolean) => {
       clearTimeout(timer);
       watcher.disconnect();
       host.remove();
+      if (globals.__shizueBridgeCardPress === press) globals.__shizueBridgeCardPress = undefined;
       resolve(answer);
     };
     const timer = setTimeout(() => finish(false), state.timeoutMs);
-    allow.addEventListener('click', (event) => {
+    const onAllow = (event: MouseEvent) => {
       if (event.isTrusted && unobstructed && performance.now() - shownAt > 600) finish(true);
-    });
-    deny.addEventListener('click', (event) => {
+    };
+    const onDeny = (event: MouseEvent) => {
       if (event.isTrusted) finish(false);
-    });
+    };
+    allow.addEventListener('click', onAllow);
+    deny.addEventListener('click', onDeny);
+    // The same buttons, for a click the page would stop on its way down to them
+    // (entrypoints/agent-pill.content.ts). Outside the closed shadow the click's target is the host;
+    // where it landed says which button it was.
+    const press = (event: MouseEvent) => {
+      if (event.target !== host) return false;
+      const under = (element: HTMLElement) => {
+        const rect = element.getBoundingClientRect();
+        return (
+          event.clientX >= rect.left &&
+          event.clientX <= rect.right &&
+          event.clientY >= rect.top &&
+          event.clientY <= rect.bottom
+        );
+      };
+      if (under(allow)) onAllow(event);
+      else if (under(deny)) onDeny(event);
+      else return false;
+      return true;
+    };
+    globals.__shizueBridgeCardPress = press;
   });
 }
