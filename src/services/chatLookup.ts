@@ -11,7 +11,7 @@ import {
   type HistorySearchTerms,
   type PastFinds,
 } from '@/lib/chatLookup';
-import { db, searchThreads } from '@/lib/indexDB';
+import { db, loadThread, searchThreads, type ThreadSearchHit } from '@/lib/indexDB';
 import { readTabPage, readVideoTab, type PageText } from '@/lib/tabText';
 import { videoKey } from '@/lib/videoTranscript';
 
@@ -21,6 +21,8 @@ import { videoKey } from '@/lib/videoTranscript';
 const DAY_MS = 24 * 60 * 60 * 1000;
 // Chrome keeps about this much history.
 const HISTORY_DAYS = 90;
+// A match with no more than this beside the term says nothing about it.
+const BARE_MATCH_EXTRA = 10;
 
 // Find in open tabs: the open tabs the chat model picks for the question by their titles and sites,
 // read as attached tabs are, a short page included since the model picked it; one that can't be
@@ -83,6 +85,19 @@ const searchHistory = async (
   );
 };
 
+// What a past chat's card quotes. The first match is often a selection action on the term itself
+// (explain, X-ray), whose shown text is just the term; the chat's answer then says what it is.
+const chatSnippet = async (threadId: string, { text, index }: ThreadSearchHit, query: string) => {
+  if (text.replace(/\s+/g, ' ').trim().length <= query.length + BARE_MATCH_EXTRA) {
+    const needle = query.toLowerCase();
+    const answer = (await loadThread(threadId)).find(
+      (m) => m.role === 'ai' && m.content.toLowerCase().includes(needle)
+    );
+    if (answer) return snippetAround(answer.content, answer.content.toLowerCase().indexOf(needle));
+  }
+  return snippetAround(text, index);
+};
+
 // Earlier chats whose questions or answers contain a search term: the ones more terms found first,
 // then the latest. The chat the question is asked in is left out.
 const searchChats = async (
@@ -91,26 +106,31 @@ const searchChats = async (
   currentThreadId: string | undefined
 ): Promise<ChatFind[]> => {
   const since = days ? now - days * DAY_MS : 0;
-  const found = new Map<string, { snippet: string; score: number }>();
+  const found = new Map<string, { hit: ThreadSearchHit; query: string; score: number }>();
   for (const query of queries) {
     for (const [threadId, hit] of await searchThreads(query)) {
       if (threadId === currentThreadId) continue;
       const known = found.get(threadId);
       if (known) known.score += 1;
-      else found.set(threadId, { snippet: snippetAround(hit.text, hit.index), score: 1 });
+      else found.set(threadId, { hit, query, score: 1 });
     }
   }
   const threads = await db.threads.bulkGet([...found.keys()]);
-  return threads
+  const kept = threads
     .flatMap((thread) => (thread && thread.updatedAt >= since ? [thread] : []))
     .sort((a, b) => found.get(b.id)!.score - found.get(a.id)!.score || b.updatedAt - a.updatedAt)
-    .slice(0, MAX_CHAT_FINDS)
-    .map((thread) => ({
-      threadId: thread.id,
-      title: thread.title,
-      at: thread.updatedAt,
-      snippet: found.get(thread.id)!.snippet,
-    }));
+    .slice(0, MAX_CHAT_FINDS);
+  return Promise.all(
+    kept.map(async (thread) => {
+      const { hit, query } = found.get(thread.id)!;
+      return {
+        threadId: thread.id,
+        title: thread.title,
+        at: thread.updatedAt,
+        snippet: await chatSnippet(thread.id, hit, query),
+      };
+    })
+  );
 };
 
 // Search past chats and history: the chat model turns the question into search terms (it sees only
