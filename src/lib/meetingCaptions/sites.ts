@@ -76,14 +76,18 @@ const zoom: MeetingSite = {
   title: (doc) => doc.title.trim(),
 };
 
+const TEAMS_HOSTS = ['teams.microsoft.com', 'teams.live.com', 'teams.cloud.microsoft'];
+// A company that routes Teams through Microsoft Defender for Cloud Apps serves it under the proxy's
+// suffix, as TranscripTonic's list has it (teams.microsoft.com.mcas.ms and the like).
+const TEAMS_PROXY_SUFFIXES = ['.mcas.ms', '.mcas-gov.us', '.mcas-gov.ms'];
+
+export const isTeamsHost = (hostname: string) =>
+  TEAMS_HOSTS.includes(hostname) ||
+  TEAMS_HOSTS.some((host) => TEAMS_PROXY_SUFFIXES.some((suffix) => hostname === host + suffix));
+
 export const meetingSiteFor = (hostname: string, pathname: string): MeetingSite | null => {
   if (hostname === 'meet.google.com') return meet;
-  if (
-    hostname === 'teams.microsoft.com' ||
-    hostname === 'teams.live.com' ||
-    hostname === 'teams.cloud.microsoft'
-  )
-    return teams;
+  if (isTeamsHost(hostname)) return teams;
   if ((hostname === 'zoom.us' || hostname.endsWith('.zoom.us')) && pathname.startsWith('/wc/')) return zoom;
   return null;
 };

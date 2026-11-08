@@ -1,5 +1,6 @@
 import { CONTENT_SCRIPT_PING, type ContentScriptName } from '@/lib/contentScriptConnection';
 import { debugLog } from '@/logs';
+import { isTeamsHost } from '@/lib/meetingCaptions/sites';
 
 const SESSION_RECOVERY_KEY = 'CONTENT_SCRIPTS_RECOVERED';
 const recoveringTabs = new Map<number, Promise<boolean>>();
@@ -44,7 +45,7 @@ export function scriptsForPage(value: string | undefined): ContentScriptName[] {
       return ['toggle', 'streaming-caption'];
     }
     // Zoom's meeting runs in a frame, which recovery (top frame only) doesn't reach.
-    if (url.protocol === 'https:' && ['meet.google.com', 'teams.microsoft.com', 'teams.live.com', 'teams.cloud.microsoft'].includes(url.hostname)) {
+    if (url.protocol === 'https:' && (url.hostname === 'meet.google.com' || isTeamsHost(url.hostname))) {
       return ['toggle', 'meeting-caption'];
     }
     return ['toggle'];

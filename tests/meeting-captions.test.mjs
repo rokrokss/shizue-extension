@@ -65,6 +65,10 @@ test('Each meeting site, and Zoom only in its web client', () => {
   assert.equal(meetingSiteFor('meet.google.com', '/abc-defg-hij').name, 'meet');
   assert.equal(meetingSiteFor('teams.microsoft.com', '/v2/').name, 'teams');
   assert.equal(meetingSiteFor('teams.live.com', '/meet/1').name, 'teams');
+  assert.equal(meetingSiteFor('teams.cloud.microsoft', '/v2/').name, 'teams');
+  assert.equal(meetingSiteFor('teams.microsoft.com.mcas.ms', '/v2/').name, 'teams');
+  assert.equal(meetingSiteFor('teams.cloud.microsoft.mcas-gov.us', '/v2/').name, 'teams');
+  assert.equal(meetingSiteFor('evil.mcas.ms', '/v2/'), null);
   assert.equal(meetingSiteFor('app.zoom.us', '/wc/123/join').name, 'zoom');
   assert.equal(meetingSiteFor('us05web.zoom.us', '/wc/123/start').name, 'zoom');
   assert.equal(meetingSiteFor('zoom.us', '/pricing'), null);
