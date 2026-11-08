@@ -94,6 +94,8 @@ export const STORAGE_AGENT_ALLOWED_SITES = 'AGENT_ALLOWED_SITES';
 export const STORAGE_AGENT_SITE_TIPS = 'AGENT_SITE_TIPS';
 export const STORAGE_AGENT_BACKGROUND = 'AGENT_BACKGROUND';
 export const STORAGE_AUTO_MEMORY = 'AUTO_MEMORY';
+// What was typed in each chat box and not sent yet (lib/chatDrafts.ts).
+export const STORAGE_CHAT_DRAFTS = 'CHAT_DRAFTS';
 export const STORAGE_GLOBAL_STATE = 'GLOBAL_STATE';
 export const STORAGE_THEME = 'THEME';
 export const STORAGE_SHOW_TOGGLE = 'SHOW_TOGGLE';

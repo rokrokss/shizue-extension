@@ -10,6 +10,7 @@ import { useActiveWebTab } from '@/hooks/activeTab';
 import { ChatStatus, isChatWaiting, useReasoningEffort } from '@/hooks/chat';
 import { useThemeValue } from '@/hooks/layout';
 import { threadIdAtom } from '@/hooks/global';
+import { draftKeyOf, loadChatDraft, saveChatDraft } from '@/lib/chatDrafts';
 import { pastFindsText, type PastFinds } from '@/lib/chatLookup';
 import { findOpenTabPages, requestHistoryPermission, searchPast } from '@/services/chatLookup';
 import { useChatModel, useLocalServerValue, useModelOptions } from '@/hooks/models';
@@ -50,7 +51,7 @@ import {
 } from '@ant-design/icons';
 import { Alert, Button, Input, Tooltip } from 'antd';
 import { useAtomValue } from 'jotai';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
@@ -156,6 +157,48 @@ const ChatInput = ({
     if (chatOfAutoApprove.current !== undefined && chatOfAutoApprove.current !== threadId) setAutoApprove(false);
     chatOfAutoApprove.current = threadId;
   }, [threadId]);
+
+  // What was typed and not sent stays with its chat (lib/chatDrafts.ts), through closing the panel,
+  // the memos and other chats: saved a moment after typing stops, and at once when leaving.
+  const draftKey = draftKeyOf(threadId);
+  const draftLoadedFor = useRef<string | null>(null);
+  const pendingDraft = useRef<{ key: string; text: string } | null>(null);
+  const draftTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const flushDraft = useCallback(() => {
+    clearTimeout(draftTimer.current);
+    const pending = pendingDraft.current;
+    pendingDraft.current = null;
+    if (pending) void saveChatDraft(pending.key, pending.text);
+  }, []);
+  useEffect(() => {
+    flushDraft();
+    // Another chat's text doesn't stay in the box while this one's draft loads. What the user
+    // types meanwhile wins over the draft.
+    draftLoadedFor.current = null;
+    setChatInput('');
+    let current = true;
+    void loadChatDraft(draftKey).then((text) => {
+      if (!current) return;
+      draftLoadedFor.current = draftKey;
+      setChatInput((typed) => typed || text);
+    });
+    return () => {
+      current = false;
+    };
+  }, [draftKey, flushDraft]);
+  useEffect(() => {
+    if (draftLoadedFor.current !== draftKey) return;
+    pendingDraft.current = { key: draftKey, text: chatInput };
+    clearTimeout(draftTimer.current);
+    draftTimer.current = setTimeout(flushDraft, 400);
+  }, [chatInput]);
+  useEffect(() => {
+    window.addEventListener('pagehide', flushDraft);
+    return () => {
+      window.removeEventListener('pagehide', flushDraft);
+      flushDraft();
+    };
+  }, [flushDraft]);
 
   // A question waiting at the past finds card is taken back when the user goes to another chat.
   useEffect(() => {

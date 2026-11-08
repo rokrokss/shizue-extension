@@ -35,6 +35,9 @@ const {
   tabSite,
   CHAT_LINK_PATTERN,
 } = await load('../src/lib/chatLookup.ts');
+const { draftKeyOf, draftTextOf, withDraft, DRAFT_KEEP_MS, DRAFT_LIMIT, NEW_CHAT_DRAFT } = await load(
+  '../src/lib/chatDrafts.ts'
+);
 
 test('Banking, payments, health and mail sites are left out of what the chat looks through', () => {
   for (const url of [
@@ -135,4 +138,22 @@ test('A history link keeps what names the page and drops what may sign in', () =
   );
   assert.equal(historyAddress('https://shop.example/find?q=desk&api_key=x&code=1'), 'https://shop.example/find?q=desk');
   assert.equal(historyAddress('not a url'), 'not a url');
+});
+
+test('A draft is kept per chat until it is sent, and old or extra ones are dropped', () => {
+  const now = 1_000_000_000_000;
+  assert.equal(draftKeyOf(undefined), NEW_CHAT_DRAFT);
+  assert.equal(draftKeyOf('t1'), 't1');
+  let drafts = withDraft({}, 't1', 'half a question', now);
+  assert.equal(draftTextOf(drafts, 't1', now), 'half a question');
+  drafts = withDraft(drafts, 't1', '  ', now);
+  assert.deepEqual(drafts, {});
+  drafts = withDraft({ old: { text: 'stale', at: now - DRAFT_KEEP_MS - 1 } }, 'new', 'fresh', now);
+  assert.deepEqual(Object.keys(drafts), ['new']);
+  assert.equal(draftTextOf({ old: { text: 'stale', at: now - DRAFT_KEEP_MS - 1 } }, 'old', now), '');
+  let many = {};
+  for (let i = 0; i < DRAFT_LIMIT + 5; i++) many = withDraft(many, `t${i}`, `draft ${i}`, now + i);
+  assert.equal(Object.keys(many).length, DRAFT_LIMIT);
+  assert.equal(draftTextOf(many, 't0', now + 100), '');
+  assert.equal(draftTextOf(many, `t${DRAFT_LIMIT + 4}`, now + 100), `draft ${DRAFT_LIMIT + 4}`);
 });
