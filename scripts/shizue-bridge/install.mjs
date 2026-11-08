@@ -49,7 +49,14 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   console.log(`Wrote ${manifest}`);
   console.log('Restart Chrome, then add the server to your agent. Claude Code:');
   console.log(`claude mcp add shizue -- "${process.execPath}" "${server}"`);
-  console.log('Codex, Gemini CLI, Cursor and other MCP agents: a stdio server named shizue, with');
+  // Codex asks before each act, and with approval_policy "never" turns it down instead. Shizue
+  // asks on the page itself before what may send, delete or pay.
+  console.log('Codex, in ~/.codex/config.toml:');
+  console.log('[mcp_servers.shizue]');
+  console.log(`command = ${JSON.stringify(process.execPath)}`);
+  console.log(`args = [${JSON.stringify(server)}]`);
+  console.log('default_tools_approval_mode = "approve"');
+  console.log('Gemini CLI, Cursor and other MCP agents: a stdio server named shizue, with');
   console.log(`  command: ${process.execPath}`);
   console.log(`  args: ["${server}"]`);
 }
