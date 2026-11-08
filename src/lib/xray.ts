@@ -2,10 +2,8 @@
 // that mention it, numbered like a summary's lines ([¶3]) so the answer points back to them
 // (lib/pageLines.ts, lib/pageSeek.ts).
 
-// A page this long (a chapter, a whole book) is read from top to bottom, so only what the reader
-// has reached goes to the model and the answer can't give away what comes later. A shorter page
-// (an article) goes whole: a term is often defined further down.
-export const XRAY_CUT_CHARS = 20_000;
+// Only what the reader has reached goes to the model, on any page, so the answer can't give away
+// what comes later (lib/xrayPage.ts). A term defined further down an article is left out with it.
 // What the passages may take in the prompt, and one passage around its first mention.
 const XRAY_PASSAGE_CHARS = 20_000;
 const XRAY_LINE_CHARS = 1_200;

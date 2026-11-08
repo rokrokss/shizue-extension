@@ -1,5 +1,5 @@
 import { MAIN_TEXT_EXCLUDE, readPageContent } from '@/lib/mainText';
-import { lineIndexOf, XRAY_CUT_CHARS, xrayPassages } from '@/lib/xray';
+import { lineIndexOf, xrayPassages } from '@/lib/xray';
 
 // The page side of an X-ray (lib/xray.ts): runs in the content script, where the page is.
 
@@ -27,21 +27,18 @@ const readingLine = (lines: string[]) => {
   return -1;
 };
 
-// The passages of this page that mention `term`. On a long page they stop at the bottom of the
-// screen, or, when that can't be found in the text, at the selection.
+// The passages of this page that mention `term`, up to the bottom of the screen, or, when that
+// can't be found in the text, the selection. `cut` says the page goes on past them.
 export const xrayOfPage = (term: string) => {
   const { text } = readPageContent(MAIN_TEXT_EXCLUDE);
-  let readTo: number | null = null;
-  if (text.length > XRAY_CUT_CHARS) {
-    const lines = text.split('\n');
-    readTo = readingLine(lines);
-    if (readTo === -1) {
-      const selected = window.getSelection()?.anchorNode?.parentElement?.textContent ?? '';
-      readTo = lineIndexOf(lines, selected.slice(0, 200));
-    }
-    // Nowhere to stop: the reader's place is unknown, so only the selected term itself goes.
-    if (readTo === -1) readTo = 0;
+  const lines = text.split('\n');
+  let readTo = readingLine(lines);
+  if (readTo === -1) {
+    const selected = window.getSelection()?.anchorNode?.parentElement?.textContent ?? '';
+    readTo = lineIndexOf(lines, selected.slice(0, 200));
   }
+  // Nowhere to stop: the reader's place is unknown, so only the selected term itself goes.
+  if (readTo === -1) readTo = 0;
   const { passages } = xrayPassages(text, term, readTo);
-  return { passages, cut: readTo !== null };
+  return { passages, cut: readTo < lines.length - 1 };
 };
