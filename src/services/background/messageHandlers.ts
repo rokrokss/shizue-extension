@@ -17,6 +17,7 @@ import {
   MESSAGE_TRANSLATE_FRAMES,
   MESSAGE_REMEMBER_THREAD,
   MESSAGE_SUGGEST_QUESTIONS,
+  MESSAGE_AGENT_RESUME,
   MESSAGE_AGENT_STOP,
   MESSAGE_TRANSLATE_IMAGE,
   MESSAGE_SAVE_WORD,
@@ -30,7 +31,7 @@ import { addWord, db, getLatestMessageForThread, loadThread } from '@/lib/indexD
 import { parsePlayerResponse } from '@/lib/youtube';
 import { getChatModelHandler } from '@/services/background/chatModelHandler';
 import { translateImage } from '@/services/background/imageTranslationHandler';
-import { stopAgentInTab } from '@/services/background/browserAgentHandler';
+import { resumeAgentInTab, stopAgentInTab } from '@/services/background/browserAgentHandler';
 import { getTranslationHandler } from '@/services/background/translationHandler';
 import { openPanelForSummary, waitForPanelSummary } from '@/services/background/panelSummary';
 
@@ -275,7 +276,22 @@ async function handleAgentStop(
   sendResponse: (response?: any) => void,
   sender: chrome.runtime.MessageSender
 ) {
+  // The panel's "take over" names the tab of a run behind the user's.
+  if (typeof msg.tabId === 'number') {
+    stopAgentInTab(msg.tabId);
+    return sendResponse({ status: 'success' });
+  }
   stopAgentInTab(sender.tab?.id);
+  sendResponse({ status: 'success' });
+}
+
+// The hand-back button of the browser agent's pill, on the user's turn.
+async function handleAgentResume(
+  msg: any,
+  sendResponse: (response?: any) => void,
+  sender: chrome.runtime.MessageSender
+) {
+  resumeAgentInTab(sender.tab?.id);
   sendResponse({ status: 'success' });
 }
 
@@ -329,6 +345,7 @@ export const messageHandlers = {
   [MESSAGE_SUGGEST_QUESTIONS]: handleSuggestQuestions,
   [MESSAGE_TRANSLATE_IMAGE]: handleTranslateImage,
   [MESSAGE_AGENT_STOP]: handleAgentStop,
+  [MESSAGE_AGENT_RESUME]: handleAgentResume,
   [MESSAGE_LOOKUP_WORD]: handleLookupWord,
   [MESSAGE_SAVE_WORD]: handleSaveWord,
   [MESSAGE_FETCH_YOUTUBE_PLAYER]: handleFetchYoutubePlayer,

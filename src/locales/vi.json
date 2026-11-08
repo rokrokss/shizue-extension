@@ -164,7 +164,8 @@
     "tools": "Công cụ",
     "autoApprove": "Không hỏi trước",
     "autoApproveHint": "Trong cuộc trò chuyện này, gửi, thanh toán và xóa mà không hỏi. Vẫn không nhập mật khẩu hay số thẻ",
-    "browserAgentAutoApprove": "Điều khiển trình duyệt · không hỏi"
+    "browserAgentAutoApprove": "Điều khiển trình duyệt · không hỏi",
+    "agentBackground": "Chạy trong tab riêng"
   },
   "footer": {
     "joinDiscord": "Tham gia cùng tôi trên Discord!",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "Email, số điện thoại, số thẻ và khóa API không được gửi cho AI mà giữ nguyên như trên trang.",
     "maskPrivate": "Không gửi thông tin cá nhân",
     "savedTranslations": "{{number}} bản dịch đã lưu · 30 ngày",
-    "savedTranslationsClear": "Xóa"
+    "savedTranslationsClear": "Xóa",
+    "browserAgent": "Điều khiển trình duyệt",
+    "browserAgentDescription": "Các trang bạn đã luôn cho phép trên thẻ của nó, và mẹo đã lưu cho từng trang",
+    "agentAllowedSites": "Trang luôn được phép",
+    "agentNoSites": "Chưa có",
+    "agentClearSites": "Xóa tất cả trang",
+    "agentSiteTips": "Mẹo theo trang",
+    "agentNoTips": "Chưa có",
+    "agentClearTips": "Xóa tất cả mẹo"
   },
   "time": {
     "justNow": "vừa xong",
@@ -425,7 +434,15 @@
       "clickAt": "Nhấp một điểm trên màn hình",
       "openTab": "Mở {{host}} trong thẻ mới",
       "switchTab": "Chuyển sang thẻ {{tab}}",
-      "tool": "Dùng công cụ của trang ‘{{target}}’"
+      "tool": "Dùng công cụ của trang ‘{{target}}’",
+      "press": "Nhấn {{key}}",
+      "pressOn": "Nhấn {{key}} trên ‘{{target}}’",
+      "hover": "Trỏ vào ‘{{target}}’",
+      "upload": "Tải ảnh {{file}} lên ‘{{target}}’",
+      "handoff": "Đến lượt bạn: {{text}}",
+      "point": "Đã nhờ bạn chỉ vào {{text}}",
+      "plan": "Kế hoạch",
+      "waitFor": "Chờ “{{text}}” hiện ra"
     },
     "approvalTitle": "Cho phép thao tác này?",
     "approvalHint": "Có thể gửi, xóa hoặc thanh toán và khó hoàn tác",
@@ -447,7 +464,9 @@
       "no_tab": "Không có thẻ đó",
       "no_tool": "Trang không có công cụ đó",
       "repeated": "Lặp lại cùng thao tác trên trang không thay đổi",
-      "failed": "Không thực hiện được"
+      "failed": "Không thực hiện được",
+      "no_file": "Không có ảnh đó, hoặc ở đó không có ô tệp",
+      "timed_out": "Văn bản đang chờ đã không hiện ra"
     },
     "outcome": {
       "stopped": "Đã dừng",
@@ -455,12 +474,41 @@
       "unavailable": "Không thể điều khiển thẻ này. Hãy mở một trang web rồi thử lại",
       "failed": "Đã dừng vì không xác định được bước tiếp theo",
       "looping": "Đã dừng vì cứ lặp lại cùng một thao tác",
-      "unanswered": "Đã dừng vì câu hỏi không được trả lời"
+      "unanswered": "Đã dừng vì câu hỏi không được trả lời",
+      "not_handed_back": "Đã dừng: chờ lượt của bạn quá lâu"
     },
     "overlayWorking": "Shizue đang thao tác trong thẻ này",
     "overlayWaiting": "Đang chờ bạn cho phép trong bảng điều khiển",
     "overlayAsking": "Đang chờ câu trả lời của bạn trong bảng điều khiển",
     "overlayStop": "Dừng",
-    "autoApproved": "Đã làm mà không hỏi"
+    "autoApproved": "Đã làm mà không hỏi",
+    "overlayHandoff": "Đến lượt bạn",
+    "overlayPoint": "Nhấp để chỉ",
+    "overlayResume": "Xong, tiếp tục",
+    "groupTitle": "Shizue đang làm việc",
+    "planTitle": "Đây là kế hoạch",
+    "planSites": "Trang web: {{sites}}",
+    "planHint": "Sau khi bắt đầu, sẽ không hỏi lại về các trang này. Gửi, thanh toán hay xóa vẫn được hỏi mỗi lần",
+    "planStart": "Bắt đầu",
+    "planCancel": "Hủy",
+    "siteTitle": "Làm việc trên {{site}}?",
+    "siteHint": "Trang này mới trong tác vụ này",
+    "allowOnce": "Cho phép lần này",
+    "allowAlways": "Luôn cho phép trang này",
+    "siteDenied": "Không được phép trên {{site}}",
+    "alwaysAllowedNote": "{{site}} nay luôn được phép",
+    "handoffTitle": "Đến lượt bạn",
+    "handoffHint": "Khi xong trên trang, nhấn Tiếp tục hoặc nhập bên dưới",
+    "pointTitle": "Chỉ cho tôi chỗ nào",
+    "pointHint": "Nhấp vào đó trên trang. Esc để hủy",
+    "resume": "Tiếp tục",
+    "cancelTurn": "Bỏ cuộc",
+    "tipTitle": "Ghi nhớ mẹo này cho {{site}}?",
+    "tipHint": "Lần sau làm việc trên trang này, Shizue sẽ đọc mẹo. Bạn có thể xóa trong Cài đặt",
+    "tipKeep": "Ghi nhớ",
+    "tipSkip": "Không, cảm ơn",
+    "tipKept": "Đã ghi nhớ mẹo cho {{site}}",
+    "takeOver": "Tiếp quản",
+    "showTab": "Xem thẻ của nó"
   }
 }

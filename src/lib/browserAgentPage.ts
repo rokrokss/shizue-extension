@@ -9,10 +9,21 @@ import type { AgentAction, AgentStepError, PageElement, PageSnapshot, WebMcpTool
 
 type AgentGlobals = {
   __shizueAgentRefs?: Map<number, Element>;
-  __shizueAgentOverlay?: { host: HTMLElement; dot: HTMLElement; label: HTMLElement; button: HTMLElement };
+  __shizueAgentOverlay?: {
+    host: HTMLElement;
+    dot: HTMLElement;
+    label: HTMLElement;
+    button: HTMLElement;
+    resume: HTMLElement;
+  };
   __shizueAgentRing?: (element: Element | null) => void;
   __shizueAgentMarks?: HTMLElement;
   __shizueAgentWatch?: { changedAt: number | null; acted?: Element; busyBefore: Set<Element>; stop: () => void };
+  // What the user clicked when asked to point (pickElement), whether the agent was told so, and
+  // how a pick waiting now ends.
+  __shizueAgentPicked?: Element;
+  __shizueAgentPickedTold?: boolean;
+  __shizueAgentPickEnd?: (picked: boolean) => void;
 };
 
 // When this frame's page last changed, and whether it shows it is still working. Only text coming
@@ -210,6 +221,22 @@ export function snapshotPage(maxText: number): PageSnapshot {
     });
   };
   visit(document);
+  // What the user pointed at: the control it is part of, or itself when it is in none.
+  const picked = globals.__shizueAgentPicked;
+  if (picked?.isConnected) {
+    const numbered = new Map([...refs].map(([ref, element]) => [element, ref]));
+    let control: Element | null = picked;
+    for (let up = 0; control && !numbered.has(control) && up < 6; up++) control = control.parentElement;
+    if (!control || !numbered.has(control)) {
+      consider(picked);
+      control = picked;
+    }
+    const ref = [...refs].find(([, element]) => element === control)?.[0];
+    const found = [...onScreen, ...below].find((candidate) => candidate.ref === ref);
+    // Told once, in the page read right after the user's turn; it keeps its number after that.
+    if (found && !globals.__shizueAgentPickedTold) found.picked = true;
+    globals.__shizueAgentPickedTold = true;
+  }
 
   // The text on screen, a line for each element it is in.
   const parts: string[] = [];
@@ -260,25 +287,51 @@ export function snapshotPage(maxText: number): PageSnapshot {
   };
 }
 
-// One action on an element of the last snapshot, shown with a ring around it first.
-export async function performAction(action: AgentAction): Promise<{ ok: boolean; error?: AgentStepError }> {
+// One action on an element of the last snapshot, shown with a ring around it first. `files`:
+// upload's image, as a data URL.
+export async function performAction(
+  action: AgentAction,
+  files?: { name: string; dataUrl: string }[]
+): Promise<{ ok: boolean; error?: AgentStepError }> {
   const globals = globalThis as unknown as AgentGlobals;
   const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
   const instant = 'instant' as ScrollBehavior;
+  const scrollsItself = (box: Element) =>
+    box.scrollHeight > box.clientHeight + 4 && /(auto|scroll|overlay)/.test(getComputedStyle(box).overflowY);
 
   if (action.kind === 'scroll') {
     const amount = Math.round(window.innerHeight * 0.8) * (action.direction === 'up' ? -1 : 1);
+    if (action.ref !== undefined) {
+      // A list or box of its own: the element, or the box it scrolls in.
+      let box: Element | null = globals.__shizueAgentRefs?.get(action.ref) ?? null;
+      if (!box?.isConnected) return { ok: false, error: 'not_found' };
+      while (box && !scrollsItself(box)) box = box.parentElement;
+      if (box) {
+        const height = Math.round(Math.min(box.clientHeight, window.innerHeight) * 0.8);
+        box.scrollBy({ top: action.direction === 'up' ? -height : height, behavior: instant });
+        return { ok: true };
+      }
+    }
     const scroller = document.scrollingElement ?? document.documentElement;
     const before = scroller.scrollTop;
     window.scrollBy({ top: amount, behavior: instant });
     if (Math.abs(scroller.scrollTop - before) < 2) {
       // The page scrolls in a box of its own: the one under the middle of the screen.
       let box = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2);
-      while (box && !(box.scrollHeight > box.clientHeight + 4 && /(auto|scroll|overlay)/.test(getComputedStyle(box).overflowY))) {
-        box = box.parentElement;
-      }
+      while (box && !scrollsItself(box)) box = box.parentElement;
       box?.scrollBy({ top: amount, behavior: instant });
     }
+    return { ok: true };
+  }
+
+  // A key with nothing named presses on what has focus, as a person's would.
+  if (action.kind === 'press' && action.ref === undefined) {
+    const target = (document.activeElement ?? document.body ?? document.documentElement) as HTMLElement;
+    if (globals.__shizueAgentWatch) Object.assign(globals.__shizueAgentWatch, { changedAt: null, acted: undefined });
+    const key = action.key ?? '';
+    const init = { key, code: key === ' ' ? 'Space' : key, bubbles: true, cancelable: true, composed: true };
+    target.dispatchEvent(new KeyboardEvent('keydown', init));
+    target.dispatchEvent(new KeyboardEvent('keyup', init));
     return { ok: true };
   }
 
@@ -350,6 +403,81 @@ export async function performAction(action: AgentAction): Promise<{ ok: boolean;
     return { ok: true };
   }
 
+  if (action.kind === 'hover') {
+    // Pointer events only: a menu its script opens shows, while one made with CSS :hover may not.
+    const rect = element.getBoundingClientRect();
+    const at = { bubbles: true, cancelable: true, composed: true, clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2 };
+    const pointer = { ...at, pointerId: 1, pointerType: 'mouse', isPrimary: true };
+    element.dispatchEvent(new PointerEvent('pointerover', pointer));
+    element.dispatchEvent(new PointerEvent('pointerenter', { ...pointer, bubbles: false }));
+    element.dispatchEvent(new MouseEvent('mouseover', at));
+    element.dispatchEvent(new MouseEvent('mouseenter', { ...at, bubbles: false }));
+    element.dispatchEvent(new PointerEvent('pointermove', pointer));
+    element.dispatchEvent(new MouseEvent('mousemove', at));
+    return { ok: true };
+  }
+
+  if (action.kind === 'press') {
+    html.focus?.({ preventScroll: true });
+    const key = action.key ?? '';
+    const init = {
+      key,
+      code: key === ' ' ? 'Space' : key,
+      keyCode: { Enter: 13, Escape: 27, Tab: 9, ' ': 32 }[key] ?? 0,
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+    };
+    const handled = !element.dispatchEvent(new KeyboardEvent('keydown', init as KeyboardEventInit));
+    element.dispatchEvent(new KeyboardEvent('keyup', init as KeyboardEventInit));
+    // What a real key does when the page leaves it be: Enter submits a field's form and presses a
+    // button or link, as the space bar does a button.
+    if (!handled && key === 'Enter') {
+      if (element instanceof HTMLInputElement && element.form) element.form.requestSubmit();
+      else if (element instanceof HTMLButtonElement || element instanceof HTMLAnchorElement) html.click();
+    } else if (!handled && key === ' ' && element instanceof HTMLButtonElement) {
+      html.click();
+    }
+    return { ok: true };
+  }
+
+  if (action.kind === 'upload') {
+    if (!files?.length) return { ok: false, error: 'no_file' };
+    const toFile = ({ name, dataUrl }: { name: string; dataUrl: string }) => {
+      const [head, data = ''] = dataUrl.split(',');
+      const type = head.match(/^data:([^;]+)/)?.[1] ?? 'application/octet-stream';
+      const binary = atob(data);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+      return new File([bytes], name, { type });
+    };
+    const transfer = new DataTransfer();
+    for (const file of files) transfer.items.add(toFile(file));
+    // The file field itself, the one its label is for or holds, or the only one on the page; a
+    // site's own upload box is often a styled button over a hidden field.
+    const fileInput = (candidate: Element | null | undefined) =>
+      candidate instanceof HTMLInputElement && candidate.type === 'file' ? candidate : null;
+    const allFields = [...document.querySelectorAll('input[type=file]')];
+    const field =
+      fileInput(element) ??
+      fileInput(element instanceof HTMLLabelElement ? element.control : null) ??
+      fileInput(element.querySelector('input[type=file]')) ??
+      fileInput(element.closest('label')?.querySelector('input[type=file]')) ??
+      fileInput(element.parentElement?.querySelector('input[type=file]')) ??
+      (allFields.length === 1 ? fileInput(allFields[0]) : null);
+    if (field) {
+      field.files = transfer.files;
+      field.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+      field.dispatchEvent(new Event('change', { bubbles: true }));
+      return { ok: true };
+    }
+    // A drop zone takes the files as dropped ones.
+    for (const type of ['dragenter', 'dragover', 'drop']) {
+      element.dispatchEvent(new DragEvent(type, { bubbles: true, cancelable: true, composed: true, dataTransfer: transfer }));
+    }
+    return { ok: true };
+  }
+
   if (action.kind === 'select') {
     if (!(element instanceof HTMLSelectElement)) return { ok: false, error: 'not_select' };
     const wanted = (action.text ?? '').trim().toLowerCase();
@@ -366,6 +494,72 @@ export async function performAction(action: AgentAction): Promise<{ ok: boolean;
   }
 
   return { ok: false, error: 'failed' };
+}
+
+// Waits until `text` shows on the page, or `ms` pass.
+export async function waitForText(text: string, ms: number): Promise<boolean> {
+  const wanted = text.replace(/\s+/g, ' ').trim().toLowerCase();
+  const shows = () => (document.body?.innerText ?? '').replace(/\s+/g, ' ').toLowerCase().includes(wanted);
+  const until = Date.now() + ms;
+  while (Date.now() < until) {
+    if (shows()) return true;
+    await new Promise((resolve) => setTimeout(resolve, 250));
+  }
+  return shows();
+}
+
+// The user's turn to point: what the pointer is over gets the ring, and a click picks it without
+// reaching the page (only a real one: the page can't pick for them). Escape or `cancelPick` ends it
+// with nothing. The pick is kept for the next snapshot, which numbers it.
+export function pickElement(): Promise<boolean> {
+  const globals = globalThis as unknown as AgentGlobals;
+  globals.__shizueAgentPickEnd?.(false);
+  globals.__shizueAgentPicked = undefined;
+  return new Promise((resolve) => {
+    const ours = (event: Event) => event.composedPath().some((node) => node instanceof Element && node.hasAttribute('data-shizue-agent'));
+    const target = (event: Event) => event.composedPath()[0] as Element | undefined;
+    const over = (event: Event) => {
+      if (!ours(event)) globals.__shizueAgentRing?.(target(event) ?? null);
+    };
+    const swallow = (event: Event) => {
+      if (!event.isTrusted || ours(event)) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    };
+    const click = (event: Event) => {
+      if (!event.isTrusted || ours(event)) return;
+      swallow(event);
+      const picked = target(event);
+      if (picked instanceof Element) {
+        globals.__shizueAgentPicked = picked;
+        globals.__shizueAgentPickedTold = false;
+      }
+      end(Boolean(picked));
+    };
+    const key = (event: KeyboardEvent) => {
+      if (event.isTrusted && event.key === 'Escape') end(false);
+    };
+    const swallowed = ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'dblclick', 'auxclick'];
+    const end = (picked: boolean) => {
+      window.removeEventListener('pointerover', over, true);
+      for (const type of swallowed) window.removeEventListener(type, swallow, true);
+      window.removeEventListener('click', click, true);
+      window.removeEventListener('keydown', key, true);
+      document.documentElement.style.cursor = '';
+      globals.__shizueAgentPickEnd = undefined;
+      resolve(picked);
+    };
+    window.addEventListener('pointerover', over, true);
+    for (const type of swallowed) window.addEventListener(type, swallow, true);
+    window.addEventListener('click', click, true);
+    window.addEventListener('keydown', key, true);
+    document.documentElement.style.cursor = 'crosshair';
+    globals.__shizueAgentPickEnd = end;
+  });
+}
+
+export function cancelPick() {
+  (globalThis as unknown as AgentGlobals).__shizueAgentPickEnd?.(false);
 }
 
 // Before a screenshot: each numbered control on screen gets a badge with its number, and the
@@ -489,12 +683,23 @@ export async function runWebMcpTool(name: string, input: string): Promise<{ ok: 
 
 // While the agent works the tab: a soft frame around the page, a pill at the top saying so with a
 // button to stop (it sends `labels.stopAction`), and the ring an action draws around its element.
-// `null` takes it all away.
+// On the user's turn the pill says what to do and gets a button to hand back (`resume` sends
+// `resumeAction`, for a real click only). `null` takes it all away.
 export function showAgentOverlay(
-  state: { working: string; waiting: string; stop: string; stopAction: string; waitingNow: boolean } | null
+  state: {
+    working: string;
+    waiting: string;
+    stop: string;
+    stopAction: string;
+    waitingNow: boolean;
+    resume?: string;
+    resumeAction?: string;
+  } | null
 ) {
   const globals = globalThis as unknown as AgentGlobals;
   if (!state) {
+    globals.__shizueAgentPickEnd?.(false);
+    globals.__shizueAgentPicked = undefined;
     globals.__shizueAgentOverlay?.host.remove();
     globals.__shizueAgentOverlay = undefined;
     globals.__shizueAgentRing = undefined;
@@ -513,6 +718,10 @@ export function showAgentOverlay(
       .pill { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 10px; box-sizing: border-box; height: 36px; padding: 0 5px 0 14px; border-radius: 9999px; background: rgba(17, 17, 17, 0.88); color: #fff; font: 500 13px/1 system-ui, -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; white-space: nowrap; pointer-events: auto; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25); backdrop-filter: blur(8px); animation: drop 240ms ease-out both; }
       .dot { width: 8px; height: 8px; border-radius: 50%; background: #32ccbc; color: rgba(50, 204, 188, 0.6); animation: pulse 1.6s ease-out infinite; flex: none; }
       .dot.waiting { background: #f5b14c; color: rgba(245, 177, 76, 0.6); }
+      .label { overflow: hidden; text-overflow: ellipsis; max-width: min(60vw, 520px); }
+      .resume { background: #32ccbc; color: #111; }
+      .resume:hover { background: #5edccf; }
+      .resume[hidden] { display: none; }
       button { all: unset; cursor: pointer; padding: 7px 12px; border-radius: 9999px; background: rgba(255, 255, 255, 0.12); font-weight: 600; transition: background 150ms ease; }
       button:hover { background: rgba(255, 255, 255, 0.22); }
       button:focus-visible { outline: 2px solid #32ccbc; outline-offset: 2px; }
@@ -532,15 +741,20 @@ export function showAgentOverlay(
     pill.setAttribute('role', 'status');
     const dot = document.createElement('span');
     const label = document.createElement('span');
+    label.className = 'label';
+    const resume = document.createElement('button');
+    resume.type = 'button';
+    resume.className = 'resume';
+    resume.hidden = true;
     const button = document.createElement('button');
     button.type = 'button';
     for (const type of ['click', 'mousedown', 'mouseup', 'pointerdown', 'pointerup']) {
       pill.addEventListener(type, (event) => event.stopPropagation());
     }
-    pill.append(dot, label, button);
+    pill.append(dot, label, resume, button);
     shadow.append(style, frame, ring, pill);
     document.documentElement.append(host);
-    overlay = { host, dot, label, button };
+    overlay = { host, dot, label, button, resume };
     globals.__shizueAgentOverlay = overlay;
     let fade: ReturnType<typeof setTimeout> | undefined;
     globals.__shizueAgentRing = (element) => {
@@ -562,7 +776,15 @@ export function showAgentOverlay(
     event.preventDefault();
     void chrome.runtime.sendMessage({ action: stopAction }).catch(() => {});
   };
+  const resumeAction = state.resumeAction;
+  overlay.resume.onclick = (event) => {
+    event.preventDefault();
+    if (event.isTrusted && resumeAction) void chrome.runtime.sendMessage({ action: resumeAction }).catch(() => {});
+  };
+  overlay.resume.hidden = !(state.waitingNow && state.resume && resumeAction);
+  overlay.resume.textContent = state.resume ?? '';
   overlay.dot.className = state.waitingNow ? 'dot waiting' : 'dot';
   overlay.label.textContent = state.waitingNow ? state.waiting : state.working;
+  overlay.label.title = overlay.label.textContent;
   overlay.button.textContent = state.stop;
 }

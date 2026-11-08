@@ -164,7 +164,8 @@
     "tools": "Narzędzia",
     "autoApprove": "Bez pytania",
     "autoApproveHint": "W tym czacie wysyła, płaci i usuwa bez pytania. Nadal nie wpisuje haseł ani numerów kart",
-    "browserAgentAutoApprove": "Sterowanie przeglądarką · bez pytania"
+    "browserAgentAutoApprove": "Sterowanie przeglądarką · bez pytania",
+    "agentBackground": "Uruchom w osobnej karcie"
   },
   "footer": {
     "joinDiscord": "Dołącz do mnie na Discordzie!",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "Adresy e-mail, numery telefonów i kart oraz klucze API nie trafiają do AI. Zostają takie, jak na stronie.",
     "maskPrivate": "Nie wysyłaj danych osobowych",
     "savedTranslations": "Zapisane tłumaczenia: {{number}} · 30 dni",
-    "savedTranslationsClear": "Wyczyść"
+    "savedTranslationsClear": "Wyczyść",
+    "browserAgent": "Sterowanie przeglądarką",
+    "browserAgentDescription": "Witryny, na które zawsze zezwolono na kartach, i wskazówki zapamiętane dla witryn",
+    "agentAllowedSites": "Zawsze dozwolone witryny",
+    "agentNoSites": "Na razie brak",
+    "agentClearSites": "Usuń wszystkie witryny",
+    "agentSiteTips": "Wskazówki dla witryn",
+    "agentNoTips": "Na razie brak",
+    "agentClearTips": "Usuń wszystkie wskazówki"
   },
   "time": {
     "justNow": "przed chwilą",
@@ -425,7 +434,15 @@
       "clickAt": "Kliknij miejsce na ekranie",
       "openTab": "Otwórz {{host}} w nowej karcie",
       "switchTab": "Przejdź do karty {{tab}}",
-      "tool": "Użyj narzędzia strony „{{target}}”"
+      "tool": "Użyj narzędzia strony „{{target}}”",
+      "press": "Naciśnij {{key}}",
+      "pressOn": "Naciśnij {{key}} na „{{target}}”",
+      "hover": "Wskaż „{{target}}”",
+      "upload": "Prześlij obraz {{file}} do „{{target}}”",
+      "handoff": "Twoja kolej: {{text}}",
+      "point": "Poprosił o wskazanie: {{text}}",
+      "plan": "Plan",
+      "waitFor": "Czekaj, aż pojawi się „{{text}}”"
     },
     "approvalTitle": "Zezwolić na tę czynność?",
     "approvalHint": "Może coś wysłać, usunąć lub opłacić i być trudne do cofnięcia",
@@ -447,7 +464,9 @@
       "no_tab": "Nie ma takiej karty",
       "no_tool": "Strona nie ma takiego narzędzia",
       "repeated": "Ta sama czynność na niezmienionej stronie",
-      "failed": "Nie udało się"
+      "failed": "Nie udało się",
+      "no_file": "Nie ma takiego obrazu albo brak tam pola pliku",
+      "timed_out": "Oczekiwany tekst się nie pojawił"
     },
     "outcome": {
       "stopped": "Zatrzymano",
@@ -455,12 +474,41 @@
       "unavailable": "Tej karty nie można sterować. Otwórz stronę internetową i spróbuj ponownie",
       "failed": "Zatrzymano: nie wiadomo, co dalej",
       "looping": "Zatrzymano: powtarzał tę samą czynność",
-      "unanswered": "Zatrzymano: brak odpowiedzi na pytanie"
+      "unanswered": "Zatrzymano: brak odpowiedzi na pytanie",
+      "not_handed_back": "Zatrzymano: za długo czekał na Twoją kolej"
     },
     "overlayWorking": "Shizue działa w tej karcie",
     "overlayWaiting": "Czeka na zgodę w panelu",
     "overlayAsking": "Czeka na odpowiedź w panelu",
     "overlayStop": "Zatrzymaj",
-    "autoApproved": "Wykonano bez pytania"
+    "autoApproved": "Wykonano bez pytania",
+    "overlayHandoff": "Twoja kolej",
+    "overlayPoint": "Kliknij, aby wskazać",
+    "overlayResume": "Gotowe, dalej",
+    "groupTitle": "Shizue w pracy",
+    "planTitle": "Oto plan",
+    "planSites": "Witryny: {{sites}}",
+    "planHint": "Po rozpoczęciu nie zapyta ponownie o te witryny. Wysyłanie, płatności i usuwanie nadal wymagają zgody za każdym razem",
+    "planStart": "Rozpocznij",
+    "planCancel": "Anuluj",
+    "siteTitle": "Pracować na {{site}}?",
+    "siteHint": "Ta witryna jest nowa w tym zadaniu",
+    "allowOnce": "Zezwól tym razem",
+    "allowAlways": "Zawsze zezwalaj na tę witrynę",
+    "siteDenied": "Brak zgody na {{site}}",
+    "alwaysAllowedNote": "{{site}} jest teraz zawsze dozwolona",
+    "handoffTitle": "Twoja kolej",
+    "handoffHint": "Gdy skończysz na stronie, naciśnij Dalej lub napisz poniżej",
+    "pointTitle": "Pokaż mi, gdzie",
+    "pointHint": "Kliknij to na stronie. Esc anuluje",
+    "resume": "Dalej",
+    "cancelTurn": "Zrezygnuj",
+    "tipTitle": "Zapamiętać tę wskazówkę dla {{site}}?",
+    "tipHint": "Shizue przeczyta ją następnym razem, gdy będzie pracować na tej witrynie. Możesz ją usunąć w Ustawieniach",
+    "tipKeep": "Zapamiętaj",
+    "tipSkip": "Nie, dziękuję",
+    "tipKept": "Zapamiętano wskazówkę dla {{site}}",
+    "takeOver": "Przejmij",
+    "showTab": "Pokaż jego kartę"
   }
 }

@@ -1,9 +1,11 @@
 import { attachRowClass, toolbarButtonStyle } from '@/components/Chat/AttachMenu';
+import { useAgentBackground } from '@/hooks/browserAgent';
 import { useThemeValue } from '@/hooks/layout';
 import type { ModelOption } from '@/hooks/models';
 import type { ChatModel } from '@/lib/modelRegistry';
 import { BASE_REASONING_EFFORTS, type ReasoningEffort } from '@/lib/reasoning';
 import {
+  ApartmentOutlined,
   BulbOutlined,
   ControlOutlined,
   GlobalOutlined,
@@ -54,6 +56,13 @@ const ToolsMenu = ({
   const { t } = useTranslation();
   const theme = useThemeValue();
   const [open, setOpen] = useState(false);
+  const [agentBackground, setAgentBackground] = useAgentBackground();
+  // Its tabs go in a group of their own when the user grants tab groups, asked here inside the
+  // click; without them it works all the same.
+  const toggleAgentBackground = () => {
+    if (!agentBackground) void chrome.permissions?.request({ permissions: ['tabGroups'] }).catch(() => false);
+    void setAgentBackground(!agentBackground);
+  };
   const rowClass = (disabled: boolean) => attachRowClass(disabled, theme);
   const reasoningSupported = reasoningEfforts.length > 0;
   const effortStops = reasoningSupported ? reasoningEfforts : BASE_REASONING_EFFORTS;
@@ -103,13 +112,24 @@ const ToolsMenu = ({
             <ThunderboltOutlined className="sz:shrink-0 sz:text-amber-500" />
             <div className="sz:min-w-0 sz:flex-1">
               <div className="sz:text-sm">{t('chat.autoApprove')}</div>
-              <div className="sz:text-xs sz:text-gray-500">{t('chat.autoApproveHint')}</div>
             </div>
             <input
               type="checkbox"
               checked={autoApprove}
               onChange={onToggleAutoApprove}
               className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-amber-500 sz:cursor-[inherit]"
+            />
+          </label>
+          <label className={rowClass(false)}>
+            <ApartmentOutlined className="sz:shrink-0" />
+            <div className="sz:min-w-0 sz:flex-1">
+              <div className="sz:text-sm">{t('chat.agentBackground')}</div>
+            </div>
+            <input
+              type="checkbox"
+              checked={agentBackground}
+              onChange={toggleAgentBackground}
+              className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
             />
           </label>
         </div>

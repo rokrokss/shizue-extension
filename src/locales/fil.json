@@ -164,7 +164,8 @@
     "tools": "Mga tool",
     "autoApprove": "Huwag nang magtanong",
     "autoApproveHint": "Sa chat na ito, nagpapadala, nagbabayad at nagbubura nang hindi nagtatanong. Hindi pa rin nagta-type ng password o numero ng card",
-    "browserAgentAutoApprove": "Kontrol ng browser · walang tanong"
+    "browserAgentAutoApprove": "Kontrol ng browser · walang tanong",
+    "agentBackground": "Patakbuhin sa hiwalay na tab"
   },
   "footer": {
     "joinDiscord": "Sumali sa akin sa Discord!",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "Hindi ipinapadala sa AI ang mga email, numero ng telepono, numero ng card at API key. Ipinapakita ang mga ito gaya ng nasa page.",
     "maskPrivate": "Huwag ipadala ang personal na detalye",
     "savedTranslations": "{{number}} na naka-save na salin · 30 araw",
-    "savedTranslationsClear": "I-clear"
+    "savedTranslationsClear": "I-clear",
+    "browserAgent": "Kontrol ng browser",
+    "browserAgentDescription": "Mga site na palagi mong pinayagan sa mga card nito, at mga tip na itinabi mo para sa mga site",
+    "agentAllowedSites": "Mga palaging pinapayagang site",
+    "agentNoSites": "Wala pa",
+    "agentClearSites": "Alisin ang lahat ng site",
+    "agentSiteTips": "Mga tip sa site",
+    "agentNoTips": "Wala pa",
+    "agentClearTips": "Alisin ang lahat ng tip"
   },
   "time": {
     "justNow": "ngayon lang",
@@ -425,7 +434,15 @@
       "clickAt": "I-click ang isang bahagi ng screen",
       "openTab": "Buksan ang {{host}} sa bagong tab",
       "switchTab": "Pumunta sa tab {{tab}}",
-      "tool": "Gamitin ang tool ng site na ‘{{target}}’"
+      "tool": "Gamitin ang tool ng site na ‘{{target}}’",
+      "press": "Pindutin ang {{key}}",
+      "pressOn": "Pindutin ang {{key}} sa ‘{{target}}’",
+      "hover": "Ituro ang ‘{{target}}’",
+      "upload": "I-upload ang larawang {{file}} sa ‘{{target}}’",
+      "handoff": "Ikaw naman: {{text}}",
+      "point": "Hiniling na ituro mo ang {{text}}",
+      "plan": "Plano",
+      "waitFor": "Hintayin ang “{{text}}” na lumabas"
     },
     "approvalTitle": "Payagan ang aksyong ito?",
     "approvalHint": "Maaaring magpadala, magbura o magbayad ito at mahirap bawiin",
@@ -447,7 +464,9 @@
       "no_tab": "Walang ganoong tab",
       "no_tool": "Walang ganoong tool ang site",
       "repeated": "Parehong aksyon ulit sa pahinang hindi nagbago",
-      "failed": "Hindi gumana"
+      "failed": "Hindi gumana",
+      "no_file": "Walang ganoong larawan, o walang file field doon",
+      "timed_out": "Hindi lumabas ang tekstong hinihintay"
     },
     "outcome": {
       "stopped": "Itinigil",
@@ -455,12 +474,41 @@
       "unavailable": "Hindi makontrol ang tab na ito. Magbukas ng web page at subukang muli",
       "failed": "Huminto: hindi matukoy ang susunod na gagawin",
       "looping": "Huminto: inuulit-ulit ang parehong aksyon",
-      "unanswered": "Huminto: hindi nasagot ang tanong"
+      "unanswered": "Huminto: hindi nasagot ang tanong",
+      "not_handed_back": "Huminto: masyadong matagal naghintay sa turn mo"
     },
     "overlayWorking": "Gumagana si Shizue sa tab na ito",
     "overlayWaiting": "Naghihintay ng pahintulot mo sa panel",
     "overlayAsking": "Naghihintay ng sagot mo sa panel",
     "overlayStop": "Itigil",
-    "autoApproved": "Ginawa nang hindi nagtatanong"
+    "autoApproved": "Ginawa nang hindi nagtatanong",
+    "overlayHandoff": "Ikaw naman",
+    "overlayPoint": "I-click para ituro",
+    "overlayResume": "Tapos na, ituloy",
+    "groupTitle": "Si Shizue ay nagtatrabaho",
+    "planTitle": "Ito ang plano",
+    "planSites": "Mga site: {{sites}}",
+    "planHint": "Kapag nagsimula na, hindi na ito magtatanong ulit para sa mga site na ito. Magtatanong pa rin tuwing magpapadala, magbabayad o magbubura",
+    "planStart": "Simulan",
+    "planCancel": "Kanselahin",
+    "siteTitle": "Magtrabaho sa {{site}}?",
+    "siteHint": "Bago ang site na ito sa gawaing ito",
+    "allowOnce": "Payagan ngayon lang",
+    "allowAlways": "Palaging payagan ang site na ito",
+    "siteDenied": "Hindi pinayagan sa {{site}}",
+    "alwaysAllowedNote": "Palagi nang pinapayagan ang {{site}}",
+    "handoffTitle": "Ikaw naman",
+    "handoffHint": "Kapag tapos ka na sa page, pindutin ang Ituloy o mag-type sa ibaba",
+    "pointTitle": "Ituro kung nasaan",
+    "pointHint": "I-click ito sa page. Kinakansela ng Esc",
+    "resume": "Ituloy",
+    "cancelTurn": "Sukuan",
+    "tipTitle": "Tandaan ang tip na ito para sa {{site}}?",
+    "tipHint": "Babasahin ito ni Shizue sa susunod na magtrabaho siya sa site na ito. Maaari mo itong burahin sa Mga Setting",
+    "tipKeep": "Tandaan",
+    "tipSkip": "Huwag na",
+    "tipKept": "Natandaan ang tip para sa {{site}}",
+    "takeOver": "Akuin ang kontrol",
+    "showTab": "Ipakita ang tab nito"
   }
 }

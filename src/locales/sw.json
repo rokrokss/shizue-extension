@@ -164,7 +164,8 @@
     "tools": "Zana",
     "autoApprove": "Bila kuuliza",
     "autoApproveHint": "Katika gumzo hili hutuma, hulipa na kufuta bila kuuliza. Bado haiandiki nenosiri wala nambari za kadi",
-    "browserAgentAutoApprove": "Udhibiti wa kivinjari · bila kuuliza"
+    "browserAgentAutoApprove": "Udhibiti wa kivinjari · bila kuuliza",
+    "agentBackground": "Endesha katika kichupo tofauti"
   },
   "footer": {
     "joinDiscord": "Jiunge nami kwenye Discord!",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "Barua pepe, nambari za simu, nambari za kadi na funguo za API hazitumwi kwa AI. Zinaonekana kama zilivyokuwa kwenye ukurasa.",
     "maskPrivate": "Usitume taarifa binafsi",
     "savedTranslations": "Tafsiri {{number}} zilizohifadhiwa · siku 30",
-    "savedTranslationsClear": "Futa"
+    "savedTranslationsClear": "Futa",
+    "browserAgent": "Udhibiti wa kivinjari",
+    "browserAgentDescription": "Tovuti ulizoruhusu daima kwenye kadi zake, na vidokezo ulivyohifadhi vya tovuti",
+    "agentAllowedSites": "Tovuti zinazoruhusiwa daima",
+    "agentNoSites": "Bado hakuna",
+    "agentClearSites": "Ondoa tovuti zote",
+    "agentSiteTips": "Vidokezo vya tovuti",
+    "agentNoTips": "Bado hakuna",
+    "agentClearTips": "Ondoa vidokezo vyote"
   },
   "time": {
     "justNow": "sasa hivi",
@@ -425,7 +434,15 @@
       "clickAt": "Bofya sehemu fulani ya skrini",
       "openTab": "Fungua {{host}} kwenye kichupo kipya",
       "switchTab": "Nenda kwenye kichupo {{tab}}",
-      "tool": "Tumia zana ya tovuti ‘{{target}}’"
+      "tool": "Tumia zana ya tovuti ‘{{target}}’",
+      "press": "Bonyeza {{key}}",
+      "pressOn": "Bonyeza {{key}} kwenye ‘{{target}}’",
+      "hover": "Elekeza kwenye ‘{{target}}’",
+      "upload": "Pakia picha {{file}} kwenye ‘{{target}}’",
+      "handoff": "Zamu yako: {{text}}",
+      "point": "Imekuomba uonyeshe {{text}}",
+      "plan": "Mpango",
+      "waitFor": "Subiri “{{text}}” ionekane"
     },
     "approvalTitle": "Ruhusu kitendo hiki?",
     "approvalHint": "Huenda ikatuma, kufuta au kulipa, na kuwa vigumu kutengua",
@@ -447,7 +464,9 @@
       "no_tab": "Hakuna kichupo hicho",
       "no_tool": "Tovuti haina zana hiyo",
       "repeated": "Kitendo kilekile tena kwenye ukurasa usiobadilika",
-      "failed": "Haikufanikiwa"
+      "failed": "Haikufanikiwa",
+      "no_file": "Hakuna picha hiyo, au hakuna sehemu ya faili hapo",
+      "timed_out": "Maandishi iliyoyasubiri hayakuonekana"
     },
     "outcome": {
       "stopped": "Imesimamishwa",
@@ -455,12 +474,41 @@
       "unavailable": "Kichupo hiki hakiwezi kudhibitiwa. Fungua ukurasa wa wavuti kisha ujaribu tena",
       "failed": "Imesimama: haikuweza kuamua hatua inayofuata",
       "looping": "Imesimama: ilirudia kitendo kilekile",
-      "unanswered": "Imesimama: swali halikujibiwa"
+      "unanswered": "Imesimama: swali halikujibiwa",
+      "not_handed_back": "Imesimama: imesubiri zamu yako kwa muda mrefu"
     },
     "overlayWorking": "Shizue inafanya kazi kwenye kichupo hiki",
     "overlayWaiting": "Inasubiri ruhusa yako kwenye paneli",
     "overlayAsking": "Inasubiri jibu lako kwenye paneli",
     "overlayStop": "Simamisha",
-    "autoApproved": "Imefanywa bila kuuliza"
+    "autoApproved": "Imefanywa bila kuuliza",
+    "overlayHandoff": "Zamu yako",
+    "overlayPoint": "Bofya kuonyesha",
+    "overlayResume": "Nimemaliza, endelea",
+    "groupTitle": "Shizue inafanya kazi",
+    "planTitle": "Huu ndio mpango",
+    "planSites": "Tovuti: {{sites}}",
+    "planHint": "Ikishaanza, haitauliza tena kuhusu tovuti hizi. Kutuma, kulipa na kufuta bado huulizwa kila mara",
+    "planStart": "Anza",
+    "planCancel": "Ghairi",
+    "siteTitle": "Ifanye kazi kwenye {{site}}?",
+    "siteHint": "Tovuti hii ni mpya kwa kazi hii",
+    "allowOnce": "Ruhusu mara hii",
+    "allowAlways": "Ruhusu tovuti hii daima",
+    "siteDenied": "Hairuhusiwi kwenye {{site}}",
+    "alwaysAllowedNote": "{{site}} sasa inaruhusiwa daima",
+    "handoffTitle": "Zamu yako",
+    "handoffHint": "Ukimaliza kwenye ukurasa, bonyeza Endelea au andika hapa chini",
+    "pointTitle": "Nionyeshe wapi",
+    "pointHint": "Ibofye kwenye ukurasa. Esc inaghairi",
+    "resume": "Endelea",
+    "cancelTurn": "Acha",
+    "tipTitle": "Kumbuka kidokezo hiki cha {{site}}?",
+    "tipHint": "Shizue itakisoma wakati ujao itakapofanya kazi kwenye tovuti hii. Unaweza kukifuta kwenye Mipangilio",
+    "tipKeep": "Kumbuka",
+    "tipSkip": "Hapana, asante",
+    "tipKept": "Kidokezo cha {{site}} kimekumbukwa",
+    "takeOver": "Chukua usukani",
+    "showTab": "Onyesha kichupo chake"
   }
 }

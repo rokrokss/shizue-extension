@@ -164,7 +164,8 @@
     "tools": "Werkzeuge",
     "autoApprove": "Ohne Nachfrage ausführen",
     "autoApproveHint": "In diesem Chat sendet, bezahlt und löscht es ohne Nachfrage. Passwörter und Kartennummern tippt es weiterhin nicht",
-    "browserAgentAutoApprove": "Browsersteuerung · ohne Nachfrage"
+    "browserAgentAutoApprove": "Browsersteuerung · ohne Nachfrage",
+    "agentBackground": "In separatem Tab ausführen"
   },
   "footer": {
     "joinDiscord": "Tritt mir auf Discord bei!",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "E-Mail-Adressen, Telefonnummern, Kartennummern und API-Schlüssel werden nicht an die KI gesendet. Sie bleiben, wie sie auf der Seite standen.",
     "maskPrivate": "Persönliche Daten nicht senden",
     "savedTranslations": "{{number}} gespeicherte Übersetzungen · 30 Tage",
-    "savedTranslationsClear": "Leeren"
+    "savedTranslationsClear": "Leeren",
+    "browserAgent": "Browsersteuerung",
+    "browserAgentDescription": "Websites, die Sie auf seinen Karten immer erlaubt haben, und Tipps, die Sie für Websites gemerkt haben",
+    "agentAllowedSites": "Immer erlaubte Websites",
+    "agentNoSites": "Noch keine",
+    "agentClearSites": "Alle Websites entfernen",
+    "agentSiteTips": "Website-Tipps",
+    "agentNoTips": "Noch keine",
+    "agentClearTips": "Alle Tipps entfernen"
   },
   "time": {
     "justNow": "gerade eben",
@@ -425,7 +434,15 @@
       "clickAt": "Auf eine Stelle im Bild klicken",
       "openTab": "{{host}} in neuem Tab öffnen",
       "switchTab": "Zu Tab {{tab}} wechseln",
-      "tool": "Werkzeug der Website ‚{{target}}‘ verwenden"
+      "tool": "Werkzeug der Website ‚{{target}}‘ verwenden",
+      "press": "{{key}} drücken",
+      "pressOn": "{{key}} auf ‚{{target}}‘ drücken",
+      "hover": "Mit der Maus auf ‚{{target}}‘ zeigen",
+      "upload": "Bild {{file}} zu ‚{{target}}‘ hochladen",
+      "handoff": "Sie sind dran: {{text}}",
+      "point": "Hat Sie gebeten, auf {{text}} zu zeigen",
+      "plan": "Plan",
+      "waitFor": "Warten, bis „{{text}}“ erscheint"
     },
     "approvalTitle": "Diese Aktion erlauben?",
     "approvalHint": "Es könnte etwas senden, löschen oder bezahlen und schwer rückgängig zu machen sein",
@@ -447,7 +464,9 @@
       "no_tab": "Diesen Tab gibt es nicht",
       "no_tool": "Die Website bietet dieses Werkzeug nicht",
       "repeated": "Gleiche Aktion erneut auf unveränderter Seite",
-      "failed": "Hat nicht geklappt"
+      "failed": "Hat nicht geklappt",
+      "no_file": "Kein solches Bild, oder dort gibt es kein Dateifeld",
+      "timed_out": "Der erwartete Text ist nicht erschienen"
     },
     "outcome": {
       "stopped": "Gestoppt",
@@ -455,12 +474,41 @@
       "unavailable": "Dieser Tab kann nicht gesteuert werden. Öffne eine Webseite und versuche es erneut",
       "failed": "Gestoppt: nächster Schritt unklar",
       "looping": "Gestoppt: wiederholte immer dieselbe Aktion",
-      "unanswered": "Gestoppt: Frage blieb unbeantwortet"
+      "unanswered": "Gestoppt: Frage blieb unbeantwortet",
+      "not_handed_back": "Angehalten: Es hat zu lange auf Sie gewartet"
     },
     "overlayWorking": "Shizue arbeitet in diesem Tab",
     "overlayWaiting": "Wartet im Panel auf deine Zustimmung",
     "overlayAsking": "Wartet im Panel auf deine Antwort",
     "overlayStop": "Stopp",
-    "autoApproved": "Ohne Nachfrage ausgeführt"
+    "autoApproved": "Ohne Nachfrage ausgeführt",
+    "overlayHandoff": "Sie sind dran",
+    "overlayPoint": "Zum Zeigen klicken",
+    "overlayResume": "Fertig, weiter",
+    "groupTitle": "Shizue bei der Arbeit",
+    "planTitle": "So würde es ablaufen",
+    "planSites": "Websites: {{sites}}",
+    "planHint": "Nach dem Start fragt es für diese Websites nicht erneut. Senden, Bezahlen und Löschen wird jedes Mal abgefragt",
+    "planStart": "Starten",
+    "planCancel": "Abbrechen",
+    "siteTitle": "Auf {{site}} arbeiten?",
+    "siteHint": "Diese Website ist neu für diese Aufgabe",
+    "allowOnce": "Dieses Mal erlauben",
+    "allowAlways": "Diese Website immer erlauben",
+    "siteDenied": "Auf {{site}} nicht erlaubt",
+    "alwaysAllowedNote": "{{site}} ist jetzt immer erlaubt",
+    "handoffTitle": "Sie sind dran",
+    "handoffHint": "Wenn Sie auf der Seite fertig sind, tippen Sie auf Weiter oder schreiben Sie unten",
+    "pointTitle": "Zeigen Sie mir, wo",
+    "pointHint": "Klicken Sie auf der Seite darauf. Esc bricht ab",
+    "resume": "Weiter",
+    "cancelTurn": "Aufgeben",
+    "tipTitle": "Diesen Tipp für {{site}} merken?",
+    "tipHint": "Shizue liest ihn beim nächsten Mal auf dieser Website. Sie können ihn in den Einstellungen löschen",
+    "tipKeep": "Merken",
+    "tipSkip": "Nein, danke",
+    "tipKept": "Tipp für {{site}} gemerkt",
+    "takeOver": "Übernehmen",
+    "showTab": "Tab anzeigen"
   }
 }

@@ -164,7 +164,8 @@
     "tools": "Araçlar",
     "autoApprove": "Sormadan yap",
     "autoApproveHint": "Bu sohbette sormadan gönderir, öder ve siler. Şifre ve kart numarasını yine de yazmaz",
-    "browserAgentAutoApprove": "Tarayıcı kontrolü · sormadan"
+    "browserAgentAutoApprove": "Tarayıcı kontrolü · sormadan",
+    "agentBackground": "Ayrı sekmede çalıştır"
   },
   "footer": {
     "joinDiscord": "Discord'da bana katılın!",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "E-postalar, telefon numaraları, kart numaraları ve API anahtarları yapay zekâya gönderilmez. Sayfadaki hâliyle görünür.",
     "maskPrivate": "Kişisel bilgileri gönderme",
     "savedTranslations": "{{number}} kayıtlı çeviri · 30 gün",
-    "savedTranslationsClear": "Temizle"
+    "savedTranslationsClear": "Temizle",
+    "browserAgent": "Tarayıcı kontrolü",
+    "browserAgentDescription": "Kartlarında her zaman izin verdiğiniz siteler ve siteler için sakladığınız ipuçları",
+    "agentAllowedSites": "Her zaman izinli siteler",
+    "agentNoSites": "Henüz yok",
+    "agentClearSites": "Tüm siteleri kaldır",
+    "agentSiteTips": "Site ipuçları",
+    "agentNoTips": "Henüz yok",
+    "agentClearTips": "Tüm ipuçlarını kaldır"
   },
   "time": {
     "justNow": "az önce",
@@ -425,7 +434,15 @@
       "clickAt": "Ekranda bir noktaya tıkla",
       "openTab": "{{host}} yeni sekmede aç",
       "switchTab": "{{tab}} numaralı sekmeye geç",
-      "tool": "Sitenin ‘{{target}}’ aracını kullan"
+      "tool": "Sitenin ‘{{target}}’ aracını kullan",
+      "press": "{{key}} tuşuna bas",
+      "pressOn": "‘{{target}}’ üzerinde {{key}} tuşuna bas",
+      "hover": "‘{{target}}’ öğesinin üzerine gel",
+      "upload": "{{file}} görselini ‘{{target}}’ alanına yükle",
+      "handoff": "Sıra sizde: {{text}}",
+      "point": "Sizden {{text}} öğesini göstermenizi istedi",
+      "plan": "Plan",
+      "waitFor": "“{{text}}” görünene kadar bekle"
     },
     "approvalTitle": "Bu işleme izin verilsin mi?",
     "approvalHint": "Gönderme, silme veya ödeme yapabilir ve geri alınması zor olabilir",
@@ -447,7 +464,9 @@
       "no_tab": "Böyle bir sekme yok",
       "no_tool": "Sitede böyle bir araç yok",
       "repeated": "Değişmeyen sayfada aynı işlem tekrar",
-      "failed": "Olmadı"
+      "failed": "Olmadı",
+      "no_file": "Böyle bir görsel yok ya da orada dosya alanı yok",
+      "timed_out": "Beklenen metin görünmedi"
     },
     "outcome": {
       "stopped": "Durduruldu",
@@ -455,12 +474,41 @@
       "unavailable": "Bu sekme kontrol edilemiyor. Bir web sayfası açıp tekrar deneyin",
       "failed": "Durdu: sonraki adıma karar veremedi",
       "looping": "Durdu: aynı işlemi tekrarlayıp durdu",
-      "unanswered": "Durdu: soru yanıtlanmadı"
+      "unanswered": "Durdu: soru yanıtlanmadı",
+      "not_handed_back": "Durdu: sıranızı çok uzun bekledi"
     },
     "overlayWorking": "Shizue bu sekmede çalışıyor",
     "overlayWaiting": "Panelde onayınızı bekliyor",
     "overlayAsking": "Panelde yanıtınızı bekliyor",
     "overlayStop": "Durdur",
-    "autoApproved": "Sormadan yapıldı"
+    "autoApproved": "Sormadan yapıldı",
+    "overlayHandoff": "Sıra sizde",
+    "overlayPoint": "Göstermek için tıklayın",
+    "overlayResume": "Bitti, devam et",
+    "groupTitle": "Shizue iş başında",
+    "planTitle": "Plan şöyle",
+    "planSites": "Siteler: {{sites}}",
+    "planHint": "Başladıktan sonra bu siteler için tekrar sormaz. Göndermek, ödeme yapmak ve silmek için yine her seferinde sorar",
+    "planStart": "Başlat",
+    "planCancel": "İptal",
+    "siteTitle": "{{site}} üzerinde çalışılsın mı?",
+    "siteHint": "Bu site bu görev için yeni",
+    "allowOnce": "Bu seferlik izin ver",
+    "allowAlways": "Bu siteye her zaman izin ver",
+    "siteDenied": "{{site}} üzerinde izin verilmedi",
+    "alwaysAllowedNote": "{{site}} artık her zaman izinli",
+    "handoffTitle": "Sıra sizde",
+    "handoffHint": "Sayfada işiniz bitince Devam’a basın ya da aşağıya yazın",
+    "pointTitle": "Nerede olduğunu gösterin",
+    "pointHint": "Sayfada ona tıklayın. Esc iptal eder",
+    "resume": "Devam",
+    "cancelTurn": "Vazgeç",
+    "tipTitle": "{{site}} için bu ipucu hatırlansın mı?",
+    "tipHint": "Shizue bu sitede bir dahaki çalışışında bunu okur. Ayarlar’dan silebilirsiniz",
+    "tipKeep": "Hatırla",
+    "tipSkip": "Hayır, teşekkürler",
+    "tipKept": "{{site}} için ipucu hatırlandı",
+    "takeOver": "Devral",
+    "showTab": "Sekmesini göster"
   }
 }

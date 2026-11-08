@@ -164,7 +164,8 @@
     "tools": "도구",
     "autoApprove": "묻지 않고 실행",
     "autoApproveHint": "이 대화에서는 보내기·결제·삭제도 묻지 않고 바로 합니다. 비밀번호·카드 칸은 그래도 입력하지 않습니다",
-    "browserAgentAutoApprove": "브라우저 조작 · 묻지 않음"
+    "browserAgentAutoApprove": "브라우저 조작 · 묻지 않음",
+    "agentBackground": "별도 탭에서 실행"
   },
   "footer": {
     "joinDiscord": "디스코드로 놀러 오세요!",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "이메일, 전화번호, 카드 번호, API 키는 AI에 보내지 않고 페이지에 있던 그대로 보여 줍니다.",
     "maskPrivate": "개인정보는 보내지 않기",
     "savedTranslations": "저장된 번역 {{number}}개 · 30일 보관",
-    "savedTranslationsClear": "비우기"
+    "savedTranslationsClear": "비우기",
+    "browserAgent": "브라우저 조작",
+    "browserAgentDescription": "조작 카드에서 항상 허용한 사이트와 기억한 사이트별 요령입니다",
+    "agentAllowedSites": "항상 허용한 사이트",
+    "agentNoSites": "아직 없습니다",
+    "agentClearSites": "사이트 모두 지우기",
+    "agentSiteTips": "사이트별 요령",
+    "agentNoTips": "아직 없습니다",
+    "agentClearTips": "요령 모두 지우기"
   },
   "usage": {
     "title": "토큰 사용량",
@@ -425,7 +434,15 @@
       "clickAt": "화면의 한 곳 클릭",
       "openTab": "새 탭에서 {{host}} 열기",
       "switchTab": "{{tab}}번 탭으로 이동",
-      "tool": "사이트 도구 ‘{{target}}’ 사용"
+      "tool": "사이트 도구 ‘{{target}}’ 사용",
+      "press": "{{key}} 키 누르기",
+      "pressOn": "‘{{target}}’에서 {{key}} 키 누르기",
+      "hover": "‘{{target}}’ 위에 포인터 올리기",
+      "upload": "‘{{target}}’에 이미지 {{file}} 올리기",
+      "handoff": "직접 하실 일: {{text}}",
+      "point": "가리켜 달라고 함: {{text}}",
+      "plan": "계획",
+      "waitFor": "“{{text}}” 표시 기다리기"
     },
     "approvalTitle": "이 작업을 해도 될까요?",
     "approvalHint": "보내기, 삭제, 결제처럼 되돌리기 어려울 수 있습니다",
@@ -447,7 +464,9 @@
       "no_tab": "그런 탭이 없습니다",
       "no_tool": "사이트에 그런 도구가 없습니다",
       "repeated": "바뀌지 않은 페이지에서 같은 동작을 되풀이했습니다",
-      "failed": "실행하지 못했습니다"
+      "failed": "실행하지 못했습니다",
+      "no_file": "그런 이미지나 파일 칸이 없습니다",
+      "timed_out": "기다린 글자가 뜨지 않았습니다"
     },
     "outcome": {
       "stopped": "중지했습니다",
@@ -455,12 +474,41 @@
       "unavailable": "이 탭은 조작할 수 없습니다. 웹 페이지를 연 뒤 다시 시도하세요",
       "failed": "다음에 할 일을 정하지 못해 멈췄습니다",
       "looping": "같은 동작을 되풀이해서 멈췄습니다",
-      "unanswered": "질문에 답이 없어 멈췄습니다"
+      "unanswered": "질문에 답이 없어 멈췄습니다",
+      "not_handed_back": "직접 하실 차례를 너무 오래 기다려 멈췄습니다"
     },
     "overlayWorking": "시즈에가 이 탭을 조작하는 중",
     "overlayWaiting": "패널에서 허용을 기다리는 중",
     "overlayAsking": "패널에서 답을 기다리는 중",
     "overlayStop": "중지",
-    "autoApproved": "묻지 않고 실행함"
+    "autoApproved": "묻지 않고 실행함",
+    "overlayHandoff": "직접 해 주세요",
+    "overlayPoint": "클릭해서 알려 주세요",
+    "overlayResume": "마쳤으니 계속",
+    "groupTitle": "시즈에 작업",
+    "planTitle": "이렇게 하겠습니다",
+    "planSites": "사용할 사이트: {{sites}}",
+    "planHint": "시작하면 이 사이트들은 다시 묻지 않습니다. 보내기·결제·삭제는 그때마다 묻습니다",
+    "planStart": "시작",
+    "planCancel": "취소",
+    "siteTitle": "{{site}}에서 작업해도 될까요?",
+    "siteHint": "이번 작업에서 처음 쓰는 사이트입니다",
+    "allowOnce": "이번만 허용",
+    "allowAlways": "이 사이트 항상 허용",
+    "siteDenied": "{{site}}에서는 하지 않음",
+    "alwaysAllowedNote": "{{site}} 항상 허용함",
+    "handoffTitle": "직접 하실 차례입니다",
+    "handoffHint": "페이지에서 마친 뒤 ‘계속’을 누르거나 아래 입력창에 적어 주세요",
+    "pointTitle": "어디인지 알려 주세요",
+    "pointHint": "페이지에서 그 부분을 클릭해 주세요. Esc로 취소합니다",
+    "resume": "계속",
+    "cancelTurn": "그만두기",
+    "tipTitle": "{{site}} 요령을 기억할까요?",
+    "tipHint": "다음에 이 사이트를 조작할 때 시즈에가 읽습니다. 설정에서 지울 수 있습니다",
+    "tipKeep": "기억하기",
+    "tipSkip": "괜찮습니다",
+    "tipKept": "{{site}} 요령을 기억했습니다",
+    "takeOver": "넘겨받기",
+    "showTab": "작업한 탭 보기"
   }
 }

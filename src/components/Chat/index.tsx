@@ -212,6 +212,10 @@ const Chat = () => {
     waiting: t('agent.overlayWaiting'),
     asking: t('agent.overlayAsking'),
     stop: t('agent.overlayStop'),
+    handoff: t('agent.overlayHandoff'),
+    point: t('agent.overlayPoint'),
+    resume: t('agent.overlayResume'),
+    group: t('agent.groupTitle'),
   });
 
   const markContextUsage = (contextUsage: number, compacted: boolean) =>

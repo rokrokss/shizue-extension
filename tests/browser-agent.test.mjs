@@ -12,8 +12,10 @@ import {
   needsApproval,
   pageSettled,
   parseAgentReply,
+  siteOf,
   timesTried,
   withFrames,
+  withSiteTip,
 } from '../src/lib/browserAgent.ts';
 
 test('A page that answered an action and went quiet is ready; one that kept moving is cut off', () => {
@@ -56,11 +58,13 @@ test('A reply is read flat or nested, fenced or not, and bad ones are refused', 
     thought: '검색창에 입력',
     action: { kind: 'type', ref: 3, text: 'shoes', submit: true },
     sensitive: false,
+    then: [],
   });
   assert.deepEqual(parseAgentReply('```json\n{"thought":"","action":{"type":"click","ref":"7"},"sensitive":true}\n```'), {
     thought: '',
     action: { kind: 'click', ref: 7 },
     sensitive: true,
+    then: [],
   });
   assert.deepEqual(parseAgentReply('{"thought":"x","action":"scroll"}').action, { kind: 'scroll', direction: 'down' });
   assert.equal(parseAgentReply('{"thought":"x","action":"navigate","url":"example.com/a"}').action.url, 'https://example.com/a');
@@ -289,4 +293,119 @@ test('The page the model reads lists its tabs and the site\'s tools, and new fai
   for (const error of ['not_visible', 'no_screenshot', 'no_tab', 'no_tool', 'repeated']) {
     assert.doesNotMatch(actionResult({ id: 'x', action: { kind: 'look' }, status: 'failed', error }), /Try another way/);
   }
+});
+
+test('Keys, hovering, scrolling a box, uploads and waiting for a text are read, and incomplete ones refused', () => {
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"press","key":"esc"}').action, { kind: 'press', key: 'Escape' });
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"press","ref":4,"key":"down"}').action, { kind: 'press', ref: 4, key: 'ArrowDown' });
+  assert.equal(parseAgentReply('{"thought":"","action":"press","key":"F12"}'), null);
+  assert.equal(parseAgentReply('{"thought":"","action":"press"}'), null);
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"hover","ref":3}').action, { kind: 'hover', ref: 3 });
+  assert.equal(parseAgentReply('{"thought":"","action":"hover"}'), null);
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"scroll","ref":9,"direction":"down"}').action, { kind: 'scroll', ref: 9, direction: 'down' });
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"upload","ref":2,"file":1}').action, { kind: 'upload', ref: 2, file: 1 });
+  assert.equal(parseAgentReply('{"thought":"","action":"upload","ref":2}'), null);
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"wait","text":"  Saved  "}').action, { kind: 'wait', text: 'Saved' });
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"wait","text":""}').action, { kind: 'wait' });
+  // A null number isn't element 0.
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"wait","ref":null}').action, { kind: 'wait' });
+});
+
+test("The user's turn, pointing and a plan need their text; a plan's sites are kept as hosts", () => {
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"handoff","text":"Sign in, then continue"}').action, {
+    kind: 'handoff',
+    text: 'Sign in, then continue',
+  });
+  assert.equal(parseAgentReply('{"thought":"","action":"handoff","text":" "}'), null);
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"point","text":"the export button"}').action, {
+    kind: 'point',
+    text: 'the export button',
+  });
+  assert.deepEqual(
+    parseAgentReply('{"thought":"","action":"plan","text":"1. Search","sites":["https://www.Example.com/a","shop.example.org","javascript:alert(1)","example.com"]}').action,
+    { kind: 'plan', text: '1. Search', sites: ['example.com', 'shop.example.org'] }
+  );
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"plan","text":"1. Read"}').action.sites, []);
+  // Sites only go with a plan.
+  assert.equal(parseAgentReply('{"thought":"","action":"click","ref":1,"sites":["a.com"]}').action.sites, undefined);
+});
+
+test('More actions on the same page follow the first, up to the first that is not whole or cannot follow', () => {
+  const reply = parseAgentReply(
+    JSON.stringify({
+      thought: 'Fill the form',
+      action: 'type',
+      ref: 1,
+      text: 'Kim',
+      then: [
+        { action: 'type', ref: 2, text: 'kim@example.com' },
+        { action: 'select', ref: 3, text: 'Seoul' },
+        { action: 'navigate', url: 'https://example.com' },
+        { action: 'click', ref: 5 },
+      ],
+    })
+  );
+  assert.deepEqual(reply.action, { kind: 'type', ref: 1, text: 'Kim' });
+  assert.deepEqual(reply.then, [
+    { kind: 'type', ref: 2, text: 'kim@example.com' },
+    { kind: 'select', ref: 3, text: 'Seoul' },
+  ]);
+  // At most four follow.
+  const many = parseAgentReply(JSON.stringify({ thought: '', action: 'click', ref: 1, then: Array.from({ length: 9 }, (_, i) => ({ action: 'click', ref: i + 2 })) }));
+  assert.equal(many.then.length, 4);
+  // Nothing follows what leaves the page.
+  assert.deepEqual(parseAgentReply(JSON.stringify({ thought: '', action: 'navigate', url: 'example.com', then: [{ action: 'click', ref: 1 }] })).then, []);
+  assert.deepEqual(parseAgentReply('{"thought":"","action":"click","ref":1}').then, []);
+});
+
+test('A tip comes only with finishing', () => {
+  assert.equal(parseAgentReply('{"thought":"","action":"finish","text":"Done","tip":" Export is in the ⋯ menu "}').tip, 'Export is in the ⋯ menu');
+  assert.equal(parseAgentReply('{"thought":"","action":"click","ref":1,"tip":"x"}').tip, undefined);
+  assert.equal(parseAgentReply('{"thought":"","action":"finish","text":"Done","tip":""}').tip, undefined);
+});
+
+test('Uploads always wait for the go-ahead; Enter does outside a search box; other keys and hovering never', () => {
+  const field = { ref: 1, tag: 'input', name: 'Message' };
+  const search = { ref: 2, tag: 'input', name: 'Search', search: true };
+  const send = { ref: 3, tag: 'button', name: 'Send' };
+  const more = { ref: 4, tag: 'button', name: 'More' };
+  assert.equal(needsApproval({ kind: 'upload', ref: 1, file: 1 }, field, false), true);
+  assert.equal(needsApproval({ kind: 'press', ref: 1, key: 'Enter' }, field, false), true);
+  assert.equal(needsApproval({ kind: 'press', ref: 2, key: 'Enter' }, search, false), false);
+  assert.equal(needsApproval({ kind: 'press', key: 'Escape' }, undefined, false), false);
+  assert.equal(needsApproval({ kind: 'press', ref: 3, key: ' ' }, send, false), true);
+  assert.equal(needsApproval({ kind: 'press', ref: 4, key: ' ' }, more, false), false);
+  assert.equal(needsApproval({ kind: 'hover', ref: 3 }, send, false), false);
+  for (const kind of ['handoff', 'point', 'plan']) assert.equal(needsApproval({ kind, text: 'x' }, undefined, true), false);
+});
+
+test('Sites are hosts without www, and a site keeps its last few tips without repeats', () => {
+  assert.equal(siteOf('https://www.example.com/a?b'), 'example.com');
+  assert.equal(siteOf('https://mail.example.com/'), 'mail.example.com');
+  assert.equal(siteOf('not a url'), '');
+  let tips = {};
+  for (const n of [1, 2, 3, 4, 5, 6]) tips = withSiteTip(tips, 'example.com', `tip ${n}`);
+  assert.deepEqual(tips['example.com'], ['tip 2', 'tip 3', 'tip 4', 'tip 5', 'tip 6']);
+  tips = withSiteTip(tips, 'example.com', ' tip 3 ');
+  assert.deepEqual(tips['example.com'], ['tip 2', 'tip 4', 'tip 5', 'tip 6', 'tip 3']);
+});
+
+test("The model hears about the user's turn, a declined site or plan, and what the user pointed at", () => {
+  const step = (action, extra = {}) => ({ id: 'a', action, status: 'done', ...extra });
+  assert.match(actionResult(step({ kind: 'navigate', url: 'https://b.com/' }, { status: 'denied', site: 'b.com' })), /did not allow working on b\.com/);
+  assert.match(actionResult(step({ kind: 'plan', text: '1.' }, { status: 'denied' })), /did not approve the plan/);
+  assert.match(actionResult(step({ kind: 'plan', text: '1.' })), /approved the plan/);
+  assert.match(actionResult(step({ kind: 'handoff', text: 'Sign in' })), /handed back/);
+  assert.match(actionResult(step({ kind: 'point', text: 'x' })), /pointed at/);
+  assert.match(actionResult(step({ kind: 'point', text: 'x' }, { status: 'denied' })), /did not point/);
+  assert.match(actionResult(step({ kind: 'wait', text: 'Saved' }, { status: 'failed', error: 'timed_out' })), /did not show/);
+  assert.match(actionResult(step({ kind: 'upload', ref: 1, file: 3 }, { status: 'failed', error: 'no_file' })), /no image with that number/);
+  const page = formatSnapshot({
+    url: 'https://example.com/',
+    title: '',
+    text: '',
+    elements: [{ ref: 7, tag: 'div', name: 'Export', picked: true }],
+    scroll: { y: 0, height: 1, viewport: 1 },
+  });
+  assert.match(page, /\[7\] div "Export" \(the user pointed at this\)/);
 });

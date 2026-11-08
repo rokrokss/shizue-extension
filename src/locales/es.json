@@ -164,7 +164,8 @@
     "tools": "Herramientas",
     "autoApprove": "Sin preguntar",
     "autoApproveHint": "En este chat envía, paga y elimina sin preguntar. Aun así no escribe contraseñas ni números de tarjeta",
-    "browserAgentAutoApprove": "Control del navegador · sin preguntar"
+    "browserAgentAutoApprove": "Control del navegador · sin preguntar",
+    "agentBackground": "Ejecutar en otra pestaña"
   },
   "footer": {
     "joinDiscord": "¡Únete a mí en Discord!",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "Los correos, teléfonos, números de tarjeta y claves de API no se envían a la IA. Se muestran tal como estaban en la página.",
     "maskPrivate": "No enviar datos personales",
     "savedTranslations": "{{number}} traducciones guardadas · 30 días",
-    "savedTranslationsClear": "Borrar"
+    "savedTranslationsClear": "Borrar",
+    "browserAgent": "Control del navegador",
+    "browserAgentDescription": "Sitios que permitiste siempre en sus tarjetas y consejos que guardaste para sitios",
+    "agentAllowedSites": "Sitios siempre permitidos",
+    "agentNoSites": "Aún no hay ninguno",
+    "agentClearSites": "Quitar todos los sitios",
+    "agentSiteTips": "Consejos de sitios",
+    "agentNoTips": "Aún no hay ninguno",
+    "agentClearTips": "Quitar todos los consejos"
   },
   "time": {
     "justNow": "justo ahora",
@@ -425,7 +434,15 @@
       "clickAt": "Clic en un punto de la pantalla",
       "openTab": "Abrir {{host}} en una pestaña nueva",
       "switchTab": "Ir a la pestaña {{tab}}",
-      "tool": "Usar la herramienta del sitio «{{target}}»"
+      "tool": "Usar la herramienta del sitio «{{target}}»",
+      "press": "Pulsar {{key}}",
+      "pressOn": "Pulsar {{key}} en «{{target}}»",
+      "hover": "Apuntar a «{{target}}»",
+      "upload": "Subir la imagen {{file}} a «{{target}}»",
+      "handoff": "Te toca: {{text}}",
+      "point": "Te pidió que señalaras {{text}}",
+      "plan": "Plan",
+      "waitFor": "Esperar a que aparezca «{{text}}»"
     },
     "approvalTitle": "¿Permitir esta acción?",
     "approvalHint": "Puede enviar, eliminar o pagar y ser difícil de deshacer",
@@ -447,7 +464,9 @@
       "no_tab": "No existe esa pestaña",
       "no_tool": "El sitio no tiene esa herramienta",
       "repeated": "La misma acción otra vez en una página sin cambios",
-      "failed": "No funcionó"
+      "failed": "No funcionó",
+      "no_file": "No existe esa imagen o no hay un campo de archivo ahí",
+      "timed_out": "El texto que esperaba no apareció"
     },
     "outcome": {
       "stopped": "Detenido",
@@ -455,12 +474,41 @@
       "unavailable": "Esta pestaña no se puede controlar. Abre una página web e inténtalo de nuevo",
       "failed": "Se detuvo: no supo qué hacer a continuación",
       "looping": "Se detuvo: repetía la misma acción",
-      "unanswered": "Se detuvo: la pregunta no tuvo respuesta"
+      "unanswered": "Se detuvo: la pregunta no tuvo respuesta",
+      "not_handed_back": "Detenido: esperó demasiado tu turno"
     },
     "overlayWorking": "Shizue está trabajando en esta pestaña",
     "overlayWaiting": "Esperando tu permiso en el panel",
     "overlayAsking": "Esperando tu respuesta en el panel",
     "overlayStop": "Detener",
-    "autoApproved": "Hecho sin preguntar"
+    "autoApproved": "Hecho sin preguntar",
+    "overlayHandoff": "Te toca",
+    "overlayPoint": "Haz clic para indicarlo",
+    "overlayResume": "Listo, continuar",
+    "groupTitle": "Shizue en acción",
+    "planTitle": "Este es el plan",
+    "planSites": "Sitios: {{sites}}",
+    "planHint": "Una vez iniciado, no volverá a preguntar por estos sitios. Enviar, pagar o eliminar se seguirá preguntando cada vez",
+    "planStart": "Iniciar",
+    "planCancel": "Cancelar",
+    "siteTitle": "¿Trabajar en {{site}}?",
+    "siteHint": "Este sitio es nuevo para esta tarea",
+    "allowOnce": "Permitir esta vez",
+    "allowAlways": "Permitir siempre este sitio",
+    "siteDenied": "No permitido en {{site}}",
+    "alwaysAllowedNote": "{{site}} ahora está siempre permitido",
+    "handoffTitle": "Te toca",
+    "handoffHint": "Cuando termines en la página, pulsa Continuar o escribe abajo",
+    "pointTitle": "Indícame dónde",
+    "pointHint": "Haz clic en ello en la página. Esc cancela",
+    "resume": "Continuar",
+    "cancelTurn": "Abandonar",
+    "tipTitle": "¿Recordar este consejo para {{site}}?",
+    "tipHint": "Shizue lo leerá la próxima vez que trabaje en este sitio. Puedes borrarlo en Ajustes",
+    "tipKeep": "Recordar",
+    "tipSkip": "No, gracias",
+    "tipKept": "Consejo recordado para {{site}}",
+    "takeOver": "Tomar el control",
+    "showTab": "Mostrar su pestaña"
   }
 }

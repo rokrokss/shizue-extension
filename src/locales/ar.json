@@ -164,7 +164,8 @@
     "tools": "الأدوات",
     "autoApprove": "التنفيذ دون سؤال",
     "autoApproveHint": "في هذه المحادثة يرسل ويدفع ويحذف دون أن يسأل. ولا يكتب كلمات المرور أو أرقام البطاقات مع ذلك",
-    "browserAgentAutoApprove": "التحكم في المتصفح · دون سؤال"
+    "browserAgentAutoApprove": "التحكم في المتصفح · دون سؤال",
+    "agentBackground": "تشغيل في علامة تبويب منفصلة"
   },
   "footer": {
     "joinDiscord": "انضم إلي على Discord!",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "لا تُرسَل عناوين البريد وأرقام الهواتف والبطاقات ومفاتيح API إلى الذكاء الاصطناعي، وتظهر كما كانت في الصفحة.",
     "maskPrivate": "عدم إرسال البيانات الشخصية",
     "savedTranslations": "{{number}} ترجمة محفوظة · 30 يومًا",
-    "savedTranslationsClear": "مسح"
+    "savedTranslationsClear": "مسح",
+    "browserAgent": "التحكم في المتصفح",
+    "browserAgentDescription": "المواقع التي سمحت بها دائمًا في بطاقاته، والنصائح التي حفظتها للمواقع",
+    "agentAllowedSites": "المواقع المسموح بها دائمًا",
+    "agentNoSites": "لا شيء بعد",
+    "agentClearSites": "إزالة كل المواقع",
+    "agentSiteTips": "نصائح المواقع",
+    "agentNoTips": "لا شيء بعد",
+    "agentClearTips": "إزالة كل النصائح"
   },
   "time": {
     "justNow": "الآن",
@@ -425,7 +434,15 @@
       "clickAt": "النقر على موضع في الشاشة",
       "openTab": "فتح {{host}} في علامة تبويب جديدة",
       "switchTab": "الانتقال إلى علامة التبويب {{tab}}",
-      "tool": "استخدام أداة الموقع «{{target}}»"
+      "tool": "استخدام أداة الموقع «{{target}}»",
+      "press": "اضغط {{key}}",
+      "pressOn": "اضغط {{key}} على «{{target}}»",
+      "hover": "مرّر المؤشر فوق «{{target}}»",
+      "upload": "رفع الصورة {{file}} إلى «{{target}}»",
+      "handoff": "دورك: {{text}}",
+      "point": "طلب منك الإشارة إلى {{text}}",
+      "plan": "الخطة",
+      "waitFor": "انتظار ظهور «{{text}}»"
     },
     "approvalTitle": "السماح بهذا الإجراء؟",
     "approvalHint": "قد يرسل أو يحذف أو يدفع، ويصعب التراجع عنه",
@@ -447,7 +464,9 @@
       "no_tab": "لا توجد علامة تبويب كهذه",
       "no_tool": "لا يوفّر الموقع هذه الأداة",
       "repeated": "الإجراء نفسه مرة أخرى على صفحة لم تتغير",
-      "failed": "لم ينجح"
+      "failed": "لم ينجح",
+      "no_file": "لا توجد هذه الصورة، أو لا يوجد حقل ملف هناك",
+      "timed_out": "لم يظهر النص الذي انتظره"
     },
     "outcome": {
       "stopped": "تم الإيقاف",
@@ -455,12 +474,41 @@
       "unavailable": "لا يمكن التحكم في علامة التبويب هذه. افتح صفحة ويب وحاول مجددًا",
       "failed": "توقف: تعذّر تحديد الخطوة التالية",
       "looping": "توقف: ظل يكرر الإجراء نفسه",
-      "unanswered": "توقف: لم تتم الإجابة عن السؤال"
+      "unanswered": "توقف: لم تتم الإجابة عن السؤال",
+      "not_handed_back": "توقف: انتظر دورك طويلًا"
     },
     "overlayWorking": "يعمل Shizue في علامة التبويب هذه",
     "overlayWaiting": "بانتظار موافقتك في اللوحة",
     "overlayAsking": "بانتظار إجابتك في اللوحة",
     "overlayStop": "إيقاف",
-    "autoApproved": "نُفّذ دون سؤال"
+    "autoApproved": "نُفّذ دون سؤال",
+    "overlayHandoff": "دورك",
+    "overlayPoint": "انقر للإشارة",
+    "overlayResume": "انتهيت، تابع",
+    "groupTitle": "Shizue تعمل",
+    "planTitle": "هذه هي الخطة",
+    "planSites": "المواقع: {{sites}}",
+    "planHint": "بعد البدء لن يسأل مجددًا عن هذه المواقع. الإرسال والدفع والحذف يطلب إذنك في كل مرة",
+    "planStart": "ابدأ",
+    "planCancel": "إلغاء",
+    "siteTitle": "العمل على {{site}}؟",
+    "siteHint": "هذا الموقع جديد على هذه المهمة",
+    "allowOnce": "سماح هذه المرة",
+    "allowAlways": "السماح دائمًا لهذا الموقع",
+    "siteDenied": "غير مسموح على {{site}}",
+    "alwaysAllowedNote": "{{site}} مسموح به دائمًا الآن",
+    "handoffTitle": "دورك",
+    "handoffHint": "عندما تنتهي في الصفحة، اضغط متابعة أو اكتب أدناه",
+    "pointTitle": "أرني أين",
+    "pointHint": "انقر عليه في الصفحة. Esc للإلغاء",
+    "resume": "متابعة",
+    "cancelTurn": "إيقاف",
+    "tipTitle": "تذكّر هذه النصيحة لموقع {{site}}؟",
+    "tipHint": "يقرؤها Shizue في المرة القادمة التي يعمل فيها على هذا الموقع. يمكنك حذفها من الإعدادات",
+    "tipKeep": "تذكّر",
+    "tipSkip": "لا، شكرًا",
+    "tipKept": "تم تذكّر نصيحة لموقع {{site}}",
+    "takeOver": "تولَّ التحكم",
+    "showTab": "عرض علامة تبويبه"
   }
 }

@@ -176,7 +176,7 @@ export const sidePanelMessageListeners = () => {
     port.onMessage.addListener(async (msg) => {
       // The browser agent's approval cards are answered over the answer's own port.
       if (msg.action === MESSAGE_AGENT_APPROVAL) {
-        answerAgentApproval(msg.stepId, msg.approved === true);
+        answerAgentApproval(msg.stepId, msg.approved === 'always' ? 'always' : msg.approved === true);
         return;
       }
       if (msg.action === MESSAGE_AGENT_STEER) {

@@ -118,8 +118,9 @@ export const useChromePortStream = () => {
     [_initiatePortCommunication]
   );
 
-  // The user's answer to a browser agent approval card, to the answer streaming now.
-  const answerAgentApproval = useCallback((stepId: string, approved: boolean) => {
+  // The user's answer to a browser agent approval card, to the answer streaming now ('always'
+  // allows a site for good).
+  const answerAgentApproval = useCallback((stepId: string, approved: boolean | 'always') => {
     portRef.current?.postMessage({ action: MESSAGE_AGENT_APPROVAL, stepId, approved });
   }, []);
 

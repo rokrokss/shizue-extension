@@ -164,7 +164,8 @@
     "tools": "Outils",
     "autoApprove": "Sans demander",
     "autoApproveHint": "Dans cette discussion, il envoie, paie et supprime sans demander. Il ne tape toujours pas de mots de passe ni de numéros de carte",
-    "browserAgentAutoApprove": "Contrôle du navigateur · sans demander"
+    "browserAgentAutoApprove": "Contrôle du navigateur · sans demander",
+    "agentBackground": "Exécuter dans un onglet séparé"
   },
   "footer": {
     "joinDiscord": "Rejoignez-moi sur Discord !",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "Les e-mails, numéros de téléphone, numéros de carte et clés d'API ne sont pas envoyés à l'IA. Ils restent tels qu'ils étaient sur la page.",
     "maskPrivate": "Ne pas envoyer les données personnelles",
     "savedTranslations": "{{number}} traductions enregistrées · 30 jours",
-    "savedTranslationsClear": "Effacer"
+    "savedTranslationsClear": "Effacer",
+    "browserAgent": "Contrôle du navigateur",
+    "browserAgentDescription": "Sites que vous avez toujours autorisés sur ses cartes, et astuces retenues pour des sites",
+    "agentAllowedSites": "Sites toujours autorisés",
+    "agentNoSites": "Aucun pour l’instant",
+    "agentClearSites": "Retirer tous les sites",
+    "agentSiteTips": "Astuces par site",
+    "agentNoTips": "Aucune pour l’instant",
+    "agentClearTips": "Retirer toutes les astuces"
   },
   "time": {
     "justNow": "à l'instant",
@@ -425,7 +434,15 @@
       "clickAt": "Cliquer à un endroit de l’écran",
       "openTab": "Ouvrir {{host}} dans un nouvel onglet",
       "switchTab": "Aller à l’onglet {{tab}}",
-      "tool": "Utiliser l’outil du site « {{target}} »"
+      "tool": "Utiliser l’outil du site « {{target}} »",
+      "press": "Appuyer sur {{key}}",
+      "pressOn": "Appuyer sur {{key}} sur « {{target}} »",
+      "hover": "Pointer « {{target}} »",
+      "upload": "Téléverser l’image {{file}} dans « {{target}} »",
+      "handoff": "À vous : {{text}}",
+      "point": "Vous a demandé de pointer {{text}}",
+      "plan": "Plan",
+      "waitFor": "Attendre l’affichage de « {{text}} »"
     },
     "approvalTitle": "Autoriser cette action ?",
     "approvalHint": "Cela peut envoyer, supprimer ou payer, et être difficile à annuler",
@@ -447,7 +464,9 @@
       "no_tab": "Cet onglet n’existe pas",
       "no_tool": "Le site ne propose pas cet outil",
       "repeated": "Même action sur une page inchangée",
-      "failed": "Échec"
+      "failed": "Échec",
+      "no_file": "Cette image n’existe pas, ou il n’y a pas de champ de fichier",
+      "timed_out": "Le texte attendu ne s’est pas affiché"
     },
     "outcome": {
       "stopped": "Arrêté",
@@ -455,12 +474,41 @@
       "unavailable": "Cet onglet ne peut pas être contrôlé. Ouvrez une page web et réessayez",
       "failed": "Arrêté : impossible de choisir l’étape suivante",
       "looping": "Arrêté : répétait sans cesse la même action",
-      "unanswered": "Arrêté : la question est restée sans réponse"
+      "unanswered": "Arrêté : la question est restée sans réponse",
+      "not_handed_back": "Arrêt : il a trop attendu votre tour"
     },
     "overlayWorking": "Shizue travaille dans cet onglet",
     "overlayWaiting": "En attente de votre accord dans le panneau",
     "overlayAsking": "En attente de votre réponse dans le panneau",
     "overlayStop": "Arrêter",
-    "autoApproved": "Fait sans demander"
+    "autoApproved": "Fait sans demander",
+    "overlayHandoff": "À vous",
+    "overlayPoint": "Cliquez pour indiquer",
+    "overlayResume": "Terminé, continuer",
+    "groupTitle": "Shizue au travail",
+    "planTitle": "Voici le plan",
+    "planSites": "Sites : {{sites}}",
+    "planHint": "Une fois lancé, il ne redemandera pas pour ces sites. Envoyer, payer ou supprimer reste demandé à chaque fois",
+    "planStart": "Démarrer",
+    "planCancel": "Annuler",
+    "siteTitle": "Travailler sur {{site}} ?",
+    "siteHint": "Ce site est nouveau pour cette tâche",
+    "allowOnce": "Autoriser cette fois",
+    "allowAlways": "Toujours autoriser ce site",
+    "siteDenied": "Non autorisé sur {{site}}",
+    "alwaysAllowedNote": "{{site}} est désormais toujours autorisé",
+    "handoffTitle": "À vous",
+    "handoffHint": "Quand vous avez terminé sur la page, appuyez sur Continuer ou écrivez ci-dessous",
+    "pointTitle": "Montrez-moi où",
+    "pointHint": "Cliquez dessus sur la page. Échap annule",
+    "resume": "Continuer",
+    "cancelTurn": "Abandonner",
+    "tipTitle": "Retenir cette astuce pour {{site}} ?",
+    "tipHint": "Shizue la lira la prochaine fois qu’il travaillera sur ce site. Vous pouvez la supprimer dans les Réglages",
+    "tipKeep": "Retenir",
+    "tipSkip": "Non merci",
+    "tipKept": "Astuce retenue pour {{site}}",
+    "takeOver": "Reprendre la main",
+    "showTab": "Afficher son onglet"
   }
 }

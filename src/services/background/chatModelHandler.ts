@@ -271,6 +271,7 @@ export class ChatModelHandler {
       await runBrowserAgent({
         messageId,
         task: task.content,
+        images: task.images,
         history: earlier,
         lang: getCurrentLanguage(),
         labels,

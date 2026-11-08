@@ -164,7 +164,8 @@
     "tools": "เครื่องมือ",
     "autoApprove": "ทำโดยไม่ถาม",
     "autoApproveHint": "ในแชทนี้จะส่ง ชำระเงิน และลบโดยไม่ถาม แต่ยังไม่พิมพ์รหัสผ่านหรือเลขบัตร",
-    "browserAgentAutoApprove": "ควบคุมเบราว์เซอร์ · ไม่ถาม"
+    "browserAgentAutoApprove": "ควบคุมเบราว์เซอร์ · ไม่ถาม",
+    "agentBackground": "ทำงานในแท็บแยก"
   },
   "footer": {
     "joinDiscord": "เข้าร่วมกับฉันบน Discord!",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "อีเมล เบอร์โทร เลขบัตร และคีย์ API จะไม่ถูกส่งให้ AI และแสดงตามเดิมบนหน้าเว็บ",
     "maskPrivate": "ไม่ส่งข้อมูลส่วนตัว",
     "savedTranslations": "คำแปลที่บันทึก {{number}} รายการ · 30 วัน",
-    "savedTranslationsClear": "ล้าง"
+    "savedTranslationsClear": "ล้าง",
+    "browserAgent": "การควบคุมเบราว์เซอร์",
+    "browserAgentDescription": "ไซต์ที่คุณอนุญาตเสมอบนการ์ด และเคล็ดลับที่จำไว้สำหรับไซต์",
+    "agentAllowedSites": "ไซต์ที่อนุญาตเสมอ",
+    "agentNoSites": "ยังไม่มี",
+    "agentClearSites": "ลบไซต์ทั้งหมด",
+    "agentSiteTips": "เคล็ดลับของไซต์",
+    "agentNoTips": "ยังไม่มี",
+    "agentClearTips": "ลบเคล็ดลับทั้งหมด"
   },
   "time": {
     "justNow": "เมื่อสักครู่",
@@ -425,7 +434,15 @@
       "clickAt": "คลิกจุดหนึ่งบนหน้าจอ",
       "openTab": "เปิด {{host}} ในแท็บใหม่",
       "switchTab": "ไปที่แท็บ {{tab}}",
-      "tool": "ใช้เครื่องมือของเว็บไซต์ ‘{{target}}’"
+      "tool": "ใช้เครื่องมือของเว็บไซต์ ‘{{target}}’",
+      "press": "กด {{key}}",
+      "pressOn": "กด {{key}} บน ‘{{target}}’",
+      "hover": "ชี้ที่ ‘{{target}}’",
+      "upload": "อัปโหลดรูป {{file}} ไปที่ ‘{{target}}’",
+      "handoff": "ถึงตาคุณ: {{text}}",
+      "point": "ขอให้คุณชี้ {{text}}",
+      "plan": "แผน",
+      "waitFor": "รอให้ “{{text}}” แสดง"
     },
     "approvalTitle": "อนุญาตการทำงานนี้ไหม",
     "approvalHint": "อาจเป็นการส่ง ลบ หรือชำระเงินที่ย้อนกลับได้ยาก",
@@ -447,7 +464,9 @@
       "no_tab": "ไม่มีแท็บนี้",
       "no_tool": "เว็บไซต์ไม่มีเครื่องมือนี้",
       "repeated": "ทำแบบเดิมซ้ำบนหน้าที่ไม่เปลี่ยน",
-      "failed": "ทำไม่สำเร็จ"
+      "failed": "ทำไม่สำเร็จ",
+      "no_file": "ไม่มีรูปนั้น หรือไม่มีช่องไฟล์ตรงนั้น",
+      "timed_out": "ข้อความที่รอไม่แสดงขึ้น"
     },
     "outcome": {
       "stopped": "หยุดแล้ว",
@@ -455,12 +474,41 @@
       "unavailable": "ควบคุมแท็บนี้ไม่ได้ เปิดหน้าเว็บแล้วลองอีกครั้ง",
       "failed": "หยุดเพราะตัดสินใจขั้นต่อไปไม่ได้",
       "looping": "หยุดเพราะทำแบบเดิมซ้ำไปมา",
-      "unanswered": "หยุดเพราะไม่มีคำตอบสำหรับคำถาม"
+      "unanswered": "หยุดเพราะไม่มีคำตอบสำหรับคำถาม",
+      "not_handed_back": "หยุดแล้ว: รอตาของคุณนานเกินไป"
     },
     "overlayWorking": "Shizue กำลังทำงานในแท็บนี้",
     "overlayWaiting": "กำลังรอการอนุญาตในแผง",
     "overlayAsking": "กำลังรอคำตอบของคุณในแผง",
     "overlayStop": "หยุด",
-    "autoApproved": "ทำโดยไม่ถาม"
+    "autoApproved": "ทำโดยไม่ถาม",
+    "overlayHandoff": "ถึงตาคุณ",
+    "overlayPoint": "คลิกเพื่อชี้",
+    "overlayResume": "เสร็จแล้ว ทำต่อ",
+    "groupTitle": "Shizue กำลังทำงาน",
+    "planTitle": "นี่คือแผน",
+    "planSites": "ไซต์: {{sites}}",
+    "planHint": "เมื่อเริ่มแล้วจะไม่ถามซ้ำสำหรับไซต์เหล่านี้ แต่การส่ง ชำระเงิน และลบ จะถามทุกครั้ง",
+    "planStart": "เริ่ม",
+    "planCancel": "ยกเลิก",
+    "siteTitle": "ทำงานบน {{site}} ไหม",
+    "siteHint": "ไซต์นี้เป็นไซต์ใหม่สำหรับงานนี้",
+    "allowOnce": "อนุญาตครั้งนี้",
+    "allowAlways": "อนุญาตไซต์นี้เสมอ",
+    "siteDenied": "ไม่อนุญาตบน {{site}}",
+    "alwaysAllowedNote": "อนุญาต {{site}} เสมอแล้ว",
+    "handoffTitle": "ถึงตาคุณ",
+    "handoffHint": "เมื่อทำบนหน้าเว็บเสร็จ กดทำต่อ หรือพิมพ์ด้านล่าง",
+    "pointTitle": "ชี้ให้ดูหน่อย",
+    "pointHint": "คลิกที่จุดนั้นบนหน้าเว็บ กด Esc เพื่อยกเลิก",
+    "resume": "ทำต่อ",
+    "cancelTurn": "เลิกทำ",
+    "tipTitle": "จำเคล็ดลับของ {{site}} ไหม",
+    "tipHint": "Shizue จะอ่านเมื่อทำงานบนไซต์นี้ครั้งหน้า ลบได้ในการตั้งค่า",
+    "tipKeep": "จำไว้",
+    "tipSkip": "ไม่เป็นไร",
+    "tipKept": "จำเคล็ดลับของ {{site}} แล้ว",
+    "takeOver": "เข้าควบคุม",
+    "showTab": "แสดงแท็บของมัน"
   }
 }

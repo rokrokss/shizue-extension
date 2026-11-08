@@ -164,7 +164,8 @@
     "tools": "ツール",
     "autoApprove": "確認せずに実行",
     "autoApproveHint": "この会話では送信・支払い・削除も確認せずに実行します。パスワードやカード番号は入力しません",
-    "browserAgentAutoApprove": "ブラウザ操作 · 確認なし"
+    "browserAgentAutoApprove": "ブラウザ操作 · 確認なし",
+    "agentBackground": "別のタブで実行"
   },
   "footer": {
     "joinDiscord": "Discordに参加してください！",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "メールアドレス、電話番号、カード番号、APIキーはAIに送らず、ページのまま表示します。",
     "maskPrivate": "個人情報を送らない",
     "savedTranslations": "保存した翻訳 {{number}}件・30日間保存",
-    "savedTranslationsClear": "削除"
+    "savedTranslationsClear": "削除",
+    "browserAgent": "ブラウザー操作",
+    "browserAgentDescription": "操作カードで常に許可したサイトと、サイトごとに覚えたコツです",
+    "agentAllowedSites": "常に許可したサイト",
+    "agentNoSites": "まだありません",
+    "agentClearSites": "すべてのサイトを削除",
+    "agentSiteTips": "サイトごとのコツ",
+    "agentNoTips": "まだありません",
+    "agentClearTips": "すべてのコツを削除"
   },
   "time": {
     "justNow": "たった今",
@@ -425,7 +434,15 @@
       "clickAt": "画面の一点をクリック",
       "openTab": "新しいタブで {{host}} を開く",
       "switchTab": "タブ {{tab}} に切り替え",
-      "tool": "サイトのツール「{{target}}」を使う"
+      "tool": "サイトのツール「{{target}}」を使う",
+      "press": "{{key}} を押す",
+      "pressOn": "「{{target}}」で {{key}} を押す",
+      "hover": "「{{target}}」にポインターを合わせる",
+      "upload": "画像 {{file}} を「{{target}}」にアップロード",
+      "handoff": "あなたの番です：{{text}}",
+      "point": "{{text}} を指してほしいと依頼",
+      "plan": "プラン",
+      "waitFor": "「{{text}}」の表示を待つ"
     },
     "approvalTitle": "この操作を行ってもいいですか？",
     "approvalHint": "送信・削除・支払いなど、取り消しにくい操作かもしれません",
@@ -447,7 +464,9 @@
       "no_tab": "そのタブはありません",
       "no_tool": "サイトにそのツールはありません",
       "repeated": "変わらないページで同じ操作を繰り返しました",
-      "failed": "実行できませんでした"
+      "failed": "実行できませんでした",
+      "no_file": "その画像、またはファイル欄がありません",
+      "timed_out": "待っていた文字が表示されませんでした"
     },
     "outcome": {
       "stopped": "停止しました",
@@ -455,12 +474,41 @@
       "unavailable": "このタブは操作できません。Web ページを開いてから再試行してください",
       "failed": "次の操作を決められず停止しました",
       "looping": "同じ操作を繰り返したため停止しました",
-      "unanswered": "質問に回答がなかったため停止しました"
+      "unanswered": "質問に回答がなかったため停止しました",
+      "not_handed_back": "停止：あなたの番を待ちすぎました"
     },
     "overlayWorking": "シズエがこのタブを操作中",
     "overlayWaiting": "パネルで許可を待っています",
     "overlayAsking": "パネルで回答を待っています",
     "overlayStop": "停止",
-    "autoApproved": "確認せずに実行"
+    "autoApproved": "確認せずに実行",
+    "overlayHandoff": "あなたの番です",
+    "overlayPoint": "クリックして教える",
+    "overlayResume": "完了、続ける",
+    "groupTitle": "シズエの作業",
+    "planTitle": "このように進めます",
+    "planSites": "サイト：{{sites}}",
+    "planHint": "開始後、これらのサイトでは再び確認しません。送信・支払い・削除はそのつど確認します",
+    "planStart": "開始",
+    "planCancel": "キャンセル",
+    "siteTitle": "{{site}} で作業してもいいですか？",
+    "siteHint": "今回の作業では初めて使うサイトです",
+    "allowOnce": "今回のみ許可",
+    "allowAlways": "このサイトを常に許可",
+    "siteDenied": "{{site}} では行いません",
+    "alwaysAllowedNote": "{{site}} を常に許可しました",
+    "handoffTitle": "あなたの番です",
+    "handoffHint": "ページでの操作が終わったら「続ける」を押すか、下の入力欄に書いてください",
+    "pointTitle": "場所を教えてください",
+    "pointHint": "ページ上でそこをクリックしてください。Esc で取り消します",
+    "resume": "続ける",
+    "cancelTurn": "あきらめる",
+    "tipTitle": "{{site}} のコツを覚えますか？",
+    "tipHint": "次回このサイトを操作するときにシズエが読みます。設定で削除できます",
+    "tipKeep": "覚える",
+    "tipSkip": "いいえ",
+    "tipKept": "{{site}} のコツを覚えました",
+    "takeOver": "引き継ぐ",
+    "showTab": "作業したタブを表示"
   }
 }

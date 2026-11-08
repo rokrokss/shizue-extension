@@ -27,6 +27,8 @@ export const MESSAGE_AGENT_APPROVAL = 'action_agent_approval';
 // What the user types while the browser agent works: a change to the task, or the answer it asked for.
 export const MESSAGE_AGENT_STEER = 'action_agent_steer';
 export const MESSAGE_AGENT_STOP = 'action_agent_stop';
+// The hand-back button of the agent's pill, when it is the user's turn on the page.
+export const MESSAGE_AGENT_RESUME = 'action_agent_resume';
 export const MESSAGE_CONTEXT_MENU_TRANSLATE_IMAGE = 'action_context_menu_translate_image';
 export const MESSAGE_CONTEXT_MENU_TRANSLATE_PAGE_IMAGES = 'action_context_menu_translate_page_images';
 export const MESSAGE_FRAME_TRANSLATION_STATE = 'frame_translation_state';
@@ -78,6 +80,11 @@ export const STORAGE_CHATGPT_CREDENTIALS = 'CHATGPT_CREDENTIALS';
 export const STORAGE_USER_MEMORY = 'USER_MEMORY';
 // How hard the chat model thinks: 'low', 'medium' (the model's default) or 'high' (lib/reasoning.ts).
 export const STORAGE_REASONING_EFFORT = 'REASONING_EFFORT';
+// The browser agent: sites the user allowed it for good (string[]), tips kept per site
+// (AgentSiteTips), and whether it works in a tab of its own behind the user's (boolean).
+export const STORAGE_AGENT_ALLOWED_SITES = 'AGENT_ALLOWED_SITES';
+export const STORAGE_AGENT_SITE_TIPS = 'AGENT_SITE_TIPS';
+export const STORAGE_AGENT_BACKGROUND = 'AGENT_BACKGROUND';
 export const STORAGE_AUTO_MEMORY = 'AUTO_MEMORY';
 export const STORAGE_GLOBAL_STATE = 'GLOBAL_STATE';
 export const STORAGE_THEME = 'THEME';

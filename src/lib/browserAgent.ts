@@ -23,6 +23,19 @@ export type AgentActionKind =
   | 'switch_tab'
   // A tool the site offers through WebMCP (PageSnapshot.tools).
   | 'tool'
+  // A key ("key") on control [ref] or on what has focus: Escape closes a popup, arrows move in a list.
+  | 'press'
+  // The pointer over control [ref], for a menu that opens on hover.
+  | 'hover'
+  // An image from the chat into file field [ref] (or the drop zone it is), by its number ("file").
+  | 'upload'
+  // The user's turn: they sign in, pass a CAPTCHA or fill in what the agent never types, then hand
+  // back. "text" says what to do.
+  | 'handoff'
+  // The user points at what "text" names by clicking it on the page; it gets a number.
+  | 'point'
+  // Before the work: what the agent will do and on which sites ("sites"), approved once.
+  | 'plan'
   // Not the model's: what the user said while the agent worked, shown among the steps.
   | 'steer';
 
@@ -44,9 +57,18 @@ export type AgentAction = {
   // tool: the tool's name, and its input as its schema asks.
   name?: string;
   input?: Record<string, unknown>;
+  // press: the key, as KeyboardEvent.key names it ("Escape", "Enter", "ArrowDown").
+  key?: string;
+  // upload: the image's number among those the user gave with the task.
+  file?: number;
+  // plan: the sites it will work on, by host.
+  sites?: string[];
 };
 
-export type AgentReply = { thought: string; action: AgentAction; sensitive: boolean };
+// `then`: more actions on the same page, done in order after `action` until one fails, needs the
+// user's go-ahead or the page changes. `tip`: with finish, how this site does something it had to
+// search for, offered to the user to keep for next time.
+export type AgentReply = { thought: string; action: AgentAction; sensitive: boolean; then: AgentAction[]; tip?: string };
 
 export type PageElement = {
   ref: number;
@@ -69,6 +91,8 @@ export type PageElement = {
   // In one of the page's frames (PageSnapshot.frames): the frame, and the element's number there.
   frameId?: number;
   frameRef?: number;
+  // What the user clicked when the agent asked them to point (point).
+  picked?: boolean;
 };
 
 // A tool the page registered with WebMCP (document.modelContext), in one of its frames.
@@ -116,6 +140,10 @@ export type AgentStepError =
   | 'no_tool'
   // It was done the same way on the same page twice already.
   | 'repeated'
+  // upload: no image by that number, or no file field there.
+  | 'no_file'
+  // wait: the text it waited for didn't show.
+  | 'timed_out'
   | 'failed';
 
 // One action as the panel shows it.
@@ -133,21 +161,71 @@ export type AgentStep = {
   error?: AgentStepError;
   // ask: the user's answer.
   reply?: string;
+  // The go-ahead it waits for is to work on this site, new to the run.
+  site?: string;
+  // The site the user allowed for good on this step's card.
+  alwaysAllowed?: string;
   // How long it took, in ms: the model's answer (with its retries), the action, the wait for the
   // page, and reading the page after. Kept for looking into a slow run; the panel doesn't show it.
   timing?: { model: number; act?: number; settle?: number; read?: number };
 };
 
 // looping: it kept doing the same thing on a page that didn't change. unanswered: its question
-// waited too long.
-export type AgentOutcome = 'finished' | 'stopped' | 'max_steps' | 'unavailable' | 'failed' | 'looping' | 'unanswered';
+// waited too long. not_handed_back: the user's turn (handoff, point) waited too long.
+export type AgentOutcome =
+  | 'finished'
+  | 'stopped'
+  | 'max_steps'
+  | 'unavailable'
+  | 'failed'
+  | 'looping'
+  | 'unanswered'
+  | 'not_handed_back';
 
-// A browser agent answer's record, kept with the message.
-export type AgentRun = { host?: string; steps: AgentStep[]; outcome?: AgentOutcome };
+// A browser agent answer's record, kept with the message. tabId: the tab it worked in behind the
+// user's (STORAGE_AGENT_BACKGROUND). tip: what it offered to keep for the site, and what the user did.
+export type AgentRun = {
+  host?: string;
+  steps: AgentStep[];
+  outcome?: AgentOutcome;
+  tabId?: number;
+  tip?: { host: string; text: string; state?: 'saved' | 'dismissed' };
+};
 
 // What the agent's pill on the page says, in the panel's language.
-// waiting: for the go-ahead; asking: for the answer to its question.
-export type AgentLabels = { working: string; waiting: string; asking: string; stop: string };
+// waiting: for the go-ahead; asking: for the answer to its question; handoff and point: the
+// user's turn, ended with `resume`; group: the tab group of a run behind the user's tab.
+export type AgentLabels = {
+  working: string;
+  waiting: string;
+  asking: string;
+  stop: string;
+  handoff?: string;
+  point?: string;
+  resume?: string;
+  group?: string;
+};
+
+// Site tips the user kept (STORAGE_AGENT_SITE_TIPS), by site, a few each.
+export type AgentSiteTips = Record<string, string[]>;
+export const MAX_SITE_TIPS = 5;
+const MAX_TIP = 200;
+
+// A site as the agent's permissions and tips know it: the host without "www.".
+export const siteOf = (address: string) => {
+  try {
+    return new URL(address).hostname.replace(/^www\./, '');
+  } catch {
+    return '';
+  }
+};
+
+// The site's tips with a new one, the oldest going past MAX_SITE_TIPS.
+export const withSiteTip = (tips: AgentSiteTips, site: string, tip: string): AgentSiteTips => {
+  const text = tip.trim().slice(0, MAX_TIP);
+  const kept = (tips[site] ?? []).filter((old) => old !== text);
+  return { ...tips, [site]: [...kept, text].slice(-MAX_SITE_TIPS) };
+};
 
 export const BROWSER_AGENT_MAX_STEPS = 100;
 
@@ -231,7 +309,42 @@ const KINDS: AgentActionKind[] = [
   'open_tab',
   'switch_tab',
   'tool',
+  'press',
+  'hover',
+  'upload',
+  'handoff',
+  'point',
+  'plan',
 ];
+
+// What may follow an action in `then`: what works on the same page by its numbers.
+const BATCHABLE: AgentActionKind[] = ['click', 'type', 'select', 'press', 'hover', 'scroll'];
+export const MAX_BATCH = 5;
+
+// Keys the agent may press, as KeyboardEvent.key names them.
+const KEYS = [
+  'Enter',
+  'Escape',
+  'Tab',
+  'Backspace',
+  'Delete',
+  'ArrowDown',
+  'ArrowUp',
+  'ArrowLeft',
+  'ArrowRight',
+  'PageDown',
+  'PageUp',
+  'Home',
+  'End',
+  ' ',
+];
+const keyOf = (value: string) => {
+  const wanted = value.trim().toLowerCase();
+  if (wanted === 'space' || value === ' ') return ' ';
+  if (wanted === 'esc') return 'Escape';
+  if (wanted === 'return') return 'Enter';
+  return KEYS.find((key) => key.toLowerCase() === wanted || key.toLowerCase() === `arrow${wanted}`);
+};
 
 // A web address as the model wrote it, made whole; anything but http(s) is refused.
 export const agentUrl = (value: string): string | null => {
@@ -245,24 +358,12 @@ export const agentUrl = (value: string): string | null => {
   }
 };
 
-// The model's JSON, fenced or not, with its action flat or nested; null when it isn't one.
-export const parseAgentReply = (answer: string): AgentReply | null => {
-  const json = answer.match(/\{[\s\S]*\}/)?.[0];
-  if (!json) return null;
-  let parsed: Record<string, unknown>;
-  try {
-    parsed = JSON.parse(json);
-  } catch {
-    return null;
-  }
-  if (!parsed || typeof parsed !== 'object') return null;
-  const nested = parsed.action && typeof parsed.action === 'object' ? (parsed.action as Record<string, unknown>) : null;
-  const field = (name: string) => (nested && name in nested ? nested[name] : parsed[name]);
-  const kind = String(nested ? nested.type ?? nested.kind ?? nested.action : parsed.action ?? '').toLowerCase();
+// One action of the model's JSON, its fields read with `field`; null when it isn't a whole one.
+const actionFrom = (kind: string, field: (name: string) => unknown): AgentAction | null => {
   if (!KINDS.includes(kind as AgentActionKind)) return null;
   const action: AgentAction = { kind: kind as AgentActionKind };
   const ref = Number(field('ref'));
-  if (Number.isInteger(ref) && ref >= 0) action.ref = ref;
+  if (field('ref') !== undefined && field('ref') !== null && Number.isInteger(ref) && ref >= 0) action.ref = ref;
   const text = field('text');
   if (typeof text === 'string') action.text = text;
   const url = field('url');
@@ -289,20 +390,39 @@ export const parseAgentReply = (answer: string): AgentReply | null => {
       return null;
     }
   }
+  const key = field('key');
+  if (typeof key === 'string') action.key = keyOf(key);
+  const file = Number(field('file'));
+  if (Number.isInteger(file) && file >= 1) action.file = file;
+  const sites = field('sites');
+  if (Array.isArray(sites)) {
+    action.sites = [
+      ...new Set(sites.filter((site): site is string => typeof site === 'string').map((site) => siteOf(agentUrl(site) ?? ''))),
+    ]
+      .filter(Boolean)
+      .slice(0, 10);
+  }
 
-  if ((kind === 'click' || kind === 'type' || kind === 'select') && action.ref === undefined) return null;
+  if (['click', 'type', 'select', 'hover', 'upload'].includes(kind) && action.ref === undefined) return null;
   if ((kind === 'type' || kind === 'select') && action.text === undefined) return null;
   if (kind === 'navigate' || kind === 'open_tab') {
     const whole = agentUrl(action.url ?? action.text ?? '');
     if (!whole) return null;
     action.url = whole;
   }
-  if (kind === 'ask' && !action.text?.trim()) return null;
+  if (['ask', 'handoff', 'point', 'plan'].includes(kind) && !action.text?.trim()) return null;
   if (kind === 'click_at' && (action.x === undefined || action.y === undefined)) return null;
   if (kind === 'switch_tab' && action.tab === undefined) return null;
   if (kind === 'tool' && !action.name) return null;
+  if (kind === 'press' && !action.key) return null;
+  if (kind === 'upload' && action.file === undefined) return null;
   if (kind === 'tool') action.input ??= {};
-  if (kind === 'finish' || kind === 'ask') action.text = (action.text ?? '').trim();
+  if (['finish', 'ask', 'handoff', 'point', 'plan'].includes(kind)) action.text = (action.text ?? '').trim();
+  if (kind === 'wait') {
+    // What to wait for, if anything.
+    if (action.text?.trim()) action.text = action.text.trim();
+    else delete action.text;
+  }
   if (kind !== 'click_at') {
     delete action.x;
     delete action.y;
@@ -313,8 +433,52 @@ export const parseAgentReply = (answer: string): AgentReply | null => {
     delete action.input;
   }
   if (kind !== 'scroll') delete action.direction;
+  if (kind !== 'press') delete action.key;
+  if (kind !== 'upload') delete action.file;
+  if (kind === 'plan') action.sites ??= [];
+  else delete action.sites;
+  return action;
+};
+
+const kindOf = (fields: Record<string, unknown>) => String(fields.type ?? fields.kind ?? fields.action ?? '').toLowerCase();
+
+// The model's JSON, fenced or not, with its action flat or nested; null when it isn't one.
+export const parseAgentReply = (answer: string): AgentReply | null => {
+  const json = answer.match(/\{[\s\S]*\}/)?.[0];
+  if (!json) return null;
+  let parsed: Record<string, unknown>;
+  try {
+    parsed = JSON.parse(json);
+  } catch {
+    return null;
+  }
+  if (!parsed || typeof parsed !== 'object') return null;
+  const nested = parsed.action && typeof parsed.action === 'object' ? (parsed.action as Record<string, unknown>) : null;
+  const field = (name: string) => (nested && name in nested ? nested[name] : parsed[name]);
+  const kind = nested ? kindOf(nested) : String(parsed.action ?? '').toLowerCase();
+  const action = actionFrom(kind, field);
+  if (!action) return null;
+
+  // The actions after it on the same page, up to the first that isn't whole or can't follow.
+  const then: AgentAction[] = [];
+  if (BATCHABLE.includes(action.kind) && Array.isArray(parsed.then)) {
+    for (const item of parsed.then.slice(0, MAX_BATCH - 1)) {
+      if (!item || typeof item !== 'object') break;
+      const fields = item as Record<string, unknown>;
+      const next = actionFrom(kindOf(fields), (name) => fields[name]);
+      if (!next || !BATCHABLE.includes(next.kind)) break;
+      then.push(next);
+    }
+  }
   const thought = typeof parsed.thought === 'string' ? parsed.thought.trim() : '';
-  return { thought, action, sensitive: parsed.sensitive === true || field('sensitive') === true };
+  const tip = action.kind === 'finish' && typeof parsed.tip === 'string' ? parsed.tip.trim().slice(0, MAX_TIP) : '';
+  return {
+    thought,
+    action,
+    sensitive: parsed.sensitive === true || field('sensitive') === true,
+    then,
+    ...(tip ? { tip } : {}),
+  };
 };
 
 // Words of buttons that send, delete, pay or commit, in the languages Shizue speaks. Latin and
@@ -407,10 +571,20 @@ export const needsApproval = (
   sensitive: boolean,
   tool?: WebMcpTool
 ) => {
-  if (['scroll', 'wait', 'finish', 'ask', 'look', 'switch_tab', 'steer'].includes(action.kind)) return false;
+  if (['scroll', 'wait', 'finish', 'ask', 'look', 'switch_tab', 'steer', 'hover', 'handoff', 'point', 'plan'].includes(action.kind)) {
+    return false;
+  }
   if (sensitive) return true;
+  // The user's image goes to the site.
+  if (action.kind === 'upload') return true;
   if (action.kind === 'click') return looksCommitting(`${element?.name ?? ''} ${element?.value ?? ''}`);
   if (action.kind === 'type') return Boolean(action.submit) && !element?.search;
+  // Enter in a field submits it, and on a button presses it.
+  if (action.kind === 'press') {
+    if (action.key !== 'Enter' && action.key !== ' ') return false;
+    if (element?.search) return false;
+    return action.key === 'Enter' || looksCommitting(`${element?.name ?? ''} ${element?.value ?? ''}`);
+  }
   if (action.kind === 'tool') {
     if (tool?.consequential) return true;
     return !tool?.readOnly && looksCommitting(`${tool?.name.replace(/[_-]+/g, ' ') ?? ''} ${action.name ?? ''}`);
@@ -431,6 +605,7 @@ export const actionSignature = (action: AgentAction, snapshot: PageSnapshot) =>
     action.tab,
     action.name,
     action.input,
+    action.key,
     snapshot.url,
     snapshot.scroll.y,
     snapshot.text.length,
@@ -457,6 +632,7 @@ const elementLine = (element: PageElement) => {
   if (element.checked !== undefined) parts.push(element.checked ? 'checked' : 'unchecked');
   if (element.disabled) parts.push('disabled');
   if (element.secret) parts.push('(sensitive field: never type here)');
+  if (element.picked) parts.push('(the user pointed at this)');
   if (element.href) parts.push(`→ ${clip(element.href, 100)}`);
   return parts.join(' ');
 };
@@ -562,6 +738,15 @@ export const formatSnapshot = (snapshot: PageSnapshot) => {
 
 // What the model is told after an action.
 export const actionResult = (step: AgentStep) => {
+  if (step.status === 'denied' && step.site) {
+    return `Result: not done. The user did not allow working on ${step.site}. Do not act on that site; go back or finish and tell the user what is left.`;
+  }
+  if (step.status === 'denied' && step.action.kind === 'plan') {
+    return 'Result: the user did not approve the plan. Finish, and say what you would need to do it differently.';
+  }
+  if (step.status === 'denied' && step.action.kind === 'point') {
+    return 'Result: the user did not point at anything. Try another way, or finish and tell the user where you are stuck.';
+  }
   if (step.status === 'denied') return 'Result: the user declined this action. Do not try it again; finish and tell the user what is left for them to do.';
   if (step.status === 'failed') {
     switch (step.error) {
@@ -587,9 +772,24 @@ export const actionResult = (step: AgentStep) => {
         return 'Result: failed, the site offers no tool by that name now.';
       case 'repeated':
         return 'Result: not done. You already did exactly this twice on this same page, and it did not change. Do something different, or finish and tell the user where you are stuck.';
+      case 'no_file':
+        return 'Result: failed, there is no image with that number, or no file field there to put it in.';
+      case 'timed_out':
+        return 'Result: the text you waited for did not show within 10 seconds.';
       default:
         return 'Result: failed. Try another way.';
     }
   }
-  return 'Result: done.';
+  switch (step.action.kind) {
+    case 'plan':
+      return 'Result: the user approved the plan. Go ahead.';
+    case 'handoff':
+      return 'Result: the user did their part and handed back. Check the page below and carry on.';
+    case 'point':
+      return 'Result: the user pointed at the element marked "(the user pointed at this)" below.';
+    case 'wait':
+      return step.action.text ? 'Result: the text showed.' : 'Result: done.';
+    default:
+      return 'Result: done.';
+  }
 };

@@ -153,7 +153,7 @@ test('background routes summary opens and panel readiness through the same hando
     '@/services/background/translationHandler': 'export const getTranslationHandler = () => ({});',
     '@/services/background/chatModelHandler': 'export const getChatModelHandler = () => ({});',
     '@/services/background/imageTranslationHandler': 'export const translateImage = async () => ({});',
-    '@/services/background/browserAgentHandler': 'export const stopAgentInTab = () => {};',
+    '@/services/background/browserAgentHandler': 'export const stopAgentInTab = () => {}; export const resumeAgentInTab = () => {};',
   });
 });
 
@@ -294,7 +294,7 @@ test('background relays a tab\'s own transcript request to that tab\'s top frame
     '@/services/background/translationHandler': 'export const getTranslationHandler = () => ({});',
     '@/services/background/chatModelHandler': 'export const getChatModelHandler = () => ({});',
     '@/services/background/imageTranslationHandler': 'export const translateImage = async () => ({});',
-    '@/services/background/browserAgentHandler': 'export const stopAgentInTab = () => {};',
+    '@/services/background/browserAgentHandler': 'export const stopAgentInTab = () => {}; export const resumeAgentInTab = () => {};',
   });
 });
 

@@ -164,7 +164,8 @@
     "tools": "Tools",
     "autoApprove": "Don't ask first",
     "autoApproveHint": "In this chat it sends, pays and deletes without asking. It still won't type passwords or card numbers",
-    "browserAgentAutoApprove": "Browser control · no asking"
+    "browserAgentAutoApprove": "Browser control · no asking",
+    "agentBackground": "Run in a separate tab"
   },
   "footer": {
     "joinDiscord": "Join me on Discord!",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "Emails, phone numbers, card numbers and API keys aren't sent to the AI. They show just as they were on the page.",
     "maskPrivate": "Don't send private details",
     "savedTranslations": "{{number}} saved translations · kept 30 days",
-    "savedTranslationsClear": "Clear"
+    "savedTranslationsClear": "Clear",
+    "browserAgent": "Browser control",
+    "browserAgentDescription": "Sites you always allowed on its cards, and tips you kept for sites",
+    "agentAllowedSites": "Always allowed sites",
+    "agentNoSites": "No sites yet",
+    "agentClearSites": "Remove all sites",
+    "agentSiteTips": "Site tips",
+    "agentNoTips": "No tips yet",
+    "agentClearTips": "Remove all tips"
   },
   "usage": {
     "title": "Token Usage",
@@ -425,7 +434,15 @@
       "clickAt": "Click a spot on the screen",
       "openTab": "Open {{host}} in a new tab",
       "switchTab": "Go to tab {{tab}}",
-      "tool": "Use the site’s tool ‘{{target}}’"
+      "tool": "Use the site’s tool ‘{{target}}’",
+      "press": "Press {{key}}",
+      "pressOn": "Press {{key}} on ‘{{target}}’",
+      "hover": "Point at ‘{{target}}’",
+      "upload": "Upload image {{file}} to ‘{{target}}’",
+      "handoff": "Your turn: {{text}}",
+      "point": "Asked you to point at {{text}}",
+      "plan": "Plan",
+      "waitFor": "Wait for “{{text}}” to show"
     },
     "approvalTitle": "Allow this action?",
     "approvalHint": "It may send, delete or pay, and be hard to undo",
@@ -447,7 +464,9 @@
       "no_tab": "No such tab",
       "no_tool": "The site has no such tool",
       "repeated": "Same action again on a page that didn’t change",
-      "failed": "Didn’t work"
+      "failed": "Didn’t work",
+      "no_file": "No such image, or no file field there",
+      "timed_out": "The text it waited for didn’t show"
     },
     "outcome": {
       "stopped": "Stopped",
@@ -455,12 +474,41 @@
       "unavailable": "This tab can’t be controlled. Open a web page and try again",
       "failed": "Stopped: couldn’t decide what to do next",
       "looping": "Stopped: it kept repeating the same action",
-      "unanswered": "Stopped: the question wasn’t answered"
+      "unanswered": "Stopped: the question wasn’t answered",
+      "not_handed_back": "Stopped: it waited too long for your turn"
     },
     "overlayWorking": "Shizue is working in this tab",
     "overlayWaiting": "Waiting for your OK in the panel",
     "overlayAsking": "Waiting for your answer in the panel",
     "overlayStop": "Stop",
-    "autoApproved": "Done without asking"
+    "autoApproved": "Done without asking",
+    "overlayHandoff": "Your turn",
+    "overlayPoint": "Click to show",
+    "overlayResume": "Done, continue",
+    "groupTitle": "Shizue at work",
+    "planTitle": "Here’s the plan",
+    "planSites": "Sites: {{sites}}",
+    "planHint": "Once started, it won’t ask again for these sites. Sending, paying or deleting still asks each time",
+    "planStart": "Start",
+    "planCancel": "Cancel",
+    "siteTitle": "Work on {{site}}?",
+    "siteHint": "This site is new to this task",
+    "allowOnce": "Allow this time",
+    "allowAlways": "Always allow this site",
+    "siteDenied": "Not allowed on {{site}}",
+    "alwaysAllowedNote": "{{site}} is now always allowed",
+    "handoffTitle": "Your turn",
+    "handoffHint": "When you’re done on the page, press Continue or type below",
+    "pointTitle": "Show me where",
+    "pointHint": "Click it on the page. Esc cancels",
+    "resume": "Continue",
+    "cancelTurn": "Give up",
+    "tipTitle": "Remember this tip for {{site}}?",
+    "tipHint": "Shizue reads it next time it works on this site. You can delete it in Settings",
+    "tipKeep": "Remember",
+    "tipSkip": "No thanks",
+    "tipKept": "Remembered a tip for {{site}}",
+    "takeOver": "Take over",
+    "showTab": "Show its tab"
   }
 }

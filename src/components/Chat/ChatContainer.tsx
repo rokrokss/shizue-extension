@@ -59,7 +59,7 @@ const ChatContainer = ({
   // Sends a suggested question as the reader's own.
   onAsk: (question: string) => void;
   // The user's answer to a browser agent approval card of the answer streaming now.
-  onAgentApproval: (stepId: string, approved: boolean) => void;
+  onAgentApproval: (stepId: string, approved: boolean | 'always') => void;
   // Turns browser control on and asks the question before this answer again with it.
   onBrowserControl: (answerIdx: number) => void;
   scrollToBottom: () => void;
@@ -196,6 +196,7 @@ const ChatContainer = ({
                     {m.agentRun ? (
                       <AgentRunBlock
                         run={m.agentRun}
+                        messageId={m.id}
                         live={idx === messages.length - 1 && !m.done && !m.onInterrupt && !m.stopped}
                         onApproval={onAgentApproval}
                       />

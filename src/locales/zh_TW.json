@@ -164,7 +164,8 @@
     "tools": "工具",
     "autoApprove": "不再詢問",
     "autoApproveHint": "在此對話中，傳送、付款、刪除也不再詢問，直接執行。仍不會輸入密碼或卡號",
-    "browserAgentAutoApprove": "瀏覽器操作 · 不詢問"
+    "browserAgentAutoApprove": "瀏覽器操作 · 不詢問",
+    "agentBackground": "在獨立分頁中執行"
   },
   "footer": {
     "joinDiscord": "加入我的 Discord！",
@@ -206,7 +207,15 @@
     "maskPrivateDescription": "電子郵件、電話號碼、卡號和 API 金鑰不會傳送給 AI，依頁面原樣顯示。",
     "maskPrivate": "不傳送個人資訊",
     "savedTranslations": "已儲存 {{number}} 則譯文 · 保留 30 天",
-    "savedTranslationsClear": "清除"
+    "savedTranslationsClear": "清除",
+    "browserAgent": "瀏覽器操控",
+    "browserAgentDescription": "你在操作卡片上一律允許的網站，以及為網站記住的技巧",
+    "agentAllowedSites": "一律允許的網站",
+    "agentNoSites": "尚無",
+    "agentClearSites": "清除所有網站",
+    "agentSiteTips": "網站技巧",
+    "agentNoTips": "尚無",
+    "agentClearTips": "清除所有技巧"
   },
   "time": {
     "justNow": "剛剛",
@@ -425,7 +434,15 @@
       "clickAt": "點擊螢幕上的某處",
       "openTab": "在新分頁中開啟 {{host}}",
       "switchTab": "切換到分頁 {{tab}}",
-      "tool": "使用網站工具「{{target}}」"
+      "tool": "使用網站工具「{{target}}」",
+      "press": "按 {{key}}",
+      "pressOn": "在「{{target}}」上按 {{key}}",
+      "hover": "指向「{{target}}」",
+      "upload": "將圖片 {{file}} 上傳到「{{target}}」",
+      "handoff": "輪到你了：{{text}}",
+      "point": "請你指出 {{text}}",
+      "plan": "計畫",
+      "waitFor": "等待「{{text}}」出現"
     },
     "approvalTitle": "允許執行此操作嗎？",
     "approvalHint": "這可能是傳送、刪除或付款等難以復原的操作",
@@ -447,7 +464,9 @@
       "no_tab": "沒有這個分頁",
       "no_tool": "網站沒有這個工具",
       "repeated": "頁面未變化，又重複了同一操作",
-      "failed": "執行失敗"
+      "failed": "執行失敗",
+      "no_file": "沒有這張圖片，或那裡沒有檔案欄位",
+      "timed_out": "等待的文字沒有出現"
     },
     "outcome": {
       "stopped": "已停止",
@@ -455,12 +474,41 @@
       "unavailable": "無法操作此分頁。請開啟網頁後再試",
       "failed": "無法決定下一步，已停止",
       "looping": "一直重複同一操作，已停止",
-      "unanswered": "問題沒有得到回答，已停止"
+      "unanswered": "問題沒有得到回答，已停止",
+      "not_handed_back": "已停止：等你操作等太久"
     },
     "overlayWorking": "Shizue 正在操作此分頁",
     "overlayWaiting": "正在面板中等待你的允許",
     "overlayAsking": "正在面板中等待你的回答",
     "overlayStop": "停止",
-    "autoApproved": "未詢問直接執行"
+    "autoApproved": "未詢問直接執行",
+    "overlayHandoff": "輪到你了",
+    "overlayPoint": "點擊以指出",
+    "overlayResume": "完成，繼續",
+    "groupTitle": "Shizue 正在工作",
+    "planTitle": "計畫如下",
+    "planSites": "網站：{{sites}}",
+    "planHint": "開始後，這些網站不會再詢問。傳送、付款和刪除仍會每次詢問",
+    "planStart": "開始",
+    "planCancel": "取消",
+    "siteTitle": "要在 {{site}} 上操作嗎？",
+    "siteHint": "這個網站對本次任務來說是新的",
+    "allowOnce": "僅這次允許",
+    "allowAlways": "一律允許此網站",
+    "siteDenied": "不在 {{site}} 上操作",
+    "alwaysAllowedNote": "已一律允許 {{site}}",
+    "handoffTitle": "輪到你了",
+    "handoffHint": "在頁面上完成後，點擊「繼續」或在下方輸入",
+    "pointTitle": "請指給我看",
+    "pointHint": "在頁面上點擊它。按 Esc 取消",
+    "resume": "繼續",
+    "cancelTurn": "放棄",
+    "tipTitle": "要記住 {{site}} 的這則技巧嗎？",
+    "tipHint": "下次在此網站上操作時 Shizue 會讀取它。你可以在設定中刪除",
+    "tipKeep": "記住",
+    "tipSkip": "不用了",
+    "tipKept": "已記住 {{site}} 的技巧",
+    "takeOver": "接管",
+    "showTab": "顯示其分頁"
   }
 }
