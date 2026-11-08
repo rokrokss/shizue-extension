@@ -356,7 +356,6 @@ const AgentRunBlock = ({
               color="cyan"
               variant="solid"
               size="small"
-              autoFocus
               disabled={answered === cardOf(awaiting)}
               onClick={() => answer(true)}
             >
