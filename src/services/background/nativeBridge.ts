@@ -32,7 +32,8 @@ import { i18n } from '#i18n';
 // Claude Code's way into Shizue, built like Claude in Chrome's: Chrome starts the native host
 // (scripts/shizue-bridge), which passes on what Claude Code's MCP server asks, and Shizue reads and
 // works the tab with the browser agent's own hands. Only a build with the nativeMessaging
-// permission has it (`pnpm build:bridge`).
+// permission has it (`pnpm build:bridge`). Codex and any other agent that runs a stdio MCP server
+// come in the same way; the page's pill and cards name the one at work, by what it calls itself.
 //
 // Claude Code reaches only the tabs in a tab group named "Shizue": the ones it opened, which open
 // there in the background, and the ones the user dragged in. While it works a tab, the browser
@@ -44,6 +45,8 @@ import { i18n } from '#i18n';
 
 type BridgeArgs = Record<string, unknown> & { tabId?: number };
 type BridgeResult = { text: string; image?: { data: string; mimeType: string } };
+// A call from the host: `agent` is the name the MCP server got from its client.
+type BridgeCall = { id: string; tool: string; args?: BridgeArgs; agent?: unknown };
 type SharedTab = chrome.tabs.Tab & { id: number };
 
 // What the settings list (components/Setting/BridgeSettings.tsx).
@@ -57,6 +60,8 @@ export type BridgeLogEntry = {
   ok: boolean;
   // Why it failed, or 'declined' or 'paused'.
   note?: string;
+  // The agent that called, as the page's pill names it.
+  agent?: string;
 };
 
 const HOST_NAME = 'net.shizue.bridge';
@@ -66,7 +71,7 @@ const KINDS: AgentActionKind[] = ['click', 'type', 'select', 'scroll', 'navigate
 const WORTH_RECONNECTING_MS = 5000;
 const RECONNECT_AFTER_MS = 5000;
 const LOG_LIMIT = 100;
-// The pill goes once Claude Code has left the tab alone this long.
+// The pill goes once the agent has left the tab alone this long.
 const OVERLAY_IDLE_MS = 8000;
 // The page's own question goes unanswered after this, and counts as declined. With the action's
 // own wait it stays inside the MCP server's 60 s for one call.
@@ -74,13 +79,14 @@ const CONFIRM_TIMEOUT_MS = 40_000;
 const FIND_LIMIT = 20;
 
 const NOT_SHARED =
-  'That tab is not shared with Claude Code. Only tabs in the tab group named "Shizue" are: ask the user to drag the tab into that group, or open the page with act open_tab.';
+  'That tab is not shared with you. Only tabs in the tab group named "Shizue" are: ask the user to drag the tab into that group, or open the page with act open_tab.';
 const PAUSED =
-  "The user stopped Claude Code in this tab with the Stop button on the page. Don't go on here: ask the user what to do. They can let Claude Code back in from Shizue's settings.";
+  "The user stopped you in this tab with the Stop button on the page. Don't go on here: ask the user what to do. They can let you back in from Shizue's settings.";
+const MAX_AGENT_NAME = 40;
 
 // The page as last read, by tab: what an action's number points at.
 const pages = new Map<number, PageSnapshot>();
-// The tab Claude Code worked last, for a call that names none.
+// The tab the agent worked last, for a call that names none.
 let lastTabId: number | undefined;
 
 const bridgeBuild = () => chrome.runtime.getManifest().permissions?.includes('nativeMessaging') ?? false;
@@ -150,7 +156,7 @@ const tabOf = async ({ tabId }: BridgeArgs) => {
     if (tab) return tab;
   }
   throw new Error(
-    shared.length ? 'Say which tab: give a tabId from list_tabs.' : `No tab is shared with Claude Code yet. ${NOT_SHARED}`
+    shared.length ? 'Say which tab: give a tabId from list_tabs.' : `No tab is shared with you yet. ${NOT_SHARED}`
   );
 };
 
@@ -160,9 +166,9 @@ const overlayTimers = new Map<number, ReturnType<typeof setTimeout>>();
 
 // The browser agent's pill, in the browser's language: the panel, which has the user's own pick,
 // may not be open.
-const overlayState = (waitingNow: boolean) => ({
-  working: i18n.t('bridge.overlayWorking'),
-  waiting: i18n.t('bridge.overlayWaiting'),
+const overlayState = (waitingNow: boolean, agent: string) => ({
+  working: fill('bridge.overlayWorking', { agent }),
+  waiting: fill('bridge.overlayWaiting', { agent }),
   stop: i18n.t('agent.overlayStop'),
   stopAction: MESSAGE_AGENT_STOP,
   waitingNow,
@@ -174,10 +180,10 @@ const injectOverlay = (tabId: number, state: ReturnType<typeof overlayState> | n
     .catch(() => {});
 
 // Again on every call, since a new page has none.
-const showOverlay = async (tabId: number, waitingNow = false) => {
+const showOverlay = async (tabId: number, agent: string, waitingNow = false) => {
   clearTimeout(overlayTimers.get(tabId));
   overlayTimers.delete(tabId);
-  await injectOverlay(tabId, overlayState(waitingNow));
+  await injectOverlay(tabId, overlayState(waitingNow, agent));
 };
 
 const hideOverlay = (tabId: number) => {
@@ -195,7 +201,7 @@ const hideOverlaySoon = (tabId: number) => {
 };
 
 // The Stop button on the pill (messageHandlers.ts handleAgentStop, which also stops Shizue's own
-// agent there): Claude Code is shut out of the tab until the user lets it back in from the
+// agent there): the agent is shut out of the tab until the user lets it back in from the
 // settings, or the tab closes.
 export const pauseBridgeInTab = async (tabId: number | undefined) => {
   if (tabId === undefined || !bridgeBuild()) return;
@@ -205,9 +211,22 @@ export const pauseBridgeInTab = async (tabId: number | undefined) => {
 
 // The panel's step strings take {{name}}, where #i18n's own substitution would leave braces
 // around the value; the string is read as it is and filled here.
-type StepKey = 'agent.step.typeSubmit' | 'agent.step.type' | 'agent.step.select' | 'agent.step.click';
-const fill = (key: StepKey, values: Record<string, string>) =>
-  (i18n.t as (key: StepKey) => string)(key).replace(/\{\{(\w+)\}\}/g, (_, name: string) => values[name] ?? '');
+type FillKey =
+  | 'agent.step.typeSubmit'
+  | 'agent.step.type'
+  | 'agent.step.select'
+  | 'agent.step.click'
+  | 'bridge.overlayWorking'
+  | 'bridge.overlayWaiting'
+  | 'bridge.confirmTitle';
+const fill = (key: FillKey, values: Record<string, string>) =>
+  (i18n.t as (key: FillKey) => string)(key).replace(/\{\{(\w+)\}\}/g, (_, name: string) => values[name] ?? '');
+
+// The name the agent gave itself (scripts/shizue-bridge/protocol.mjs agentName), or a plain one.
+const agentLabel = (name: unknown) => {
+  const clean = typeof name === 'string' ? name.replace(/[\u0000-\u001f\u007f\s]+/g, ' ').trim() : '';
+  return clean ? clean.slice(0, MAX_AGENT_NAME) : i18n.t('bridge.agentFallback');
+};
 
 const stepText = (action: AgentAction, element: PageElement | undefined) => {
   const values = { target: elementLabel(element) ?? '', text: action.text ?? '' };
@@ -218,18 +237,23 @@ const stepText = (action: AgentAction, element: PageElement | undefined) => {
 };
 
 // The user's own Allow on the page, brought to the front for it. Leaving the page counts as Decline.
-const confirmInPage = async (tabId: number, action: AgentAction, element: PageElement | undefined) => {
+const confirmInPage = async (
+  tabId: number,
+  action: AgentAction,
+  element: PageElement | undefined,
+  agent: string
+) => {
   const shown = await chrome.tabs.update(tabId, { active: true }).catch(() => null);
   // Its window may be behind the one the user is in.
   if (shown?.windowId !== undefined) await chrome.windows.update(shown.windowId, { focused: true }).catch(() => {});
-  await showOverlay(tabId, true);
+  await showOverlay(tabId, agent, true);
   const [injection] = await chrome.scripting
     .executeScript({
       target: { tabId, frameIds: [0] },
       func: askInPage,
       args: [
         {
-          title: i18n.t('bridge.confirmTitle'),
+          title: fill('bridge.confirmTitle', { agent }),
           action: stepText(action, element),
           hint: i18n.t('agent.approvalHint'),
           allow: i18n.t('agent.allow'),
@@ -241,25 +265,26 @@ const confirmInPage = async (tabId: number, action: AgentAction, element: PageEl
     .catch(() => []);
   // Stopped while the card was up: the answer no longer counts.
   if ((await pausedTabs()).includes(tabId)) return false;
-  await showOverlay(tabId);
+  await showOverlay(tabId, agent);
   return injection?.result === true;
 };
 
-// One call on a shared tab: refused where the user stopped Claude Code, shown with the pill while
-// it runs, and logged.
+// One call on a shared tab: refused where the user stopped the agent, shown with the pill while it
+// runs, and logged.
 const onTab = async (
   tool: string,
   args: BridgeArgs,
+  agent: string,
   work: (tab: SharedTab) => Promise<{ result: BridgeResult; target?: string; ok?: boolean; note?: string }>
 ): Promise<BridgeResult> => {
   const tab = await tabOf(args);
-  const entry = { tool, tabId: tab.id, host: hostOf(tab.url) };
+  const entry = { tool, tabId: tab.id, host: hostOf(tab.url), agent };
   if ((await pausedTabs()).includes(tab.id)) {
     await record({ ...entry, ok: false, note: 'paused' });
     throw new Error(PAUSED);
   }
   lastTabId = tab.id;
-  await showOverlay(tab.id);
+  await showOverlay(tab.id, agent);
   try {
     const { result, target, ok = true, note } = await work(tab);
     await record({ ...entry, target, ok, note });
@@ -325,7 +350,7 @@ const readPdf = (url: string, title: string) => {
       .createDocument({
         url: 'offscreen-pdf.html',
         reasons: [chrome.offscreen.Reason.WORKERS],
-        justification: 'Reads the text of a PDF tab Claude Code asked for.',
+        justification: 'Reads the text of a PDF tab an agent asked for.',
       })
       .catch(() => {});
     try {
@@ -363,14 +388,19 @@ const textOf = async (tab: SharedTab) => {
 /* Acting */
 
 // The same hands as the browser agent's loop, for one action.
-const doAction = async (tabId: number, action: AgentAction, element: PageElement | undefined): Promise<AgentStep> => {
+const doAction = async (
+  tabId: number,
+  action: AgentAction,
+  element: PageElement | undefined,
+  agent: string
+): Promise<AgentStep> => {
   const step: AgentStep = { id: crypto.randomUUID(), action, status: 'running' };
   if (action.ref !== undefined && !element) return { ...step, status: 'failed', error: 'not_found' };
   if (action.kind === 'type' && element?.secret) return { ...step, status: 'failed', error: 'secret_field' };
-  if (needsApproval(action, element, false) && !(await confirmInPage(tabId, action, element))) {
+  if (needsApproval(action, element, false) && !(await confirmInPage(tabId, action, element, agent))) {
     return { ...step, status: 'denied' };
   }
-  // The user may have stopped Claude Code here since the call came in.
+  // The user may have stopped the agent here since the call came in.
   if ((await pausedTabs()).includes(tabId)) return { ...step, status: 'denied' };
   const frameId = element?.frameId ?? 0;
   await activityOf(tabId, frameId, true);
@@ -381,7 +411,7 @@ const doAction = async (tabId: number, action: AgentAction, element: PageElement
 
 // In the background, in the Shizue group (made in the user's window if there is none), so the
 // user's own tab stays in front.
-const openTab = async (url: string, withPage: boolean): Promise<BridgeResult> => {
+const openTab = async (url: string, withPage: boolean, agent: string): Promise<BridgeResult> => {
   const windows = (await chrome.windows.getAll({ windowTypes: ['normal'] })).filter((window) => !window.incognito);
   const group = (await chrome.tabGroups.query({ title: GROUP_TITLE })).find((candidate) =>
     windows.some((window) => window.id === candidate.windowId)
@@ -401,28 +431,28 @@ const openTab = async (url: string, withPage: boolean): Promise<BridgeResult> =>
   await changeList(STORAGE_BRIDGE_OPENED_TABS, (opened) => [...opened, tabId]);
   lastTabId = tabId;
   await settle(tabId, 0, 'navigate', new AbortController().signal);
-  await showOverlay(tabId);
+  await showOverlay(tabId, agent);
   hideOverlaySoon(tabId);
   const opened = await chrome.tabs.get(tabId).catch(() => tab);
-  await record({ tool: 'act', tabId, host: hostOf(opened.url ?? url), target: 'open_tab', ok: true });
+  await record({ tool: 'act', tabId, host: hostOf(opened.url ?? url), target: 'open_tab', ok: true, agent });
   const done = `Result: done. Opened tab ${tabId} (${JSON.stringify(opened.title ?? '')}) in the Shizue group, behind the user's tab.`;
   return { text: withPage ? `${done}\n\n${await pageAfter(tabId)}` : done };
 };
 
-const act = (args: BridgeArgs) => {
+const act = (args: BridgeArgs, agent: string) => {
   const reply = parseAgentReply(JSON.stringify({ ...args, action: args.kind }));
   if (!reply || !KINDS.includes(reply.action.kind)) {
     throw new Error('That is not an action this can do, or a field it needs is missing.');
   }
   const { action } = reply;
   const withPage = args.include_snapshot === true;
-  if (action.kind === 'open_tab') return openTab(action.url!, withPage);
-  return onTab('act', args, async (tab) => {
+  if (action.kind === 'open_tab') return openTab(action.url!, withPage, agent);
+  return onTab('act', args, agent, async (tab) => {
     const tabId = tab.id;
     const page = pages.get(tabId);
     if (action.ref !== undefined && !page) throw new Error('Read the page first: its numbers come from read_page or find.');
     const element = action.ref !== undefined ? page?.elements.find((candidate) => candidate.ref === action.ref) : undefined;
-    const step = await doAction(tabId, action, element);
+    const step = await doAction(tabId, action, element, agent);
     const now = await chrome.tabs.get(tabId).catch(() => null);
     const label = elementLabel(element) ?? action.url ?? action.direction;
     const target = `${action.kind}${label ? ` ‘${label}’` : ''}`;
@@ -448,12 +478,12 @@ const act = (args: BridgeArgs) => {
   });
 };
 
-const tools: Record<string, (args: BridgeArgs) => Promise<BridgeResult>> = {
-  list_tabs: async () => {
+const tools: Record<string, (args: BridgeArgs, agent: string) => Promise<BridgeResult>> = {
+  list_tabs: async (_args, agent) => {
     const shared = (await sharedTabs()).filter((tab) => /^https?:/.test(tab.url ?? ''));
     const paused = await pausedTabs();
-    await record({ tool: 'list_tabs', ok: true });
-    if (!shared.length) return { text: `No tab is shared with Claude Code yet. ${NOT_SHARED}` };
+    await record({ tool: 'list_tabs', ok: true, agent });
+    if (!shared.length) return { text: `No tab is shared with you yet. ${NOT_SHARED}` };
     return {
       text: JSON.stringify(
         shared.map(({ id, title, url, active }) => ({ id, title, url, active, ...(paused.includes(id) ? { stopped: true } : {}) }))
@@ -461,10 +491,11 @@ const tools: Record<string, (args: BridgeArgs) => Promise<BridgeResult>> = {
     };
   },
 
-  read_page: (args) => onTab('read_page', args, async (tab) => ({ result: { text: pageText(tab.id, await read(tab.id)) } })),
+  read_page: (args, agent) =>
+    onTab('read_page', args, agent, async (tab) => ({ result: { text: pageText(tab.id, await read(tab.id)) } })),
 
-  find: (args) =>
-    onTab('find', args, async (tab) => {
+  find: (args, agent) =>
+    onTab('find', args, agent, async (tab) => {
       const query = typeof args.query === 'string' ? args.query.trim() : '';
       if (!query) throw new Error('find needs a query: words on the control, such as "Send".');
       const words = query.toLowerCase().split(/\s+/);
@@ -486,8 +517,8 @@ const tools: Record<string, (args: BridgeArgs) => Promise<BridgeResult>> = {
       return { result: { text }, target: query };
     }),
 
-  get_text: (args) =>
-    onTab('get_text', args, async (tab) => {
+  get_text: (args, agent) =>
+    onTab('get_text', args, agent, async (tab) => {
       const text = await textOf(tab);
       const cut = text.length > SUMMARY_PAGE_TEXT_MAX_CHARS;
       return {
@@ -499,8 +530,8 @@ const tools: Record<string, (args: BridgeArgs) => Promise<BridgeResult>> = {
 
   act,
 
-  screenshot: (args) =>
-    onTab('screenshot', args, async (tab) => {
+  screenshot: (args, agent) =>
+    onTab('screenshot', args, agent, async (tab) => {
       // Numbers the controls the screenshot marks.
       await read(tab.id);
       const shot = await screenshot(tab.id);
@@ -517,19 +548,19 @@ const tools: Record<string, (args: BridgeArgs) => Promise<BridgeResult>> = {
       };
     }),
 
-  switch_tab: (args) => {
+  switch_tab: (args, agent) => {
     if (typeof args.tabId !== 'number') throw new Error('switch_tab needs a tabId from list_tabs.');
-    return onTab('switch_tab', args, async (tab) => {
+    return onTab('switch_tab', args, agent, async (tab) => {
       await chrome.tabs.update(tab.id, { active: true });
       return { result: { text: `Result: done. Tab ${tab.id} is now the one showing in its window.` } };
     });
   },
 
-  close_tab: (args) => {
+  close_tab: (args, agent) => {
     if (typeof args.tabId !== 'number') throw new Error('close_tab needs a tabId from list_tabs.');
-    return onTab('close_tab', args, async (tab) => {
+    return onTab('close_tab', args, agent, async (tab) => {
       if (!(await openedTabs()).includes(tab.id)) {
-        throw new Error('Claude Code may close only the tabs it opened. Ask the user to close this one.');
+        throw new Error('You may close only the tabs you opened. Ask the user to close this one.');
       }
       await chrome.tabs.remove(tab.id);
       return { result: { text: `Result: done. Tab ${tab.id} is closed.` } };
@@ -555,10 +586,10 @@ const connect = () => {
       // The host went away; whoever asked hears that from their socket.
     }
   };
-  port.onMessage.addListener(async ({ id, tool, args }: { id: string; tool: string; args?: BridgeArgs }) => {
+  port.onMessage.addListener(async ({ id, tool, args, agent }: BridgeCall) => {
     try {
       if (!Object.hasOwn(tools, tool)) throw new Error(`Unknown tool: ${tool}`);
-      answer({ id, result: await tools[tool](args ?? {}) });
+      answer({ id, result: await tools[tool](args ?? {}, agentLabel(agent)) });
     } catch (error) {
       answer({ id, error: (error as Error).message });
     }

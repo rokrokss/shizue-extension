@@ -538,11 +538,12 @@
     "showTab": "显示其标签页"
   },
   "bridge": {
-    "overlayWorking": "Claude Code 正在此标签页中操作",
-    "overlayWaiting": "Claude Code 正在等待你的许可",
-    "confirmTitle": "允许 Claude Code 执行此操作吗？",
-    "title": "Claude Code",
-    "description": "Claude Code 只能查看和操作名为“Shizue”的标签页组中的标签页。把标签页拖进组里即可借给它，拖出来即可收回。在某个标签页的胶囊上按停止，它就无法再操作该标签页。",
+    "overlayWorking": "{{agent}} 正在此标签页中操作",
+    "overlayWaiting": "{{agent}} 正在等待你的许可",
+    "confirmTitle": "允许 {{agent}} 执行此操作吗？",
+    "agentFallback": "AI 智能体",
+    "title": "外部 AI 智能体",
+    "description": "Claude Code、Codex 等 MCP 智能体只能查看和操作名为“Shizue”的标签页组中的标签页。把标签页拖进组里即可借给它们，拖出来即可收回。在某个标签页的胶囊上按停止，它们就无法再操作该标签页。",
     "stopped": "已在这些标签页中停止",
     "resume": "重新允许",
     "log": "最近的操作",

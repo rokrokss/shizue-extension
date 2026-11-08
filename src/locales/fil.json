@@ -538,11 +538,12 @@
     "showTab": "Ipakita ang tab nito"
   },
   "bridge": {
-    "overlayWorking": "Gumagana ang Claude Code sa tab na ito",
-    "overlayWaiting": "Hinihintay ng Claude Code ang pahintulot mo",
-    "confirmTitle": "Hayaan ang Claude Code na gawin ito?",
-    "title": "Claude Code",
-    "description": "Tanging ang mga tab sa tab group na “Shizue” ang nakikita at kinokontrol ng Claude Code. I-drag ang tab papasok para ipahiram, at palabas para bawiin. Ang Stop sa pill ng isang tab ay humaharang dito sa tab na iyon.",
+    "overlayWorking": "Gumagana ang {{agent}} sa tab na ito",
+    "overlayWaiting": "Hinihintay ng {{agent}} ang pahintulot mo",
+    "confirmTitle": "Hayaan ang {{agent}} na gawin ito?",
+    "agentFallback": "AI agent",
+    "title": "Mga panlabas na AI agent",
+    "description": "Tanging ang mga tab sa tab group na “Shizue” ang nakikita at kinokontrol ng Claude Code, Codex at iba pang MCP agent. I-drag ang tab papasok para ipahiram, at palabas para bawiin. Ang Itigil sa pill ng isang tab ay humaharang sa kanila sa tab na iyon.",
     "stopped": "Itinigil sa mga tab na ito",
     "resume": "Payagan muli",
     "log": "Mga ginawa kamakailan",

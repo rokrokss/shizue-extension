@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { installHost } from '../scripts/shizue-bridge/install.mjs';
-import { bridgeSocket, encodeFrame, frameDecoder, lineDecoder } from '../scripts/shizue-bridge/protocol.mjs';
+import { agentName, bridgeSocket, encodeFrame, frameDecoder, lineDecoder } from '../scripts/shizue-bridge/protocol.mjs';
 
 const script = (name) => fileURLToPath(new URL(`../scripts/shizue-bridge/${name}`, import.meta.url));
 
@@ -113,6 +113,29 @@ test('The MCP server speaks MCP and lists the tools', async (t) => {
   assert.deepEqual(tools.find((tool) => tool.name === 'find').inputSchema.required, ['query']);
   assert.deepEqual((await ask('ping')).result, {});
   assert.equal((await ask('nope')).error.code, -32601);
+});
+
+test('The agent is named as people call it, or as it calls itself', () => {
+  assert.equal(agentName({ name: 'claude-code', version: '2.1.0' }), 'Claude Code');
+  assert.equal(agentName({ name: 'codex-mcp-client' }), 'Codex');
+  assert.equal(agentName({ name: 'gemini-cli-mcp-client' }), 'Gemini CLI');
+  assert.equal(agentName({ name: 'cursor-vscode' }), 'Cursor');
+  assert.equal(agentName({ name: 'Visual Studio Code' }), 'VS Code');
+  assert.equal(agentName({ name: 'claude-ai' }), 'Claude');
+  assert.equal(agentName({ name: '  My\nOwn \u0007 Agent  ' }), 'My Own Agent');
+  assert.equal(agentName({ name: 'x'.repeat(100) }).length, 40);
+  assert.equal(agentName({ name: '' }), undefined);
+  assert.equal(agentName(undefined), undefined);
+  assert.equal(agentName({ name: 42 }), undefined);
+});
+
+test('Each call carries the name the agent gave when it started', async (t) => {
+  const directory = tempDir(t);
+  const { received } = await startHost(t, directory, () => ({ result: { text: 'ok' } }));
+  const ask = startMcp(t, directory);
+  await ask('initialize', { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'codex-mcp-client', version: '0.50.0' } });
+  await ask('tools/call', { name: 'list_tabs', arguments: {} });
+  assert.equal(received[0].agent, 'Codex');
 });
 
 test('A tool call reaches Shizue through the host, and its answer comes back', async (t) => {

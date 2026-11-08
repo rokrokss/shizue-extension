@@ -538,11 +538,12 @@
     "showTab": "Afficher son onglet"
   },
   "bridge": {
-    "overlayWorking": "Claude Code travaille dans cet onglet",
-    "overlayWaiting": "Claude Code attend votre accord",
-    "confirmTitle": "Autoriser Claude Code à faire ceci ?",
-    "title": "Claude Code",
-    "description": "Claude Code ne voit et ne manipule que les onglets du groupe d’onglets nommé « Shizue ». Glissez-y un onglet pour le prêter, et sortez-le pour le reprendre. Arrêter, sur la pastille d’un onglet, l’en exclut.",
+    "overlayWorking": "{{agent}} travaille dans cet onglet",
+    "overlayWaiting": "{{agent}} attend votre accord",
+    "confirmTitle": "Autoriser {{agent}} à faire ceci ?",
+    "agentFallback": "Agent IA",
+    "title": "Agents IA externes",
+    "description": "Claude Code, Codex et les autres agents MCP ne voient et ne manipulent que les onglets du groupe d’onglets nommé « Shizue ». Glissez-y un onglet pour le prêter, et sortez-le pour le reprendre. Arrêter, sur la pastille d’un onglet, les en exclut.",
     "stopped": "Arrêté dans ces onglets",
     "resume": "Autoriser à nouveau",
     "log": "Ce qu’il a fait récemment",

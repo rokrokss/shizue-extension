@@ -538,11 +538,12 @@
     "showTab": "Mostra la sua scheda"
   },
   "bridge": {
-    "overlayWorking": "Claude Code sta lavorando in questa scheda",
-    "overlayWaiting": "Claude Code attende il tuo consenso",
-    "confirmTitle": "Lasciare che Claude Code lo faccia?",
-    "title": "Claude Code",
-    "description": "Claude Code vede e usa solo le schede del gruppo di schede chiamato «Shizue». Trascina dentro una scheda per prestarla e fuori per riprenderla. Interrompi sulla pillola di una scheda lo esclude da quella scheda.",
+    "overlayWorking": "{{agent}} sta lavorando in questa scheda",
+    "overlayWaiting": "{{agent}} attende il tuo consenso",
+    "confirmTitle": "Lasciare che {{agent}} lo faccia?",
+    "agentFallback": "Agente IA",
+    "title": "Agenti IA esterni",
+    "description": "Claude Code, Codex e gli altri agenti MCP vedono e usano solo le schede del gruppo di schede chiamato «Shizue». Trascina dentro una scheda per prestarla e fuori per riprenderla. Interrompi sulla pillola di una scheda li esclude da quella scheda.",
     "stopped": "Interrotto in queste schede",
     "resume": "Consenti di nuovo",
     "log": "Cosa ha fatto di recente",

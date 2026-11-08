@@ -538,11 +538,12 @@
     "showTab": "Onyesha kichupo chake"
   },
   "bridge": {
-    "overlayWorking": "Claude Code inafanya kazi kwenye kichupo hiki",
-    "overlayWaiting": "Claude Code inasubiri ruhusa yako",
-    "confirmTitle": "Ruhusu Claude Code kufanya hili?",
-    "title": "Claude Code",
-    "description": "Claude Code huona na kuendesha vichupo vilivyo kwenye kikundi cha vichupo kiitwacho “Shizue” pekee. Buruta kichupo ndani ili kukiazima, na nje ili kukirudisha. Simamisha kwenye kidonge cha kichupo humzuia kwenye kichupo hicho.",
+    "overlayWorking": "{{agent}} inafanya kazi kwenye kichupo hiki",
+    "overlayWaiting": "{{agent}} inasubiri ruhusa yako",
+    "confirmTitle": "Ruhusu {{agent}} kufanya hili?",
+    "agentFallback": "Wakala wa AI",
+    "title": "Mawakala wa AI wa nje",
+    "description": "Claude Code, Codex na mawakala wengine wa MCP huona na kuendesha vichupo vilivyo kwenye kikundi cha vichupo kiitwacho “Shizue” pekee. Buruta kichupo ndani ili kukiazima, na nje ili kukirudisha. Simamisha kwenye kidonge cha kichupo huwazuia kwenye kichupo hicho.",
     "stopped": "Imesimamishwa kwenye vichupo hivi",
     "resume": "Ruhusu tena",
     "log": "Ilichofanya hivi karibuni",

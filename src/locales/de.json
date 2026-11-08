@@ -538,11 +538,12 @@
     "showTab": "Tab anzeigen"
   },
   "bridge": {
-    "overlayWorking": "Claude Code arbeitet in diesem Tab",
-    "overlayWaiting": "Claude Code wartet auf deine Zustimmung",
-    "confirmTitle": "Darf Claude Code das tun?",
-    "title": "Claude Code",
-    "description": "Claude Code sieht und bedient nur die Tabs in der Tabgruppe „Shizue“. Zieh einen Tab hinein, um ihn zu leihen, und heraus, um ihn zurückzunehmen. „Stopp“ auf der Leiste in einem Tab sperrt Claude Code dort aus.",
+    "overlayWorking": "{{agent}} arbeitet in diesem Tab",
+    "overlayWaiting": "{{agent}} wartet auf deine Zustimmung",
+    "confirmTitle": "Darf {{agent}} das tun?",
+    "agentFallback": "KI-Agent",
+    "title": "Externe KI-Agenten",
+    "description": "Claude Code, Codex und andere MCP-Agenten sehen und bedienen nur die Tabs in der Tabgruppe „Shizue“. Zieh einen Tab hinein, um ihn zu leihen, und heraus, um ihn zurückzunehmen. „Stopp“ auf der Leiste in einem Tab sperrt sie dort aus.",
     "stopped": "In diesen Tabs gestoppt",
     "resume": "Wieder zulassen",
     "log": "Was es zuletzt getan hat",

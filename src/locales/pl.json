@@ -538,11 +538,12 @@
     "showTab": "Pokaż jego kartę"
   },
   "bridge": {
-    "overlayWorking": "Claude Code działa w tej karcie",
-    "overlayWaiting": "Claude Code czeka na Twoją zgodę",
-    "confirmTitle": "Pozwolić Claude Code na to?",
-    "title": "Claude Code",
-    "description": "Claude Code widzi i obsługuje tylko karty w grupie kart o nazwie „Shizue”. Przeciągnij kartę do grupy, aby ją użyczyć, a na zewnątrz, aby ją odebrać. Zatrzymaj na pigułce w karcie odcina go od tej karty.",
+    "overlayWorking": "{{agent}} działa w tej karcie",
+    "overlayWaiting": "{{agent}} czeka na Twoją zgodę",
+    "confirmTitle": "Pozwolić {{agent}} na to?",
+    "agentFallback": "Agent AI",
+    "title": "Zewnętrzni agenci AI",
+    "description": "Claude Code, Codex i inni agenci MCP widzą i obsługują tylko karty w grupie kart o nazwie „Shizue”. Przeciągnij kartę do grupy, aby ją użyczyć, a na zewnątrz, aby ją odebrać. Zatrzymaj na pigułce w karcie odcina ich od tej karty.",
     "stopped": "Zatrzymany w tych kartach",
     "resume": "Zezwól ponownie",
     "log": "Co ostatnio zrobił",

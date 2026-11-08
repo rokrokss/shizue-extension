@@ -538,11 +538,12 @@
     "showTab": "Xem thẻ của nó"
   },
   "bridge": {
-    "overlayWorking": "Claude Code đang làm việc trong thẻ này",
-    "overlayWaiting": "Claude Code đang chờ bạn cho phép",
-    "confirmTitle": "Cho phép Claude Code làm việc này?",
-    "title": "Claude Code",
-    "description": "Claude Code chỉ thấy và thao tác các thẻ trong nhóm thẻ tên “Shizue”. Kéo một thẻ vào để cho mượn, kéo ra để lấy lại. Nhấn Dừng trên viên thuốc của một thẻ sẽ chặn nó ở thẻ đó.",
+    "overlayWorking": "{{agent}} đang làm việc trong thẻ này",
+    "overlayWaiting": "{{agent}} đang chờ bạn cho phép",
+    "confirmTitle": "Cho phép {{agent}} làm việc này?",
+    "agentFallback": "Tác tử AI",
+    "title": "Tác tử AI bên ngoài",
+    "description": "Claude Code, Codex và các tác tử MCP khác chỉ thấy và thao tác các thẻ trong nhóm thẻ tên “Shizue”. Kéo một thẻ vào để cho mượn, kéo ra để lấy lại. Nhấn Dừng trên viên thuốc của một thẻ sẽ chặn chúng ở thẻ đó.",
     "stopped": "Đã dừng ở các thẻ này",
     "resume": "Cho phép lại",
     "log": "Việc đã làm gần đây",

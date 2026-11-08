@@ -10,10 +10,10 @@ type StoppedTab = { id: number; title: string };
 const isBridgeBuild = () =>
   chrome.runtime.getManifest().permissions?.includes('nativeMessaging') ?? false;
 
-// Only in the bridge build (`pnpm build:bridge`): which tabs Claude Code reaches, the tabs whose
-// pill the user stopped it in, with a way to let it back in, and what it did lately. The background
-// keeps both in session storage (services/background/nativeBridge.ts), so they last until the
-// browser closes.
+// Only in the bridge build (`pnpm build:bridge`): which tabs an agent such as Claude Code or Codex
+// reaches, the tabs whose pill the user stopped it in, with a way to let it back in, and what it
+// did lately. The background keeps both in session storage (services/background/nativeBridge.ts),
+// so they last until the browser closes.
 export default function BridgeSettings() {
   const { t } = useTranslation();
   const theme = useThemeValue();
@@ -120,6 +120,7 @@ export default function BridgeSettings() {
                     <span className="sz:text-gray-500">
                       {new Date(entry.at).toLocaleTimeString()}
                     </span>
+                    {entry.agent && <span className="sz:shrink-0">{entry.agent}</span>}
                     {entry.host && <span className="sz:truncate">{entry.host}</span>}
                   </div>
                   <div>

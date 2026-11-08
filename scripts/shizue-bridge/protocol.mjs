@@ -5,6 +5,28 @@ import { join } from 'node:path';
 
 export const HOST_NAME = 'net.shizue.bridge';
 
+// The name the page's pill and cards give the agent, from the clientInfo it sends when it starts
+// the MCP server: the known ones as people call them, any other as it calls itself.
+const KNOWN_AGENTS = [
+  [/claude[-_ ]?code/i, 'Claude Code'],
+  [/codex/i, 'Codex'],
+  [/gemini/i, 'Gemini CLI'],
+  [/cursor/i, 'Cursor'],
+  [/windsurf|codeium/i, 'Windsurf'],
+  [/copilot/i, 'GitHub Copilot'],
+  [/visual studio code|vscode/i, 'VS Code'],
+  [/claude/i, 'Claude'],
+];
+const MAX_AGENT_NAME = 40;
+
+export const agentName = (clientInfo) => {
+  const name = typeof clientInfo?.name === 'string' ? clientInfo.name : '';
+  const known = KNOWN_AGENTS.find(([pattern]) => pattern.test(name));
+  if (known) return known[1];
+  const own = name.replace(/[\u0000-\u001f\u007f\s]+/g, ' ').trim();
+  return own ? own.slice(0, MAX_AGENT_NAME) : undefined;
+};
+
 // Chrome refuses a larger message from a host.
 export const MAX_MESSAGE_TO_CHROME = 1024 * 1024;
 

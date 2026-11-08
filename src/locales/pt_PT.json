@@ -538,11 +538,12 @@
     "showTab": "Mostrar o separador dele"
   },
   "bridge": {
-    "overlayWorking": "O Claude Code está a trabalhar neste separador",
-    "overlayWaiting": "O Claude Code está à espera da sua autorização",
-    "confirmTitle": "Permitir que o Claude Code faça isto?",
-    "title": "Claude Code",
-    "description": "O Claude Code só vê e controla os separadores do grupo de separadores chamado “Shizue”. Arraste um separador para dentro para o emprestar e para fora para o reaver. Parar na pílula de um separador bloqueia-o nesse separador.",
+    "overlayWorking": "{{agent}} está a trabalhar neste separador",
+    "overlayWaiting": "{{agent}} está à espera da sua autorização",
+    "confirmTitle": "Permitir que {{agent}} faça isto?",
+    "agentFallback": "Agente de IA",
+    "title": "Agentes de IA externos",
+    "description": "O Claude Code, o Codex e outros agentes MCP só veem e controlam os separadores do grupo de separadores chamado “Shizue”. Arraste um separador para dentro para o emprestar e para fora para o reaver. Parar na pílula de um separador bloqueia-os nesse separador.",
     "stopped": "Parado nestes separadores",
     "resume": "Permitir novamente",
     "log": "O que fez recentemente",
