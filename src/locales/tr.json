@@ -166,7 +166,20 @@
     "autoApprove": "Sormadan yap",
     "autoApproveHint": "Bu sohbette sormadan gönderir, öder ve siler. Şifre ve kart numarasını yine de yazmaz",
     "browserAgentAutoApprove": "Tarayıcı kontrolü · sormadan",
-    "agentBackground": "Ayrı sekmede çalıştır"
+    "agentBackground": "Ayrı sekmede çalıştır",
+    "findInTabs": "Açık sekmelerde bul",
+    "findingInTabs": "Açık sekmelere bakılıyor…",
+    "searchPast": "Geçmişte ara",
+    "searchPastChatsOnly": "Tarama geçmişine erişim yok: yalnızca geçmiş sohbetler",
+    "searchingPast": "Geçmişte aranıyor…",
+    "pastFindsFound": "{{pages}} ziyaret edilmiş sayfa ve {{chats}} geçmiş sohbet bulundu. Sorunla birlikte gönderilsin mi?",
+    "pastFindsNone": "Geçmiş sohbetlerde ve tarama geçmişinde bir şey bulunamadı.",
+    "pastFindsSend": "Gönder",
+    "pastFindsSkip": "Bunlar olmadan yanıtla",
+    "pastFindsAskAnyway": "Yine de sor",
+    "pastFindsCancel": "Soruya dön",
+    "pastFindsTitle": "Geçmiş sohbetler ve geçmiş ({{count}})",
+    "openPastChat": "Bu sohbeti aç"
   },
   "footer": {
     "joinDiscord": "Discord'da bana katılın!",

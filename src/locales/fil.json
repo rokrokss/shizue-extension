@@ -166,7 +166,20 @@
     "autoApprove": "Huwag nang magtanong",
     "autoApproveHint": "Sa chat na ito, nagpapadala, nagbabayad at nagbubura nang hindi nagtatanong. Hindi pa rin nagta-type ng password o numero ng card",
     "browserAgentAutoApprove": "Kontrol ng browser · walang tanong",
-    "agentBackground": "Patakbuhin sa hiwalay na tab"
+    "agentBackground": "Patakbuhin sa hiwalay na tab",
+    "findInTabs": "Maghanap sa mga bukas na tab",
+    "findingInTabs": "Tinitingnan ang mga bukas na tab…",
+    "searchPast": "Maghanap sa history",
+    "searchPastChatsOnly": "Walang access sa history: mga nakaraang chat lang",
+    "searchingPast": "Naghahanap sa history…",
+    "pastFindsFound": "Nakahanap ng {{pages}} binisitang page at {{chats}} nakaraang chat. Ipadala kasama ng tanong mo?",
+    "pastFindsNone": "Walang nahanap sa mga nakaraang chat o history.",
+    "pastFindsSend": "Ipadala",
+    "pastFindsSkip": "Sumagot nang wala ang mga ito",
+    "pastFindsAskAnyway": "Itanong pa rin",
+    "pastFindsCancel": "Bumalik sa tanong",
+    "pastFindsTitle": "Mga nakaraang chat at history ({{count}})",
+    "openPastChat": "Buksan ang chat na ito"
   },
   "footer": {
     "joinDiscord": "Sumali sa akin sa Discord!",

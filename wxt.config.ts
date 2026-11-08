@@ -42,8 +42,9 @@ export default defineConfig({
         ...(mode === 'bridge' ? ['nativeMessaging', 'tabGroups', 'offscreen'] : []),
       ],
       // Asked for when the user first lists tab groups in the chat box's @ list, so the install
-      // and update prompts stay as they are. The bridge build has it from the start.
-      optional_permissions: [...(mode === 'bridge' ? [] : (['tabGroups'] as const))],
+      // and update prompts stay as they are. The bridge build has it from the start. `history` is
+      // asked for when the user turns on Search past chats and history in the chat's Tools menu.
+      optional_permissions: [...(mode === 'bridge' ? [] : (['tabGroups'] as const)), 'history' as const],
       // Reconnect the same web pages our declarative content scripts already run on.
       // This also covers the local model endpoints. chrome.tabs.captureVisibleTab needs <all_urls>
       // itself rather than http and https; the content scripts' <all_urls> already warns of it.

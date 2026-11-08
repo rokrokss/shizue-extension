@@ -166,7 +166,20 @@
     "autoApprove": "Sem perguntar",
     "autoApproveHint": "Nesta conversa, envia, paga e elimina sem perguntar. Continua a não escrever palavras-passe nem números de cartão",
     "browserAgentAutoApprove": "Controlo do navegador · sem perguntar",
-    "agentBackground": "Executar num separador à parte"
+    "agentBackground": "Executar num separador à parte",
+    "findInTabs": "Procurar nos separadores abertos",
+    "findingInTabs": "A ver os separadores abertos…",
+    "searchPast": "Procurar no histórico",
+    "searchPastChatsOnly": "Sem acesso ao histórico: só conversas anteriores",
+    "searchingPast": "A procurar no histórico…",
+    "pastFindsFound": "Foram encontradas {{pages}} páginas visitadas e {{chats}} conversas anteriores. Enviar com a tua pergunta?",
+    "pastFindsNone": "Nada encontrado em conversas anteriores nem no histórico.",
+    "pastFindsSend": "Enviar",
+    "pastFindsSkip": "Responder sem eles",
+    "pastFindsAskAnyway": "Perguntar mesmo assim",
+    "pastFindsCancel": "Voltar à pergunta",
+    "pastFindsTitle": "Conversas anteriores e histórico ({{count}})",
+    "openPastChat": "Abrir esta conversa"
   },
   "footer": {
     "joinDiscord": "Junta-te a mim no Discord!",

@@ -166,7 +166,20 @@
     "autoApprove": "Don't ask first",
     "autoApproveHint": "In this chat it sends, pays and deletes without asking. It still won't type passwords or card numbers",
     "browserAgentAutoApprove": "Browser control · no asking",
-    "agentBackground": "Run in a separate tab"
+    "agentBackground": "Run in a separate tab",
+    "findInTabs": "Find in open tabs",
+    "findingInTabs": "Looking through open tabs…",
+    "searchPast": "Search history",
+    "searchPastChatsOnly": "No access to browsing history: past chats only",
+    "searchingPast": "Searching history…",
+    "pastFindsFound": "Found {{pages}} visited pages and {{chats}} past chats. Send them with your question?",
+    "pastFindsNone": "Nothing found in past chats or browsing history.",
+    "pastFindsSend": "Send",
+    "pastFindsSkip": "Answer without them",
+    "pastFindsAskAnyway": "Ask anyway",
+    "pastFindsCancel": "Back to the question",
+    "pastFindsTitle": "Past chats and history ({{count}})",
+    "openPastChat": "Open this chat"
   },
   "footer": {
     "joinDiscord": "Join me on Discord!",

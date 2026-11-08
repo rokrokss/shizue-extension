@@ -8,8 +8,10 @@ import {
   ClockCircleOutlined,
   FileOutlined,
   FilePdfOutlined,
+  FileSearchOutlined,
   FileTextOutlined,
   GlobalOutlined,
+  HistoryOutlined,
   LoadingOutlined,
   PlaySquareOutlined,
   PlusOutlined,
@@ -82,6 +84,11 @@ const AttachmentChips = ({
   browserAgent,
   autoApprove,
   onBrowserAgentOff,
+  findTabs,
+  onFindTabsOff,
+  searchPast,
+  onSearchPastOff,
+  looking,
   reasoningEffort,
   onReasoningEffortReset,
   videoMoment,
@@ -98,6 +105,13 @@ const AttachmentChips = ({
   // The browser agent doesn't ask before it sends, deletes or pays: the chip warns of it.
   autoApprove: boolean;
   onBrowserAgentOff: () => void;
+  // Find in open tabs and Search past chats and history, while on, with a spinner while they look
+  // for the question going out.
+  findTabs: boolean;
+  onFindTabsOff: () => void;
+  searchPast: boolean;
+  onSearchPastOff: () => void;
+  looking: 'tabs' | 'past' | null;
   // Shown when it isn't 'medium' and the model takes one.
   reasoningEffort?: ReasoningEffort;
   onReasoningEffortReset: () => void;
@@ -119,6 +133,8 @@ const AttachmentChips = ({
     !suggestion &&
     !webSearch &&
     !browserAgent &&
+    !findTabs &&
+    !searchPast &&
     !effortChip &&
     !videoMoment &&
     usage === null
@@ -158,6 +174,34 @@ const AttachmentChips = ({
             {autoApprove ? t('chat.browserAgentAutoApprove') : t('chat.browserAgent')}
           </Tag>
         </Tooltip>
+      ) : null}
+      {findTabs ? (
+        <Tag
+          icon={looking === 'tabs' ? <LoadingOutlined /> : <FileSearchOutlined />}
+          color="cyan"
+          closable={looking !== 'tabs'}
+          onClose={(e) => {
+            e.preventDefault();
+            onFindTabsOff();
+          }}
+          className="sz:font-ycom sz:m-0 sz:flex sz:items-center"
+        >
+          {looking === 'tabs' ? t('chat.findingInTabs') : t('chat.findInTabs')}
+        </Tag>
+      ) : null}
+      {searchPast ? (
+        <Tag
+          icon={looking === 'past' ? <LoadingOutlined /> : <HistoryOutlined />}
+          color="cyan"
+          closable={looking !== 'past'}
+          onClose={(e) => {
+            e.preventDefault();
+            onSearchPastOff();
+          }}
+          className="sz:font-ycom sz:m-0 sz:flex sz:items-center"
+        >
+          {looking === 'past' ? t('chat.searchingPast') : t('chat.searchPast')}
+        </Tag>
       ) : null}
       {effortChip ? (
         <Tag

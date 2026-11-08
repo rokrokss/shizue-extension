@@ -1,6 +1,7 @@
 import AttachMenu, { toolbarButtonStyle } from '@/components/Chat/AttachMenu';
 import AttachmentChips, { AttachedItem } from '@/components/Chat/AttachmentChips';
 import TabMentionPicker, { TabMentionPickerHandle } from '@/components/Chat/TabMentionPicker';
+import PastFindsCard from '@/components/Chat/PastFindsCard';
 import ToolsMenu from '@/components/Chat/ToolsMenu';
 import Footer from '@/components/Footer';
 import { LONG_PASTE_CHARS, MAX_ATTACHED_TABS, SUMMARY_PAGE_TEXT_MAX_CHARS } from '@/config/constants';
@@ -9,6 +10,8 @@ import { useActiveWebTab } from '@/hooks/activeTab';
 import { ChatStatus, isChatWaiting, useReasoningEffort } from '@/hooks/chat';
 import { useThemeValue } from '@/hooks/layout';
 import { threadIdAtom } from '@/hooks/global';
+import { pastFindsText, type PastFinds } from '@/lib/chatLookup';
+import { findOpenTabPages, requestHistoryPermission, searchPast } from '@/services/chatLookup';
 import { useChatModel, useLocalServerValue, useModelOptions } from '@/hooks/models';
 import type { PageAttachment } from '@/lib/indexDB';
 import {
@@ -24,6 +27,7 @@ import {
   isPdfFile,
   isTextFile,
   PageRead,
+  PageText,
   readPdfPage,
   readTabPage,
   readTextFile,
@@ -123,7 +127,22 @@ const ChatInput = ({
     if (!browserAgentTurnedOn) return;
     setBrowserAgent(true);
     setWebSearch(false);
+    setFindTabs(false);
+    setSearchPastOn(false);
   }, [browserAgentTurnedOn]);
+  // Find in open tabs, and Search past chats and history: looked up for each question until turned
+  // off (services/chatLookup.ts). The browser agent reads the tab itself, so they are off with it.
+  const [findTabs, setFindTabs] = useState(false);
+  const [searchPastOn, setSearchPastOn] = useState(false);
+  // Whether the browsing history may be read; past chats are searched either way.
+  const [historyAllowed, setHistoryAllowed] = useState(true);
+  const [looking, setLooking] = useState<'tabs' | 'past' | null>(null);
+  // What Search past chats and history found for the question going out, until the user says
+  // whether it goes with it (true), not (false), or takes the question back (null).
+  const [pastFinds, setPastFinds] = useState<{
+    finds: PastFinds;
+    answer: (send: boolean | null) => void;
+  } | null>(null);
   // The browser agent sends, deletes and pays without asking first. Only with browser control on,
   // and only in this chat: another chat, a new one or the panel opened again starts with it off.
   const [autoApprove, setAutoApprove] = useState(false);
@@ -136,6 +155,14 @@ const ChatInput = ({
     // The chat a first question starts keeps it.
     if (chatOfAutoApprove.current !== undefined && chatOfAutoApprove.current !== threadId) setAutoApprove(false);
     chatOfAutoApprove.current = threadId;
+  }, [threadId]);
+
+  // A question waiting at the past finds card is taken back when the user goes to another chat.
+  useEffect(() => {
+    setPastFinds((waiting) => {
+      waiting?.answer(null);
+      return null;
+    });
   }, [threadId]);
   const mentionPicker = useRef<TabMentionPickerHandle>(null);
   const activeTab = useActiveWebTab();
@@ -203,7 +230,7 @@ const ChatInput = ({
 
   // Attached tabs are read as they are now; files and pasted text were read when added. A question
   // is required: a page alone is a summary.
-  const handleSubmitWithPages = async (text: string) => {
+  const handleSubmitWithPages = async (text: string, found: PageText[] = []) => {
     if (text === '' || isReadingPages || attached.some((item) => item.loading)) return;
     const items = attached;
     const videoMoment = askedMoment();
@@ -234,7 +261,7 @@ const ChatInput = ({
     onSubmit(
       text,
       uploadedImages,
-      toPageAttachments(pages, SUMMARY_PAGE_TEXT_MAX_CHARS),
+      toPageAttachments([...pages, ...found], SUMMARY_PAGE_TEXT_MAX_CHARS),
       webSearch,
       await videoMoment,
       browserAgent,
@@ -249,6 +276,7 @@ const ChatInput = ({
   // pressing the player's CC button and putting it back if the player hasn't fetched them yet), not
   // when the question is sent.
   const attachTab = (tab: chrome.tabs.Tab) => {
+    if (looking || pastFinds) return;
     const key = `tab-${tab.id}`;
     const video = videoKey(tab.url) !== null;
     setAttached((current) => [
@@ -315,6 +343,7 @@ const ChatInput = ({
   };
 
   const attachFile = async (file: File) => {
+    if (looking || pastFinds) return;
     const key = crypto.randomUUID();
     const pdf = isPdfFile(file);
     setAttached((current) => [
@@ -376,15 +405,60 @@ const ChatInput = ({
     }
   };
 
+  // Find in open tabs and Search past chats and history, for a question about to go out: the pages
+  // to send with it, or null when the user took the question back at the past finds card.
+  const lookUp = async (text: string): Promise<PageText[] | null> => {
+    if (!text || browserAgent || (!findTabs && !searchPastOn)) return [];
+    const found: PageText[] = [];
+    try {
+      if (findTabs && attached.length === 0) {
+        setLooking('tabs');
+        // Room is left for the past finds, which go as one more attachment.
+        const room = MAX_ATTACHED_TABS - (searchPastOn ? 1 : 0);
+        found.push(...(await findOpenTabPages(text, threadPageUrls, room).catch(() => [])));
+      }
+      if (searchPastOn) {
+        setLooking('past');
+        const finds = await searchPast(text, threadId);
+        setLooking(null);
+        // Every time: nothing from the history or past chats reaches the model unless the user
+        // says so for this question.
+        const send = await new Promise<boolean | null>((answer) => setPastFinds({ finds, answer }));
+        setPastFinds(null);
+        if (send === null) return null;
+        const count = finds.pages.length + finds.chats.length;
+        if (send && count > 0) {
+          const title = t('chat.pastFindsTitle', { count });
+          found.push({ title, url: '', text: pastFindsText(finds), history: true });
+        }
+      }
+    } finally {
+      setLooking(null);
+    }
+    return found;
+  };
+
   const handleSubmit = async (text: string) => {
     setRecallIndex(null);
     setMention(null);
-    if (attached.length > 0) return handleSubmitWithPages(text);
+    if (looking || pastFinds) return;
+    if (attached.length > 0 && (text === '' || isReadingPages || attached.some((item) => item.loading))) return;
+    const found = await lookUp(text);
+    if (found === null) return;
+    if (attached.length > 0) return handleSubmitWithPages(text, found);
     if (text !== '' || uploadedImages.length > 0) {
       const images = uploadedImages;
       setChatInput('');
       setUploadedImages([]);
-      onSubmit(text, images, undefined, webSearch, await askedMoment(), browserAgent, browserAgent && autoApprove);
+      onSubmit(
+        text,
+        images,
+        found.length > 0 ? toPageAttachments(found, SUMMARY_PAGE_TEXT_MAX_CHARS) : undefined,
+        webSearch,
+        await askedMoment(),
+        browserAgent,
+        browserAgent && autoApprove
+      );
     }
   };
 
@@ -421,6 +495,8 @@ const ChatInput = ({
       }
 
       e.preventDefault();
+      // A question is still being looked up for, or waits at the past finds card.
+      if (looking || pastFinds) return;
       const currentValue = e.currentTarget.value.trim();
       if (agentWorking && currentValue && uploadedImages.length === 0 && attached.length === 0) {
         onSteerAgent(currentValue);
@@ -528,6 +604,14 @@ const ChatInput = ({
         className="sz:w-full sz:mb-2 sz:font-ycom" message={t('chat.pageUnavailable')} />}
       {captureFailed && <Alert type="warning" showIcon closable onClose={() => setCaptureFailed(false)}
         className="sz:w-full sz:mb-2 sz:font-ycom" message={t('chat.captureFailed')} />}
+      {pastFinds ? (
+        <PastFindsCard
+          finds={pastFinds.finds}
+          onSend={() => pastFinds.answer(true)}
+          onSkip={() => pastFinds.answer(false)}
+          onCancel={() => pastFinds.answer(null)}
+        />
+      ) : null}
       {/* Grows past its usual height when chips and images take room, rather than push the chat box
           into the footer. */}
       <div className="sz:flex sz:flex-col sz:w-full sz:min-h-45 sz:px-2">
@@ -794,6 +878,26 @@ const ChatInput = ({
                 onToggleBrowserAgent={() => {
                   setBrowserAgent((on) => !on);
                   setWebSearch(false);
+                  setFindTabs(false);
+                  setSearchPastOn(false);
+                }}
+                findTabs={findTabs}
+                onToggleFindTabs={() => {
+                  setFindTabs((on) => !on);
+                  setBrowserAgent(false);
+                }}
+                searchPast={searchPastOn}
+                historyAllowed={historyAllowed}
+                onToggleSearchPast={() => {
+                  if (searchPastOn) {
+                    setSearchPastOn(false);
+                    return;
+                  }
+                  // Asked for first, while the click still counts as the user's gesture. Without
+                  // it, past chats are still searched.
+                  void requestHistoryPermission().then(setHistoryAllowed);
+                  setSearchPastOn(true);
+                  setBrowserAgent(false);
                 }}
                 autoApprove={autoApprove}
                 onToggleAutoApprove={() => setAutoApprove((on) => !on)}
@@ -815,13 +919,20 @@ const ChatInput = ({
           browserAgent={browserAgent}
           autoApprove={autoApprove}
           onBrowserAgentOff={() => setBrowserAgent(false)}
+          findTabs={findTabs}
+          onFindTabsOff={() => setFindTabs(false)}
+          searchPast={searchPastOn}
+          onSearchPastOff={() => setSearchPastOn(false)}
+          looking={looking}
           reasoningEffort={reasoningSupported ? reasoningEffort : undefined}
           onReasoningEffortReset={() => void setReasoningEffort('medium')}
           videoMoment={threadVideo ? { on: moment, seconds: momentTime } : undefined}
           onVideoMoment={setMoment}
           contextUsage={contextUsage}
           onAttach={attachTab}
-          onRemove={(key) => setAttached((current) => current.filter((item) => item.key !== key))}
+          onRemove={(key) => {
+            if (!looking && !pastFinds) setAttached((current) => current.filter((item) => item.key !== key));
+          }}
         />
         {uploadedImages.length > 0 && (
           <div className="sz:flex sz:flex-wrap sz:gap-2 sz:mb-2 sz:p-2">
@@ -869,6 +980,8 @@ const ChatInput = ({
         >
           <Input.TextArea
             value={chatInput}
+            // The question and its tabs stay as they were sent while they are looked up.
+            readOnly={Boolean(looking || pastFinds)}
             onChange={(e) => {
               setChatInput(e.target.value);
               setRecallIndex(null);

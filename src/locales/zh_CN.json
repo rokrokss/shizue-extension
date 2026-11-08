@@ -166,7 +166,20 @@
     "autoApprove": "不再询问",
     "autoApproveHint": "在此对话中，发送、付款、删除也不再询问，直接执行。仍不会输入密码或卡号",
     "browserAgentAutoApprove": "浏览器操作 · 不询问",
-    "agentBackground": "在单独的标签页中运行"
+    "agentBackground": "在单独的标签页中运行",
+    "findInTabs": "在打开的标签页中查找",
+    "findingInTabs": "正在查看打开的标签页…",
+    "searchPast": "在历史记录中查找",
+    "searchPastChatsOnly": "无权读取浏览记录：只搜索过去的聊天",
+    "searchingPast": "正在历史记录中查找…",
+    "pastFindsFound": "找到 {{pages}} 个访问过的页面和 {{chats}} 个过去的聊天。要随问题一起发送吗？",
+    "pastFindsNone": "在过去的聊天和浏览记录中没有找到。",
+    "pastFindsSend": "发送",
+    "pastFindsSkip": "不带这些回答",
+    "pastFindsAskAnyway": "直接提问",
+    "pastFindsCancel": "返回问题",
+    "pastFindsTitle": "过去的聊天和浏览记录（{{count}}）",
+    "openPastChat": "打开这个聊天"
   },
   "footer": {
     "joinDiscord": "加入我的 Discord！",

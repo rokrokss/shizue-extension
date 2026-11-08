@@ -166,7 +166,20 @@
     "autoApprove": "Ohne Nachfrage ausführen",
     "autoApproveHint": "In diesem Chat sendet, bezahlt und löscht es ohne Nachfrage. Passwörter und Kartennummern tippt es weiterhin nicht",
     "browserAgentAutoApprove": "Browsersteuerung · ohne Nachfrage",
-    "agentBackground": "In separatem Tab ausführen"
+    "agentBackground": "In separatem Tab ausführen",
+    "findInTabs": "In offenen Tabs suchen",
+    "findingInTabs": "Offene Tabs werden durchgesehen…",
+    "searchPast": "Im Verlauf suchen",
+    "searchPastChatsOnly": "Kein Zugriff auf den Verlauf: nur frühere Chats",
+    "searchingPast": "Verlauf wird durchsucht…",
+    "pastFindsFound": "Gefunden: {{pages}} besuchte Seiten und {{chats}} frühere Chats. Mit deiner Frage senden?",
+    "pastFindsNone": "In früheren Chats und im Verlauf nichts gefunden.",
+    "pastFindsSend": "Senden",
+    "pastFindsSkip": "Ohne sie antworten",
+    "pastFindsAskAnyway": "Trotzdem fragen",
+    "pastFindsCancel": "Zurück zur Frage",
+    "pastFindsTitle": "Frühere Chats und Verlauf ({{count}})",
+    "openPastChat": "Diesen Chat öffnen"
   },
   "footer": {
     "joinDiscord": "Tritt mir auf Discord bei!",

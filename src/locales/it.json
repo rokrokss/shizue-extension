@@ -166,7 +166,20 @@
     "autoApprove": "Senza chiedere",
     "autoApproveHint": "In questa chat invia, paga ed elimina senza chiedere. Non scrive comunque password o numeri di carta",
     "browserAgentAutoApprove": "Controllo del browser · senza chiedere",
-    "agentBackground": "Esegui in una scheda separata"
+    "agentBackground": "Esegui in una scheda separata",
+    "findInTabs": "Cerca nelle schede aperte",
+    "findingInTabs": "Controllo delle schede aperte…",
+    "searchPast": "Cerca nella cronologia",
+    "searchPastChatsOnly": "Nessun accesso alla cronologia: solo chat precedenti",
+    "searchingPast": "Ricerca nella cronologia…",
+    "pastFindsFound": "Trovate {{pages}} pagine visitate e {{chats}} chat precedenti. Inviarle con la tua domanda?",
+    "pastFindsNone": "Nulla trovato nelle chat precedenti o nella cronologia.",
+    "pastFindsSend": "Invia",
+    "pastFindsSkip": "Rispondi senza",
+    "pastFindsAskAnyway": "Chiedi comunque",
+    "pastFindsCancel": "Torna alla domanda",
+    "pastFindsTitle": "Chat precedenti e cronologia ({{count}})",
+    "openPastChat": "Apri questa chat"
   },
   "footer": {
     "joinDiscord": "Unisciti a me su Discord!",

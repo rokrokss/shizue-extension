@@ -166,7 +166,20 @@
     "autoApprove": "बिना पूछे करें",
     "autoApproveHint": "इस चैट में भेजना, भुगतान और हटाना बिना पूछे करता है। पासवर्ड या कार्ड नंबर फिर भी नहीं भरता",
     "browserAgentAutoApprove": "ब्राउज़र नियंत्रण · बिना पूछे",
-    "agentBackground": "अलग टैब में चलाएँ"
+    "agentBackground": "अलग टैब में चलाएँ",
+    "findInTabs": "खुले टैब में खोजें",
+    "findingInTabs": "खुले टैब देखे जा रहे हैं…",
+    "searchPast": "इतिहास में खोजें",
+    "searchPastChatsOnly": "ब्राउज़िंग इतिहास की अनुमति नहीं: सिर्फ़ पिछली चैट",
+    "searchingPast": "इतिहास में खोज रहे हैं…",
+    "pastFindsFound": "{{pages}} देखे गए पेज और {{chats}} पिछली चैट मिलीं। इन्हें अपने सवाल के साथ भेजें?",
+    "pastFindsNone": "पिछली चैट या ब्राउज़िंग इतिहास में कुछ नहीं मिला।",
+    "pastFindsSend": "भेजें",
+    "pastFindsSkip": "इनके बिना जवाब दें",
+    "pastFindsAskAnyway": "फिर भी पूछें",
+    "pastFindsCancel": "सवाल पर लौटें",
+    "pastFindsTitle": "पिछली चैट और इतिहास ({{count}})",
+    "openPastChat": "यह चैट खोलें"
   },
   "footer": {
     "joinDiscord": "Discord पर मुझसे जुड़ें!",

@@ -17,6 +17,7 @@ import {
   FilePdfOutlined,
   FileTextOutlined,
   GlobalOutlined,
+  HistoryOutlined,
   InfoCircleOutlined,
   LinkOutlined,
   PlaySquareOutlined,
@@ -441,6 +442,8 @@ const ChatContainer = ({
                             <FileOutlined />
                           ) : page.pasted ? (
                             <SnippetsOutlined />
+                          ) : page.history ? (
+                            <HistoryOutlined />
                           ) : (
                             <LinkOutlined />
                           )}

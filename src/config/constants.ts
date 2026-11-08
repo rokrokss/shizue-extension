@@ -21,6 +21,10 @@ export const MESSAGE_REMEMBER_THREAD = 'action_remember_thread';
 // Questions to ask next, offered under a finished summary (ChatModelHandler.suggestQuestions).
 export const MESSAGE_SUGGEST_QUESTIONS = 'action_suggest_questions';
 export const MESSAGE_TRANSLATE_IMAGE = 'action_translate_image';
+// Looked up before a question goes out (services/chatLookup.ts): the open tabs that may answer it,
+// and the words to search past chats and browsing history with.
+export const MESSAGE_PICK_OPEN_TABS = 'action_pick_open_tabs';
+export const MESSAGE_HISTORY_SEARCH_TERMS = 'action_history_search_terms';
 // The browser agent (lib/browserAgent.ts): the panel's answer to an approval card, over the
 // answer's port, and the stop button of the agent's pill on the page.
 export const MESSAGE_AGENT_APPROVAL = 'action_agent_approval';

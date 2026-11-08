@@ -166,7 +166,20 @@
     "autoApprove": "Sin preguntar",
     "autoApproveHint": "En este chat envía, paga y elimina sin preguntar. Aun así no escribe contraseñas ni números de tarjeta",
     "browserAgentAutoApprove": "Control del navegador · sin preguntar",
-    "agentBackground": "Ejecutar en otra pestaña"
+    "agentBackground": "Ejecutar en otra pestaña",
+    "findInTabs": "Buscar en pestañas abiertas",
+    "findingInTabs": "Revisando las pestañas abiertas…",
+    "searchPast": "Buscar en el historial",
+    "searchPastChatsOnly": "Sin acceso al historial: solo chats anteriores",
+    "searchingPast": "Buscando en el historial…",
+    "pastFindsFound": "Se encontraron {{pages}} páginas visitadas y {{chats}} chats anteriores. ¿Enviarlos con tu pregunta?",
+    "pastFindsNone": "No se encontró nada en chats anteriores ni en el historial.",
+    "pastFindsSend": "Enviar",
+    "pastFindsSkip": "Responder sin ellos",
+    "pastFindsAskAnyway": "Preguntar igual",
+    "pastFindsCancel": "Volver a la pregunta",
+    "pastFindsTitle": "Chats anteriores e historial ({{count}})",
+    "openPastChat": "Abrir este chat"
   },
   "footer": {
     "joinDiscord": "¡Únete a mí en Discord!",

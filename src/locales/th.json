@@ -166,7 +166,20 @@
     "autoApprove": "ทำโดยไม่ถาม",
     "autoApproveHint": "ในแชทนี้จะส่ง ชำระเงิน และลบโดยไม่ถาม แต่ยังไม่พิมพ์รหัสผ่านหรือเลขบัตร",
     "browserAgentAutoApprove": "ควบคุมเบราว์เซอร์ · ไม่ถาม",
-    "agentBackground": "ทำงานในแท็บแยก"
+    "agentBackground": "ทำงานในแท็บแยก",
+    "findInTabs": "ค้นหาในแท็บที่เปิดอยู่",
+    "findingInTabs": "กำลังดูแท็บที่เปิดอยู่…",
+    "searchPast": "ค้นหาในประวัติ",
+    "searchPastChatsOnly": "ไม่มีสิทธิ์อ่านประวัติการเข้าชม: ค้นเฉพาะแชทก่อนหน้า",
+    "searchingPast": "กำลังค้นหาในประวัติ…",
+    "pastFindsFound": "พบหน้าที่เคยเข้า {{pages}} หน้า และแชทก่อนหน้า {{chats}} รายการ ส่งไปพร้อมคำถามไหม",
+    "pastFindsNone": "ไม่พบในแชทก่อนหน้าหรือประวัติการเข้าชม",
+    "pastFindsSend": "ส่ง",
+    "pastFindsSkip": "ตอบโดยไม่ส่ง",
+    "pastFindsAskAnyway": "ถามต่อเลย",
+    "pastFindsCancel": "กลับไปที่คำถาม",
+    "pastFindsTitle": "แชทก่อนหน้าและประวัติ ({{count}})",
+    "openPastChat": "เปิดแชทนี้"
   },
   "footer": {
     "joinDiscord": "เข้าร่วมกับฉันบน Discord!",

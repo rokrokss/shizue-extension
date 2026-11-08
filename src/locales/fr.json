@@ -166,7 +166,20 @@
     "autoApprove": "Sans demander",
     "autoApproveHint": "Dans cette discussion, il envoie, paie et supprime sans demander. Il ne tape toujours pas de mots de passe ni de numéros de carte",
     "browserAgentAutoApprove": "Contrôle du navigateur · sans demander",
-    "agentBackground": "Exécuter dans un onglet séparé"
+    "agentBackground": "Exécuter dans un onglet séparé",
+    "findInTabs": "Chercher dans les onglets ouverts",
+    "findingInTabs": "Parcours des onglets ouverts…",
+    "searchPast": "Rechercher dans l’historique",
+    "searchPastChatsOnly": "Pas d'accès à l'historique : discussions passées seulement",
+    "searchingPast": "Recherche dans l’historique…",
+    "pastFindsFound": "{{pages}} pages visitées et {{chats}} discussions passées trouvées. Les envoyer avec votre question ?",
+    "pastFindsNone": "Rien trouvé dans les discussions passées ni dans l'historique.",
+    "pastFindsSend": "Envoyer",
+    "pastFindsSkip": "Répondre sans",
+    "pastFindsAskAnyway": "Demander quand même",
+    "pastFindsCancel": "Revenir à la question",
+    "pastFindsTitle": "Discussions passées et historique ({{count}})",
+    "openPastChat": "Ouvrir cette discussion"
   },
   "footer": {
     "joinDiscord": "Rejoignez-moi sur Discord !",

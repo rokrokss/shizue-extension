@@ -166,7 +166,20 @@
     "autoApprove": "না জিজ্ঞেস করে করুন",
     "autoApproveHint": "এই চ্যাটে পাঠানো, পেমেন্ট ও মোছা না জিজ্ঞেস করেই করে। তবু পাসওয়ার্ড বা কার্ড নম্বর লেখে না",
     "browserAgentAutoApprove": "ব্রাউজার নিয়ন্ত্রণ · না জিজ্ঞেস করে",
-    "agentBackground": "আলাদা ট্যাবে চালান"
+    "agentBackground": "আলাদা ট্যাবে চালান",
+    "findInTabs": "খোলা ট্যাবে খুঁজুন",
+    "findingInTabs": "খোলা ট্যাব দেখা হচ্ছে…",
+    "searchPast": "ইতিহাসে খুঁজুন",
+    "searchPastChatsOnly": "ব্রাউজিং ইতিহাসের অনুমতি নেই: শুধু আগের চ্যাট",
+    "searchingPast": "ইতিহাসে খোঁজা হচ্ছে…",
+    "pastFindsFound": "দেখা পৃষ্ঠা {{pages}}টি ও আগের চ্যাট {{chats}}টি পাওয়া গেছে। প্রশ্নের সঙ্গে পাঠাবেন?",
+    "pastFindsNone": "আগের চ্যাট বা ব্রাউজিং ইতিহাসে কিছু পাওয়া যায়নি।",
+    "pastFindsSend": "পাঠান",
+    "pastFindsSkip": "এগুলো ছাড়া উত্তর দিন",
+    "pastFindsAskAnyway": "তবুও জিজ্ঞাসা করুন",
+    "pastFindsCancel": "প্রশ্নে ফিরে যান",
+    "pastFindsTitle": "আগের চ্যাট ও ইতিহাস ({{count}})",
+    "openPastChat": "এই চ্যাট খুলুন"
   },
   "footer": {
     "joinDiscord": "Discord-এ আমার সাথে যোগ দিন!",

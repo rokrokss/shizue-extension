@@ -166,7 +166,20 @@
     "autoApprove": "التنفيذ دون سؤال",
     "autoApproveHint": "في هذه المحادثة يرسل ويدفع ويحذف دون أن يسأل. ولا يكتب كلمات المرور أو أرقام البطاقات مع ذلك",
     "browserAgentAutoApprove": "التحكم في المتصفح · دون سؤال",
-    "agentBackground": "تشغيل في علامة تبويب منفصلة"
+    "agentBackground": "تشغيل في علامة تبويب منفصلة",
+    "findInTabs": "البحث في علامات التبويب المفتوحة",
+    "findingInTabs": "جارٍ تصفح علامات التبويب المفتوحة…",
+    "searchPast": "البحث في السجل",
+    "searchPastChatsOnly": "لا وصول إلى سجل التصفح: المحادثات السابقة فقط",
+    "searchingPast": "جارٍ البحث في السجل…",
+    "pastFindsFound": "عُثر على صفحات تمت زيارتها: {{pages}}، ومحادثات سابقة: {{chats}}. هل تُرسل مع سؤالك؟",
+    "pastFindsNone": "لم يُعثر على شيء في المحادثات السابقة أو سجل التصفح.",
+    "pastFindsSend": "إرسال",
+    "pastFindsSkip": "الإجابة من دونها",
+    "pastFindsAskAnyway": "اسأل على أي حال",
+    "pastFindsCancel": "العودة إلى السؤال",
+    "pastFindsTitle": "المحادثات السابقة والسجل ({{count}})",
+    "openPastChat": "فتح هذه المحادثة"
   },
   "footer": {
     "joinDiscord": "انضم إلي على Discord!",

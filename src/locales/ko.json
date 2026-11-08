@@ -166,7 +166,20 @@
     "autoApprove": "묻지 않고 실행",
     "autoApproveHint": "이 대화에서는 보내기·결제·삭제도 묻지 않고 바로 합니다. 비밀번호·카드 칸은 그래도 입력하지 않습니다",
     "browserAgentAutoApprove": "브라우저 조작 · 묻지 않음",
-    "agentBackground": "별도 탭에서 실행"
+    "agentBackground": "별도 탭에서 실행",
+    "findInTabs": "열린 탭에서 찾기",
+    "findingInTabs": "열린 탭을 살펴보는 중…",
+    "searchPast": "히스토리에서 찾기",
+    "searchPastChatsOnly": "방문 기록 권한이 없어 지난 채팅만 찾습니다",
+    "searchingPast": "히스토리에서 찾는 중…",
+    "pastFindsFound": "방문한 페이지 {{pages}}개와 지난 채팅 {{chats}}개를 찾았습니다. 질문과 함께 보낼까요?",
+    "pastFindsNone": "지난 채팅과 방문 기록에서 찾지 못했습니다.",
+    "pastFindsSend": "보내기",
+    "pastFindsSkip": "빼고 답하기",
+    "pastFindsAskAnyway": "그냥 묻기",
+    "pastFindsCancel": "질문으로 돌아가기",
+    "pastFindsTitle": "지난 채팅·방문 기록 {{count}}개",
+    "openPastChat": "이 채팅 열기"
   },
   "footer": {
     "joinDiscord": "디스코드로 놀러 오세요!",

@@ -166,7 +166,20 @@
     "autoApprove": "Bez pytania",
     "autoApproveHint": "W tym czacie wysyła, płaci i usuwa bez pytania. Nadal nie wpisuje haseł ani numerów kart",
     "browserAgentAutoApprove": "Sterowanie przeglądarką · bez pytania",
-    "agentBackground": "Uruchom w osobnej karcie"
+    "agentBackground": "Uruchom w osobnej karcie",
+    "findInTabs": "Szukaj w otwartych kartach",
+    "findingInTabs": "Przeglądanie otwartych kart…",
+    "searchPast": "Szukaj w historii",
+    "searchPastChatsOnly": "Brak dostępu do historii: tylko poprzednie czaty",
+    "searchingPast": "Szukanie w historii…",
+    "pastFindsFound": "Znaleziono odwiedzone strony: {{pages}} i poprzednie czaty: {{chats}}. Wysłać je z pytaniem?",
+    "pastFindsNone": "Nic nie znaleziono w poprzednich czatach ani w historii.",
+    "pastFindsSend": "Wyślij",
+    "pastFindsSkip": "Odpowiedz bez nich",
+    "pastFindsAskAnyway": "Zapytaj mimo to",
+    "pastFindsCancel": "Wróć do pytania",
+    "pastFindsTitle": "Poprzednie czaty i historia ({{count}})",
+    "openPastChat": "Otwórz ten czat"
   },
   "footer": {
     "joinDiscord": "Dołącz do mnie na Discordzie!",

@@ -166,7 +166,20 @@
     "autoApprove": "Sem perguntar",
     "autoApproveHint": "Nesta conversa, envia, paga e exclui sem perguntar. Ainda não digita senhas nem números de cartão",
     "browserAgentAutoApprove": "Controle do navegador · sem perguntar",
-    "agentBackground": "Executar em outra aba"
+    "agentBackground": "Executar em outra aba",
+    "findInTabs": "Procurar nas abas abertas",
+    "findingInTabs": "Olhando as abas abertas…",
+    "searchPast": "Buscar no histórico",
+    "searchPastChatsOnly": "Sem acesso ao histórico: só conversas anteriores",
+    "searchingPast": "Buscando no histórico…",
+    "pastFindsFound": "Foram encontradas {{pages}} páginas visitadas e {{chats}} conversas anteriores. Enviar com sua pergunta?",
+    "pastFindsNone": "Nada encontrado em conversas anteriores nem no histórico.",
+    "pastFindsSend": "Enviar",
+    "pastFindsSkip": "Responder sem eles",
+    "pastFindsAskAnyway": "Perguntar mesmo assim",
+    "pastFindsCancel": "Voltar à pergunta",
+    "pastFindsTitle": "Conversas anteriores e histórico ({{count}})",
+    "openPastChat": "Abrir esta conversa"
   },
   "footer": {
     "joinDiscord": "Junte-se a mim no Discord!",

@@ -1,6 +1,9 @@
 import SceneThumbnail from '@/components/Chat/SceneThumbnail';
 import { DotCycle } from '@/components/Loader/DotCycle';
+import { switchThreadAtom } from '@/hooks/chat';
 import { useThemeValue } from '@/hooks/layout';
+import { CHAT_LINK_PATTERN } from '@/lib/chatLookup';
+import { db } from '@/lib/indexDB';
 import { parseChartSpec } from '@/lib/chartSpec';
 import { hasMath, prepareMath } from '@/lib/mathText';
 import { linkPageLines, pageLines } from '@/lib/pageLines';
@@ -8,6 +11,7 @@ import { seekPageLine } from '@/lib/pageSeek';
 import { seekVideo } from '@/lib/videoSeek';
 import { formatVideoTime, linkVideoTimes } from '@/lib/videoTranscript';
 import { CaretRightOutlined } from '@ant-design/icons';
+import { useSetAtom } from 'jotai';
 import { createContext, lazy, Suspense, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Markdown, { type Components, type ExtraProps, type Options } from 'react-markdown';
@@ -72,6 +76,24 @@ const components: Components = {
     const citations = useContext(CitationContext);
     const theme = useThemeValue();
     const { t } = useTranslation();
+    const switchThread = useSetAtom(switchThreadAtom);
+    // An earlier chat that Search past chats and history found (lib/chatLookup.ts): opens it here.
+    const chat = href?.match(CHAT_LINK_PATTERN)?.[1];
+    if (chat) {
+      return (
+        <button
+          type="button"
+          title={t('chat.openPastChat')}
+          onClick={async () => {
+            // The model may write a chat link it made up; only a chat that is still here opens.
+            if (await db.threads.get(chat)) switchThread(chat);
+          }}
+          className="sz:cursor-pointer sz:underline sz:text-inherit sz:bg-transparent sz:border-0 sz:p-0"
+        >
+          {children}
+        </button>
+      );
+    }
     const [, kind, value] = href?.match(/^#([tsp])=(\d+)$/) ?? [];
     if (kind === 'p' && page) {
       const line = pageLines(page.prompt).get(Number(value));

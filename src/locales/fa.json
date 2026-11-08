@@ -166,7 +166,20 @@
     "autoApprove": "بدون پرسیدن انجام بده",
     "autoApproveHint": "در این گفتگو بدون پرسیدن ارسال، پرداخت و حذف می‌کند. با این حال رمز عبور یا شماره کارت را وارد نمی‌کند",
     "browserAgentAutoApprove": "کنترل مرورگر · بدون پرسیدن",
-    "agentBackground": "اجرا در زبانهٔ جداگانه"
+    "agentBackground": "اجرا در زبانهٔ جداگانه",
+    "findInTabs": "جستجو در زبانه‌های باز",
+    "findingInTabs": "در حال بررسی زبانه‌های باز…",
+    "searchPast": "جستجو در تاریخچه",
+    "searchPastChatsOnly": "بدون دسترسی به تاریخچه مرور: فقط گفتگوهای قبلی",
+    "searchingPast": "در حال جستجو در تاریخچه…",
+    "pastFindsFound": "{{pages}} صفحه بازدیدشده و {{chats}} گفتگوی قبلی پیدا شد. همراه پرسش شما فرستاده شوند؟",
+    "pastFindsNone": "در گفتگوهای قبلی یا تاریخچه مرور چیزی پیدا نشد.",
+    "pastFindsSend": "ارسال",
+    "pastFindsSkip": "پاسخ بدون آن‌ها",
+    "pastFindsAskAnyway": "به هر حال بپرس",
+    "pastFindsCancel": "بازگشت به پرسش",
+    "pastFindsTitle": "گفتگوهای قبلی و تاریخچه ({{count}})",
+    "openPastChat": "باز کردن این گفتگو"
   },
   "footer": {
     "joinDiscord": "به من در Discord بپیوندید!",

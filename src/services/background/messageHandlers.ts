@@ -17,6 +17,8 @@ import {
   MESSAGE_TRANSLATE_FRAMES,
   MESSAGE_REMEMBER_THREAD,
   MESSAGE_SUGGEST_QUESTIONS,
+  MESSAGE_PICK_OPEN_TABS,
+  MESSAGE_HISTORY_SEARCH_TERMS,
   MESSAGE_AGENT_RESUME,
   MESSAGE_AGENT_STOP,
   MESSAGE_FORM_FILL_PROPOSE,
@@ -31,6 +33,7 @@ import { openPanel, togglePanel } from '@/entrypoints/background/sidepanel';
 import { addWord, db, getLatestMessageForThread, loadThread } from '@/lib/indexDB';
 import { parsePlayerResponse } from '@/lib/youtube';
 import { getChatModelHandler } from '@/services/background/chatModelHandler';
+import { historySearchTerms, pickOpenTabs } from '@/services/background/chatLookupHandler';
 import { translateImage } from '@/services/background/imageTranslationHandler';
 import { proposeFormFill } from '@/services/background/formFillHandler';
 import { resumeAgentInTab, stopAgentInTab } from '@/services/background/browserAgentHandler';
@@ -268,6 +271,17 @@ async function handleSuggestQuestions(msg: any, sendResponse: (response?: any) =
   sendResponse(await getChatModelHandler().suggestQuestions(msg.threadId));
 }
 
+// Find in open tabs, before a question goes out (services/chatLookup.ts).
+async function handlePickOpenTabs(msg: any, sendResponse: (response?: any) => void) {
+  const tabs = Array.isArray(msg.tabs) ? msg.tabs : [];
+  sendResponse(await pickOpenTabs(String(msg.question ?? ''), tabs, Number(msg.max) || 1));
+}
+
+// Search past chats and history, before a question goes out (services/chatLookup.ts).
+async function handleHistorySearchTerms(msg: any, sendResponse: (response?: any) => void) {
+  sendResponse(await historySearchTerms(String(msg.question ?? ''), String(msg.today ?? '')));
+}
+
 // An image on a page (lib/imageTranslator.ts).
 async function handleTranslateImage(msg: any, sendResponse: (response?: any) => void) {
   sendResponse(await translateImage(msg.srcUrl, msg.dataUrl, msg.targetLanguage, msg.title ?? ''));
@@ -352,6 +366,8 @@ export const messageHandlers = {
   [MESSAGE_TRANSLATE_FRAMES]: handleTranslateFrames,
   [MESSAGE_REMEMBER_THREAD]: handleRememberThread,
   [MESSAGE_SUGGEST_QUESTIONS]: handleSuggestQuestions,
+  [MESSAGE_PICK_OPEN_TABS]: handlePickOpenTabs,
+  [MESSAGE_HISTORY_SEARCH_TERMS]: handleHistorySearchTerms,
   [MESSAGE_TRANSLATE_IMAGE]: handleTranslateImage,
   [MESSAGE_AGENT_STOP]: handleAgentStop,
   [MESSAGE_AGENT_RESUME]: handleAgentResume,

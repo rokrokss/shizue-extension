@@ -8,7 +8,9 @@ import {
   ApartmentOutlined,
   BulbOutlined,
   ControlOutlined,
+  FileSearchOutlined,
   GlobalOutlined,
+  HistoryOutlined,
   RobotOutlined,
   SelectOutlined,
   ThunderboltOutlined,
@@ -17,9 +19,9 @@ import { Button, Popover, Select, Tooltip } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-// The tools button: how Shizue answers the questions that follow, with web search or the browser
-// agent (asking before it sends, deletes or pays, or not), with which chat model, and how hard it
-// thinks. What goes with a question is the paperclip's (AttachMenu).
+// The tools button: how Shizue answers the questions that follow, with web search, with the open
+// tabs or past chats and history it finds for them, or with the browser agent (asking before it
+// sends, deletes or pays, or not), with which chat model, and how hard it thinks. What goes with a question is the paperclip's (AttachMenu).
 const ToolsMenu = ({
   iconColor,
   webSearch,
@@ -27,6 +29,11 @@ const ToolsMenu = ({
   onToggleWebSearch,
   browserAgent,
   onToggleBrowserAgent,
+  findTabs,
+  onToggleFindTabs,
+  searchPast,
+  historyAllowed,
+  onToggleSearchPast,
   autoApprove,
   onToggleAutoApprove,
   chatModel,
@@ -42,6 +49,13 @@ const ToolsMenu = ({
   onToggleWebSearch: () => void;
   browserAgent: boolean;
   onToggleBrowserAgent: () => void;
+  // Find in open tabs, and Search past chats and history (services/chatLookup.ts).
+  findTabs: boolean;
+  onToggleFindTabs: () => void;
+  searchPast: boolean;
+  // Without the history permission only past chats are searched.
+  historyAllowed: boolean;
+  onToggleSearchPast: () => void;
   autoApprove: boolean;
   onToggleAutoApprove: () => void;
   chatModel: ChatModel;
@@ -91,6 +105,33 @@ const ToolsMenu = ({
           checked={webSearch}
           disabled={!webSearchSupported}
           onChange={onToggleWebSearch}
+          className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
+        />
+      </label>
+      <label className={rowClass(false)}>
+        <FileSearchOutlined className="sz:shrink-0" />
+        <div className="sz:min-w-0 sz:flex-1">
+          <div className="sz:text-sm">{t('chat.findInTabs')}</div>
+        </div>
+        <input
+          type="checkbox"
+          checked={findTabs}
+          onChange={onToggleFindTabs}
+          className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
+        />
+      </label>
+      <label className={rowClass(false)}>
+        <HistoryOutlined className="sz:shrink-0" />
+        <div className="sz:min-w-0 sz:flex-1">
+          <div className="sz:text-sm">{t('chat.searchPast')}</div>
+          {searchPast && !historyAllowed ? (
+            <div className="sz:text-xs sz:text-gray-500">{t('chat.searchPastChatsOnly')}</div>
+          ) : null}
+        </div>
+        <input
+          type="checkbox"
+          checked={searchPast}
+          onChange={onToggleSearchPast}
           className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
         />
       </label>

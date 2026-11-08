@@ -21,6 +21,9 @@ export interface PageAttachment {
   captions?: boolean;
   // The text was cut to fit the size limit for one message.
   truncated?: boolean;
+  // What Search past chats and history found for the question and the user let go to the model
+  // (lib/chatLookup.ts): a list of visited pages and earlier chats, not a page.
+  history?: boolean;
 }
 
 export interface Message {

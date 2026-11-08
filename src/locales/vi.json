@@ -166,7 +166,20 @@
     "autoApprove": "Không hỏi trước",
     "autoApproveHint": "Trong cuộc trò chuyện này, gửi, thanh toán và xóa mà không hỏi. Vẫn không nhập mật khẩu hay số thẻ",
     "browserAgentAutoApprove": "Điều khiển trình duyệt · không hỏi",
-    "agentBackground": "Chạy trong tab riêng"
+    "agentBackground": "Chạy trong tab riêng",
+    "findInTabs": "Tìm trong các tab đang mở",
+    "findingInTabs": "Đang xem các tab đang mở…",
+    "searchPast": "Tìm trong lịch sử",
+    "searchPastChatsOnly": "Không có quyền đọc lịch sử: chỉ tìm cuộc trò chuyện trước",
+    "searchingPast": "Đang tìm trong lịch sử…",
+    "pastFindsFound": "Đã tìm thấy {{pages}} trang đã xem và {{chats}} cuộc trò chuyện trước. Gửi kèm câu hỏi của bạn?",
+    "pastFindsNone": "Không tìm thấy gì trong các cuộc trò chuyện trước hay lịch sử.",
+    "pastFindsSend": "Gửi",
+    "pastFindsSkip": "Trả lời mà không gửi",
+    "pastFindsAskAnyway": "Vẫn hỏi",
+    "pastFindsCancel": "Quay lại câu hỏi",
+    "pastFindsTitle": "Cuộc trò chuyện trước và lịch sử ({{count}})",
+    "openPastChat": "Mở cuộc trò chuyện này"
   },
   "footer": {
     "joinDiscord": "Tham gia cùng tôi trên Discord!",
