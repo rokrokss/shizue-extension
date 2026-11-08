@@ -15,7 +15,7 @@ import {
   Tooltip,
 } from 'antd';
 import { TFunction } from 'i18next';
-import { cloneElement, ReactNode, RefObject } from 'react';
+import { cloneElement, ReactNode, RefObject, useRef, useState } from 'react';
 
 // The caption button and menu shared by the YouTube and Twitch player controls, so both sites
 // look and behave the same. Each site supplies its own menu rows and actions.
@@ -96,6 +96,9 @@ export const autoActivateLabel = (t: TFunction, rule: CaptionAutoActivate) =>
       ? t('youtube.autoActivateOtherLanguages')
       : t(`language.${rule.split('_')[0]}`);
 
+// No taller than a small frame (an embedded YouTube player) shows.
+const LIST_MAX_HEIGHT = 170;
+
 export const CaptionMenuLanguageRow = ({
   label,
   valueLabel,
@@ -112,61 +115,82 @@ export const CaptionMenuLanguageRow = ({
   onOpenChange: (open: boolean) => void;
   onSelect: (value: string) => void;
   side?: 'left' | 'right' | 'below';
-}) => (
-  <Popover
-    placement={side === 'left' ? 'leftBottom' : side === 'below' ? 'bottom' : 'rightBottom'}
-    trigger={side === 'below' ? 'click' : 'hover'}
-    styles={{
-      body: {
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        ...(side === 'below'
-          ? {}
-          : {
-              transform: 'translateY(7px)',
-              ...(side === 'left' ? { marginRight: '7px' } : { marginLeft: '7px' }),
-            }),
-        padding: 0,
-      },
-    }}
-    arrow={false}
-    open={open}
-    onOpenChange={onOpenChange}
-    content={
-      <div
-        className="
-          sz:flex
-          sz:flex-col
-          sz:rounded-lg
-          sz:m-0 sz:p-0
-          sz:scrollbar-visible
-        "
-        style={{
-          // No taller than a small frame (an embedded YouTube player) shows.
-          maxHeight: 'min(170px, calc(100vh - 16px))',
-          overflowY: 'auto',
-        }}
-      >
-        {options.map((option, index) => (
-          <LanguageOptionItem
-            key={option.value}
-            option={option}
-            isFirst={index === 0}
-            isLast={index === options.length - 1}
-            onClick={() => {
-              onSelect(option.value);
-              onOpenChange(false);
-            }}
-          />
-        ))}
-      </div>
+}) => {
+  // Beside the menu the list grows up from its row. Near the menu's top that would take it above the
+  // menu, where the site's own bar (YouTube's search bar) covers it, so there it grows down instead.
+  const rowRef = useRef<HTMLDivElement>(null);
+  const [growsDown, setGrowsDown] = useState(false);
+  const handleOpenChange = (next: boolean) => {
+    const row = rowRef.current;
+    const menu = row?.closest('.sz-dropdown-caption-menu');
+    if (next && row && menu) {
+      setGrowsDown(
+        row.getBoundingClientRect().bottom - menu.getBoundingClientRect().top < LIST_MAX_HEIGHT
+      );
     }
-  >
-    <div className={rowClassName} onClick={stopPropagation}>
-      <span className="sz:text-white">{label}</span>
-      <span className="sz:text-gray-400">{valueLabel}</span>
-    </div>
-  </Popover>
-);
+    onOpenChange(next);
+  };
+
+  return (
+    <Popover
+      placement={
+        side === 'below'
+          ? 'bottom'
+          : `${side === 'left' ? 'left' : 'right'}${growsDown ? 'Top' : 'Bottom'}`
+      }
+      trigger={side === 'below' ? 'click' : 'hover'}
+      styles={{
+        body: {
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          ...(side === 'below'
+            ? {}
+            : {
+                transform: `translateY(${growsDown ? -7 : 7}px)`,
+                // On both sides: with no room on its own side, the list opens on the other.
+                margin: '0 7px',
+              }),
+          padding: 0,
+        },
+      }}
+      arrow={false}
+      open={open}
+      onOpenChange={handleOpenChange}
+      content={
+        <div
+          className="
+            sz:flex
+            sz:flex-col
+            sz:rounded-lg
+            sz:m-0 sz:p-0
+            sz:scrollbar-visible
+          "
+          style={{
+            maxHeight: `min(${LIST_MAX_HEIGHT}px, calc(100vh - 16px))`,
+            overflowY: 'auto',
+          }}
+        >
+          {options.map((option, index) => (
+            <LanguageOptionItem
+              key={option.value}
+              option={option}
+              isFirst={index === 0}
+              isLast={index === options.length - 1}
+              onClick={() => {
+                onSelect(option.value);
+                onOpenChange(false);
+              }}
+            />
+          ))}
+        </div>
+      }
+    >
+      <div ref={rowRef} className={rowClassName} onClick={stopPropagation}>
+        <span className="sz:text-white">{label}</span>
+        <span className="sz:text-gray-400">{valueLabel}</span>
+      </div>
+    </Popover>
+  );
+};
 
 type CaptionToggleProps = {
   className: string;
