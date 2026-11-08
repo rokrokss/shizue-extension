@@ -7,8 +7,8 @@ rm -rf _site
 mkdir -p _site/img
 node site/render.mjs
 cp src/public/icon.svg _site/
-# Bing Webmaster Tools ownership check, served at /BingSiteAuth.xml.
-cp site/BingSiteAuth.xml _site/
+# Bing Webmaster Tools and Naver Search Advisor ownership checks, served at the site root.
+cp site/BingSiteAuth.xml site/naverb97eeec856c170892f53767e4fc223c4.html _site/
 # The model list the extension fetches (src/lib/modelList.ts).
 cp -R site/models _site/
 cp store/out/screenshot-*.png store/out/github-social-1280x640.png _site/img/
