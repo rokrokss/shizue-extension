@@ -1,4 +1,7 @@
-import { getTranslationTargetLanguage } from '@/entrypoints/background/states/language';
+import {
+  getTranslationTargetLanguage,
+  getTranslationTones,
+} from '@/entrypoints/background/states/language';
 import {
   getConnectionModeFor,
   getCurrentAnthropicKey,
@@ -26,6 +29,7 @@ import { cacheTranslations, getCachedTranslations } from '@/lib/indexDB';
 import { warmUpChatGPT } from '@/services/background/chatgpt';
 import { rateLimitWaitMs } from '@/lib/rateLimit';
 import { trackTokenUsage } from '@/lib/tokenUsageTracker';
+import { translationCacheLanguage, translationToneFor } from '@/lib/translationTone';
 import { parseWordMeaning, WORD_MEANING_JSON_SCHEMA, WordMeaning } from '@/lib/wordLookup';
 import { VideoMetadata } from '@/lib/youtube';
 import { debugLog, errorLog } from '@/logs';
@@ -50,7 +54,8 @@ interface HtmlTranslationsResult {
   error?: string;
 }
 
-// Saved translations are found by model, target language and snippet, never by the page.
+// Saved translations are found by model, target language (with its tone, lib/translationTone.ts)
+// and snippet, never by the page.
 const translationCacheKey = async (model: string, language: string, text: string) => {
   const bytes = new TextEncoder().encode(`${model}\u0000${language}\u0000${text}`);
   const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', bytes));
@@ -517,8 +522,10 @@ export class TranslationHandler {
     try {
       const modelPreset = getTranslationModelPreset();
       const targetLanguage = getTranslationTargetLanguage();
+      const tone = translationToneFor(targetLanguage, getTranslationTones());
+      const language = translationCacheLanguage(targetLanguage, tone);
       const keys = await Promise.all(
-        textBatch.map((text) => translationCacheKey(modelPreset.modelName, targetLanguage, text))
+        textBatch.map((text) => translationCacheKey(modelPreset.modelName, language, text))
       );
       const translatedTexts: (string | null | undefined)[] = await getCachedTranslations(keys).catch(
         (error) => {
@@ -604,9 +611,15 @@ export class TranslationHandler {
     context?: PageContext
   ): Promise<HtmlTranslationsResult> {
     const targetLanguage = getTranslationTargetLanguage();
+    const tone = translationToneFor(targetLanguage, getTranslationTones());
     const serializedTextBatch = JSON.stringify(textBatch, null, 2);
 
-    const batchPrompt = getHtmlTranslationBatchPrompt(serializedTextBatch, targetLanguage, context);
+    const batchPrompt = getHtmlTranslationBatchPrompt(
+      serializedTextBatch,
+      targetLanguage,
+      context,
+      tone
+    );
 
     const llm = getModelInstance({
       temperature: 0.1,

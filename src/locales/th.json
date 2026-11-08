@@ -235,7 +235,13 @@
     "agentClearSites": "ลบไซต์ทั้งหมด",
     "agentSiteTips": "เคล็ดลับของไซต์",
     "agentNoTips": "ยังไม่มี",
-    "agentClearTips": "ลบเคล็ดลับทั้งหมด"
+    "agentClearTips": "ลบเคล็ดลับทั้งหมด",
+    "translationTone": "สำนวนการแปล",
+    "translationToneAuto": "อัตโนมัติ (ตามหน้าเว็บ)",
+    "translationToneFormal": "ทางการ",
+    "translationTonePolite": "สุภาพ",
+    "translationTonePlain": "ภาษาเขียนทั่วไป",
+    "translationToneHint": "ใช้กับการแปลหน้าเว็บ ส่วนคำบรรยายวิดีโอและการประชุมจะคงน้ำเสียงของผู้พูดแต่ละคนไว้"
   },
   "time": {
     "justNow": "เมื่อสักครู่",

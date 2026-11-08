@@ -235,7 +235,13 @@
     "agentClearSites": "清除所有网站",
     "agentSiteTips": "网站技巧",
     "agentNoTips": "暂无",
-    "agentClearTips": "清除所有技巧"
+    "agentClearTips": "清除所有技巧",
+    "translationTone": "译文语体",
+    "translationToneAuto": "自动（跟随网页）",
+    "translationToneFormal": "正式敬语",
+    "translationTonePolite": "礼貌体",
+    "translationTonePlain": "书面平叙体",
+    "translationToneHint": "用于网页翻译。视频和会议字幕会保留每位说话者自己的语气。"
   },
   "time": {
     "justNow": "刚刚",

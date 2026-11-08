@@ -235,7 +235,13 @@
     "agentClearSites": "Usuń wszystkie witryny",
     "agentSiteTips": "Wskazówki dla witryn",
     "agentNoTips": "Na razie brak",
-    "agentClearTips": "Usuń wszystkie wskazówki"
+    "agentClearTips": "Usuń wszystkie wskazówki",
+    "translationTone": "Styl tłumaczenia",
+    "translationToneAuto": "Automatycznie (jak strona)",
+    "translationToneFormal": "oficjalny",
+    "translationTonePolite": "uprzejmy",
+    "translationTonePlain": "neutralny, pisany",
+    "translationToneHint": "Dotyczy tłumaczenia stron. Napisy w filmach i spotkaniach zachowują sposób mówienia każdej osoby."
   },
   "time": {
     "justNow": "przed chwilą",

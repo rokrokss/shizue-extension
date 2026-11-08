@@ -235,7 +235,13 @@
     "agentClearSites": "Alle Websites entfernen",
     "agentSiteTips": "Website-Tipps",
     "agentNoTips": "Noch keine",
-    "agentClearTips": "Alle Tipps entfernen"
+    "agentClearTips": "Alle Tipps entfernen",
+    "translationTone": "Stil der Übersetzung",
+    "translationToneAuto": "Automatisch (wie die Seite)",
+    "translationToneFormal": "förmlich",
+    "translationTonePolite": "höflich",
+    "translationTonePlain": "sachlich, Schriftsprache",
+    "translationToneHint": "Gilt für die Seitenübersetzung. Video- und Meeting-Untertitel behalten den Ton der Sprechenden."
   },
   "time": {
     "justNow": "gerade eben",

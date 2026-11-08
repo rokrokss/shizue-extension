@@ -235,7 +235,13 @@
     "agentClearSites": "Удалить все сайты",
     "agentSiteTips": "Советы для сайтов",
     "agentNoTips": "Пока нет",
-    "agentClearTips": "Удалить все советы"
+    "agentClearTips": "Удалить все советы",
+    "translationTone": "Стиль перевода",
+    "translationToneAuto": "Авто (как на странице)",
+    "translationToneFormal": "официальный",
+    "translationTonePolite": "вежливый",
+    "translationTonePlain": "нейтральный, письменный",
+    "translationToneHint": "Для перевода страниц. Субтитры видео и встреч сохраняют манеру речи каждого говорящего."
   },
   "time": {
     "justNow": "только что",

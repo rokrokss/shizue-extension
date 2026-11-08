@@ -235,7 +235,13 @@
     "agentClearSites": "すべてのサイトを削除",
     "agentSiteTips": "サイトごとのコツ",
     "agentNoTips": "まだありません",
-    "agentClearTips": "すべてのコツを削除"
+    "agentClearTips": "すべてのコツを削除",
+    "translationTone": "翻訳の文体",
+    "translationToneAuto": "自動（ページに合わせる）",
+    "translationToneFormal": "改まった丁寧体",
+    "translationTonePolite": "丁寧体",
+    "translationTonePlain": "常体",
+    "translationToneHint": "ページ翻訳で使います。動画や会議の字幕は、話し手それぞれの口調のままです。"
   },
   "time": {
     "justNow": "たった今",

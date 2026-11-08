@@ -235,7 +235,13 @@
     "agentClearSites": "사이트 모두 지우기",
     "agentSiteTips": "사이트별 요령",
     "agentNoTips": "아직 없습니다",
-    "agentClearTips": "요령 모두 지우기"
+    "agentClearTips": "요령 모두 지우기",
+    "translationTone": "번역 말투",
+    "translationToneAuto": "자동 (페이지에 맞춰)",
+    "translationToneFormal": "격식 존댓말",
+    "translationTonePolite": "존댓말",
+    "translationTonePlain": "글말",
+    "translationToneHint": "페이지 번역에 써요. 영상·회의 자막은 말하는 사람의 말투를 그대로 살려요."
   },
   "usage": {
     "title": "토큰 사용량",

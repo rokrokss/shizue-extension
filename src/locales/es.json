@@ -235,7 +235,13 @@
     "agentClearSites": "Quitar todos los sitios",
     "agentSiteTips": "Consejos de sitios",
     "agentNoTips": "Aún no hay ninguno",
-    "agentClearTips": "Quitar todos los consejos"
+    "agentClearTips": "Quitar todos los consejos",
+    "translationTone": "Estilo de la traducción",
+    "translationToneAuto": "Automático (según la página)",
+    "translationToneFormal": "formal",
+    "translationTonePolite": "cortés",
+    "translationTonePlain": "neutro, escrito",
+    "translationToneHint": "Se aplica a la traducción de páginas. Los subtítulos de vídeos y reuniones conservan la forma de hablar de cada persona."
   },
   "time": {
     "justNow": "justo ahora",

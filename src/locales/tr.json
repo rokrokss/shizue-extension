@@ -235,7 +235,13 @@
     "agentClearSites": "Tüm siteleri kaldır",
     "agentSiteTips": "Site ipuçları",
     "agentNoTips": "Henüz yok",
-    "agentClearTips": "Tüm ipuçlarını kaldır"
+    "agentClearTips": "Tüm ipuçlarını kaldır",
+    "translationTone": "Çeviri üslubu",
+    "translationToneAuto": "Otomatik (sayfaya göre)",
+    "translationToneFormal": "resmî",
+    "translationTonePolite": "kibar",
+    "translationTonePlain": "yalın, yazı dili",
+    "translationToneHint": "Sayfa çevirisi için geçerlidir. Video ve toplantı altyazıları her konuşanın kendi üslubunu korur."
   },
   "time": {
     "justNow": "az önce",

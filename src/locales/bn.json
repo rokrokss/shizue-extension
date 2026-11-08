@@ -235,7 +235,13 @@
     "agentClearSites": "সব সাইট সরান",
     "agentSiteTips": "সাইটের টিপ",
     "agentNoTips": "এখনো নেই",
-    "agentClearTips": "সব টিপ সরান"
+    "agentClearTips": "সব টিপ সরান",
+    "translationTone": "অনুবাদের ভঙ্গি",
+    "translationToneAuto": "স্বয়ংক্রিয় (পৃষ্ঠা অনুযায়ী)",
+    "translationToneFormal": "আনুষ্ঠানিক",
+    "translationTonePolite": "ভদ্র",
+    "translationTonePlain": "সাধারণ লিখিত",
+    "translationToneHint": "পৃষ্ঠা অনুবাদে ব্যবহার হয়। ভিডিও ও মিটিংয়ের ক্যাপশনে প্রত্যেক বক্তার নিজের ভঙ্গি থাকে।"
   },
   "time": {
     "justNow": "এইমাত্র",

@@ -235,7 +235,13 @@
     "agentClearSites": "सभी साइटें हटाएँ",
     "agentSiteTips": "साइट के सुझाव",
     "agentNoTips": "अभी कोई नहीं",
-    "agentClearTips": "सभी सुझाव हटाएँ"
+    "agentClearTips": "सभी सुझाव हटाएँ",
+    "translationTone": "अनुवाद की शैली",
+    "translationToneAuto": "अपने-आप (पेज के अनुसार)",
+    "translationToneFormal": "औपचारिक",
+    "translationTonePolite": "विनम्र",
+    "translationTonePlain": "सादा, लिखित",
+    "translationToneHint": "पेज अनुवाद पर लागू होता है। वीडियो और मीटिंग कैप्शन हर बोलने वाले का अपना लहजा रखते हैं।"
   },
   "time": {
     "justNow": "अभी-अभी",

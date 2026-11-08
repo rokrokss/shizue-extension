@@ -235,7 +235,13 @@
     "agentClearSites": "Remover todos os sites",
     "agentSiteTips": "Dicas de sites",
     "agentNoTips": "Ainda nenhuma",
-    "agentClearTips": "Remover todas as dicas"
+    "agentClearTips": "Remover todas as dicas",
+    "translationTone": "Estilo da tradução",
+    "translationToneAuto": "Automático (conforme a página)",
+    "translationToneFormal": "formal",
+    "translationTonePolite": "cortês",
+    "translationTonePlain": "neutro, escrito",
+    "translationToneHint": "Aplica-se à tradução de páginas. As legendas de vídeos e reuniões mantêm a forma de falar de cada pessoa."
   },
   "time": {
     "justNow": "agora mesmo",

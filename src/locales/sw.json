@@ -235,7 +235,13 @@
     "agentClearSites": "Ondoa tovuti zote",
     "agentSiteTips": "Vidokezo vya tovuti",
     "agentNoTips": "Bado hakuna",
-    "agentClearTips": "Ondoa vidokezo vyote"
+    "agentClearTips": "Ondoa vidokezo vyote",
+    "translationTone": "Mtindo wa tafsiri",
+    "translationToneAuto": "Otomatiki (kufuata ukurasa)",
+    "translationToneFormal": "rasmi",
+    "translationTonePolite": "la heshima",
+    "translationTonePlain": "la kawaida, la maandishi",
+    "translationToneHint": "Inatumika kwa tafsiri ya kurasa. Manukuu ya video na mikutano yanabaki na namna ya kuzungumza ya kila mzungumzaji."
   },
   "time": {
     "justNow": "sasa hivi",

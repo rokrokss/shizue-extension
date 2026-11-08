@@ -1,7 +1,12 @@
-import { STORAGE_LANGUAGE, STORAGE_TRANSLATE_TARGET_LANGUAGE } from '@/config/constants';
+import {
+  STORAGE_LANGUAGE,
+  STORAGE_TRANSLATE_TARGET_LANGUAGE,
+  STORAGE_TRANSLATION_TONE,
+} from '@/config/constants';
 import i18n from '@/i18n';
 import { determineAppLanguage, getI8NLanguage } from '@/lib/language';
 import { atomWithChromeStorage } from '@/lib/atomWithChromeStorage';
+import type { TranslationTones } from '@/lib/translationTone';
 import { useAtom, useAtomValue } from 'jotai';
 
 export type Language =
@@ -58,4 +63,12 @@ export const useLanguage = () => {
 };
 
 export const useTranslateTargetLanguageValue = () => useAtomValue(targetLanguageAtom);
+
+// Page translation's sentence style for Korean and Japanese; a language left out is "auto".
+export const translationTonesAtom = atomWithChromeStorage<TranslationTones>(
+  STORAGE_TRANSLATION_TONE,
+  {}
+);
+
+export const useTranslationTones = () => useAtom(translationTonesAtom);
 export const useTranslateTargetLanguage = () => useAtom(targetLanguageAtom);

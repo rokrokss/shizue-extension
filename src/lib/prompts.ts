@@ -5,6 +5,7 @@ import type { PageAttachment } from '@/lib/indexDB';
 import type { TranslationContext } from '@/lib/liveCaption/types';
 import { numberLines } from '@/lib/numberedLines';
 import { numberPageLines } from '@/lib/pageLines';
+import { toneRule, type TranslationTone } from '@/lib/translationTone';
 import { netflixVideoId } from '@/lib/videoTranscript';
 import { VideoMetadata } from '@/lib/youtube';
 import { debugLog } from '@/logs';
@@ -550,7 +551,8 @@ Use it only to understand the subject, names and terms. Translate only the snipp
 export const getHtmlTranslationBatchPrompt = (
   serializedTextBatch: string,
   targetLanguage: Language,
-  context?: PageContext
+  context?: PageContext,
+  tone?: TranslationTone
 ) => {
   debugLog('getHtmlTranslationBatchPrompt', targetLanguage);
   return `You are an expert HTML translator.
@@ -571,7 +573,7 @@ Translate an array of HTML text snippets into **${targetLanguage}**.
    - Do NOT include any explanatory text, markdown formatting (like \`\`\`json), or anything else outside of the JSON object itself.
 4.  **Maintain Order:** The order of translated snippets in the output "translations" array MUST exactly match the order of the input snippets.
 5.  **Placeholders:** Tokens like {{0}} and {{1}} stand for code, formulas, icons or private values (emails, phone numbers, keys) that must not change. Copy every token exactly as written, once each, to where it belongs in the translated sentence, also inside href and title attributes. Keep every link's href as it is.
-${pageContextSection(context)}
+${tone ? `6.  **Tone:** ${toneRule(tone)}\n` : ''}${pageContextSection(context)}
 ===Input HTML Snippets (JSON array)===
 ${serializedTextBatch}
 

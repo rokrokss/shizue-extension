@@ -235,7 +235,13 @@
     "agentClearSites": "Remove all sites",
     "agentSiteTips": "Site tips",
     "agentNoTips": "No tips yet",
-    "agentClearTips": "Remove all tips"
+    "agentClearTips": "Remove all tips",
+    "translationTone": "Translation style",
+    "translationToneAuto": "Auto (follow the page)",
+    "translationToneFormal": "formal",
+    "translationTonePolite": "polite",
+    "translationTonePlain": "plain, written",
+    "translationToneHint": "Applies to page translation. Video and meeting captions keep each speaker's own way of talking."
   },
   "usage": {
     "title": "Token Usage",

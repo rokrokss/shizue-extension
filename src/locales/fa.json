@@ -235,7 +235,13 @@
     "agentClearSites": "حذف همهٔ سایت‌ها",
     "agentSiteTips": "نکته‌های سایت",
     "agentNoTips": "هنوز چیزی نیست",
-    "agentClearTips": "حذف همهٔ نکته‌ها"
+    "agentClearTips": "حذف همهٔ نکته‌ها",
+    "translationTone": "لحن ترجمه",
+    "translationToneAuto": "خودکار (مطابق صفحه)",
+    "translationToneFormal": "رسمی",
+    "translationTonePolite": "مؤدبانه",
+    "translationTonePlain": "نوشتاری ساده",
+    "translationToneHint": "برای ترجمهٔ صفحه به کار می‌رود. زیرنویس ویدیو و جلسه لحن هر گوینده را حفظ می‌کند."
   },
   "time": {
     "justNow": "همین الان",

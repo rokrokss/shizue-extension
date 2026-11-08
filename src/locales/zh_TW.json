@@ -235,7 +235,13 @@
     "agentClearSites": "清除所有網站",
     "agentSiteTips": "網站技巧",
     "agentNoTips": "尚無",
-    "agentClearTips": "清除所有技巧"
+    "agentClearTips": "清除所有技巧",
+    "translationTone": "譯文語體",
+    "translationToneAuto": "自動（依照網頁）",
+    "translationToneFormal": "正式敬語",
+    "translationTonePolite": "禮貌體",
+    "translationTonePlain": "書面平敘體",
+    "translationToneHint": "用於網頁翻譯。影片和會議字幕會保留每位說話者自己的語氣。"
   },
   "time": {
     "justNow": "剛剛",

@@ -126,6 +126,8 @@ export const STORAGE_TOGGLE_HIDDEN_SITE_LIST = 'TOGGLE_HIDDEN_SITE_LIST';
 export const STORAGE_PAGE_TRANSLATION_MODE = 'PAGE_TRANSLATION_MODE';
 // Page translation sends emails, phone numbers, card numbers and API keys as placeholders (on unless false).
 export const STORAGE_TRANSLATION_MASK_PRIVATE = 'TRANSLATION_MASK_PRIVATE';
+// The sentence style page translation writes Korean and Japanese in, per language (lib/translationTone.ts).
+export const STORAGE_TRANSLATION_TONE = 'TRANSLATION_TONE';
 // chrome.storage.session: the tab showing the panel page where there is no side panel, and the page
 // tab it was last opened from.
 export const STORAGE_PANEL_TAB = 'PANEL_TAB';

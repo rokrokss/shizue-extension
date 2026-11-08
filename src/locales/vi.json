@@ -235,7 +235,13 @@
     "agentClearSites": "Xóa tất cả trang",
     "agentSiteTips": "Mẹo theo trang",
     "agentNoTips": "Chưa có",
-    "agentClearTips": "Xóa tất cả mẹo"
+    "agentClearTips": "Xóa tất cả mẹo",
+    "translationTone": "Văn phong bản dịch",
+    "translationToneAuto": "Tự động (theo trang)",
+    "translationToneFormal": "trang trọng",
+    "translationTonePolite": "lịch sự",
+    "translationTonePlain": "trung tính, văn viết",
+    "translationToneHint": "Áp dụng cho dịch trang. Phụ đề video và cuộc họp giữ nguyên cách nói của từng người."
   },
   "time": {
     "justNow": "vừa xong",

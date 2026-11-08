@@ -235,7 +235,13 @@
     "agentClearSites": "إزالة كل المواقع",
     "agentSiteTips": "نصائح المواقع",
     "agentNoTips": "لا شيء بعد",
-    "agentClearTips": "إزالة كل النصائح"
+    "agentClearTips": "إزالة كل النصائح",
+    "translationTone": "أسلوب الترجمة",
+    "translationToneAuto": "تلقائي (حسب الصفحة)",
+    "translationToneFormal": "رسمي",
+    "translationTonePolite": "مهذب",
+    "translationTonePlain": "كتابي محايد",
+    "translationToneHint": "يُستخدم في ترجمة الصفحات. تحتفظ ترجمات الفيديو والاجتماعات بأسلوب كل متحدث."
   },
   "time": {
     "justNow": "الآن",

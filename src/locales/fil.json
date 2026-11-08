@@ -235,7 +235,13 @@
     "agentClearSites": "Alisin ang lahat ng site",
     "agentSiteTips": "Mga tip sa site",
     "agentNoTips": "Wala pa",
-    "agentClearTips": "Alisin ang lahat ng tip"
+    "agentClearTips": "Alisin ang lahat ng tip",
+    "translationTone": "Estilo ng salin",
+    "translationToneAuto": "Awtomatiko (ayon sa page)",
+    "translationToneFormal": "pormal",
+    "translationTonePolite": "magalang",
+    "translationTonePlain": "simple, pasulat",
+    "translationToneHint": "Para sa pagsasalin ng page. Pinananatili ng captions ng video at meeting ang paraan ng pagsasalita ng bawat isa."
   },
   "time": {
     "justNow": "ngayon lang",

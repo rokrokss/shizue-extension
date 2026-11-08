@@ -235,7 +235,13 @@
     "agentClearSites": "Retirer tous les sites",
     "agentSiteTips": "Astuces par site",
     "agentNoTips": "Aucune pour l’instant",
-    "agentClearTips": "Retirer toutes les astuces"
+    "agentClearTips": "Retirer toutes les astuces",
+    "translationTone": "Style de traduction",
+    "translationToneAuto": "Automatique (selon la page)",
+    "translationToneFormal": "soutenu",
+    "translationTonePolite": "poli",
+    "translationTonePlain": "neutre, écrit",
+    "translationToneHint": "S'applique à la traduction des pages. Les sous-titres de vidéos et de réunions gardent la façon de parler de chacun."
   },
   "time": {
     "justNow": "à l'instant",
