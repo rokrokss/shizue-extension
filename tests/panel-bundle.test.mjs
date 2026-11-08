@@ -34,7 +34,7 @@ test('opening a new chat does not eagerly load charts, secondary screens, Markdo
   assert.match(eager, /components\/Chat\/ChatInput\.tsx/);
   assert.match(eager, /components\/Chat\/ChatGreeting\.tsx/);
   assert.doesNotMatch(eager, /recharts|react-markdown|remark-gfm|katex|remark-math|pdfjs-dist|src\/locales\//);
-  for (const feature of ['TokenUsageModalContent', 'ThreadListModalContent', 'SettingsModalContent',
+  for (const feature of ['TokenUsageSettings', 'ThreadListModalContent', 'SettingsModalContent',
     'components/Memo/index.tsx', 'Onboarding/Onboarding.tsx']) {
     assert.ok(!eager.includes(feature), `${feature} is back in the initial chat bundle`);
     assert.ok(Object.keys(metafile.inputs).some(path => path.includes(feature)), `${feature} must remain available on demand`);
