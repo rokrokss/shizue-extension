@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.5.4
+
+- Chrome Web Store pages, which Chrome keeps extensions out of, can't be attached, summarized, translated or controlled by the browser agent. The summary button, the Tools menu and Shizue's right-click menu say why instead of failing
+- Fix the reason a browser agent run stopped at once (on a page it can't work on) disappearing from the answer
+
 ## v0.5.3
 
 - An attached tab that goes to another page or changes its title stays attached, and its chip and its row in "Attach tabs" show the new title
