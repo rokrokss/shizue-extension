@@ -6,7 +6,7 @@
 - "Attach tabs" in the Tools menu counts what the next question carries against its limit, like 5 / 5, so you can see why the other tabs are off once it is full. Why a Chrome Web Store tab can't be attached is in its (i)
 - Claude Fable 5.1 makes way for Claude Fable 5.2
 - The recent chats a new chat shows to pick up where you left off no longer have a chat icon, so more of each title fits
-- Fix the "Translation settings" tooltip staying beside the floating button after you close the page's translation settings popup by clicking elsewhere
+- Fix the "Translate settings" tooltip staying beside the floating button after you close the page's translation settings popup by clicking elsewhere
 
 ## v0.5.4
 
