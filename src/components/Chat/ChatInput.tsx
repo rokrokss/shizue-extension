@@ -42,17 +42,20 @@ import { videoKey } from '@/lib/videoTranscript';
 import { currentVideoTime } from '@/lib/videoSeek';
 import type { VideoMoment } from '@/components/Chat';
 import { debugLog } from '@/logs';
-import {
-  FolderOutlined,
-  ScissorOutlined,
-  SmileOutlined,
-  UnorderedListOutlined,
-} from '@ant-design/icons';
+import Icon, { FolderOutlined, SmileOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { Alert, Button, Input, Tooltip } from 'antd';
 import { useAtom, useAtomValue } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+
+// antd has no crop icon: two corner brackets crossing, on the outlined icons' grid and line width.
+const CropOutlined = ({ style }: { style?: React.CSSProperties }) => (
+  <Icon viewBox="64 64 896 896" style={style}>
+    <path d="M272 112h72v568h568v72H272z" />
+    <path d="M112 272h640v640h-72V344H112z" />
+  </Icon>
+);
 
 // The "@word" the caret is at the end of: an @ at the start or after a space, with no space after
 // it, so e-mail addresses don't open the tab list.
@@ -758,7 +761,7 @@ const ChatInput = ({
                 aria-label={t('chat.captureRegion')}
                 disabled={!imagesSupported}
                 icon={
-                  <ScissorOutlined
+                  <CropOutlined
                     style={{
                       fontSize: '20px',
                       color: imagesSupported ? iconColor : disabledIconColor,
