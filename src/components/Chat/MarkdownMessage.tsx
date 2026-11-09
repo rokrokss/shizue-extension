@@ -124,8 +124,16 @@ const components: Components = {
       );
     }
     if ((kind !== 't' && kind !== 's') || !video) {
+      // A web link opens in a new tab: in the side panel it would otherwise replace the panel.
+      const web = /^https?:\/\//.test(href ?? '');
       return (
-        <a href={href} {...props}>
+        <a
+          href={href}
+          {...props}
+          {...(web
+            ? { target: '_blank', rel: 'noopener noreferrer', className: 'sz:underline sz:underline-offset-2' }
+            : {})}
+        >
           {children}
         </a>
       );
