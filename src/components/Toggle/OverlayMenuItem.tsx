@@ -1,6 +1,6 @@
 import { Theme } from '@/hooks/layout';
 import { Tooltip } from 'antd';
-import { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode, useState } from 'react';
 
 export interface OverlayMenuItemProps {
   icon: ReactNode;
@@ -17,23 +17,24 @@ const OverlayMenuItem = forwardRef<HTMLDivElement, OverlayMenuItemProps>(
     { theme, icon, popoverContent, isPopoverOpen, tooltipMessage, onClick, hideTooltip },
     triggerRef
   ) => {
+    // The tooltip follows the pointer itself. Left to antd, it missed the pointer leaving while
+    // hideTooltip held it shut, and came back with no pointer on it once the popover closed.
+    const [hovering, setHovering] = useState(false);
     return (
       <>
         <Tooltip
           placement="left"
           title={
-            hideTooltip ? null : (
-              <div
-                className={`sz:text-black sz:font-ycom sz:z-2147483647 ${
-                  theme == 'dark' ? 'sz:text-white' : 'sz:text-black'
-                }`}
-              >
-                {tooltipMessage}
-              </div>
-            )
+            <div
+              className={`sz:text-black sz:font-ycom sz:z-2147483647 ${
+                theme == 'dark' ? 'sz:text-white' : 'sz:text-black'
+              }`}
+            >
+              {tooltipMessage}
+            </div>
           }
           color={theme == 'dark' ? '#505362' : 'white'}
-          mouseEnterDelay={0.03}
+          open={hovering && !hideTooltip}
         >
           <div
             className="sz:cursor-pointer sz:rounded-full sz:flex sz:items-center sz:justify-center"
@@ -43,9 +44,11 @@ const OverlayMenuItem = forwardRef<HTMLDivElement, OverlayMenuItemProps>(
               transition: 'background-color 0.1s',
             }}
             onMouseEnter={(e) => {
+              setHovering(true);
               e.currentTarget.style.backgroundColor = 'rgba(203, 251, 246, 0.5)';
             }}
             onMouseLeave={(e) => {
+              setHovering(false);
               e.currentTarget.style.backgroundColor = 'transparent';
             }}
             onClick={(e) => {
