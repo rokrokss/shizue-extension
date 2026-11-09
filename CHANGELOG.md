@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.5.5
+
+- The summary button shows its request and the answer's loading dots as soon as you press it, instead of only once the page or video has been read. It waits while the page is read, so a second press doesn't summarize twice, and pressing it during an answer stops that answer and summarizes at once, like sending a new question
+- "Attach tabs" in the Tools menu counts what the next question carries against its limit, like 5 / 5, so you can see why the other tabs are off once it is full. Why a Chrome Web Store tab can't be attached is in its (i)
+
 ## v0.5.4
 
 - Chrome Web Store pages, which Chrome keeps extensions out of, can't be attached, summarized, translated or controlled by the browser agent. The summary button, the Tools menu and Shizue's right-click menu say why instead of failing
