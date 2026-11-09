@@ -210,17 +210,18 @@ const ChatContainer = ({
                         onApproval={onAgentApproval}
                       />
                     ) : null}
-                    {m.reasoning ? (
+                    {m.reasoning || m.webSearches?.length ? (
                       <ThinkingBlock
-                        reasoning={m.reasoning}
+                        reasoning={m.reasoning ?? ''}
+                        searches={m.webSearches ?? []}
                         thinkingMs={m.thinkingMs}
                         thinking={
                           idx === messages.length - 1 &&
                           !m.done &&
                           !m.onInterrupt &&
                           !m.stopped &&
-                          m.thinkingMs === undefined &&
-                          !m.content.trim()
+                          (Boolean(m.webSearches?.some((step) => !step.done)) ||
+                            (m.thinkingMs === undefined && !m.content.trim()))
                         }
                       />
                     ) : null}
@@ -236,7 +237,7 @@ const ChatContainer = ({
                     ) : idx === messages.length - 1 && !m.done ? (
                       m.content.trim() ? (
                         getMarkdownText(animatedText, true, answerContext(idx))
-                      ) : isRetryButtonVisible || m.reasoning || m.agentRun ? null : (
+                      ) : isRetryButtonVisible || m.reasoning || m.webSearches?.length || m.agentRun ? null : (
                         <div className="sz:flex sz:flex-row sz:items-center sz:justify-start sz:pl-3 sz:text-xl">
                           <DotCycle />
                         </div>
@@ -433,12 +434,6 @@ const ChatContainer = ({
                       </button>
                     ) : null}
                     {m.content}
-                    {m.webSearch ? (
-                      <div className="sz:flex sz:flex-row sz:items-center sz:gap-1 sz:pt-1">
-                        <GlobalOutlined />
-                        <div className="sz:text-sm sz:text-gray-500 sz:pb-[2px]">{t('chat.webSearch')}</div>
-                      </div>
-                    ) : null}
                     {m.attachments?.map((page, pageIdx) => {
                       const row = (
                         <div className="sz:flex sz:flex-row sz:items-center sz:gap-1">

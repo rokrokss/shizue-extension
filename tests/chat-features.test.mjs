@@ -23,7 +23,7 @@ const load = async (source) => {
 };
 const { hasMath, prepareMath } = await load('../src/lib/mathText.ts');
 const { parseChartSpec } = await load('../src/lib/chartSpec.ts');
-const { collectWebSources, orderedWebSources } = await load('../src/lib/webSources.ts');
+const { collectWebSources, orderedWebSources, webSearchTracker } = await load('../src/lib/webSources.ts');
 const { isPdfFile, isTextFile, readTextFile } = await load('../src/lib/tabText.ts');
 const { mergeMemoryFacts, parseMemoryFacts, questionsToRemember, AUTO_MEMORY_MAX_FACTS } = await load(
   '../src/lib/autoMemory.ts'
@@ -135,6 +135,75 @@ test('web sources come from every provider shape, cited first and at most 8', ()
   const many = new Map();
   collectWebSources(Array.from({ length: 12 }, (_, i) => ({ url: `https://e.example/${i}` })), many);
   assert.equal(orderedWebSources(many).length, 8);
+});
+
+test('web searches are followed through every provider shape, placed where they started', () => {
+  const placed = [];
+  const place = (live) => {
+    placed.push(live);
+    return placed.length * 10;
+  };
+
+  // Anthropic: the search starts, its query streams in pieces (one ending mid-escape), then results.
+  const anthropic = webSearchTracker();
+  assert.equal(anthropic.push({ content: [{ type: 'server_tool_use', name: 'web_search', id: 's1', index: 1, input: '' }] }, place), true);
+  assert.deepEqual(anthropic.steps(), [{ id: 's1', done: false, at: 10 }]);
+  anthropic.push({ content: [{ type: 'input_json_delta', index: 1, input: '{"query": "노벨 \\"물' }] }, place);
+  assert.equal(anthropic.steps()[0].query, '노벨 "물');
+  anthropic.push({ content: [{ type: 'input_json_delta', index: 1, input: '리학상\\u' }] }, place);
+  assert.equal(anthropic.steps()[0].query, '노벨 "물', 'a query cut in an escape keeps the last whole one');
+  anthropic.push({ content: [{ type: 'input_json_delta', index: 1, input: '00202026"}' }] }, place);
+  anthropic.push(
+    { content: [{ type: 'web_search_tool_result', tool_use_id: 's1', content: [{ url: 'https://a.example' }, { url: 'https://b.example' }] }] },
+    place
+  );
+  assert.deepEqual(anthropic.steps(), [{ id: 's1', done: true, at: 10, query: '노벨 "물리학상 2026', results: 2 }]);
+  // Text, thinking and another tool's input are not searches; nothing changes.
+  assert.equal(
+    anthropic.push({ content: [{ type: 'text', text: 'x' }, { type: 'thinking', thinking: 'y' }, { type: 'input_json_delta', index: 4, input: '{}' }] }, place),
+    false
+  );
+
+  // OpenAI and ChatGPT: status events while it runs, then the finished call with its query.
+  const openai = webSearchTracker();
+  openai.push({ response_metadata: { tool_outputs: { id: 'ws1', type: 'web_search_call', status: 'in_progress' } } }, place);
+  openai.push({ response_metadata: { tool_outputs: { id: 'ws1', type: 'web_search_call', status: 'searching' } } }, place);
+  assert.deepEqual(openai.steps(), [{ id: 'ws1', done: false, at: 20 }]);
+  openai.push({ response_metadata: { tool_outputs: { id: 'ws1', type: 'web_search_call', status: 'completed' } } }, place);
+  openai.push(
+    {
+      additional_kwargs: {
+        tool_outputs: [
+          { id: 'ws1', type: 'web_search_call', action: { type: 'search', query: 'weather Seoul', sources: [{ url: 'https://w.example' }] } },
+          { id: 'ws2', type: 'web_search_call', action: { type: 'open_page', url: 'https://w.example/today' } },
+          { id: 'fc1', type: 'function_call' },
+        ],
+      },
+    },
+    place
+  );
+  assert.deepEqual(openai.steps(), [
+    { id: 'ws1', done: true, at: 20, query: 'weather Seoul', results: 1 },
+    { id: 'ws2', done: true, url: 'https://w.example/today', at: 30 },
+  ]);
+
+  // Gemini, with the answer: its queries, already done.
+  const gemini = webSearchTracker();
+  gemini.push({ response_metadata: { groundingMetadata: { webSearchQueries: ['a', ' ', 'b'] } } }, place);
+  assert.deepEqual(
+    gemini.steps().map(({ query, done }) => ({ query, done })),
+    [{ query: 'a', done: true }, { query: 'b', done: true }]
+  );
+
+  // OpenRouter, at the end: only how many searches ran.
+  const openrouter = webSearchTracker();
+  const usage = { __raw_response: { usage: { server_tool_use_details: { web_search_requests: 2 } } } };
+  openrouter.push({ additional_kwargs: usage }, place);
+  assert.equal(openrouter.push({ additional_kwargs: usage }, place), false);
+  assert.deepEqual(openrouter.steps().map(({ done, query }) => ({ done, query })), [{ done: true, query: undefined }, { done: true, query: undefined }]);
+
+  // Only the searches seen while running were placed as live: they may move the answer before them.
+  assert.deepEqual(placed, [true, true, false, false, false, false, false]);
 });
 
 test('text and code files are read as attachments; binary and blank ones are not', async () => {

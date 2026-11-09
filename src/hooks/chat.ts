@@ -1,4 +1,4 @@
-import { STORAGE_REASONING_EFFORT } from '@/config/constants';
+import { STORAGE_REASONING_EFFORT, STORAGE_WEB_SEARCH } from '@/config/constants';
 import { threadIdAtom } from '@/hooks/global';
 import { atomWithChromeStorage } from '@/lib/atomWithChromeStorage';
 import type { ReasoningEffort } from '@/lib/reasoning';
@@ -17,6 +17,10 @@ export const isChatIdle = (status: ChatStatus) => status === 'idle';
 // The chat model's thinking effort, kept for the chats after it (the background reads it per answer).
 export const reasoningEffortAtom = atomWithChromeStorage<ReasoningEffort>(STORAGE_REASONING_EFFORT, 'medium');
 export const useReasoningEffort = () => useAtom(reasoningEffortAtom);
+// Web search for chat questions, kept for the chats after it. On, the model searches when a
+// question needs it; the browser agent and local models answer without it all the same.
+export const webSearchAtom = atomWithChromeStorage<boolean>(STORAGE_WEB_SEARCH, true);
+export const useWebSearch = () => useAtom(webSearchAtom);
 export const isChatWaiting = (status: ChatStatus) => status === 'waiting';
 
 // Leaving a thread while it answers stops the answer as the stop button does: with the status

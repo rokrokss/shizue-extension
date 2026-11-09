@@ -10,7 +10,6 @@ import {
   FilePdfOutlined,
   FileSearchOutlined,
   FileTextOutlined,
-  GlobalOutlined,
   HistoryOutlined,
   LoadingOutlined,
   PlaySquareOutlined,
@@ -73,14 +72,12 @@ const UsageRing = ({ value }: { value: number }) => {
   );
 };
 
-// Above the chat box: web search or the browser agent while it is on, a thinking effort other than the default, how
+// Above the chat box: the browser agent while it is on, a thinking effort other than the default, how
 // full a long chat has made the model's context, the tabs, files and pasted text attached to the
 // next message, and the current tab offered as a dashed chip until it is attached.
 const AttachmentChips = ({
   attached,
   suggestion,
-  webSearch,
-  onWebSearchOff,
   browserAgent,
   autoApprove,
   onBrowserAgentOff,
@@ -99,8 +96,6 @@ const AttachmentChips = ({
 }: {
   attached: AttachedItem[];
   suggestion?: chrome.tabs.Tab;
-  webSearch: boolean;
-  onWebSearchOff: () => void;
   browserAgent: boolean;
   // The browser agent doesn't ask before it sends, deletes or pays: the chip warns of it.
   autoApprove: boolean;
@@ -131,7 +126,6 @@ const AttachmentChips = ({
   if (
     attached.length === 0 &&
     !suggestion &&
-    !webSearch &&
     !browserAgent &&
     !findTabs &&
     !searchPast &&
@@ -145,20 +139,6 @@ const AttachmentChips = ({
 
   return (
     <div className="sz:flex sz:flex-wrap sz:shrink-0 sz:gap-1 sz:pt-1 sz:pb-1">
-      {webSearch ? (
-        <Tag
-          icon={<GlobalOutlined />}
-          color="cyan"
-          closable
-          onClose={(e) => {
-            e.preventDefault();
-            onWebSearchOff();
-          }}
-          className="sz:font-ycom sz:m-0 sz:flex sz:items-center"
-        >
-          {t('chat.webSearch')}
-        </Tag>
-      ) : null}
       {browserAgent ? (
         <Tooltip title={autoApprove ? t('chat.autoApproveHint') : t('chat.browserAgentHint')}>
           <Tag

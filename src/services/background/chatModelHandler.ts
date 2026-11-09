@@ -61,7 +61,7 @@ import { chunkParts, effortWithin, isReasoningEffort, ReasoningEffort, thinkTagS
 import { CLOUD_CONTEXT_TOKENS, planCompaction } from '@/lib/chatCompaction';
 import { readStorage, setStorage } from '@/lib/storageBackend';
 import { trackStreamingTokenUsage, trackTokenUsage } from '@/lib/tokenUsageTracker';
-import { collectWebSources, orderedWebSources, WebSource } from '@/lib/webSources';
+import { collectWebSources, orderedWebSources, WebSource, webSearchTracker } from '@/lib/webSources';
 import { type AgentLabels, browserControlMarkSplitter } from '@/lib/browserAgent';
 import { runBrowserAgent } from '@/services/background/browserAgentHandler';
 import { debugLog, errorLog } from '@/logs';
@@ -226,6 +226,19 @@ const agentTask = (history: Message[]) => {
 const asksForWebSearch = (history: Message[]) =>
   Boolean([...history].reverse().find((m) => m.role === 'human')?.webSearch);
 
+// Web search is on by default, so a model whose provider turns down requests with the search tool
+// (an Anthropic organization with web search disabled, a model without the tool) is asked again
+// without it, and from then on until the background restarts.
+const webSearchRefused = new Set<ChatModel>();
+
+// A request the provider turned down as it was made: a 4xx other than a bad key or a rate limit.
+const turnedDown = (err: unknown) => {
+  const e = err as { status?: unknown; response?: { status?: unknown }; message?: unknown } | null;
+  const status = Number(e?.status ?? e?.response?.status);
+  if (Number.isInteger(status)) return status >= 400 && status < 500 && status !== 401 && status !== 429;
+  return /\b(400|403|404|422)\b/.test(String(e?.message ?? ''));
+};
+
 const toModelMessage = (
   m: Message,
   modelName: ChatModel,
@@ -320,7 +333,10 @@ export class ChatModelHandler {
       const modelPreset = getChatModelPreset(modelName);
       const provider = providerFromName(modelPreset.modelName);
       // The model may have been switched to a local one since the question was asked.
-      const webSearch = webSearchRequested && modelSupportsWebSearch(modelPreset.modelName);
+      let webSearch =
+        webSearchRequested &&
+        modelSupportsWebSearch(modelPreset.modelName) &&
+        !webSearchRefused.has(modelPreset.modelName);
       const modelOptions = {
         streaming: true,
         reasoningEffort: await reasoningEffortFor(modelPreset.modelName),
@@ -334,9 +350,6 @@ export class ChatModelHandler {
         promptCache: true,
         modelPreset,
       };
-      const llm = webSearch
-        ? getWebSearchModelInstance(modelOptions)
-        : getModelInstance(modelOptions);
       const local = modelPreset.localModel;
       const { messages: messagesToSend, truncated } =
         local?.kind === 'ollama'
@@ -347,15 +360,38 @@ export class ChatModelHandler {
         await db.messages.update(messageId, { contextTruncated: true });
       }
       debugLog('ChatModelHandler [_executeStreamAndUpdate] messagesForModel:', messagesToSend);
-      const stream = await llm.stream(
-        messagesToSend.map((m) => {
-          if (m.content == '' && provider === 'gemini-api-key') {
-            m.content = ' ';
-          }
-          return m;
-        }),
-        { signal: abortController.signal }
-      );
+      const input = messagesToSend.map((m) => {
+        if (m.content == '' && provider === 'gemini-api-key') {
+          m.content = ' ';
+        }
+        return m;
+      });
+      // The stream with its first chunk read, so that a request turned down for its search tool is
+      // made again without it before anything has been shown.
+      const open = async (search: boolean) => {
+        const llm = search ? getWebSearchModelInstance(modelOptions) : getModelInstance(modelOptions);
+        const iterator = (await llm.stream(input, { signal: abortController.signal }))[Symbol.asyncIterator]();
+        return { iterator, first: await iterator.next() };
+      };
+      let opened: Awaited<ReturnType<typeof open>>;
+      try {
+        opened = await open(webSearch);
+      } catch (err) {
+        if (!webSearch || abortController.signal.aborted || !turnedDown(err)) throw err;
+        debugLog('ChatModelHandler [_executeStreamAndUpdate] web search turned down, asking without it:', err);
+        opened = await open(false);
+        webSearch = false;
+        webSearchRefused.add(modelPreset.modelName);
+      }
+      const { iterator, first } = opened;
+      const stream = async function* () {
+        try {
+          if (!first.done) yield first.value;
+          for (let next = await iterator.next(); !next.done; next = await iterator.next()) yield next.value;
+        } finally {
+          await iterator.return?.();
+        }
+      };
 
       let buffer = '';
       let aggregatedChunk: AIMessageChunk | undefined;
@@ -394,9 +430,39 @@ export class ChatModelHandler {
         }
       };
 
-      for await (const chunk of stream) {
+      // The answer's web searches, shown among its thoughts as they run (ThinkingBlock).
+      const searches = webSearchTracker();
+      // Where a search seen now goes among the thoughts. What the answer said before a search that
+      // is starting led up to it ("Let me search that"): it goes to the thinking, and the answer
+      // starts again after the search.
+      const placeSearch = (live: boolean) => {
+        if (!live) return reasoning.length + reasoningBuffer.length;
+        const said = (fullResponseContent + buffer).trim();
+        if (said) {
+          reasoningBuffer += `${reasoning || reasoningBuffer ? '\n\n' : ''}${said}\n\n`;
+          fullResponseContent = '';
+          buffer = '';
+          thinkingMs = undefined;
+          port.postMessage({ answerRestarted: true });
+          db.messages.update(messageId, { content: '', thinkingMs: undefined }).catch((err) => {
+            errorLog('Failed to update message in DB:', err);
+          });
+        }
+        thinkingStartedAt ??= Date.now();
+        sendReasoning(true);
+        return reasoning.length;
+      };
+
+      for await (const chunk of stream()) {
         if (webSearch) {
           collectWebSources([chunk.content, chunk.response_metadata, chunk.additional_kwargs], sources);
+          if (searches.push(chunk, placeSearch)) {
+            const webSearches = searches.steps();
+            port.postMessage({ webSearches });
+            db.messages.update(messageId, { webSearches }).catch((err) => {
+              errorLog('Failed to update message web searches in DB:', err);
+            });
+          }
         }
         const parts = chunkParts(chunk);
         // OpenRouter's raw chunks were only needed for the thinking and the citations.
@@ -809,6 +875,7 @@ export class ChatModelHandler {
         sources: undefined,
         reasoning: undefined,
         thinkingMs: undefined,
+        webSearches: undefined,
         suggestions: undefined,
         contextUsage: undefined,
         contextCompacted: undefined,

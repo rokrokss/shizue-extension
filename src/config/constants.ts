@@ -92,6 +92,9 @@ export const STORAGE_CHATGPT_CREDENTIALS = 'CHATGPT_CREDENTIALS';
 export const STORAGE_USER_MEMORY = 'USER_MEMORY';
 // How hard the chat model thinks: 'low', 'medium' (the model's default) or 'high' (lib/reasoning.ts).
 export const STORAGE_REASONING_EFFORT = 'REASONING_EFFORT';
+// Whether chat questions go with the provider's web search tool, which the model uses when it
+// needs to (boolean, on by default).
+export const STORAGE_WEB_SEARCH = 'WEB_SEARCH';
 // The browser agent: sites the user allowed it for good (string[]), tips kept per site
 // (AgentSiteTips), and whether it works in a tab of its own behind the user's (boolean).
 export const STORAGE_AGENT_ALLOWED_SITES = 'AGENT_ALLOWED_SITES';

@@ -2,7 +2,7 @@ import { isSelectionActionType } from '@/config/constants';
 import { ActionType } from '@/hooks/global';
 import type { AgentRun } from '@/lib/browserAgent';
 import type { ContextSummary } from '@/lib/chatCompaction';
-import type { WebSource } from '@/lib/webSources';
+import type { WebSearchStep, WebSource } from '@/lib/webSources';
 import Dexie, { Table } from 'dexie';
 
 // A tab, file or pasted text attached to a chat message: its text when the message was sent.
@@ -66,6 +66,8 @@ export interface Message {
   // What the model showed of its thinking before it answered, and for how long it thought.
   reasoning?: string;
   thinkingMs?: number;
+  // The web searches the model ran for this answer, placed among its thoughts.
+  webSearches?: WebSearchStep[];
   // Questions the reader may ask next, offered under a summary.
   suggestions?: string[];
   // The question is about the moment the video (a videoKey) was at when it was asked.

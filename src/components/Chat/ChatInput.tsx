@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import { LONG_PASTE_CHARS, MAX_ATTACHED_TABS, SUMMARY_PAGE_TEXT_MAX_CHARS } from '@/config/constants';
 import { requestPageSummary } from '@/services/pageSummary';
 import { useActiveWebTab } from '@/hooks/activeTab';
-import { ChatStatus, isChatWaiting, useReasoningEffort } from '@/hooks/chat';
+import { ChatStatus, isChatWaiting, useReasoningEffort, useWebSearch } from '@/hooks/chat';
 import { useThemeValue } from '@/hooks/layout';
 import { continueTabsAtom, threadIdAtom } from '@/hooks/global';
 import { draftKeyOf, loadChatDraft, saveChatDraft } from '@/lib/chatDrafts';
@@ -116,15 +116,14 @@ const ChatInput = ({
   // Which of previousPrompts the chat box shows after ↑, until it is edited or sent.
   const [recallIndex, setRecallIndex] = useState<number | null>(null);
   const [mention, setMention] = useState<{ start: number; query: string } | null>(null);
-  // Stays on for the questions after it until it is turned off.
-  const [webSearch, setWebSearch] = useState(false);
+  // The web search setting, kept for the chats after it (on by default).
+  const [webSearchOn, setWebSearch] = useWebSearch();
   // The browser agent does the questions in the tab, until it is turned off. Web search is off
-  // meanwhile: the agent reads the page itself.
+  // meanwhile, the setting kept: the agent reads the page itself.
   const [browserAgent, setBrowserAgent] = useState(false);
   useEffect(() => {
     if (!browserAgentTurnedOn) return;
     setBrowserAgent(true);
-    setWebSearch(false);
     setFindTabs(false);
     setSearchPastOn(false);
   }, [browserAgentTurnedOn]);
@@ -226,6 +225,9 @@ const ChatInput = ({
   const localServer = useLocalServerValue();
   const imagesSupported = modelSupportsImages(chatModel, localServer);
   const webSearchSupported = modelSupportsWebSearch(chatModel);
+  // Whether the next question goes with web search: the setting, unless the model can't search or
+  // the browser agent does the question.
+  const webSearch = webSearchOn && webSearchSupported && !browserAgent;
   const reasoningEfforts = reasoningEffortsFor(chatModel, localServer);
   const reasoningSupported = reasoningEfforts.length > 0;
   // The chosen effort, lowered to the highest the model has; the choice stays for other models.
@@ -236,10 +238,6 @@ const ChatInput = ({
   useEffect(() => {
     if (!imagesSupported) setUploadedImages([]);
   }, [imagesSupported]);
-
-  useEffect(() => {
-    if (!webSearchSupported) setWebSearch(false);
-  }, [webSearchSupported]);
 
   // "Now": questions go with the moment the chat's video is at, read when each is sent. Stays on
   // for the questions after it, like web search; the chip shows the time while it is on.
@@ -820,13 +818,14 @@ const ChatInput = ({
                 webSearch={webSearch}
                 webSearchSupported={webSearchSupported}
                 onToggleWebSearch={() => {
-                  setWebSearch((on) => !on);
-                  setBrowserAgent(false);
+                  // The row is "Turn off web search". Unchecked while the browser agent is on, which
+                  // answers without search, it turns the agent off.
+                  void setWebSearch(!webSearch);
+                  if (!webSearch) setBrowserAgent(false);
                 }}
                 browserAgent={browserAgent}
                 onToggleBrowserAgent={() => {
                   setBrowserAgent((on) => !on);
-                  setWebSearch(false);
                   setFindTabs(false);
                   setSearchPastOn(false);
                 }}
@@ -863,8 +862,6 @@ const ChatInput = ({
         <AttachmentChips
           attached={attached}
           suggestion={suggestedTab}
-          webSearch={webSearch}
-          onWebSearchOff={() => setWebSearch(false)}
           browserAgent={browserAgent}
           autoApprove={autoApprove}
           onBrowserAgentOff={() => setBrowserAgent(false)}

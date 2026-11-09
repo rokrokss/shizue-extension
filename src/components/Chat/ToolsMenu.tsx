@@ -1,4 +1,5 @@
 import { attachRowClass, toolbarButtonStyle } from '@/components/Chat/AttachMenu';
+import InfoBadge from '@/components/Text/InfoBadge';
 import { useAgentBackground } from '@/hooks/browserAgent';
 import { useThemeValue } from '@/hooks/layout';
 import type { ModelOption } from '@/hooks/models';
@@ -98,14 +99,19 @@ const ToolsMenu = ({
       <label className={rowClass(!webSearchSupported)}>
         <GlobalOutlined className="sz:shrink-0" />
         <div className="sz:min-w-0 sz:flex-1">
-          <div className="sz:text-sm">{t('chat.webSearch')}</div>
+          {/* Web search is on by default, so the row turns it off when checked. A button inside the
+              label doesn't toggle the checkbox, so the (i) only shows its text. */}
+          <div className="sz:flex sz:items-center sz:gap-1 sz:text-sm">
+            {t('chat.webSearchOff')}
+            {webSearchSupported ? <InfoBadge text={t('chat.webSearchHint')} /> : null}
+          </div>
           {webSearchSupported ? null : (
             <div className="sz:text-xs sz:text-gray-500">{t('chat.webSearchNotSupported')}</div>
           )}
         </div>
         <input
           type="checkbox"
-          checked={webSearch}
+          checked={!webSearch}
           disabled={!webSearchSupported}
           onChange={onToggleWebSearch}
           className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"

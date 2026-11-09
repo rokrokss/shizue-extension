@@ -15,7 +15,7 @@ const bundle = async (entry) => {
 
 const { chunkParts, thinkTagSplitter, thinkingSeconds } = await bundle('../src/lib/reasoning.ts');
 const { effortWithin } = await bundle('../src/lib/reasoning.ts');
-const { getModelInstance, modelSupportsReasoningEffort, defaultThinkingFor, reasoningEffortsFor } = await bundle('../src/lib/models.ts');
+const { getModelInstance, getWebSearchModelInstance, modelSupportsReasoningEffort, defaultThinkingFor, reasoningEffortsFor } = await bundle('../src/lib/models.ts');
 
 test('Thinking is read from where each provider puts it, apart from the answer', () => {
   // Anthropic thinking blocks.
@@ -148,6 +148,26 @@ test('Extra and Max are offered only for the models that take them, and a choice
   assert.equal(params('claude-haiku', undefined).max_tokens, 16_384);
   assert.equal(params('claude-haiku', 'low').max_tokens, 16_384);
   assert.equal(params('claude-sonnet', undefined).max_tokens, 16_384);
+});
+
+test('With web search, the model decides when to search and keeps its thinking effort', () => {
+  const keys = { openaiKey: 'k', openrouterKey: 'k', anthropicKey: 'k', geminiKey: 'k' };
+  const search = (modelName, connectionMode = 'direct') =>
+    getWebSearchModelInstance({ modelPreset: { modelName, connectionMode, ...keys }, streaming: true, reasoningEffort: 'high' });
+
+  // OpenAI: the search tool moves the request to the Responses API, where the effort has its own shape.
+  const params = search('gpt').invocationParams({});
+  assert.deepEqual(params.tools, [{ type: 'web_search' }]);
+  assert.deepEqual(params.reasoning, { effort: 'high' });
+  assert.equal(params.reasoning_effort, undefined);
+  assert.deepEqual(params.include, ['web_search_call.action.sources']);
+
+  // OpenRouter: its server tool, which the model calls when it needs to, instead of the web plugin
+  // that searched before every answer. The request stays on Chat Completions.
+  const openrouter = search('claude-opus', 'openrouter').invocationParams();
+  assert.deepEqual(openrouter.tools, [{ type: 'openrouter:web_search', parameters: { max_results: 5, max_uses: 5 } }]);
+  assert.equal(openrouter.plugins, undefined);
+  assert.deepEqual(openrouter.reasoning, { effort: 'high' });
 });
 
 test('A chat with a Claude API key caches its turns; one-off requests and other providers send no cache_control', () => {

@@ -26,7 +26,7 @@ import { getDetailedAnalysisPrompt } from '@/lib/prompts';
 import { throttleTrailing } from '@/lib/throttleTrailing';
 import { createThreadLoader } from '@/lib/threadLoader';
 import type { AgentRun } from '@/lib/browserAgent';
-import type { WebSource } from '@/lib/webSources';
+import type { WebSearchStep, WebSource } from '@/lib/webSources';
 import { debugLog, errorLog } from '@/logs';
 import { chatService } from '@/services/chatService';
 import { videoKey } from '@/lib/videoTranscript';
@@ -63,6 +63,7 @@ export interface Message {
   contextTruncated?: boolean;
   reasoning?: string;
   thinkingMs?: number;
+  webSearches?: WebSearchStep[];
   suggestions?: string[];
   videoMoment?: { video: string; seconds: number };
   contextUsage?: number;
@@ -200,6 +201,15 @@ const Chat = () => {
   const markThinkingMs = (thinkingMs: number) =>
     setMessages((cur) => updateAIMessage(cur, { thinkingMs }));
 
+  const showWebSearches = (webSearches: WebSearchStep[]) => {
+    setMessages((cur) => updateAIMessage(cur, { webSearches }));
+    scrollToBottomThrottled();
+  };
+
+  // The answer so far led up to a search and went to the thinking: it starts again after it.
+  const restartAnswer = () =>
+    setMessages((cur) => updateAIMessage(cur, { content: '', thinkingMs: undefined }));
+
   const showAgentRun = (agentRun: AgentRun) => {
     setMessages((cur) => updateAIMessage(cur, { agentRun }));
     scrollToBottomThrottled();
@@ -251,6 +261,8 @@ const Chat = () => {
           onContextTruncated: markContextTruncated,
           onReasoning: appendReasoning,
           onThinkingMs: markThinkingMs,
+          onWebSearches: showWebSearches,
+          onAnswerRestarted: restartAnswer,
           onContextUsage: markContextUsage,
           onSources: showSources,
           onDelta: (delta) => {
@@ -592,6 +604,8 @@ const Chat = () => {
         onContextTruncated: markContextTruncated,
         onReasoning: appendReasoning,
         onThinkingMs: markThinkingMs,
+        onWebSearches: showWebSearches,
+        onAnswerRestarted: restartAnswer,
         onContextUsage: markContextUsage,
         onSources: showSources,
         onDelta: (delta) =>
@@ -648,6 +662,7 @@ const Chat = () => {
       sources: undefined,
       reasoning: undefined,
       thinkingMs: undefined,
+      webSearches: undefined,
       contextUsage: undefined,
       contextCompacted: undefined,
       agentRun: undefined,
@@ -666,6 +681,8 @@ const Chat = () => {
           onContextTruncated: markContextTruncated,
           onReasoning: appendReasoning,
           onThinkingMs: markThinkingMs,
+          onWebSearches: showWebSearches,
+          onAnswerRestarted: restartAnswer,
           onContextUsage: markContextUsage,
           onSources: showSources,
           onDelta: (delta) =>
@@ -802,6 +819,8 @@ const Chat = () => {
         onContextTruncated: markContextTruncated,
         onReasoning: appendReasoning,
         onThinkingMs: markThinkingMs,
+        onWebSearches: showWebSearches,
+        onAnswerRestarted: restartAnswer,
         onContextUsage: markContextUsage,
         onDelta: (delta) =>
           setMessages((cur) => {

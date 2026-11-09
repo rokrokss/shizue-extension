@@ -57,6 +57,10 @@ export type ResponseEvent =
   | { delta: string }
   | { reasoning: string }
   | { annotation: unknown }
+  // A web search as it runs, then the finished call with its query (lib/webSources.ts
+  // webSearchTracker reads both, in the shapes LangChain gives the OpenAI API's).
+  | { searchStatus: { id: unknown; type: 'web_search_call'; status: string } }
+  | { searchCall: unknown }
   | { usage: { input_tokens: number; output_tokens: number; total_tokens: number } };
 
 export async function* responseEvents(body: ReadableStream<Uint8Array> | null): AsyncGenerator<ResponseEvent> {
@@ -91,6 +95,9 @@ export async function* responseEvents(body: ReadableStream<Uint8Array> | null): 
           summaryPart = part;
         }
         if (event.type === 'response.output_text.annotation.added') yield { annotation: event.annotation };
+        const search = /^response\.web_search_call\.(in_progress|searching|completed)$/.exec(event.type);
+        if (search) yield { searchStatus: { id: event.item_id, type: 'web_search_call', status: search[1] } };
+        if (event.type === 'response.output_item.done' && event.item?.type === 'web_search_call') yield { searchCall: event.item };
         if (event.type === 'response.failed' || event.type === 'error') {
           throw new ProviderError(event.response?.error?.code || event.code || 'response_failed', 'ChatGPT could not complete this response.');
         }

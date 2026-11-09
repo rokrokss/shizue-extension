@@ -75,24 +75,33 @@ const throwIfMissing = (key: string | undefined, provider: ApiKeyProvider) => {
 const temperatureFor = (spec: ModelSpec, temperature?: number) =>
   spec.supportsTemperature && temperature !== undefined ? { temperature } : {};
 
-function createOpenAI(spec: ModelSpec, opts: ModelOptions) {
+// `responses`: the request goes to the Responses API, as it does with the web search tool bound.
+function createOpenAI(spec: ModelSpec, opts: ModelOptions, responses = false) {
   const { maxTokens, temperature, streaming, fast, reasoningEffort, jsonSchema, modelPreset } = opts;
   throwIfMissing(modelPreset.openaiKey, 'openai-api-key');
   const lowest = spec.openaiFastEffort ?? 'none';
   const effort = fast || reasoningEffort === 'low' ? lowest : reasoningEffort;
 
   // @langchain/openai only recognizes o-series/gpt-5 as reasoning models, so it would drop
-  // `reasoning` and send the legacy `max_tokens` for gpt-6. Pass the raw API fields instead.
+  // `reasoning` and send the legacy `max_tokens` for gpt-6. Pass the raw API fields instead, in
+  // the shape of the API the request goes to. The Responses API also lists every page a search
+  // looked at, for the answer's sources and the search's result count.
   const instance = new ChatOpenAI({
     model: spec.id,
     apiKey: modelPreset.openaiKey!,
     streaming: Boolean(streaming),
     ...temperatureFor(spec, temperature),
-    modelKwargs: {
-      ...(maxTokens ? { max_completion_tokens: maxTokens } : {}),
-      ...(effort ? { reasoning_effort: effort } : {}),
-      ...(jsonSchema ? { response_format: { type: 'json_object' } } : {}),
-    },
+    modelKwargs: responses
+      ? {
+          ...(maxTokens ? { max_output_tokens: maxTokens } : {}),
+          ...(effort ? { reasoning: { effort } } : {}),
+          include: ['web_search_call.action.sources'],
+        }
+      : {
+          ...(maxTokens ? { max_completion_tokens: maxTokens } : {}),
+          ...(effort ? { reasoning_effort: effort } : {}),
+          ...(jsonSchema ? { response_format: { type: 'json_object' } } : {}),
+        },
   });
 
   debugLog('OpenAI instance created:', { model: spec.id, maxTokens, streaming, fast });
@@ -162,7 +171,10 @@ function createAnthropic(spec: ModelSpec, opts: ModelOptions) {
 }
 
 // OpenRouter speaks the OpenAI Chat Completions API and takes the image_url format for every model.
-// With web search on, its web plugin searches first; the citations come only in the raw chunks.
+// With web search on, the model gets OpenRouter's web search server tool and searches when it needs
+// to (the web plugin, deprecated, searched before every answer); the citations come only in the raw
+// chunks. The tool goes in the raw fields: bound as a tool, it would move the request to the
+// Responses API.
 function createOpenRouter(spec: ModelSpec, opts: ModelOptions, webSearch = false) {
   const { maxTokens, temperature, streaming, fast, reasoningEffort, jsonSchema, modelPreset } = opts;
   throwIfMissing(modelPreset.openrouterKey, 'openrouter-api-key');
@@ -190,7 +202,9 @@ function createOpenRouter(spec: ModelSpec, opts: ModelOptions, webSearch = false
     modelKwargs: {
       ...(reasoning ? { reasoning } : {}),
       ...(jsonSchema ? { response_format: { type: 'json_object' } } : {}),
-      ...(webSearch ? { plugins: [{ id: 'web', max_results: 5 }] } : {}),
+      ...(webSearch
+        ? { tools: [{ type: 'openrouter:web_search', parameters: { max_results: 5, max_uses: 5 } }] }
+        : {}),
     },
   });
 
@@ -302,8 +316,8 @@ export function getWebSearchModelInstance(opts: ModelOptions) {
   if (!spec) throw new Error(`Web search is not available for ${modelName}.`);
   if (connectionMode === 'openrouter') return createOpenRouter(spec, opts, true);
   if (spec.provider === 'openai-api-key') {
-    // The search tool moves the request to the Responses API, which has no `reasoning_effort`.
-    return createOpenAI(spec, { ...opts, reasoningEffort: undefined }).bindTools([{ type: 'web_search' }]);
+    // The search tool moves the request to the Responses API.
+    return createOpenAI(spec, opts, true).bindTools([{ type: 'web_search' }]);
   }
   if (spec.provider === 'gemini-api-key') {
     return createGemini(spec, opts).bindTools([{ googleSearch: {} }]);

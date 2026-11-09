@@ -32,6 +32,9 @@ export class ChatGPTPlanModel extends BaseChatModel {
         // A web search citation; chatModelHandler collects these as the answer's sources.
         ...('annotation' in event ? { additional_kwargs: { annotations: [event.annotation] } } : {}),
         ...('reasoning' in event ? { additional_kwargs: { reasoning_content: event.reasoning } } : {}),
+        // A web search as it runs and once it ran, for the answer's thinking (webSearchTracker).
+        ...('searchStatus' in event ? { response_metadata: { tool_outputs: event.searchStatus } } : {}),
+        ...('searchCall' in event ? { additional_kwargs: { tool_outputs: [event.searchCall] } } : {}),
       });
       yield new ChatGenerationChunk({ text: delta, message });
     }

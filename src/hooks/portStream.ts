@@ -6,7 +6,7 @@ import {
   PORT_STREAM_MESSAGE,
 } from '@/config/constants';
 import type { AgentLabels, AgentRun } from '@/lib/browserAgent';
-import type { WebSource } from '@/lib/webSources';
+import type { WebSearchStep, WebSource } from '@/lib/webSources';
 import { debugLog } from '@/logs';
 import { useCallback, useEffect, useRef } from 'react';
 
@@ -21,6 +21,10 @@ interface StreamOptions {
   // The thinking the model shows before it answers, and how long it thought once it answers.
   onReasoning?: (delta: string) => void;
   onThinkingMs?: (ms: number) => void;
+  // The answer's web searches, whole each time one changes, and the answer written before a
+  // search, moved to the thinking: the answer starts again.
+  onWebSearches?: (steps: WebSearchStep[]) => void;
+  onAnswerRestarted?: () => void;
   // How much of the model's context the request fills (0–1), and whether older turns were folded
   // into the chat's summary for it. Sent before the answer starts.
   onContextUsage?: (usage: number, compacted: boolean) => void;
@@ -55,6 +59,10 @@ export const useChromePortStream = () => {
           opts.onReasoning?.(msg.reasoning);
         } else if ('thinkingMs' in msg) {
           opts.onThinkingMs?.(msg.thinkingMs);
+        } else if ('webSearches' in msg) {
+          opts.onWebSearches?.(msg.webSearches);
+        } else if (msg.answerRestarted) {
+          opts.onAnswerRestarted?.();
         } else if ('agent' in msg) {
           opts.onAgent?.(msg.agent);
         } else if ('contextUsage' in msg) {

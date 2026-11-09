@@ -118,6 +118,19 @@ test('Responses stream preserves deltas and terminal usage; late quota errors an
   const cited = [];
   for await (const event of responseEvents(streamOf([{ type: 'response.output_text.delta', delta: 'A' }, { type: 'response.output_text.annotation.added', annotation }, { type: 'response.completed', response: { usage } }]))) cited.push(event);
   assert.deepEqual(cited, [{ delta: 'A' }, { annotation }, { usage }]);
+  // A web search shows as it runs, then as the finished call with its query; other items don't.
+  const call = { id: 'ws_1', type: 'web_search_call', status: 'completed', action: { type: 'search', query: 'q' } };
+  const searched = [];
+  for await (const event of responseEvents(streamOf([
+    { type: 'response.web_search_call.in_progress', item_id: 'ws_1', output_index: 0 },
+    { type: 'response.web_search_call.searching', item_id: 'ws_1', output_index: 0 },
+    { type: 'response.web_search_call.completed', item_id: 'ws_1', output_index: 0 },
+    { type: 'response.output_item.done', output_index: 0, item: call },
+    { type: 'response.output_item.done', output_index: 1, item: { id: 'msg_1', type: 'message' } },
+    { type: 'response.completed', response: { usage } },
+  ]))) searched.push(event);
+  const status = (s) => ({ searchStatus: { id: 'ws_1', type: 'web_search_call', status: s } });
+  assert.deepEqual(searched, [status('in_progress'), status('searching'), status('completed'), { searchCall: call }, { usage }]);
   // The thinking summary comes before the answer; each of its parts starts a new paragraph.
   const summary = (item_id, summary_index, delta) => ({ type: 'response.reasoning_summary_text.delta', item_id, output_index: 0, summary_index, delta });
   const thought = [];
