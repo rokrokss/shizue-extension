@@ -7,6 +7,7 @@
 - An answer from a web search cites each page only where it first comes, instead of after every paragraph; the page stays listed under Sources. Citations now look like the Sources list, a link icon and the site in gray, instead of underlined links in brackets
 - Web search through OpenRouter uses its new search tool, and OpenAI models keep their reasoning effort while they search
 - Translate Mode, Memo and Word list are now together in one Study menu on the toolbar
+- The open tabs to attach moved from the Attach menu to "Attach tabs" in the Tools menu, next to "Find in open tabs"
 - In a chat with Translate Mode on, answers come from the translation model
 - Token usage moved from the chat toolbar to the bottom of Settings → Models
 - The button that captures a part of the page now shows a crop mark instead of scissors
