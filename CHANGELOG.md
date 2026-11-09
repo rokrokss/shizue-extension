@@ -2,14 +2,16 @@
 
 ## v0.5.1
 
-- Web search is on by default: the model searches only when the question needs it, and you can see each search (what it looked up, the pages it opened, how many results) in the thinking block as it happens. Turn it off with "Turn off web search" in the Tools menu
+- Web search is on by default: the model searches only when the question needs it, and you can see each search (what it looked up, the pages it opened, how many results) in the thinking block as it happens. Click a search to list the pages it found and open one in a new tab. Turn it off with "Turn off web search" in the Tools menu
+- The thinking block can be folded while the model is still working, and keeps its newest line in view until you scroll up
 - Web search through OpenRouter uses its new search tool, and OpenAI models keep their reasoning effort while they search
 - Translate Mode, Memo and Word list are now together in one Study menu on the toolbar
 - In a chat with Translate Mode on, answers come from the translation model
 - Token usage moved from the chat toolbar to the bottom of Settings → Models
 - Setting descriptions and the file types you can attach are now in (i) tooltips, and an empty browser control list is hidden
 - Fix the caption menu's language list being hidden under YouTube's top bar or overlapping the menu
-- Fix wrong or awkward translations in the interface, in 23 languages
+- Fix links in answers opening inside the side panel instead of a new tab; they are now underlined
+- Fix wrong or awkward translations in the interface, in 23 languages, and the missing period at the end of some hints
 - Fix tooltips flickering when the Tools, Study or Attach menu closes
 - Fix Settings running off the side panel when it is taller than the panel; it now scrolls inside it
 
