@@ -45,6 +45,7 @@ const MODEL_COLORS = {
   'gemini-3.8-flash': '#FFF6B7',
   'gemini-3.5-flash-lite': '#CE9FFC',
   'claude-fable-5-1': '#B08968',
+  'claude-fable-5-2': '#B08968',
   'claude-opus-5-5': '#C4A484',
   'claude-sonnet-5': '#DCC6B7',
   'claude-sonnet-5-5': '#DCC6B7',

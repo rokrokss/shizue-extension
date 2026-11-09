@@ -105,7 +105,7 @@ Shizue provides a free, open-source alternative to commercial services (e.g., [S
 ### 🤖 Multiple AI Model Support:
   - **OpenAI**: GPT-6.1 Sol, GPT-6 Astra, GPT-6.1 Terra, GPT-6 Luna
   - **Google**: Gemini 4 Argon, Gemini 3.8 Flash, Gemini 3.5 Flash-Lite, Gemma 4 31B
-  - **Anthropic**: Claude Fable 5.1, Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5
+  - **Anthropic**: Claude Fable 5.2, Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5
   - **DeepSeek** (OpenRouter only): DeepSeek V4 Pro, DeepSeek V4.1 Flash
   - **OpenRouter**: all of the above with a single API key
   - **Local models**: any model you run with Ollama, LM Studio, or llama.cpp, with no API key

@@ -88,14 +88,14 @@
     },
     {
       "slot": "claude-fable",
-      "id": "claude-fable-5-1",
-      "label": "Claude Fable 5.1",
+      "id": "claude-fable-5-2",
+      "label": "Claude Fable 5.2",
       "provider": "anthropic-api-key",
       "supportsTemperature": false,
       "supportsImages": true,
       "defaultThinking": "high",
       "higherEfforts": ["xhigh", "max"],
-      "openrouter": { "id": "anthropic/claude-fable-5.1", "fastEffort": "low" }
+      "openrouter": { "id": "anthropic/claude-fable-5.2", "fastEffort": "low" }
     },
     {
       "slot": "claude-opus",
