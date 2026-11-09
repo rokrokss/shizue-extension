@@ -95,7 +95,12 @@ const ToolsMenu = ({
   };
 
   const content = (
-    <div className="sz-tools-menu sz:font-ycom sz:w-52 sz:flex sz:flex-col">
+    // The checkboxes are drawn by Chrome after the color scheme, so it follows Shizue's theme here.
+    <div
+      className={`sz-tools-menu sz:font-ycom sz:w-52 sz:flex sz:flex-col ${
+        theme == 'dark' ? 'sz:[color-scheme:dark]' : 'sz:[color-scheme:light]'
+      }`}
+    >
       <label className={rowClass(!webSearchSupported)}>
         <GlobalOutlined className="sz:shrink-0" />
         <div className="sz:min-w-0 sz:flex-1">

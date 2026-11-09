@@ -98,7 +98,13 @@ const AttachMenu = ({
 
   const content = (
     // Narrow enough to stay centered over the paperclip, inside a side panel at its 320px minimum.
-    <div className="sz-attach-menu sz:font-ycom sz:w-52 sz:flex sz:flex-col sz:gap-1">
+    // Its checkboxes and scroll bar are drawn by Chrome after the color scheme, which follows
+    // Shizue's theme here.
+    <div
+      className={`sz-attach-menu sz:font-ycom sz:w-52 sz:flex sz:flex-col sz:gap-1 ${
+        theme == 'dark' ? 'sz:[color-scheme:dark]' : 'sz:[color-scheme:light]'
+      }`}
+    >
       <div className="sz:flex sz:items-center sz:justify-between sz:gap-2 sz:px-2">
         <div className="sz:min-w-0 sz:truncate sz:text-xs sz:text-gray-500">{t('chat.openTabs')}</div>
         {readableTabs.length > 1 ? (
