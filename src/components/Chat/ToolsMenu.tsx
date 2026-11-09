@@ -16,7 +16,6 @@ import {
   BlockOutlined,
   BulbOutlined,
   ControlOutlined,
-  DownOutlined,
   FileSearchOutlined,
   GlobalOutlined,
   HistoryOutlined,
@@ -93,8 +92,6 @@ const ToolsMenu = ({
   // closing the menu doesn't flash it.
   const [hint, setHint] = useState(false);
   const [tabs, setTabs] = useState<chrome.tabs.Tab[]>([]);
-  // The tab list folds under its row, so the tools after it stay in view.
-  const [tabsShown, setTabsShown] = useState(false);
   const [agentBackground, setAgentBackground] = useAgentBackground();
   // Its tabs go in a group of their own when the user grants tab groups, asked here inside the
   // click; without them it works all the same.
@@ -149,69 +146,58 @@ const ToolsMenu = ({
         />
       </label>
       {/* The web tabs open in this window, to attach to the next question or take off. */}
-      <button
-        type="button"
-        aria-expanded={tabsShown}
-        onClick={() => setTabsShown((shown) => !shown)}
-        className={rowClass(false)}
-      >
+      <div className="sz-attach-tabs sz:flex sz:items-center sz:gap-2 sz:px-2 sz:py-1.5">
         <BlockOutlined className="sz:shrink-0" />
         <div className="sz:min-w-0 sz:flex-1 sz:text-sm">{t('chat.attachTabs')}</div>
         {attachedTabIds.length > 0 ? (
           <span className="sz:text-sm sz:text-sz-cyan">{attachedTabIds.length}</span>
         ) : null}
-        <DownOutlined
-          className={`sz:shrink-0 sz:text-xs sz:text-gray-500 sz:transition-transform ${
-            tabsShown ? 'sz:rotate-180' : ''
-          }`}
-        />
-      </button>
-      {tabsShown ? (
-        <div className="sz:pl-6 sz:flex sz:flex-col">
-          {readableTabs.length > 1 ? (
-            <div className="sz:flex sz:justify-end sz:px-2">
-              <button
-                type="button"
-                disabled={!clearsAll && full}
-                onClick={() => onToggleAllTabs(readableTabs, !clearsAll)}
-                className="sz:text-xs sz:text-sz-cyan sz:rounded-sm sz:cursor-pointer sz:hover:underline sz:underline-offset-2 sz:focus-visible:outline-2 sz:focus-visible:outline-sz-cyan sz:disabled:opacity-50 sz:disabled:cursor-not-allowed sz:disabled:no-underline"
-              >
-                {clearsAll ? t('chat.deselectAllTabs') : t('chat.selectAllTabs')}
-              </button>
-            </div>
-          ) : null}
-          <div className="sz:max-h-64 sz:overflow-y-auto sz:flex sz:flex-col">
-            {tabs.length === 0 ? (
-              <div className="sz:text-xs sz:text-gray-500 sz:px-2 sz:py-2">
-                {t('chat.noOpenTabs')}
-              </div>
-            ) : (
-              tabs.map((tab) => {
-                const attached = attachedTabIds.includes(tab.id!);
-                // A discarded tab has no page to read until it is opened again.
-                const disabled = !attached && (full || Boolean(tab.discarded));
-                return (
-                  <label key={tab.id} className={rowClass(disabled)}>
-                    <TabSummary tab={tab} />
-                    <input
-                      type="checkbox"
-                      checked={attached}
-                      disabled={disabled}
-                      onChange={(e) => onToggleTab(tab, e.target.checked)}
-                      className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
-                    />
-                  </label>
-                );
-              })
-            )}
+      </div>
+      <div className="sz:pl-6 sz:flex sz:flex-col">
+        {readableTabs.length > 1 ? (
+          <div className="sz:flex sz:justify-end sz:px-2">
+            <button
+              type="button"
+              disabled={!clearsAll && full}
+              onClick={() => onToggleAllTabs(readableTabs, !clearsAll)}
+              className="sz:text-xs sz:text-sz-cyan sz:rounded-sm sz:cursor-pointer sz:hover:underline sz:underline-offset-2 sz:focus-visible:outline-2 sz:focus-visible:outline-sz-cyan sz:disabled:opacity-50 sz:disabled:cursor-not-allowed sz:disabled:no-underline"
+            >
+              {clearsAll ? t('chat.deselectAllTabs') : t('chat.selectAllTabs')}
+            </button>
           </div>
-          {full ? (
-            <div className="sz:text-xs sz:text-gray-500 sz:px-2">
-              {t('chat.attachLimit', { max: MAX_ATTACHED_TABS })}
+        ) : null}
+        {/* Four tabs show, each row 48px high; the rest scroll. */}
+        <div className="sz-attach-tabs-list sz:max-h-48 sz:overflow-y-auto sz:flex sz:flex-col">
+          {tabs.length === 0 ? (
+            <div className="sz:text-xs sz:text-gray-500 sz:px-2 sz:py-2">
+              {t('chat.noOpenTabs')}
             </div>
-          ) : null}
+          ) : (
+            tabs.map((tab) => {
+              const attached = attachedTabIds.includes(tab.id!);
+              // A discarded tab has no page to read until it is opened again.
+              const disabled = !attached && (full || Boolean(tab.discarded));
+              return (
+                <label key={tab.id} className={rowClass(disabled)}>
+                  <TabSummary tab={tab} />
+                  <input
+                    type="checkbox"
+                    checked={attached}
+                    disabled={disabled}
+                    onChange={(e) => onToggleTab(tab, e.target.checked)}
+                    className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
+                  />
+                </label>
+              );
+            })
+          )}
         </div>
-      ) : null}
+        {full ? (
+          <div className="sz:text-xs sz:text-gray-500 sz:px-2">
+            {t('chat.attachLimit', { max: MAX_ATTACHED_TABS })}
+          </div>
+        ) : null}
+      </div>
       <label className={rowClass(false)}>
         <FileSearchOutlined className="sz:shrink-0" />
         <div className="sz:min-w-0 sz:flex-1">
