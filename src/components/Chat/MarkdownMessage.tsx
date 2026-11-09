@@ -10,8 +10,8 @@ import { linkPageLines, pageLines } from '@/lib/pageLines';
 import { seekPageLine } from '@/lib/pageSeek';
 import { seekVideo } from '@/lib/videoSeek';
 import { formatVideoTime, linkVideoTimes } from '@/lib/videoTranscript';
-import { dropRepeatedCitations } from '@/lib/webSources';
-import { CaretRightOutlined } from '@ant-design/icons';
+import { CITATION_TITLE, tidyCitations } from '@/lib/webSources';
+import { CaretRightOutlined, LinkOutlined } from '@ant-design/icons';
 import { useSetAtom } from 'jotai';
 import { createContext, lazy, Suspense, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -124,9 +124,27 @@ const components: Components = {
         </a>
       );
     }
+    const web = /^https?:\/\//.test(href ?? '');
+    // A citation the answer wrote after a sentence (lib/webSources.ts tidyCitations): drawn like the
+    // sources listed under the answer.
+    if (web && props.title === CITATION_TITLE) {
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={href}
+          className={`sz:inline-flex sz:items-center sz:gap-1 sz:max-w-full sz:align-middle sz:text-xs sz:text-gray-500 sz:cursor-pointer ${
+            theme == 'dark' ? 'sz:hover:text-gray-300' : 'sz:hover:text-gray-700'
+          }`}
+        >
+          <LinkOutlined className="sz:shrink-0" />
+          <span className="sz:truncate">{children}</span>
+        </a>
+      );
+    }
     if ((kind !== 't' && kind !== 's') || !video) {
       // A web link opens in a new tab: in the side panel it would otherwise replace the panel.
-      const web = /^https?:\/\//.test(href ?? '');
       return (
         <a
           href={href}
@@ -204,7 +222,7 @@ const MarkdownMessage = ({
 
   const withMath = math && mathPlugins;
   // Source chips are small enough to stay; plain citations of a page show only the first time.
-  const cited = citations ? content : dropRepeatedCitations(content);
+  const cited = citations ? content : tidyCitations(content);
   const linked = page ? linkPageLines(cited) : cited;
   const text = video ? linkVideoTimes(linked) : linked;
   return (

@@ -23,7 +23,7 @@ const load = async (source) => {
 };
 const { hasMath, prepareMath } = await load('../src/lib/mathText.ts');
 const { parseChartSpec } = await load('../src/lib/chartSpec.ts');
-const { collectWebSources, dropRepeatedCitations, orderedWebSources, webSearchTracker } = await load(
+const { collectWebSources, tidyCitations, orderedWebSources, webSearchTracker } = await load(
   '../src/lib/webSources.ts'
 );
 const { isPdfFile, isTextFile, readTextFile } = await load('../src/lib/tabText.ts');
@@ -105,7 +105,7 @@ test('a chart block is drawn only when its JSON fits the chart shape', () => {
   }
 });
 
-test('a page cited again later in an answer keeps only its first citation', () => {
+test('a page cited again later in an answer keeps only its first citation, marked as one', () => {
   const doc = 'https://docs.nexpace.io/tokenomics/nxpc/distribution/';
   const answer = [
     `It is 800M NXPC. ([docs.nexpace.io](${doc}?utm_source=openai))`,
@@ -115,11 +115,11 @@ test('a page cited again later in an answer keeps only its first citation', () =
     'A plain [link](https://news.example/a) is not a citation.',
   ].join('\n\n');
   assert.equal(
-    dropRepeatedCitations(answer),
+    tidyCitations(answer),
     [
-      `It is 800M NXPC. ([docs.nexpace.io](${doc}?utm_source=openai))`,
+      `It is 800M NXPC. [docs.nexpace.io](${doc}?utm_source=openai "sz-citation")`,
       'F(n) is the total.',
-      'Wikipedia agrees ([en.wikipedia.org](https://en.wikipedia.org/wiki/E_(constant))), and so does the doc ([news.example](https://news.example/a)).',
+      'Wikipedia agrees [en.wikipedia.org](https://en.wikipedia.org/wiki/E_(constant) "sz-citation"), and so does the doc [news.example](https://news.example/a "sz-citation").',
       '`([docs.nexpace.io](' + doc + '))` in code stays.',
       'A plain [link](https://news.example/a) is not a citation.',
     ].join('\n\n')

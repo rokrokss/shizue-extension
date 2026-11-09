@@ -59,10 +59,14 @@ const pageKey = (url: string) => {
   return page.href.replace(/\/$/, '');
 };
 
+// The title a citation's link carries out of tidyCitations, so it is drawn like a source.
+export const CITATION_TITLE = 'sz-citation';
+
 // An answer from a web search cites its source after nearly every sentence, often the same page
 // over and over. Each page stays cited where it first comes and its later citations go; the page is
-// still listed under the answer. Code is left as it is.
-export const dropRepeatedCitations = (text: string) => {
+// still listed under the answer. What stays loses its brackets and is marked with CITATION_TITLE.
+// Code is left as it is.
+export const tidyCitations = (text: string) => {
   const cited = new Set<string>();
   return text
     .split(CODE_PART)
@@ -78,7 +82,8 @@ export const dropRepeatedCitations = (text: string) => {
                 cited.add(key);
                 return true;
               });
-            return fresh.length ? `${space}(${fresh.join(', ')})` : '';
+            const marked = fresh.map((link) => `${link.slice(0, -1)} "${CITATION_TITLE}")`);
+            return marked.length ? `${space || ' '}${marked.join(' ')}` : '';
           })
     )
     .join('');
