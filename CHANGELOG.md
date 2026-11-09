@@ -1,9 +1,12 @@
 # Changelog
 
+## v0.5.3
+
+- An attached tab that goes to another page or changes its title stays attached, and its chip and its row in "Attach tabs" show the new title
+
 ## v0.5.2
 
 - The open tabs to attach moved from the Attach menu to "Attach tabs" in the Tools menu, next to "Find in open tabs"
-- An attached tab that goes to another page or changes its title stays attached, and its chip and its row in "Attach tabs" show the new title
 
 ## v0.5.1
 
