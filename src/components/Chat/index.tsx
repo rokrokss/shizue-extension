@@ -22,7 +22,7 @@ import {
   updateMessage,
 } from '@/lib/indexDB';
 import { hasPageLines } from '@/lib/pageLines';
-import { getDetailedAnalysisPrompt } from '@/lib/prompts';
+import { getDetailedAnalysisPrompt, getSummarizePageTextPrompt } from '@/lib/prompts';
 import { throttleTrailing } from '@/lib/throttleTrailing';
 import { createThreadLoader } from '@/lib/threadLoader';
 import type { AgentRun } from '@/lib/browserAgent';
@@ -72,6 +72,9 @@ export interface Message {
   autoApprove?: boolean;
   agentRun?: AgentRun;
   browserControlHint?: boolean;
+  // A summary request and its answer's loading dots, shown while the page is read. The stored
+  // request replaces them (loadThreadBackground).
+  pending?: boolean;
 }
 
 // The asking moment of a video, kept with a question (see ChatInput).
@@ -357,6 +360,42 @@ const Chat = () => {
     setChatStatus('idle');
     scrollToBottomThrottled();
   };
+
+  // The summary button's request shows at once, with its answer's loading dots, instead of only
+  // once the page is read and stored. Its prompt has no page text yet, but the same opening that
+  // picks the character beside it, so the character stays when the stored request replaces it.
+  const handleSummaryStart = (tab: chrome.tabs.Tab) => {
+    followRef.current = true;
+    setMessages((prev) => [
+      ...(messagesThreadId === threadId ? prev : []),
+      {
+        role: 'human',
+        actionType: 'askForSummary',
+        summaryTitle: tab.title,
+        summaryPageLink: tab.url,
+        summaryVideo: videoKey(tab.url) !== null,
+        content: getSummarizePageTextPrompt(tab.title ?? '', ''),
+        done: true,
+        onInterrupt: false,
+        stopped: false,
+        pending: true,
+      },
+      {
+        role: 'ai',
+        actionType: 'askForSummary',
+        content: '',
+        done: false,
+        onInterrupt: false,
+        stopped: false,
+        pending: true,
+      },
+    ]);
+    scrollToBottomThrottled();
+  };
+
+  const handleSummaryFailed = () => setMessages((cur) => cur.filter((m) => !m.pending));
+
+  const summaryPending = messages.some((m) => m.pending);
 
   const checkIfThreadExists = async (text: string) => {
     let tid = threadId;
@@ -878,9 +917,11 @@ const Chat = () => {
         onScroll={handleScroll}
       >
         {/* **** aiIndexRef: {aiIndexRef.current} **** */}
-        {threadId && messagesThreadId !== threadId ? (
+        {/* A summary request asked in a new chat shows before its chat is made, and stays while
+            that chat loads. */}
+        {threadId && messagesThreadId !== threadId && !summaryPending ? (
           <div className="sz:pt-15" aria-busy="true"><DotCycle /></div>
-        ) : threadId && messages.length > 0 ? (
+        ) : (threadId || summaryPending) && messages.length > 0 ? (
           <Suspense fallback={<div className="sz:pt-15" aria-busy="true"><DotCycle /></div>}>
             <ChatContainer
               key={threadId}
@@ -914,6 +955,9 @@ const Chat = () => {
           onOpenHistory={handleOpenHistory}
           onNewChat={handleNewChat}
           onTranslateMode={handleTranslateMode}
+          summaryPending={summaryPending}
+          onSummaryStart={handleSummaryStart}
+          onSummaryFailed={handleSummaryFailed}
         />
       </div>
       {isSettingsOpen && (

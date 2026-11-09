@@ -23,7 +23,7 @@ import {
   reasoningEffortsFor,
 } from '@/lib/modelRegistry';
 import { BASE_REASONING_EFFORTS, effortWithin } from '@/lib/reasoning';
-import { panelPageTabId, withPageShown } from '@/lib/panelHost';
+import { panelPageTab, withPageShown } from '@/lib/panelHost';
 import { cropCapture, selectRegion } from '@/lib/regionCapture';
 import {
   isOfficeFile,
@@ -79,6 +79,9 @@ const ChatInput = ({
   onOpenHistory,
   onNewChat,
   onTranslateMode,
+  summaryPending,
+  onSummaryStart,
+  onSummaryFailed,
 }: {
   chatStatus: ChatStatus;
   // Pages already in this chat (attached or summarized), not offered for attaching again.
@@ -108,6 +111,10 @@ const ChatInput = ({
   onOpenHistory: () => void;
   onNewChat: () => Promise<void>;
   onTranslateMode: () => Promise<void>;
+  // A summary request shows in the chat while its page is read; the summary button waits for it.
+  summaryPending: boolean;
+  onSummaryStart: (tab: chrome.tabs.Tab) => void;
+  onSummaryFailed: () => void;
 }) => {
   const { t } = useTranslation();
   const [chatInput, setChatInput] = useState('');
@@ -623,15 +630,19 @@ const ChatInput = ({
 
     setSummaryFailed(false);
     try {
-      const tabId = await panelPageTabId();
+      const tab = await panelPageTab();
 
-      if (tabId === undefined) {
+      if (tab?.id === undefined) {
         throw new Error('No active page available.');
       }
 
-      await requestPageSummary(tabId);
+      // Like a question sent while an answer is coming, it stops that answer and goes out instead.
+      if (isChatWaiting(chatStatus)) await onCancel();
+      onSummaryStart(tab);
+      await requestPageSummary(tab.id);
     } catch (error) {
       debugLog('ChatInput: [handleSummaryClick] error', error);
+      onSummaryFailed();
       setSummaryFailed(true);
     }
   };
@@ -837,12 +848,12 @@ const ChatInput = ({
               <Button
                 onClick={() => handleSummaryClick()}
                 type="text"
-                disabled={webStorePage}
+                disabled={webStorePage || summaryPending}
                 icon={
                   <UnorderedListOutlined
                     style={{
                       fontSize: '20px',
-                      color: webStorePage ? disabledIconColor : iconColor,
+                      color: webStorePage || summaryPending ? disabledIconColor : iconColor,
                     }}
                   />
                 }

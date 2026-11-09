@@ -377,12 +377,13 @@ const ChatContainer = ({
                 marginLeft="0.25rem"
                 dark={theme == 'dark'}
               />
+              {/* A summary request still being read isn't stored yet. */}
               <button
                 aria-label={t('chat.deleteMessage')}
-                disabled={!idle}
+                disabled={!idle || m.pending}
                 onClick={() => void onDelete(idx)}
                 className={`sz:ml-auto sz:mr-1 sz:mt-[9px] sz:p-0.5 sz:cursor-pointer sz:text-gray-400 sz:hover:text-red-400 sz:invisible ${
-                  idle ? 'sz:group-hover:visible sz:focus:visible' : ''
+                  idle && !m.pending ? 'sz:group-hover:visible sz:focus:visible' : ''
                 }`}
               >
                 <DeleteOutlined />
@@ -514,7 +515,8 @@ const ChatContainer = ({
                           {m.summaryTitle && m.summaryTitle.length > 25
                             ? m.summaryTitle?.slice(0, 25) + '...'
                             : m.summaryTitle}
-                          {m.summaryVideo ? captionsNote(m.summaryCaptions) : null}
+                          {/* Whether the video has captions is known once it is read. */}
+                          {m.summaryVideo && !m.pending ? captionsNote(m.summaryCaptions) : null}
                         </div>
                       </div>
                     </a>

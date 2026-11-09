@@ -262,6 +262,31 @@ async function run() {
   await flush(() => fixture.container.onDelete(0));
   check(!fixture.rows.has('D') && fixture.store.get(threadIdAtom) === undefined &&
     host.textContent.includes('GREETING'), 'Deleting the first message kept the chat');
+
+  // The summary button's request shows at once with its answer's loading dots, in a new chat before
+  // the chat is made, and the stored request replaces it without leaving or flashing.
+  const summaryStreams = fixture.streams.length;
+  fixture.frames = [];
+  await flush(() => fixture.input.onSummaryStart({ title: 'Pending page', url: 'https://example.com/p' }));
+  check(!host.textContent.includes('GREETING') && host.textContent.includes('SUMMARY Pending page'), 'The summary request did not show at once');
+  check(fixture.input.summaryPending && fixture.container.messages.at(-1).role === 'ai' &&
+    !fixture.container.messages.at(-1).done, 'The summary request showed without its loading answer');
+  check(fixture.streams.length === summaryStreams, 'A summary request started its answer before it was stored');
+  await flush(() => chrome.storage.local.set({ GLOBAL_STATE: {
+    actionType: 'askForSummary', summaryTitle: 'Pending page', summaryText: 'Body', summaryPageLink: 'https://example.com/p',
+  } }));
+  check(!host.textContent.includes('LOADING THREAD'), 'The new chat flashed its loading dots under the summary request');
+  await flush(() => resolveLoads('created'));
+  check(!fixture.input.summaryPending && fixture.container.messages.every(m => !m.pending), 'The stored summary request did not replace the shown one');
+  check(fixture.streams.length === summaryStreams + 1, 'The stored summary request did not start its answer');
+  check(fixture.frames.length > 0 && fixture.frames.every(frame => frame.includes('SUMMARY Pending page')), 'The summary request left before its stored one came');
+  await flush(() => fixture.streamOptions.onDone());
+
+  // A page that can't be read takes its request off again.
+  await flush(() => fixture.input.onSummaryStart({ title: 'Unreadable', url: 'https://example.com/u' }));
+  await flush(() => fixture.input.onSummaryFailed());
+  check(!fixture.input.summaryPending && !host.textContent.includes('SUMMARY Unreadable'), 'A failed summary request stayed on screen');
+  await flush(() => fixture.input.onNewChat());
   const streams = fixture.streams.length;
 
   await flush(() => fixture.store.set(threadIdAtom, 'A'));
@@ -270,7 +295,7 @@ async function run() {
   check(fixture.streams.length === streams, 'An unmounted chat started a summary stream');
   check(fixture.store.get(chatStatusAtom) === 'idle', 'Stale response changed chat status');
   document.body.dataset.result = 'passed';
-  document.getElementById('result').textContent = 'PASS: fresh panel selection, hydration, summary preparation, current-panel summary, detailed analysis, deleting from a message, StrictMode, stale replies, clearing, leaving mid-answer, unmount';
+  document.getElementById('result').textContent = 'PASS: fresh panel selection, hydration, summary preparation, current-panel summary, detailed analysis, deleting from a message, summary request shown at once, StrictMode, stale replies, clearing, leaving mid-answer, unmount';
 }
 run().catch(error => {
   document.body.dataset.result = 'failed';
