@@ -154,10 +154,30 @@ test('web searches are followed through every provider shape, placed where they 
   assert.equal(anthropic.steps()[0].query, '노벨 "물', 'a query cut in an escape keeps the last whole one');
   anthropic.push({ content: [{ type: 'input_json_delta', index: 1, input: '00202026"}' }] }, place);
   anthropic.push(
-    { content: [{ type: 'web_search_tool_result', tool_use_id: 's1', content: [{ url: 'https://a.example' }, { url: 'https://b.example' }] }] },
+    {
+      content: [
+        {
+          type: 'web_search_tool_result',
+          tool_use_id: 's1',
+          content: [{ url: 'https://a.example/x', title: ' A news ' }, { url: 'https://b.example' }, { url: 'ftp://c.example' }],
+        },
+      ],
+    },
     place
   );
-  assert.deepEqual(anthropic.steps(), [{ id: 's1', done: true, at: 10, query: '노벨 "물리학상 2026', results: 2 }]);
+  assert.deepEqual(anthropic.steps(), [
+    {
+      id: 's1',
+      done: true,
+      at: 10,
+      query: '노벨 "물리학상 2026',
+      results: 3,
+      sources: [
+        { url: 'https://a.example/x', title: 'A news' },
+        { url: 'https://b.example', title: 'b.example' },
+      ],
+    },
+  ]);
   // Text, thinking and another tool's input are not searches; nothing changes.
   assert.equal(
     anthropic.push({ content: [{ type: 'text', text: 'x' }, { type: 'thinking', thinking: 'y' }, { type: 'input_json_delta', index: 4, input: '{}' }] }, place),
@@ -183,7 +203,7 @@ test('web searches are followed through every provider shape, placed where they 
     place
   );
   assert.deepEqual(openai.steps(), [
-    { id: 'ws1', done: true, at: 20, query: 'weather Seoul', results: 1 },
+    { id: 'ws1', done: true, at: 20, query: 'weather Seoul', results: 1, sources: [{ url: 'https://w.example', title: 'w.example' }] },
     { id: 'ws2', done: true, url: 'https://w.example/today', at: 30 },
   ]);
 

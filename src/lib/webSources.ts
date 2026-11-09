@@ -50,8 +50,9 @@ export interface WebSearchStep {
   // What it searched for, once known, or the page it opened instead (OpenAI's open_page).
   query?: string;
   url?: string;
-  // How many pages the search found, when the provider says.
+  // How many pages the search found, when the provider says, and the first of them it names.
   results?: number;
+  sources?: WebSource[];
   done: boolean;
   // How much of the thinking had been shown when it started: it goes there among the thoughts.
   at: number;
@@ -60,6 +61,18 @@ export interface WebSearchStep {
 type Rec = Record<string, unknown>;
 const rec = (value: unknown): Rec | undefined =>
   typeof value === 'object' && value !== null && !Array.isArray(value) ? (value as Rec) : undefined;
+
+// The pages a search found that it names with a web address, at most 10 of them, kept with the step.
+const foundPages = (items: unknown[]): WebSource[] =>
+  items
+    .flatMap((item) => {
+      const page = rec(item);
+      const url = page?.url;
+      if (typeof url !== 'string' || !/^https?:\/\//.test(url) || !URL.canParse(url)) return [];
+      const title = typeof page?.title === 'string' && page.title.trim() ? page.title.trim() : new URL(url).host;
+      return [{ url, title }];
+    })
+    .slice(0, 10);
 
 // The query typed so far in a streamed search input ({"query": "…), or undefined while it ends in
 // the middle of an escape.
@@ -120,7 +133,9 @@ export const webSearchTracker = () => {
         } else if (block.type === 'web_search_tool_result' && typeof block.tool_use_id === 'string') {
           set(block.tool_use_id, {
             done: true,
-            ...(Array.isArray(block.content) ? { results: block.content.length } : {}),
+            ...(Array.isArray(block.content)
+              ? { results: block.content.length, sources: foundPages(block.content) }
+              : {}),
           });
         }
       }
@@ -144,7 +159,9 @@ export const webSearchTracker = () => {
         set(call.id, {
           done: true,
           ...(query ? { query } : typeof action?.url === 'string' ? { url: action.url } : {}),
-          ...(Array.isArray(action?.sources) ? { results: action.sources.length } : {}),
+          ...(Array.isArray(action?.sources)
+            ? { results: action.sources.length, sources: foundPages(action.sources) }
+            : {}),
         });
       }
     }
