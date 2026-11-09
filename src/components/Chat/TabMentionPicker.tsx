@@ -1,6 +1,7 @@
 import { attachRowClass, isWebTab, TabSummary } from '@/components/Chat/AttachMenu';
 import { MAX_ATTACHED_TABS } from '@/config/constants';
 import { useThemeValue } from '@/hooks/layout';
+import { isWebStorePage } from '@/lib/webStore';
 import { AppstoreAddOutlined } from '@ant-design/icons';
 import { Popover } from 'antd';
 import { forwardRef, ReactNode, useEffect, useImperativeHandle, useState } from 'react';
@@ -67,7 +68,8 @@ const TabMentionPicker = forwardRef<
 
   const needle = (query ?? '').toLowerCase();
   const matches = (text?: string) => (text ?? '').toLowerCase().includes(needle);
-  const pickable = (tab: chrome.tabs.Tab) => !attachedTabIds.includes(tab.id!) && !tab.discarded;
+  const pickable = (tab: chrome.tabs.Tab) =>
+    !attachedTabIds.includes(tab.id!) && !tab.discarded && !isWebStorePage(tab.url);
   const rows: Row[] = [
     ...(groups ?? [])
       .map((group) => ({

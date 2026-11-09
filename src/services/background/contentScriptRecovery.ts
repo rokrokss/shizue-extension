@@ -1,6 +1,7 @@
 import { CONTENT_SCRIPT_PING, type ContentScriptName } from '@/lib/contentScriptConnection';
 import { debugLog } from '@/logs';
 import { isTeamsHost } from '@/lib/meetingCaptions/sites';
+import { isWebStorePage } from '@/lib/webStore';
 
 const SESSION_RECOVERY_KEY = 'CONTENT_SCRIPTS_RECOVERED';
 const recoveringTabs = new Map<number, Promise<boolean>>();
@@ -24,8 +25,7 @@ export function scriptsForPage(value: string | undefined): ContentScriptName[] {
   try {
     const url = new URL(value);
     if (!['http:', 'https:'].includes(url.protocol)) return [];
-    if (url.hostname === 'chromewebstore.google.com' ||
-        (url.hostname === 'chrome.google.com' && url.pathname.startsWith('/webstore'))) return [];
+    if (isWebStorePage(url.href)) return [];
     if (url.protocol === 'https:' && ['youtube.com', 'www.youtube.com'].includes(url.hostname)) {
       return ['toggle', 'youtube-caption-toggle'];
     }

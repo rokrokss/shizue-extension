@@ -40,6 +40,7 @@ import {
 } from '@/lib/tabText';
 import { videoKey } from '@/lib/videoTranscript';
 import { currentVideoTime } from '@/lib/videoSeek';
+import { isWebStorePage } from '@/lib/webStore';
 import type { VideoMoment } from '@/components/Chat';
 import { debugLog } from '@/logs';
 import Icon, { FolderOutlined, SmileOutlined, UnorderedListOutlined } from '@ant-design/icons';
@@ -208,8 +209,12 @@ const ChatInput = ({
   }, [threadId]);
   const mentionPicker = useRef<TabMentionPickerHandle>(null);
   const activeTab = useActiveWebTab();
+  // Chrome keeps extensions out of its Web Store, so its pages aren't offered, summarized or
+  // controlled; the summary button and the tools menu say why.
+  const webStorePage = isWebStorePage(activeTab?.url);
   const suggestedTab =
     activeTab &&
+    !webStorePage &&
     attached.length < MAX_ATTACHED_TABS &&
     !attached.some((item) => item.tabId === activeTab.id || item.url === activeTab.url) &&
     !threadPageUrls.includes(activeTab.url!)
@@ -819,9 +824,11 @@ const ChatInput = ({
                     theme == 'dark' ? 'sz:text-white' : 'sz:text-black'
                   }`}
                 >
-                  {videoKey(activeTab?.url)
-                    ? t('overlayMenu.summarizeVideo')
-                    : t('overlayMenu.summarizePage')}
+                  {webStorePage
+                    ? t('chat.webStoreSummary')
+                    : videoKey(activeTab?.url)
+                      ? t('overlayMenu.summarizeVideo')
+                      : t('overlayMenu.summarizePage')}
                 </div>
               }
               color={theme == 'dark' ? '#505362' : 'white'}
@@ -830,11 +837,12 @@ const ChatInput = ({
               <Button
                 onClick={() => handleSummaryClick()}
                 type="text"
+                disabled={webStorePage}
                 icon={
                   <UnorderedListOutlined
                     style={{
                       fontSize: '20px',
-                      color: iconColor,
+                      color: webStorePage ? disabledIconColor : iconColor,
                     }}
                   />
                 }
@@ -859,6 +867,7 @@ const ChatInput = ({
                   if (!webSearch) setBrowserAgent(false);
                 }}
                 browserAgent={browserAgent}
+                webStorePage={webStorePage}
                 onToggleBrowserAgent={() => {
                   setBrowserAgent((on) => !on);
                   setFindTabs(false);

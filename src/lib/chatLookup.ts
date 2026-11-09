@@ -2,6 +2,8 @@
 // that may answer it (Tools → Find in open tabs), and past chats and browsing history (Tools →
 // Search past chats and history), which the user sees and allows before any of it reaches the model.
 
+import { isWebStorePage } from '@/lib/webStore';
+
 // Sites that say more about the user than a question needs: banking, payments and brokers, health,
 // and mail. The lookups pass them over; attaching one by hand still works.
 const SENSITIVE_HOSTS = [
@@ -81,7 +83,8 @@ export interface TabCandidate {
 export const MAX_TAB_CANDIDATES = 40;
 
 // The web tabs the model may pick from: not private, not unloaded (they would have to load again
-// to be read), not sensitive, and not pages the chat already has.
+// to be read), not Chrome Web Store pages (never readable), not sensitive, and not pages the chat
+// already has.
 export const tabCandidates = (tabs: TabLike[], skipUrls: string[]): TabCandidate[] => {
   const skip = new Set(skipUrls.map(pageAddress));
   const seen = new Set<string>();
@@ -92,6 +95,7 @@ export const tabCandidates = (tabs: TabLike[], skipUrls: string[]): TabCandidate
         /^https?:/.test(tab.url ?? '') &&
         !tab.incognito &&
         !tab.discarded &&
+        !isWebStorePage(tab.url) &&
         !skip.has(pageAddress(tab.url!)) &&
         !isSensitivePage(tab.url!, tab.title)
     )

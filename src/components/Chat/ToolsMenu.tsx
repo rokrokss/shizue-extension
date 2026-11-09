@@ -11,6 +11,7 @@ import { useThemeValue } from '@/hooks/layout';
 import type { ModelOption } from '@/hooks/models';
 import type { ChatModel } from '@/lib/modelRegistry';
 import { BASE_REASONING_EFFORTS, type ReasoningEffort } from '@/lib/reasoning';
+import { isWebStorePage } from '@/lib/webStore';
 import {
   ApartmentOutlined,
   BlockOutlined,
@@ -41,6 +42,7 @@ const ToolsMenu = ({
   webSearchSupported,
   onToggleWebSearch,
   browserAgent,
+  webStorePage,
   onToggleBrowserAgent,
   findTabs,
   onToggleFindTabs,
@@ -66,6 +68,8 @@ const ToolsMenu = ({
   webSearchSupported: boolean;
   onToggleWebSearch: () => void;
   browserAgent: boolean;
+  // The page beside the panel is a Chrome Web Store page (lib/webStore.ts).
+  webStorePage: boolean;
   onToggleBrowserAgent: () => void;
   // Find in open tabs, and Search past chats and history (services/chatLookup.ts).
   findTabs: boolean;
@@ -114,7 +118,7 @@ const ToolsMenu = ({
   const rowClass = (disabled: boolean) => attachRowClass(disabled, theme);
   // "Select all" takes the tabs with a page to read, as many as still fit; once they are all in,
   // or no more fit, it becomes "Clear all".
-  const readableTabs = tabs.filter((tab) => !tab.discarded);
+  const readableTabs = tabs.filter((tab) => !tab.discarded && !isWebStorePage(tab.url));
   const attachedCount = readableTabs.filter((tab) => attachedTabIds.includes(tab.id!)).length;
   const clearsAll = attachedCount > 0 && (attachedCount === readableTabs.length || full);
   const reasoningSupported = reasoningEfforts.length > 0;
@@ -187,8 +191,10 @@ const ToolsMenu = ({
           ) : (
             tabs.map((tab) => {
               const attached = attachedTabIds.includes(tab.id!);
-              // A discarded tab has no page to read until it is opened again.
-              const disabled = !attached && (full || Boolean(tab.discarded));
+              // A discarded tab has no page to read until it is opened again; a Web Store tab never
+              // has one.
+              const disabled =
+                !attached && (full || Boolean(tab.discarded) || isWebStorePage(tab.url));
               return (
                 <label key={tab.id} className={rowClass(disabled)}>
                   <TabSummary tab={tab} />
@@ -237,14 +243,20 @@ const ToolsMenu = ({
           className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
         />
       </label>
-      <label className={rowClass(false)}>
+      {/* It starts on the page beside the panel, which can't be a Web Store page. Once on, it can
+          still be turned off there. */}
+      <label className={rowClass(webStorePage && !browserAgent)}>
         <SelectOutlined className="sz:shrink-0" />
         <div className="sz:min-w-0 sz:flex-1">
           <div className="sz:text-sm">{t('chat.browserAgent')}</div>
+          {webStorePage ? (
+            <div className="sz:text-xs sz:text-gray-500">{t('chat.webStorePage')}</div>
+          ) : null}
         </div>
         <input
           type="checkbox"
           checked={browserAgent}
+          disabled={webStorePage && !browserAgent}
           onChange={onToggleBrowserAgent}
           className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
         />

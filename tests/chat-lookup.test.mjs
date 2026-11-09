@@ -61,6 +61,8 @@ test('Banking, payments, health and mail sites are left out of what the chat loo
 
 test('Open tabs offered to the model: web tabs only, the latest used first, none the chat has', () => {
   const tabs = [
+    { id: 9, title: 'Extension page', url: 'https://chromewebstore.google.com/detail/x/abc', lastAccessed: 95 },
+    { id: 10, title: 'Old store', url: 'https://chrome.google.com/webstore/detail/x', lastAccessed: 96 },
     { id: 1, title: 'Hotel A', url: 'https://www.booking.com/a', lastAccessed: 10 },
     { id: 2, title: 'Hotel B', url: 'https://www.agoda.com/b#reviews', lastAccessed: 30 },
     { id: 3, title: 'Settings', url: 'chrome://settings', lastAccessed: 50 },
@@ -76,6 +78,29 @@ test('Open tabs offered to the model: web tabs only, the latest used first, none
     [2, 1]
   );
   assert.equal(tabSite('https://www.agoda.com/b/c?token=secret'), 'www.agoda.com/b/c');
+});
+
+test('Chrome Web Store pages, which Chrome keeps extensions out of: its new and old domains only', async () => {
+  const { isWebStorePage } = await load('../src/lib/webStore.ts');
+  for (const url of [
+    'https://chromewebstore.google.com/',
+    'https://chromewebstore.google.com/detail/shizue/mpcbgfkoholfgapcgcmfjobnfcbnfanm',
+    'https://chrome.google.com/webstore/category/extensions',
+    'https://chrome.google.com/',
+  ]) {
+    assert.equal(isWebStorePage(url), true, url);
+  }
+  for (const url of [
+    undefined,
+    '',
+    'not a url',
+    'https://www.google.com/chrome/',
+    'https://support.google.com/chrome_webstore/answer/1',
+    'https://notchromewebstore.google.com/',
+    'https://example.com/?next=https://chromewebstore.google.com/',
+  ]) {
+    assert.equal(isWebStorePage(url), false, String(url));
+  }
   assert.equal(tabSite('https://example.com/'), 'example.com');
 });
 

@@ -52,6 +52,7 @@ import { BASE_REASONING_EFFORTS, chunkParts, effortWithin } from '@/lib/reasonin
 import { getModelInstance, isLocalModel, ModelOptions, ModelPreset } from '@/lib/models';
 import { BROWSER_AGENT_JSON_SCHEMA, getBrowserAgentPrompt } from '@/lib/prompts';
 import { trackTokenUsage } from '@/lib/tokenUsageTracker';
+import { isWebStorePage } from '@/lib/webStore';
 import { debugLog, errorLog } from '@/logs';
 import { AIMessage, AIMessageChunk, BaseMessage, HumanMessage, SystemMessage } from '@langchain/core/messages';
 
@@ -487,17 +488,20 @@ export async function runBrowserAgent({
     } catch {
       // The panel went away; the run stops with its signal.
     }
-    db.messages.update(messageId, { agentRun: structuredClone(run) }).catch((err) => {
+    return db.messages.update(messageId, { agentRun: structuredClone(run) }).catch((err) => {
       errorLog('Failed to save the browser agent run:', err);
     });
   };
-  const end = (outcome: AgentOutcome) => {
+  // Saved before the answer is done: the panel reads the chat back from storage then, and a run
+  // that ends at once (on a page it can't work on) would otherwise lose why.
+  const end = async (outcome: AgentOutcome) => {
     run.outcome = outcome;
-    publish();
+    await publish();
   };
 
   const userTab = await activeWebTab();
   if (!userTab) return end('unavailable');
+  if (isWebStorePage(userTab.url)) return end('web_store');
   const stored = await chrome.storage.local
     .get([STORAGE_AGENT_ALLOWED_SITES, STORAGE_AGENT_SITE_TIPS, STORAGE_AGENT_BACKGROUND])
     .catch(() => ({}) as Record<string, unknown>);

@@ -595,7 +595,8 @@ test('a cold worker registers context-menu clicks before setup completes and ope
       create() {}, update: (_id, _options, done) => done(),
     },
     storage: { onChanged: { addListener() {} } },
-    tabs: { sendMessage: async (_id, message) => { events.push(message.openPanel === false ? 'summary' : 'unexpected'); return { success: true }; } },
+    tabs: { sendMessage: async (_id, message) => { events.push(message.openPanel === false ? 'summary' : 'unexpected'); return { success: true }; },
+      onActivated: { addListener() {} }, onUpdated: { addListener() {} }, query: async () => [] },
   };
   const stubs = {
     ...backgroundStubs,
@@ -621,7 +622,8 @@ test('in Firefox a menu action that opens the panel from the page opens the side
       runtime: {},
       contextMenus: { onClicked: { addListener: (fn) => { click = fn; } }, removeAll: async () => {}, create() {}, update: (_id, _options, done) => done() },
       storage: { onChanged: { addListener() {} } },
-      tabs: { sendMessage: async (_id, message) => { events.push(message.action); return { success: true }; } },
+      tabs: { sendMessage: async (_id, message) => { events.push(message.action); return { success: true }; },
+        onActivated: { addListener() {} }, onUpdated: { addListener() {} }, query: async () => [] },
     };
     const stubs = {
       ...backgroundStubs,
@@ -639,6 +641,47 @@ test('in Firefox a menu action that opens the panel from the page opens the side
         : ['context_menu_describe_image', 'context_menu_translate_page']);
     }, stubs);
   }
+});
+
+test('on a Chrome Web Store page the menu is greyed out and says why, and comes back elsewhere', async () => {
+  const updates = [];
+  const listeners = {};
+  let active = { url: 'https://chromewebstore.google.com/detail/x/abc', active: true };
+  const chrome = {
+    runtime: {},
+    contextMenus: {
+      onClicked: { addListener() {} }, removeAll: async () => {}, create() {},
+      update: (id, options, done) => { updates.push({ id, ...options }); done(); },
+    },
+    storage: { onChanged: { addListener() {} } },
+    tabs: {
+      sendMessage: async () => ({ success: true }),
+      onActivated: { addListener: (fn) => { listeners.activated = fn; } },
+      onUpdated: { addListener: (fn) => { listeners.updated = fn; } },
+      query: async () => [active],
+    },
+    windows: { onFocusChanged: { addListener: (fn) => { listeners.focused = fn; } } },
+  };
+  const stubs = {
+    ...backgroundStubs,
+    '@/entrypoints/background/sidepanel': 'export const panelHost = "sidePanel"; export const openPanel = async () => {};',
+    '@/entrypoints/background/states/models': 'export const getCurrentChatModel = () => "gpt"; export const getCurrentLocalServer = () => null;',
+    '#i18n': 'export const i18n = { t: (key) => key };',
+  };
+  await withModule('../src/entrypoints/background/contextMenu.ts', { chrome }, async ({ createContextMenu }) => {
+    await createContextMenu();
+    await new Promise((resolve) => setTimeout(resolve));
+    const parent = () => updates.filter((update) => update.id === 'shizue-parent').at(-1);
+    assert.deepEqual(parent(), { id: 'shizue-parent', enabled: false, title: 'overlayMenu.shizueWebStore' });
+    active = { url: 'https://example.com/', active: true };
+    listeners.activated({ tabId: 8, windowId: 2 });
+    await new Promise((resolve) => setTimeout(resolve));
+    assert.deepEqual(parent(), { id: 'shizue-parent', enabled: true, title: 'overlayMenu.shizue' });
+    active = { url: 'https://chrome.google.com/webstore/category/extensions', active: true };
+    listeners.updated(8, { url: active.url }, active);
+    await new Promise((resolve) => setTimeout(resolve));
+    assert.equal(parent().enabled, false);
+  }, stubs);
 });
 
 test('context menu setup is skipped where the browser has no context menus', async () => {

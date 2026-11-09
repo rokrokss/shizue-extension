@@ -2,6 +2,7 @@ import { attachRowClass, isWebTab, TabSummary } from '@/components/Chat/AttachMe
 import { DotCycle } from '@/components/Loader/DotCycle';
 import { useThemeValue } from '@/hooks/layout';
 import type { FormField, FormFillProposal } from '@/lib/formFill';
+import { isWebStorePage } from '@/lib/webStore';
 import { fillForm, proposeValues, readForm, type FillOutcome } from '@/services/formFill';
 import { FormOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Input, Select } from 'antd';
@@ -37,7 +38,8 @@ const FormFillCard = ({
 
   const listTabs = async (form: Form) => {
     const tabs = (await chrome.tabs.query({ currentWindow: true })).filter(
-      (tab) => isWebTab(tab) && tab.id !== request.tabId && !tab.discarded
+      (tab) =>
+        isWebTab(tab) && tab.id !== request.tabId && !tab.discarded && !isWebStorePage(tab.url)
     );
     setStep({ kind: 'pick', form, tabs });
   };

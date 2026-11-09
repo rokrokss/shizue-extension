@@ -171,12 +171,14 @@ export type AgentStep = {
 };
 
 // looping: it kept doing the same thing on a page that didn't change. unanswered: its question
-// waited too long. not_handed_back: the user's turn (handoff, point) waited too long.
+// waited too long. not_handed_back: the user's turn (handoff, point) waited too long. web_store: it
+// was asked on a Chrome Web Store page, which Chrome keeps extensions out of.
 export type AgentOutcome =
   | 'finished'
   | 'stopped'
   | 'max_steps'
   | 'unavailable'
+  | 'web_store'
   | 'failed'
   | 'looping'
   | 'unanswered'

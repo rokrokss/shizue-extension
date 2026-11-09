@@ -2,6 +2,7 @@ import InfoBadge from '@/components/Text/InfoBadge';
 import { MAX_ATTACHED_TABS } from '@/config/constants';
 import { useThemeValue } from '@/hooks/layout';
 import { OFFICE_FILE_ACCEPT, TEXT_FILE_ACCEPT } from '@/lib/tabText';
+import { isWebStorePage } from '@/lib/webStore';
 import {
   CameraOutlined,
   FileAddOutlined,
@@ -28,9 +29,14 @@ export const TabSummary = ({ tab }: { tab: chrome.tabs.Tab }) => {
       )}
       <div className="sz:min-w-0 sz:flex-1">
         <div className="sz:truncate sz:text-sm">{tab.title || tab.url}</div>
-        <div className="sz:truncate sz:text-xs sz:text-gray-500">
-          {tab.discarded ? t('chat.tabAsleep') : new URL(tab.url!).host}
-        </div>
+        {/* Why a Web Store tab can't be attached, in full. */}
+        {isWebStorePage(tab.url) ? (
+          <div className="sz:text-xs sz:text-gray-500">{t('chat.webStorePage')}</div>
+        ) : (
+          <div className="sz:truncate sz:text-xs sz:text-gray-500">
+            {tab.discarded ? t('chat.tabAsleep') : new URL(tab.url!).host}
+          </div>
+        )}
       </div>
     </>
   );

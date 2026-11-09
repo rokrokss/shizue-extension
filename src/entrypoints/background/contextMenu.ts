@@ -18,6 +18,7 @@ import {
   modelSupportsImages,
 } from '@/lib/modelRegistry';
 import { initFormFillContent } from '@/lib/initPanelData';
+import { isWebStorePage } from '@/lib/webStore';
 import { errorLog } from '@/logs';
 import { openPanelForSummary } from '@/services/background/panelSummary';
 import { i18n } from '#i18n';
@@ -33,6 +34,21 @@ const updateImageMenuItems = (model: ChatModel, localServer?: LocalServerConfig 
       }
     });
   }
+};
+
+// Chrome keeps extensions out of its Web Store (lib/webStore.ts), so on its pages Shizue's menu is
+// greyed out and says why. The menu is the same in every window: it follows the active tab of the
+// window last focused.
+const updateForWebStore = async () => {
+  const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true }).catch(() => []);
+  const blocked = isWebStorePage(tab?.url);
+  const title = i18n.t(blocked ? 'overlayMenu.shizueWebStore' : 'overlayMenu.shizue');
+  chrome.contextMenus.update(
+    'shizue-parent',
+    { enabled: !blocked, title },
+    // Before the menu is made, there is nothing to update yet.
+    () => void chrome.runtime.lastError
+  );
 };
 
 export const createContextMenu = async () => {
@@ -98,6 +114,12 @@ export const createContextMenu = async () => {
       }
     }
   });
+
+  chrome.tabs.onActivated.addListener(() => void updateForWebStore());
+  chrome.tabs.onUpdated.addListener((_tabId, change, tab) => {
+    if (change.url && tab.active) void updateForWebStore();
+  });
+  chrome.windows?.onFocusChanged.addListener(() => void updateForWebStore());
 
   // Menus persist across service worker restarts; clear them before re-creating the same IDs.
   await chrome.contextMenus.removeAll();
@@ -194,6 +216,7 @@ export const createContextMenu = async () => {
   for (const item of contextMenuItems) {
     chrome.contextMenus.create(item);
   }
+  void updateForWebStore();
 
 
 
