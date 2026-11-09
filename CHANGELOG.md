@@ -4,6 +4,7 @@
 
 - Web search is on by default: the model searches only when the question needs it, and you can see each search (what it looked up, the pages it opened, how many results) in the thinking block as it happens. Click a search to list the pages it found and open one in a new tab. Turn it off with "Turn off web search" in the Tools menu
 - The thinking block can be folded while the model is still working, and keeps its newest line in view until you scroll up
+- An answer from a web search cites each page only where it first comes, instead of after every paragraph; the page stays listed under Sources
 - Web search through OpenRouter uses its new search tool, and OpenAI models keep their reasoning effort while they search
 - Translate Mode, Memo and Word list are now together in one Study menu on the toolbar
 - In a chat with Translate Mode on, answers come from the translation model
