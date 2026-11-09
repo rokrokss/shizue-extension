@@ -4,6 +4,7 @@
 
 - The summary button shows its request and the answer's loading dots as soon as you press it, instead of only once the page or video has been read. It waits while the page is read, so a second press doesn't summarize twice, and pressing it during an answer stops that answer and summarizes at once, like sending a new question
 - "Attach tabs" in the Tools menu counts what the next question carries against its limit, like 5 / 5, so you can see why the other tabs are off once it is full. Why a Chrome Web Store tab can't be attached is in its (i)
+- Claude Fable 5.1 makes way for Claude Fable 5.2
 
 ## v0.5.4
 
