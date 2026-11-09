@@ -23,7 +23,9 @@ const load = async (source) => {
 };
 const { hasMath, prepareMath } = await load('../src/lib/mathText.ts');
 const { parseChartSpec } = await load('../src/lib/chartSpec.ts');
-const { collectWebSources, orderedWebSources, webSearchTracker } = await load('../src/lib/webSources.ts');
+const { collectWebSources, dropRepeatedCitations, orderedWebSources, webSearchTracker } = await load(
+  '../src/lib/webSources.ts'
+);
 const { isPdfFile, isTextFile, readTextFile } = await load('../src/lib/tabText.ts');
 const { mergeMemoryFacts, parseMemoryFacts, questionsToRemember, AUTO_MEMORY_MAX_FACTS } = await load(
   '../src/lib/autoMemory.ts'
@@ -101,6 +103,27 @@ test('a chart block is drawn only when its JSON fits the chart shape', () => {
   ]) {
     assert.equal(parseChartSpec(broken), null, broken);
   }
+});
+
+test('a page cited again later in an answer keeps only its first citation', () => {
+  const doc = 'https://docs.nexpace.io/tokenomics/nxpc/distribution/';
+  const answer = [
+    `It is 800M NXPC. ([docs.nexpace.io](${doc}?utm_source=openai))`,
+    `F(n) is the total. ([docs.nexpace.io](${doc}))`,
+    `Wikipedia agrees ([en.wikipedia.org](https://en.wikipedia.org/wiki/E_(constant))), and so does the doc ([docs.nexpace.io](${doc}#formula), [news.example](https://news.example/a)).`,
+    '`([docs.nexpace.io](' + doc + '))` in code stays.',
+    'A plain [link](https://news.example/a) is not a citation.',
+  ].join('\n\n');
+  assert.equal(
+    dropRepeatedCitations(answer),
+    [
+      `It is 800M NXPC. ([docs.nexpace.io](${doc}?utm_source=openai))`,
+      'F(n) is the total.',
+      'Wikipedia agrees ([en.wikipedia.org](https://en.wikipedia.org/wiki/E_(constant))), and so does the doc ([news.example](https://news.example/a)).',
+      '`([docs.nexpace.io](' + doc + '))` in code stays.',
+      'A plain [link](https://news.example/a) is not a citation.',
+    ].join('\n\n')
+  );
 });
 
 test('web sources come from every provider shape, cited first and at most 8', () => {

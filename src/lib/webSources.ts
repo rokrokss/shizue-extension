@@ -44,6 +44,46 @@ export const orderedWebSources = (found: Map<string, WebSource & { cited: boolea
     .slice(0, MAX_SOURCES)
     .map(({ url, title }) => ({ url, title }));
 
+// An inline citation as OpenAI's web search writes it after a sentence: ([site](url)), or a few
+// such links in one pair of brackets.
+const CITED_LINK = String.raw`\[[^\]\n]+\]\(https?:\/\/(?:[^\s()]|\([^\s()]*\))+\)`;
+const CITATION = new RegExp(String.raw`([ \t]*)\((${CITED_LINK}(?:[ \t]*[,;]?[ \t]*${CITED_LINK})*)\)`, 'g');
+const CODE_PART = /(```[\s\S]*?(?:```|$)|`[^`\n]*`)/;
+
+// The same page under another address: its utm_ tags, #section and closing slash aside.
+const pageKey = (url: string) => {
+  if (!URL.canParse(url)) return url;
+  const page = new URL(url);
+  for (const key of [...page.searchParams.keys()]) if (key.startsWith('utm_')) page.searchParams.delete(key);
+  page.hash = '';
+  return page.href.replace(/\/$/, '');
+};
+
+// An answer from a web search cites its source after nearly every sentence, often the same page
+// over and over. Each page stays cited where it first comes and its later citations go; the page is
+// still listed under the answer. Code is left as it is.
+export const dropRepeatedCitations = (text: string) => {
+  const cited = new Set<string>();
+  return text
+    .split(CODE_PART)
+    .map((part, i) =>
+      i % 2
+        ? part
+        : part.replace(CITATION, (_, space: string, links: string) => {
+            const fresh = [...links.matchAll(new RegExp(CITED_LINK, 'g'))]
+              .map(([link]) => link)
+              .filter((link) => {
+                const key = pageKey(link.slice(link.indexOf('](') + 2, -1));
+                if (cited.has(key)) return false;
+                cited.add(key);
+                return true;
+              });
+            return fresh.length ? `${space}(${fresh.join(', ')})` : '';
+          })
+    )
+    .join('');
+};
+
 // A web search the model ran for an answer, shown among its thoughts (ThinkingBlock).
 export interface WebSearchStep {
   id: string;

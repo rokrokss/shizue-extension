@@ -10,6 +10,7 @@ import { linkPageLines, pageLines } from '@/lib/pageLines';
 import { seekPageLine } from '@/lib/pageSeek';
 import { seekVideo } from '@/lib/videoSeek';
 import { formatVideoTime, linkVideoTimes } from '@/lib/videoTranscript';
+import { dropRepeatedCitations } from '@/lib/webSources';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { useSetAtom } from 'jotai';
 import { createContext, lazy, Suspense, useContext, useEffect, useState } from 'react';
@@ -202,7 +203,9 @@ const MarkdownMessage = ({
   }, [math]);
 
   const withMath = math && mathPlugins;
-  const linked = page ? linkPageLines(content) : content;
+  // Source chips are small enough to stay; plain citations of a page show only the first time.
+  const cited = citations ? content : dropRepeatedCitations(content);
+  const linked = page ? linkPageLines(cited) : cited;
   const text = video ? linkVideoTimes(linked) : linked;
   return (
     <StreamingContext.Provider value={streaming}>
