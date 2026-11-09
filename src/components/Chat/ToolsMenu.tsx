@@ -35,7 +35,7 @@ import { useTranslation } from 'react-i18next';
 const ToolsMenu = ({
   iconColor,
   attachedTabIds,
-  full,
+  attachedTotal,
   onToggleTab,
   onToggleAllTabs,
   webSearch,
@@ -60,8 +60,8 @@ const ToolsMenu = ({
 }: {
   iconColor: string;
   attachedTabIds: number[];
-  // The next message already has MAX_ATTACHED_TABS tabs and files.
-  full: boolean;
+  // The tabs and files the next message has, which share the MAX_ATTACHED_TABS limit.
+  attachedTotal: number;
   onToggleTab: (tab: chrome.tabs.Tab, attach: boolean) => void;
   onToggleAllTabs: (tabs: chrome.tabs.Tab[], attach: boolean) => void;
   webSearch: boolean;
@@ -116,6 +116,7 @@ const ToolsMenu = ({
     void setAgentBackground(!agentBackground);
   };
   const rowClass = (disabled: boolean) => attachRowClass(disabled, theme);
+  const full = attachedTotal >= MAX_ATTACHED_TABS;
   // "Select all" takes the tabs with a page to read, as many as still fit; once they are all in,
   // or no more fit, it becomes "Clear all".
   const readableTabs = tabs.filter((tab) => !tab.discarded && !isWebStorePage(tab.url));
@@ -161,12 +162,15 @@ const ToolsMenu = ({
           className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
         />
       </label>
-      {/* The web tabs open in this window, to attach to the next question or take off. */}
+      {/* The web tabs open in this window, to attach to the next question or take off. The count
+          against the limit says why the other tabs are off once it is reached. */}
       <div className="sz-attach-tabs sz:flex sz:items-center sz:gap-2 sz:px-2 sz:py-1.5">
         <BlockOutlined className="sz:shrink-0" />
         <div className="sz:min-w-0 sz:flex-1 sz:text-sm">{t('chat.attachTabs')}</div>
-        {attachedTabIds.length > 0 ? (
-          <span className="sz:text-sm sz:text-sz-cyan">{attachedTabIds.length}</span>
+        {attachedTotal > 0 ? (
+          <span className="sz:text-sm sz:text-sz-cyan">
+            {attachedTotal} / {MAX_ATTACHED_TABS}
+          </span>
         ) : null}
       </div>
       <div className="sz:pl-6 sz:flex sz:flex-col">
@@ -210,11 +214,6 @@ const ToolsMenu = ({
             })
           )}
         </div>
-        {full ? (
-          <div className="sz:text-xs sz:text-gray-500 sz:px-2">
-            {t('chat.attachLimit', { max: MAX_ATTACHED_TABS })}
-          </div>
-        ) : null}
       </div>
       <label className={rowClass(false)}>
         <FileSearchOutlined className="sz:shrink-0" />
@@ -248,10 +247,10 @@ const ToolsMenu = ({
       <label className={rowClass(webStorePage && !browserAgent)}>
         <SelectOutlined className="sz:shrink-0" />
         <div className="sz:min-w-0 sz:flex-1">
-          <div className="sz:text-sm">{t('chat.browserAgent')}</div>
-          {webStorePage ? (
-            <div className="sz:text-xs sz:text-gray-500">{t('chat.webStorePage')}</div>
-          ) : null}
+          <div className="sz:flex sz:items-center sz:gap-1 sz:text-sm">
+            {t('chat.browserAgent')}
+            {webStorePage ? <InfoBadge text={t('chat.webStorePage')} /> : null}
+          </div>
         </div>
         <input
           type="checkbox"

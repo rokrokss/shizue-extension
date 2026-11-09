@@ -855,7 +855,7 @@ const ChatInput = ({
               <ToolsMenu
                 iconColor={iconColor}
                 attachedTabIds={attached.flatMap((item) => (item.tabId !== undefined ? [item.tabId] : []))}
-                full={attached.length >= MAX_ATTACHED_TABS}
+                attachedTotal={attached.length}
                 onToggleTab={handleToggleTab}
                 onToggleAllTabs={handleToggleAllTabs}
                 webSearch={webSearch}

@@ -29,14 +29,14 @@ export const TabSummary = ({ tab }: { tab: chrome.tabs.Tab }) => {
       )}
       <div className="sz:min-w-0 sz:flex-1">
         <div className="sz:truncate sz:text-sm">{tab.title || tab.url}</div>
-        {/* Why a Web Store tab can't be attached, in full. */}
-        {isWebStorePage(tab.url) ? (
-          <div className="sz:text-xs sz:text-gray-500">{t('chat.webStorePage')}</div>
-        ) : (
-          <div className="sz:truncate sz:text-xs sz:text-gray-500">
+        {/* A Web Store tab can't be attached; its (i) says why. The @ list leaves those tabs out,
+            so the (i) never lands inside its row buttons. */}
+        <div className="sz:flex sz:items-center sz:gap-1">
+          <div className="sz:min-w-0 sz:truncate sz:text-xs sz:text-gray-500">
             {tab.discarded ? t('chat.tabAsleep') : new URL(tab.url!).host}
           </div>
-        )}
+          {isWebStorePage(tab.url) ? <InfoBadge text={t('chat.webStorePage')} /> : null}
+        </div>
       </div>
     </>
   );
