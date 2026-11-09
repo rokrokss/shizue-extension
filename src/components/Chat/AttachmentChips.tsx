@@ -296,7 +296,8 @@ const AttachmentChips = ({
               · {t('chat.pastedChars', { count: item.page.text.length.toLocaleString() })}
             </span>
           ) : null}
-          {item.video && !item.loading && !item.error ? (
+          {/* Not known for a video the tab went to after it was attached, until it is sent. */}
+          {item.video && item.captions !== undefined && !item.loading && !item.error ? (
             <span className="sz:ml-1">
               · {item.captions ? t('chat.withCaptions') : t('chat.withoutCaptions')}
             </span>

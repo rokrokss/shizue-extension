@@ -335,13 +335,44 @@ const ChatInput = ({
       const page = 'page' in result && result.page.captions ? result.page : undefined;
       setAttached((current) =>
         current.map((item) =>
-          item.key === key
+          // Not if the tab went to another video meanwhile; that one is read when sent.
+          item.key === key && videoKey(item.url) === videoKey(tab.url)
             ? { ...item, loading: false, page, captions: !!page, videoId: videoKey(page?.url) }
             : item
         )
       );
     });
   };
+
+  // An attached tab that goes to another page or changes its title stays attached and shows it.
+  // Captions read for a video it no longer shows are dropped; the tab is read when the question is
+  // sent, like any tab.
+  useEffect(() => {
+    const onUpdated = (tabId: number, change: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab) => {
+      if (change.title === undefined && change.url === undefined) return;
+      setAttached((current) =>
+        current.some((item) => item.tabId === tabId)
+          ? current.map((item) => {
+              if (item.tabId !== tabId) return item;
+              const url = tab.url ?? item.url;
+              const shown = { ...item, title: tab.title ?? item.title, url };
+              if (videoKey(url) === videoKey(item.url)) return shown;
+              return {
+                ...shown,
+                video: videoKey(url) !== null || undefined,
+                page: undefined,
+                captions: undefined,
+                videoId: undefined,
+                loading: false,
+                error: undefined,
+              };
+            })
+          : current
+      );
+    };
+    chrome.tabs.onUpdated.addListener(onUpdated);
+    return () => chrome.tabs.onUpdated.removeListener(onUpdated);
+  }, []);
 
   // Captions read when the video was attached, while its tab still shows that video. Otherwise
   // (another video now, or none read) the tab is read again.

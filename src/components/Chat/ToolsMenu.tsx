@@ -24,7 +24,7 @@ import {
   ThunderboltOutlined,
 } from '@ant-design/icons';
 import { Button, Popover, Select, Tooltip } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 // The tools button: the open tabs to attach to the next question, and how Shizue answers the
@@ -92,6 +92,18 @@ const ToolsMenu = ({
   // closing the menu doesn't flash it.
   const [hint, setHint] = useState(false);
   const [tabs, setTabs] = useState<chrome.tabs.Tab[]>([]);
+  // While the menu is open, a tab that goes to another page or changes its title shows it.
+  useEffect(() => {
+    if (!open) return;
+    const refresh = (_tabId: number, change: chrome.tabs.TabChangeInfo) => {
+      if (!change.title && !change.url && !change.favIconUrl) return;
+      void chrome.tabs
+        .query({ currentWindow: true })
+        .then((all) => setTabs(all.filter(isWebTab)));
+    };
+    chrome.tabs.onUpdated.addListener(refresh);
+    return () => chrome.tabs.onUpdated.removeListener(refresh);
+  }, [open]);
   const [agentBackground, setAgentBackground] = useAgentBackground();
   // Its tabs go in a group of their own when the user grants tab groups, asked here inside the
   // click; without them it works all the same.
