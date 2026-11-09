@@ -9,6 +9,7 @@
 - Translate Mode, Memo and Word list are now together in one Study menu on the toolbar
 - In a chat with Translate Mode on, answers come from the translation model
 - Token usage moved from the chat toolbar to the bottom of Settings → Models
+- The button that captures a part of the page now shows a crop mark instead of scissors
 - Setting descriptions and the file types you can attach are now in (i) tooltips, and an empty browser control list is hidden
 - Fix the caption menu's language list being hidden under YouTube's top bar or overlapping the menu
 - Fix links in answers opening inside the side panel instead of a new tab; they are now underlined
