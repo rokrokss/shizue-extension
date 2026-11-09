@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.5.1
+
+- Web search is on by default: the model searches only when the question needs it, and you can see each search (what it looked up, the pages it opened, how many results) in the thinking block as it happens. Turn it off with "Turn off web search" in the Tools menu
+- Web search through OpenRouter uses its new search tool, and OpenAI models keep their reasoning effort while they search
+- Translate Mode, Memo and Word list are now together in one Study menu on the toolbar
+- In a chat with Translate Mode on, answers come from the translation model
+- Token usage moved from the chat toolbar to the bottom of Settings → Models
+- Setting descriptions and the file types you can attach are now in (i) tooltips, and an empty browser control list is hidden
+- Fix the caption menu's language list being hidden under YouTube's top bar or overlapping the menu
+- Fix wrong or awkward translations in the interface, in 23 languages
+- Fix tooltips flickering when the Tools, Study or Attach menu closes
+- Fix Settings running off the side panel when it is taller than the panel; it now scrolls inside it
+
 ## v0.5.0
 
 - Browser control does more per step: it can do several actions at once (filling in a whole form in one step), press keys such as Enter, Escape and the arrows, point at a menu to open it, and put one of your images into an upload field
