@@ -104,7 +104,7 @@
     "askAboutPages": "詢問已附加的頁面",
     "askAboutVideos": "詢問已附加的影片",
     "attach": "附加",
-    "openTabs": "已開啟的分頁",
+    "attachTabs": "附加分頁",
     "noOpenTabs": "此視窗中沒有開啟的網頁。",
     "tabAsleep": "已休眠 · 請先開啟",
     "attachLimit": "最多可附加 {{max}} 個分頁和檔案",

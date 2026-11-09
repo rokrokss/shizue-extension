@@ -104,7 +104,7 @@
     "askAboutPages": "Pregunta sobre las páginas adjuntas",
     "askAboutVideos": "Pregunta sobre los vídeos adjuntos",
     "attach": "Adjuntar",
-    "openTabs": "Pestañas abiertas",
+    "attachTabs": "Adjuntar pestañas",
     "noOpenTabs": "No hay páginas web abiertas en esta ventana.",
     "tabAsleep": "Inactiva · ábrela primero",
     "attachLimit": "Hasta {{max}} pestañas y archivos",

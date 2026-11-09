@@ -104,7 +104,7 @@
     "askAboutPages": "询问已附加的页面",
     "askAboutVideos": "询问已附加的视频",
     "attach": "附加",
-    "openTabs": "已打开的标签页",
+    "attachTabs": "添加标签页",
     "noOpenTabs": "此窗口中没有打开的网页。",
     "tabAsleep": "已休眠 · 请先打开",
     "attachLimit": "最多可附加 {{max}} 个标签页和文件",

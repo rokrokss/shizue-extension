@@ -104,7 +104,7 @@
     "askAboutPages": "Posez une question sur les pages jointes",
     "askAboutVideos": "Posez une question sur les vidéos jointes",
     "attach": "Joindre",
-    "openTabs": "Onglets ouverts",
+    "attachTabs": "Joindre des onglets",
     "noOpenTabs": "Aucune page web n’est ouverte dans cette fenêtre.",
     "tabAsleep": "En veille · ouvrez-le d’abord",
     "attachLimit": "Jusqu’à {{max}} onglets et fichiers",

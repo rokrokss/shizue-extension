@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 export const isWebTab = (tab: chrome.tabs.Tab) =>
   tab.id !== undefined && /^https?:/.test(tab.url ?? '');
 
-// A tab's icon, title and site, as the paperclip menu and the @ list show it.
+// A tab's icon, title and site, as the tools menu and the @ list show it.
 export const TabSummary = ({ tab }: { tab: chrome.tabs.Tab }) => {
   const { t } = useTranslation();
   return (
@@ -48,27 +48,21 @@ export const attachRowClass = (disabled: boolean, theme: string, active = false)
       : `sz:cursor-pointer ${theme == 'dark' ? 'sz:hover:bg-white/10' : 'sz:hover:bg-black/5'}`
   } ${active ? (theme == 'dark' ? 'sz:bg-white/10' : 'sz:bg-black/5') : ''}`;
 
-// The paperclip button: what goes with the next question. The web tabs open in this window to
-// attach or take off, PDF and text files and images from the computer, and, for models that read
-// images, a capture of what the current tab shows (a dragged part has its own button).
+// The paperclip button: what goes with the next question from the computer. PDF and text files,
+// images, and, for models that read images, a capture of what the current tab shows (a dragged part
+// has its own button). The open tabs to attach are in the tools menu.
 const AttachMenu = ({
-  attachedTabIds,
   full,
   imagesSupported,
   iconColor,
-  onToggleTab,
-  onToggleAllTabs,
   onPickFiles,
   onPickImages,
   onCapture,
 }: {
-  attachedTabIds: number[];
   // The next message already has MAX_ATTACHED_TABS tabs and files.
   full: boolean;
   imagesSupported: boolean;
   iconColor: string;
-  onToggleTab: (tab: chrome.tabs.Tab, attach: boolean) => void;
-  onToggleAllTabs: (tabs: chrome.tabs.Tab[], attach: boolean) => void;
   onPickFiles: (files: File[]) => void;
   onPickImages: (files: File[]) => void;
   onCapture: () => void;
@@ -79,78 +73,25 @@ const AttachMenu = ({
   // The hover title is off while the menu is open and stays off until the pointer comes back, so
   // closing the menu doesn't flash it.
   const [hint, setHint] = useState(false);
-  const [tabs, setTabs] = useState<chrome.tabs.Tab[]>([]);
   const fileInput = useRef<HTMLInputElement>(null);
   const imageInput = useRef<HTMLInputElement>(null);
 
-  const handleOpenChange = async (next: boolean) => {
+  const handleOpenChange = (next: boolean) => {
     setHint(false);
-    if (next) setTabs((await chrome.tabs.query({ currentWindow: true })).filter(isWebTab));
     setOpen(next);
   };
 
   const rowClass = (disabled: boolean) => attachRowClass(disabled, theme);
-  // "Select all" takes the tabs with a page to read, as many as still fit; once they are all in,
-  // or no more fit, it becomes "Clear all".
-  const readableTabs = tabs.filter((tab) => !tab.discarded);
-  const attachedCount = readableTabs.filter((tab) => attachedTabIds.includes(tab.id!)).length;
-  const clearsAll = attachedCount > 0 && (attachedCount === readableTabs.length || full);
 
   const content = (
     // Narrow enough to stay centered over the paperclip, inside a side panel at its 320px minimum.
-    // Its checkboxes and scroll bar are drawn by Chrome after the color scheme, which follows
-    // Shizue's theme here.
-    <div
-      className={`sz-attach-menu sz:font-ycom sz:w-52 sz:flex sz:flex-col sz:gap-1 ${
-        theme == 'dark' ? 'sz:[color-scheme:dark]' : 'sz:[color-scheme:light]'
-      }`}
-    >
-      <div className="sz:flex sz:items-center sz:justify-between sz:gap-2 sz:px-2">
-        <div className="sz:min-w-0 sz:truncate sz:text-xs sz:text-gray-500">{t('chat.openTabs')}</div>
-        {readableTabs.length > 1 ? (
-          <button
-            type="button"
-            disabled={!clearsAll && full}
-            onClick={() => onToggleAllTabs(readableTabs, !clearsAll)}
-            className="sz:shrink-0 sz:text-xs sz:text-sz-cyan sz:rounded-sm sz:cursor-pointer sz:hover:underline sz:underline-offset-2 sz:focus-visible:outline-2 sz:focus-visible:outline-sz-cyan sz:disabled:opacity-50 sz:disabled:cursor-not-allowed sz:disabled:no-underline"
-          >
-            {clearsAll ? t('chat.deselectAllTabs') : t('chat.selectAllTabs')}
-          </button>
-        ) : null}
-      </div>
-      <div className="sz:max-h-64 sz:overflow-y-auto sz:flex sz:flex-col">
-        {tabs.length === 0 ? (
-          <div className="sz:text-xs sz:text-gray-500 sz:px-2 sz:py-2">{t('chat.noOpenTabs')}</div>
-        ) : (
-          tabs.map((tab) => {
-            const attached = attachedTabIds.includes(tab.id!);
-            // A discarded tab has no page to read until it is opened again.
-            const disabled = !attached && (full || Boolean(tab.discarded));
-            return (
-              <label key={tab.id} className={rowClass(disabled)}>
-                <input
-                  type="checkbox"
-                  checked={attached}
-                  disabled={disabled}
-                  onChange={(e) => onToggleTab(tab, e.target.checked)}
-                  className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
-                />
-                <TabSummary tab={tab} />
-              </label>
-            );
-          })
-        )}
-      </div>
+    <div className="sz-attach-menu sz:font-ycom sz:w-52 sz:flex sz:flex-col sz:gap-1">
       {full ? (
         <div className="sz:text-xs sz:text-gray-500 sz:px-2">
           {t('chat.attachLimit', { max: MAX_ATTACHED_TABS })}
         </div>
       ) : null}
-      <div
-        className={`sz:flex sz:flex-col sz:pt-1 sz:mt-1 sz:border-t ${
-          theme == 'dark' ? 'sz:border-white/10' : 'sz:border-black/10'
-        }`}
-      >
+      <div className="sz:flex sz:flex-col">
         <input
           ref={fileInput}
           type="file"

@@ -104,7 +104,7 @@
     "askAboutPages": "Magtanong tungkol sa mga nakalakip na pahina",
     "askAboutVideos": "Magtanong tungkol sa mga nakalakip na video",
     "attach": "Ilakip",
-    "openTabs": "Mga bukas na tab",
+    "attachTabs": "Maglakip ng tab",
     "noOpenTabs": "Walang bukas na web page sa window na ito.",
     "tabAsleep": "Tulog · buksan muna",
     "attachLimit": "Hanggang {{max}} tab at file",

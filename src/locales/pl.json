@@ -104,7 +104,7 @@
     "askAboutPages": "Zapytaj o dołączone strony",
     "askAboutVideos": "Zapytaj o dołączone filmy",
     "attach": "Dołącz",
-    "openTabs": "Otwarte karty",
+    "attachTabs": "Dołącz karty",
     "noOpenTabs": "W tym oknie nie ma otwartych stron.",
     "tabAsleep": "Uśpiona · najpierw ją otwórz",
     "attachLimit": "Maksymalnie {{max}} kart i plików",

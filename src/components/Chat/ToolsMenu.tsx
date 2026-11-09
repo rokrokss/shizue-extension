@@ -1,5 +1,11 @@
-import { attachRowClass, toolbarButtonStyle } from '@/components/Chat/AttachMenu';
+import {
+  attachRowClass,
+  isWebTab,
+  TabSummary,
+  toolbarButtonStyle,
+} from '@/components/Chat/AttachMenu';
 import InfoBadge from '@/components/Text/InfoBadge';
+import { MAX_ATTACHED_TABS } from '@/config/constants';
 import { useAgentBackground } from '@/hooks/browserAgent';
 import { useThemeValue } from '@/hooks/layout';
 import type { ModelOption } from '@/hooks/models';
@@ -7,8 +13,10 @@ import type { ChatModel } from '@/lib/modelRegistry';
 import { BASE_REASONING_EFFORTS, type ReasoningEffort } from '@/lib/reasoning';
 import {
   ApartmentOutlined,
+  BlockOutlined,
   BulbOutlined,
   ControlOutlined,
+  DownOutlined,
   FileSearchOutlined,
   GlobalOutlined,
   HistoryOutlined,
@@ -20,11 +28,16 @@ import { Button, Popover, Select, Tooltip } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-// The tools button: how Shizue answers the questions that follow, with web search, with the open
-// tabs or past chats and history it finds for them, or with the browser agent (asking before it
-// sends, deletes or pays, or not), with which chat model, and how hard it thinks. What goes with a question is the paperclip's (AttachMenu).
+// The tools button: the open tabs to attach to the next question, and how Shizue answers the
+// questions that follow, with web search, with the open tabs or past chats and history it finds
+// for them, or with the browser agent (asking before it sends, deletes or pays, or not), with which
+// chat model, and how hard it thinks. Files and images to send are the paperclip's (AttachMenu).
 const ToolsMenu = ({
   iconColor,
+  attachedTabIds,
+  full,
+  onToggleTab,
+  onToggleAllTabs,
   webSearch,
   webSearchSupported,
   onToggleWebSearch,
@@ -45,6 +58,11 @@ const ToolsMenu = ({
   onReasoningEffort,
 }: {
   iconColor: string;
+  attachedTabIds: number[];
+  // The next message already has MAX_ATTACHED_TABS tabs and files.
+  full: boolean;
+  onToggleTab: (tab: chrome.tabs.Tab, attach: boolean) => void;
+  onToggleAllTabs: (tabs: chrome.tabs.Tab[], attach: boolean) => void;
   webSearch: boolean;
   webSearchSupported: boolean;
   onToggleWebSearch: () => void;
@@ -74,6 +92,9 @@ const ToolsMenu = ({
   // The hover title is off while the menu is open and stays off until the pointer comes back, so
   // closing the menu doesn't flash it.
   const [hint, setHint] = useState(false);
+  const [tabs, setTabs] = useState<chrome.tabs.Tab[]>([]);
+  // The tab list folds under its row, so the tools after it stay in view.
+  const [tabsShown, setTabsShown] = useState(false);
   const [agentBackground, setAgentBackground] = useAgentBackground();
   // Its tabs go in a group of their own when the user grants tab groups, asked here inside the
   // click; without them it works all the same.
@@ -82,6 +103,11 @@ const ToolsMenu = ({
     void setAgentBackground(!agentBackground);
   };
   const rowClass = (disabled: boolean) => attachRowClass(disabled, theme);
+  // "Select all" takes the tabs with a page to read, as many as still fit; once they are all in,
+  // or no more fit, it becomes "Clear all".
+  const readableTabs = tabs.filter((tab) => !tab.discarded);
+  const attachedCount = readableTabs.filter((tab) => attachedTabIds.includes(tab.id!)).length;
+  const clearsAll = attachedCount > 0 && (attachedCount === readableTabs.length || full);
   const reasoningSupported = reasoningEfforts.length > 0;
   const effortStops = reasoningSupported ? reasoningEfforts : BASE_REASONING_EFFORTS;
   const effortIndex = Math.max(0, effortStops.indexOf(reasoningEffort));
@@ -122,6 +148,70 @@ const ToolsMenu = ({
           className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
         />
       </label>
+      {/* The web tabs open in this window, to attach to the next question or take off. */}
+      <button
+        type="button"
+        aria-expanded={tabsShown}
+        onClick={() => setTabsShown((shown) => !shown)}
+        className={rowClass(false)}
+      >
+        <BlockOutlined className="sz:shrink-0" />
+        <div className="sz:min-w-0 sz:flex-1 sz:text-sm">{t('chat.attachTabs')}</div>
+        {attachedTabIds.length > 0 ? (
+          <span className="sz:text-sm sz:text-sz-cyan">{attachedTabIds.length}</span>
+        ) : null}
+        <DownOutlined
+          className={`sz:shrink-0 sz:text-xs sz:text-gray-500 sz:transition-transform ${
+            tabsShown ? 'sz:rotate-180' : ''
+          }`}
+        />
+      </button>
+      {tabsShown ? (
+        <div className="sz:pl-6 sz:flex sz:flex-col">
+          {readableTabs.length > 1 ? (
+            <div className="sz:flex sz:justify-end sz:px-2">
+              <button
+                type="button"
+                disabled={!clearsAll && full}
+                onClick={() => onToggleAllTabs(readableTabs, !clearsAll)}
+                className="sz:text-xs sz:text-sz-cyan sz:rounded-sm sz:cursor-pointer sz:hover:underline sz:underline-offset-2 sz:focus-visible:outline-2 sz:focus-visible:outline-sz-cyan sz:disabled:opacity-50 sz:disabled:cursor-not-allowed sz:disabled:no-underline"
+              >
+                {clearsAll ? t('chat.deselectAllTabs') : t('chat.selectAllTabs')}
+              </button>
+            </div>
+          ) : null}
+          <div className="sz:max-h-64 sz:overflow-y-auto sz:flex sz:flex-col">
+            {tabs.length === 0 ? (
+              <div className="sz:text-xs sz:text-gray-500 sz:px-2 sz:py-2">
+                {t('chat.noOpenTabs')}
+              </div>
+            ) : (
+              tabs.map((tab) => {
+                const attached = attachedTabIds.includes(tab.id!);
+                // A discarded tab has no page to read until it is opened again.
+                const disabled = !attached && (full || Boolean(tab.discarded));
+                return (
+                  <label key={tab.id} className={rowClass(disabled)}>
+                    <TabSummary tab={tab} />
+                    <input
+                      type="checkbox"
+                      checked={attached}
+                      disabled={disabled}
+                      onChange={(e) => onToggleTab(tab, e.target.checked)}
+                      className="sz:w-4 sz:h-4 sz:shrink-0 sz:accent-sz-cyan sz:cursor-[inherit]"
+                    />
+                  </label>
+                );
+              })
+            )}
+          </div>
+          {full ? (
+            <div className="sz:text-xs sz:text-gray-500 sz:px-2">
+              {t('chat.attachLimit', { max: MAX_ATTACHED_TABS })}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
       <label className={rowClass(false)}>
         <FileSearchOutlined className="sz:shrink-0" />
         <div className="sz:min-w-0 sz:flex-1">
@@ -277,8 +367,9 @@ const ToolsMenu = ({
       trigger="click"
       placement="topRight"
       open={open}
-      onOpenChange={(next) => {
+      onOpenChange={async (next) => {
         setHint(false);
+        if (next) setTabs((await chrome.tabs.query({ currentWindow: true })).filter(isWebTab));
         setOpen(next);
       }}
     >

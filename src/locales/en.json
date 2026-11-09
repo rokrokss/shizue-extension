@@ -104,7 +104,7 @@
     "askAboutPages": "Ask about the attached pages",
     "askAboutVideos": "Ask about the attached videos",
     "attach": "Attach",
-    "openTabs": "Open tabs",
+    "attachTabs": "Attach tabs",
     "noOpenTabs": "No web pages are open in this window.",
     "tabAsleep": "Asleep · open it first",
     "attachLimit": "Up to {{max}} tabs and files",

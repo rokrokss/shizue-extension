@@ -369,8 +369,8 @@ const ChatInput = ({
     else setAttached((current) => current.filter((item) => item.tabId !== tab.id));
   };
 
-  // The paperclip menu's "Select all": the tabs not attached yet, in their order, as many as
-  // still fit; "Clear all" takes every one of them off.
+  // The tools menu's "Select all": the tabs not attached yet, in their order, as many as still
+  // fit; "Clear all" takes every one of them off.
   const handleToggleAllTabs = (tabs: chrome.tabs.Tab[], attach: boolean) => {
     if (!attach) {
       const ids = new Set(tabs.map((tab) => tab.id));
@@ -773,12 +773,9 @@ const ChatInput = ({
               ></Button>
             </Tooltip>
             <AttachMenu
-              attachedTabIds={attached.flatMap((item) => (item.tabId !== undefined ? [item.tabId] : []))}
               full={attached.length >= MAX_ATTACHED_TABS}
               imagesSupported={imagesSupported}
               iconColor={iconColor}
-              onToggleTab={handleToggleTab}
-              onToggleAllTabs={handleToggleAllTabs}
               onPickFiles={handlePickFiles}
               onPickImages={handlePickImages}
               onCapture={handleCapture}
@@ -818,6 +815,10 @@ const ChatInput = ({
             <div className="sz:ml-auto">
               <ToolsMenu
                 iconColor={iconColor}
+                attachedTabIds={attached.flatMap((item) => (item.tabId !== undefined ? [item.tabId] : []))}
+                full={attached.length >= MAX_ATTACHED_TABS}
+                onToggleTab={handleToggleTab}
+                onToggleAllTabs={handleToggleAllTabs}
                 webSearch={webSearch}
                 webSearchSupported={webSearchSupported}
                 onToggleWebSearch={() => {

@@ -104,7 +104,7 @@
     "askAboutPages": "Pergunte sobre as páginas anexadas",
     "askAboutVideos": "Pergunte sobre os vídeos anexados",
     "attach": "Anexar",
-    "openTabs": "Separadores abertos",
+    "attachTabs": "Anexar separadores",
     "noOpenTabs": "Não há páginas web abertas nesta janela.",
     "tabAsleep": "Inativo · abra-o primeiro",
     "attachLimit": "Até {{max}} separadores e ficheiros",

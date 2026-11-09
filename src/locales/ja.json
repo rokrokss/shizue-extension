@@ -104,7 +104,7 @@
     "askAboutPages": "添付したページについて聞いてください",
     "askAboutVideos": "添付した動画について聞いてください",
     "attach": "添付",
-    "openTabs": "開いているタブ",
+    "attachTabs": "タブを添付",
     "noOpenTabs": "このウィンドウで開いているウェブページはありません。",
     "tabAsleep": "スリープ中 · 先に開いてください",
     "attachLimit": "最大{{max}}件まで添付できます",

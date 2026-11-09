@@ -104,7 +104,7 @@
     "askAboutPages": "Eklenen sayfalar hakkında soru sor",
     "askAboutVideos": "Eklenen videolar hakkında soru sor",
     "attach": "Ekle",
-    "openTabs": "Açık sekmeler",
+    "attachTabs": "Sekme ekle",
     "noOpenTabs": "Bu pencerede açık web sayfası yok.",
     "tabAsleep": "Uykuda · önce açın",
     "attachLimit": "En fazla {{max}} sekme ve dosya",

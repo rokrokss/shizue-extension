@@ -104,7 +104,7 @@
     "askAboutPages": "Pergunte sobre as páginas anexadas",
     "askAboutVideos": "Pergunte sobre os vídeos anexados",
     "attach": "Anexar",
-    "openTabs": "Abas abertas",
+    "attachTabs": "Anexar abas",
     "noOpenTabs": "Nenhuma página web aberta nesta janela.",
     "tabAsleep": "Inativa · abra primeiro",
     "attachLimit": "Até {{max}} abas e arquivos",

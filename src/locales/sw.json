@@ -104,7 +104,7 @@
     "askAboutPages": "Uliza kuhusu kurasa zilizoambatishwa",
     "askAboutVideos": "Uliza kuhusu video zilizoambatishwa",
     "attach": "Ambatisha",
-    "openTabs": "Vichupo vilivyofunguliwa",
+    "attachTabs": "Ambatisha vichupo",
     "noOpenTabs": "Hakuna ukurasa wa wavuti uliofunguliwa katika dirisha hili.",
     "tabAsleep": "Kimelala · kifungue kwanza",
     "attachLimit": "Hadi vichupo na faili {{max}}",
