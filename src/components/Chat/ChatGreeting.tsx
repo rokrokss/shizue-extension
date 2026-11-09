@@ -5,7 +5,6 @@ import { continueTabsAtom } from '@/hooks/global';
 import { useThemeValue } from '@/hooks/layout';
 import { CONTINUE_DAYS_MS, continueCards, type ContinueCard } from '@/lib/continueCards';
 import { db, type Message } from '@/lib/indexDB';
-import { MessageOutlined } from '@ant-design/icons';
 import { useSetAtom } from 'jotai';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -76,13 +75,12 @@ const ContinueCards = () => {
             setContinueTabs(card.tabIds);
             switchThread(card.threadId);
           }}
-          className={`sz:flex sz:items-center sz:gap-2 sz:w-full sz:px-3 sz:py-2 sz:rounded-lg sz:border sz:text-left sz:cursor-pointer ${
+          className={`sz:flex sz:items-center sz:w-full sz:px-3 sz:py-2 sz:rounded-lg sz:border sz:text-left sz:cursor-pointer ${
             theme == 'dark'
               ? 'sz:border-white/15 sz:text-white sz:hover:bg-white/5'
               : 'sz:border-black/10 sz:text-black sz:hover:bg-black/[0.03]'
           }`}
         >
-          <MessageOutlined className="sz:shrink-0 sz:text-gray-500" />
           <span className="sz:min-w-0 sz:flex-1">
             <span className="sz:block sz:truncate sz:text-sm">{card.title}</span>
             <span className="sz:block sz:text-xs sz:text-gray-500">
