@@ -13,6 +13,7 @@
 - Fix links in answers opening inside the side panel instead of a new tab; they are now underlined
 - Fix wrong or awkward translations in the interface, in 23 languages, and the missing period at the end of some hints
 - Fix tooltips flickering when the Tools, Study or Attach menu closes
+- Fix the checkboxes in the Tools and Attach menus looking dark in light mode
 - Fix Settings running off the side panel when it is taller than the panel; it now scrolls inside it
 
 ## v0.5.0
