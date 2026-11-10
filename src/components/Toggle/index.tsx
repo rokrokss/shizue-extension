@@ -127,10 +127,13 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
   const tooltipMessages = [
     t('overlayMenu.translateSettings'),
     t('overlayMenu.translatePage'),
-    // A YouTube video or Netflix title is summarized from its captions (services/pageSummary.ts).
+    // A YouTube video or Netflix title is summarized from its captions, and a PDF tab from the PDF
+    // (services/pageSummary.ts).
     videoKey(window.location.href)
       ? t('overlayMenu.summarizeVideo')
-      : t('overlayMenu.summarizePage'),
+      : isPdfPage()
+        ? t('overlayMenu.summarizePdf')
+        : t('overlayMenu.summarizePage'),
     t('overlayMenu.removeTranslation'),
     t('chat.browserAgent'),
   ];

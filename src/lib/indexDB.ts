@@ -36,6 +36,8 @@ export interface Message {
   // A summary of a YouTube video, made from its captions when summaryCaptions.
   summaryVideo?: boolean;
   summaryCaptions?: boolean;
+  // A summary of a PDF open in a tab.
+  summaryPdf?: boolean;
   // The video's preview frames, for the scenes its summary shows (lib/storyboard.ts).
   summaryStoryboard?: string;
   // The detailed analysis asked for after a summary, from the text the chat already holds.

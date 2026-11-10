@@ -117,6 +117,20 @@ export const readTabPage = async (tabId: number, short = false): Promise<PageRea
   }
 };
 
+// Whether the tab shows a PDF, as its page summary decides (services/pageSummary.ts). A PDF's
+// address needn't end in .pdf.
+export const isPdfTab = async (tabId: number) => {
+  try {
+    const [injection] = await chrome.scripting.executeScript({
+      target: { tabId },
+      func: () => document.contentType === 'application/pdf',
+    });
+    return injection?.result === true;
+  } catch {
+    return false;
+  }
+};
+
 // The captions of the video a YouTube or Netflix tab shows, read in that tab
 // (lib/youtubeTranscript.ts, lib/netflix/netflixTranscript.ts), or null when the tab doesn't answer.
 const readVideoTranscript = async (tabId: number): Promise<VideoTranscript | null> => {

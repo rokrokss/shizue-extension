@@ -103,6 +103,7 @@ const SidePanelProvider = ({
           summaryVideo,
           summaryCaptions,
           summaryStoryboard,
+          summaryPdf,
         } = initData;
 
         debugLog('SidePanelProvider: [getInitData] summaryTitle', summaryTitle);
@@ -134,6 +135,7 @@ const SidePanelProvider = ({
           summaryVideo: summaryVideo,
           summaryCaptions: summaryCaptions,
           ...(summaryStoryboard ? { summaryStoryboard } : {}),
+          ...(summaryPdf ? { summaryPdf } : {}),
           translateMode: false,
           content: summarizePageTextPrompt,
           createdAt: Date.now(),

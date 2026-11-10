@@ -28,6 +28,7 @@ import { cropCapture, selectRegion } from '@/lib/regionCapture';
 import {
   isOfficeFile,
   isPdfFile,
+  isPdfTab,
   isTextFile,
   PageRead,
   PageText,
@@ -113,7 +114,7 @@ const ChatInput = ({
   onTranslateMode: () => Promise<void>;
   // A summary request shows in the chat while its page is read; the summary button waits for it.
   summaryPending: boolean;
-  onSummaryStart: (tab: chrome.tabs.Tab) => void;
+  onSummaryStart: (tab: chrome.tabs.Tab, pdf: boolean) => void;
   onSummaryFailed: () => void;
 }) => {
   const { t } = useTranslation();
@@ -220,6 +221,16 @@ const ChatInput = ({
   // Chrome keeps extensions out of its Web Store, so its pages aren't offered, summarized or
   // controlled; the summary button and the tools menu say why.
   const webStorePage = isWebStorePage(activeTab?.url);
+  // A PDF tab is summarized from the PDF, so the summary button and its request say so.
+  const [activePdf, setActivePdf] = useState(false);
+  useEffect(() => {
+    let current = true;
+    setActivePdf(false);
+    if (activeTab?.id !== undefined) isPdfTab(activeTab.id).then((pdf) => current && setActivePdf(pdf));
+    return () => {
+      current = false;
+    };
+  }, [activeTab?.id, activeTab?.url, activeTab?.status]);
   const suggestedTab =
     activeTab &&
     !webStorePage &&
@@ -639,7 +650,7 @@ const ChatInput = ({
 
       // Like a question sent while an answer is coming, it stops that answer and goes out instead.
       if (isChatWaiting(chatStatus)) await onCancel();
-      onSummaryStart(tab);
+      onSummaryStart(tab, activePdf && tab.id === activeTab?.id);
       await requestPageSummary(tab.id);
     } catch (error) {
       debugLog('ChatInput: [handleSummaryClick] error', error);
@@ -842,7 +853,9 @@ const ChatInput = ({
                     ? t('chat.webStoreSummary')
                     : videoKey(activeTab?.url)
                       ? t('overlayMenu.summarizeVideo')
-                      : t('overlayMenu.summarizePage')}
+                      : activePdf
+                        ? t('overlayMenu.summarizePdf')
+                        : t('overlayMenu.summarizePage')}
                 </div>
               }
               color={theme == 'dark' ? '#505362' : 'white'}

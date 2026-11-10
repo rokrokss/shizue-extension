@@ -278,6 +278,7 @@ test('an ordinary page summary asks no tab for video captions', async () => {
     await summarizeCurrentPage();
     assert.equal(fixture.sent.some((message) => message.action === 'read_tab_video_transcript'), false);
     assert.equal(fixture.data.GLOBAL_STATE.summaryVideo, false);
+    assert.equal(fixture.data.GLOBAL_STATE.summaryPdf, undefined);
   });
 });
 
@@ -309,6 +310,8 @@ test('a PDF tab is summarized from the text of the file, under the tab title', a
     assert.equal(state.summaryText.startsWith('Slide text'), true);
     assert.equal(state.summaryPageLink, 'https://example.test/report.pdf');
     assert.equal(state.summaryVideo, false);
+    // The request and the chat list then say "Summarize this PDF".
+    assert.equal(state.summaryPdf, true);
   });
 });
 

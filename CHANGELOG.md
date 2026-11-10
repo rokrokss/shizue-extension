@@ -3,6 +3,7 @@
 ## v0.5.6
 
 - Page translation and page image translation in a PDF tab say they don't work on PDFs and suggest summarizing the PDF or asking about it in the side panel, instead of turning on and translating nothing
+- Summarizing a PDF tab says "Summarize this PDF", as a video's summary says "Summarize this video": in the floating button's menu, on the side panel's summary button, in the request it sends and in its title in History. This includes PDFs whose address doesn't end in .pdf
 - Fix the summary of a PDF open in a tab reading an empty page: it now reads the PDF's text, under the title the tab shows. A scanned PDF with no text, or one larger than 50 MB, says so instead
 
 ## v0.5.5

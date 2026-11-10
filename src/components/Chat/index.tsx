@@ -48,6 +48,7 @@ export interface Message {
   summaryVideo?: boolean;
   summaryCaptions?: boolean;
   summaryStoryboard?: string;
+  summaryPdf?: boolean;
   summaryMode?: 'detailed';
   selectionText?: string;
   translateMode?: boolean;
@@ -364,7 +365,7 @@ const Chat = () => {
   // The summary button's request shows at once, with its answer's loading dots, instead of only
   // once the page is read and stored. Its prompt has no page text yet, but the same opening that
   // picks the character beside it, so the character stays when the stored request replaces it.
-  const handleSummaryStart = (tab: chrome.tabs.Tab) => {
+  const handleSummaryStart = (tab: chrome.tabs.Tab, pdf: boolean) => {
     followRef.current = true;
     setMessages((prev) => [
       ...(messagesThreadId === threadId ? prev : []),
@@ -374,6 +375,7 @@ const Chat = () => {
         summaryTitle: tab.title,
         summaryPageLink: tab.url,
         summaryVideo: videoKey(tab.url) !== null,
+        ...(pdf ? { summaryPdf: true } : {}),
         content: getSummarizePageTextPrompt(tab.title ?? '', ''),
         done: true,
         onInterrupt: false,
@@ -799,6 +801,7 @@ const Chat = () => {
       summaryVideo: request.summaryVideo,
       summaryCaptions: request.summaryCaptions,
       ...(request.summaryStoryboard ? { summaryStoryboard: request.summaryStoryboard } : {}),
+      ...(request.summaryPdf ? { summaryPdf: true } : {}),
       summaryMode: 'detailed',
       ...(research ? { webSearch: true } : {}),
       translateMode: false,

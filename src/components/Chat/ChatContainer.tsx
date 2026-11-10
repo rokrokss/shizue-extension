@@ -494,7 +494,9 @@ const ChatContainer = ({
                         ? t('chat.detailedAnalysisRequestText')
                         : m.summaryVideo
                           ? t('chat.summaryVideoRequestText')
-                          : t('chat.summaryRequestText')
+                          : m.summaryPdf
+                            ? t('chat.summaryPdfRequestText')
+                            : t('chat.summaryRequestText')
                     )}
                     {m.webSearch ? (
                       <div className="sz:flex sz:flex-row sz:items-center sz:gap-1">
@@ -505,7 +507,7 @@ const ChatContainer = ({
                     <a href={m.summaryPageLink} target="_blank" rel="noopener noreferrer">
                       <div className="sz:flex sz:flex-row sz:items-center sz:gap-1">
                         {!m.summaryVideo ? (
-                          <LinkOutlined />
+                          m.summaryPdf ? <FilePdfOutlined /> : <LinkOutlined />
                         ) : youtubeVideoId(m.summaryPageLink) ? (
                           <YoutubeOutlined />
                         ) : (

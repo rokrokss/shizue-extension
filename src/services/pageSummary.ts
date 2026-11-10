@@ -45,6 +45,7 @@ export async function summarizeCurrentPage() {
     await initSummarizePageContent(pdf.title, pdf.text.slice(0, SUMMARY_PAGE_TEXT_MAX_CHARS), url, {
       video: false,
       captions: false,
+      pdf: true,
     });
   } else {
     // A YouTube video or Netflix title is summarized from its captions when it has them.
