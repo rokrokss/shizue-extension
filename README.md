@@ -155,6 +155,7 @@ Requests to OpenRouter carry `HTTP-Referer: https://shizue.net` and `X-OpenRoute
 - `sidePanel`: the chat side panel
 - `activeTab`: work with the tab you're on when you open Shizue or use a right-click action
 - `contextMenus`: the right-click actions
+- `offscreen`: read the text of a PDF open in a tab when you summarize it. Chrome's PDF viewer doesn't let extensions read a PDF's text, so Shizue downloads the PDF and reads it with pdf.js, which needs a worker that the extension's background can't start. A hidden page is opened for that one read and closed right after
 - `tabGroups` (optional, asked only when you click "Show tab groups" after typing @ in the chat box, or turn on "Run in a separate tab" for browser control): list the names and colors of this window's tab groups so you can attach a whole group, and keep the tabs browser control works in behind yours in a "Shizue at work" group. Group names are only shown in that list, never stored or sent anywhere
 - `history` (optional, asked only when you turn on "Search history" in the chat's Tools menu): search the pages you visited in the last 90 days for each question, on your computer. You see what was found and choose whether to send it; banking, payment, health, and mail sites are passed over
 - Content scripts on all sites: the floating toggle button, page translation, and image translation; on YouTube, Twitch, Netflix, and the other video and meeting sites above, the caption button and bilingual captions
