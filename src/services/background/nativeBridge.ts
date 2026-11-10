@@ -1,6 +1,5 @@
 import {
   MESSAGE_AGENT_STOP,
-  MESSAGE_BRIDGE_READ_PDF,
   MESSAGE_READ_VIDEO_TRANSCRIPT,
   STORAGE_BRIDGE_LOG,
   STORAGE_BRIDGE_OPENED_TABS,
@@ -22,10 +21,10 @@ import {
 import { showAgentOverlay } from '@/lib/browserAgentPage';
 import { askInPage } from '@/lib/bridgePage';
 import { MAIN_TEXT_EXCLUDE, readPageContent } from '@/lib/mainText';
-import type { PageRead } from '@/lib/tabText';
 import { transcriptText, videoKey, type VideoTranscript } from '@/lib/videoTranscript';
 import { activityOf, askedDialogs, execute, screenshot, settle, snapshotOf } from '@/services/background/browserAgentHandler';
 import { recoverTabContentScripts } from '@/services/background/contentScriptRecovery';
+import { readPdf } from '@/services/background/pdfTab';
 import { debugLog } from '@/logs';
 import { i18n } from '#i18n';
 
@@ -361,30 +360,6 @@ const readVideoTranscript = async (tabId: number): Promise<VideoTranscript | nul
     // A tab opened before the extension was updated or reloaded has no content script yet.
     return (await recoverTabContentScripts(tabId)) ? send().catch(() => null) : null;
   }
-};
-
-// pdf.js needs a worker, which a service worker can't start, so a PDF is read in an offscreen page
-// (entrypoints/offscreen-pdf), one at a time, and the page closed after.
-let pdfReads: Promise<unknown> = Promise.resolve();
-const readPdf = (url: string, title: string) => {
-  const reading = pdfReads.then(async (): Promise<PageRead> => {
-    await chrome.offscreen
-      .createDocument({
-        url: 'offscreen-pdf.html',
-        reasons: [chrome.offscreen.Reason.WORKERS],
-        justification: 'Reads the text of a PDF tab an agent asked for.',
-      })
-      .catch(() => {});
-    try {
-      return (await chrome.runtime.sendMessage({ action: MESSAGE_BRIDGE_READ_PDF, url, title })) ?? { error: 'unreadable' };
-    } catch {
-      return { error: 'unreadable' };
-    } finally {
-      await chrome.offscreen.closeDocument().catch(() => {});
-    }
-  });
-  pdfReads = reading.catch(() => {});
-  return reading;
 };
 
 // What a summary or an attached tab reads in the panel: a video's captions, a PDF's text, or the

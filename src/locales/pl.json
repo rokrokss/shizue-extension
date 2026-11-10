@@ -77,6 +77,7 @@
     "main_0": "Jak mija dzień?",
     "askAnything": "Zapytaj o cokolwiek · @, by dołączyć karty",
     "pageUnavailable": "Nie można połączyć się z tą stroną. Odśwież ją i spróbuj ponownie. Strony z ograniczonym dostępem, takie jak ustawienia przeglądarki, nie są obsługiwane.",
+    "pdfUnreadable": "Nie udało się odczytać tekstu tego pliku PDF. Może to być zeskanowany PDF albo plik większy niż 50 MB.",
     "connectionError": "Pip pip...🚨 Błąd systemu... 📡 🥺",
     "retry": "Spróbuj ponownie",
     "history": "Historia",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "Nie udało się przetłumaczyć",
-    "retry": "Spróbuj ponownie"
+    "retry": "Spróbuj ponownie",
+    "pdfUnsupported": "Tłumaczenie strony nie działa w plikach PDF. Zamiast tego podsumuj PDF lub zadaj o nim pytanie w panelu bocznym."
   },
   "meeting": {
     "liveTranslation": "Tłumaczenie spotkań Shizue",

@@ -77,6 +77,7 @@
     "main_0": "Ngày của bạn thế nào?",
     "askAnything": "Hỏi bất cứ điều gì · @ để đính kèm thẻ",
     "pageUnavailable": "Không thể kết nối với trang này. Hãy tải lại trang rồi thử lại. Các trang bị hạn chế truy cập, như cài đặt trình duyệt, không được hỗ trợ.",
+    "pdfUnreadable": "Không đọc được chữ trong PDF này. Có thể đây là PDF được quét, hoặc tệp lớn hơn 50 MB.",
     "connectionError": "Beep beep...🚨 Lỗi hệ thống... 📡 🥺",
     "retry": "Thử lại",
     "history": "Lịch sử",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "Không dịch được",
-    "retry": "Thử lại"
+    "retry": "Thử lại",
+    "pdfUnsupported": "Tính năng dịch trang không dùng được với PDF. Thay vào đó, hãy tóm tắt PDF hoặc đặt câu hỏi về nó trong bảng điều khiển bên."
   },
   "meeting": {
     "liveTranslation": "Dịch cuộc họp Shizue",

@@ -36,10 +36,13 @@ export default defineConfig({
         'activeTab',
         'contextMenus',
         'declarativeNetRequestWithHostAccess',
+        // A PDF tab's summary reads the file in an offscreen page (src/services/background/pdfTab.ts),
+        // as the Claude Code bridge does. No install warning. Firefox and Safari have no offscreen
+        // API, and their PDF viewers run no content scripts to ask for a summary.
+        ...(browser === 'firefox' || browser === 'safari' ? [] : ['offscreen']),
         // Only `pnpm build:bridge`: Claude Code's way in (src/services/background/nativeBridge.ts).
-        // It reaches only the tabs in its own tab group, and reads a PDF tab in an offscreen page.
-        // Neither adds an install warning.
-        ...(mode === 'bridge' ? ['nativeMessaging', 'tabGroups', 'offscreen'] : []),
+        // It reaches only the tabs in its own tab group. Neither adds an install warning.
+        ...(mode === 'bridge' ? ['nativeMessaging', 'tabGroups'] : []),
       ],
       // Asked for when the user first lists tab groups in the chat box's @ list, so the install
       // and update prompts stay as they are. The bridge build has it from the start. `history` is

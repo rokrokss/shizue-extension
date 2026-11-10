@@ -77,6 +77,7 @@
     "main_0": "今日の調子はどうですか？",
     "askAnything": "何でも聞いてください · @でタブを添付",
     "pageUnavailable": "このページに接続できません。ページを再読み込みして、もう一度お試しください。ブラウザの設定など、アクセスが制限されたページでは使用できません。",
+    "pdfUnreadable": "このPDFの文字を読み取れませんでした。スキャンしたPDFか、50MBを超えるファイルの可能性があります。",
     "connectionError": "ピーピー...🚨 システムエラー... 📡 🥺",
     "retry": "再試行",
     "history": "履歴",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "翻訳できませんでした",
-    "retry": "再試行"
+    "retry": "再試行",
+    "pdfUnsupported": "PDFではページ翻訳を使えません。代わりにサイドパネルでPDFを要約するか、PDFについて質問してください。"
   },
   "meeting": {
     "liveTranslation": "シズエの会議翻訳",

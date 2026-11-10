@@ -281,6 +281,101 @@ test('an ordinary page summary asks no tab for video captions', async () => {
   });
 });
 
+// Chrome's PDF viewer leaves the page around it empty; the background reads the file instead.
+const pdfSummaryFixture = (read) => {
+  const fixture = summaryFixture();
+  fixture.globals.window.location.href = 'https://example.test/report.pdf';
+  fixture.globals.document.title = '';
+  fixture.globals.document.contentType = 'application/pdf';
+  fixture.globals.document.body.innerText = '';
+  fixture.chrome.runtime.sendMessage = async (message) => {
+    fixture.sent.push(message);
+    if (message.action === 'action_read_pdf_tab') return read;
+    throw new Error('Receiving end does not exist.');
+  };
+  return fixture;
+};
+
+test('a PDF tab is summarized from the text of the file, under the tab title', async () => {
+  const fixture = pdfSummaryFixture({
+    page: { title: 'Q3 2026 Investor Presentation', url: 'https://example.test/report.pdf', text: 'Slide text '.repeat(20_000), pdf: true },
+  });
+  await withModule('../src/services/pageSummary.ts', fixture.globals, async ({ summarizeCurrentPage }) => {
+    await summarizeCurrentPage();
+    const state = fixture.data.GLOBAL_STATE;
+    assert.equal(state.actionType, 'askForSummary');
+    assert.equal(state.summaryTitle, 'Q3 2026 Investor Presentation');
+    assert.equal(state.summaryText.length, 100_000);
+    assert.equal(state.summaryText.startsWith('Slide text'), true);
+    assert.equal(state.summaryPageLink, 'https://example.test/report.pdf');
+    assert.equal(state.summaryVideo, false);
+  });
+});
+
+for (const read of [{ error: 'empty' }, { error: 'unreadable' }, { success: false, error: 'Handler failed' }, undefined]) {
+  test(`a PDF that can't be read (${JSON.stringify(read)}) fails its summary with the reason`, async () => {
+    const fixture = pdfSummaryFixture(read);
+    await withModule('../src/services/pageSummary.ts', fixture.globals, async ({ registerPageSummaryListener, requestPageSummary, PDF_UNREADABLE }) => {
+      registerPageSummaryListener();
+      await assert.rejects(requestPageSummary(7), (error) => error.reason === PDF_UNREADABLE && /no text/.test(error.message));
+      assert.equal(fixture.writes.length, 0);
+    });
+  });
+}
+
+test('the toggle learns why a summary failed, from a request sent within the click', async () => {
+  const calls = [];
+  let finish;
+  const chrome = { runtime: { sendMessage(message) { calls.push(message); return new Promise((resolve) => { finish = resolve; }); } } };
+  await withModule('../src/services/panelService.ts', { chrome }, async ({ panelService }) => {
+    const pending = panelService.summarizePage();
+    assert.deepEqual(calls, [{ action: 'action_open_panel', summarizePage: true }]);
+    finish({ status: 'error', reason: 'pdfUnreadable' });
+    assert.deepEqual(await pending, { opened: false, reason: 'pdfUnreadable' });
+  });
+  chrome.runtime.sendMessage = () => Promise.reject(new Error('Extension context invalidated.'));
+  await withModule('../src/services/panelService.ts', { chrome }, async ({ panelService }) => {
+    assert.deepEqual(await panelService.summarizePage(), { opened: false, reason: undefined });
+  });
+});
+
+const backgroundHandlerStubs = {
+  ...panelSummaryStubs,
+  '@/entrypoints/background/sidepanel': 'export const openPanel = async () => {}; export const togglePanel = async () => {};',
+  '@/lib/indexDB': 'export const db = {}; export const addWord = async () => {}; export const getLatestMessageForThread = async () => null; export const loadThread = async () => [];',
+  '@/services/background/translationHandler': 'export const getTranslationHandler = () => ({});',
+  '@/services/background/chatModelHandler': 'export const getChatModelHandler = () => ({});',
+  '@/services/background/imageTranslationHandler': 'export const translateImage = async () => ({});',
+  '@/services/background/browserAgentHandler': 'export const stopAgentInTab = () => {}; export const resumeAgentInTab = () => {};',
+  '@/services/background/pdfTab': 'export const readPdf = (url, title) => globalThis.readPdfFile(url, title);',
+  ...newHandlerStubs,
+};
+
+test('background passes the reason a summary failed back to the page that asked', async () => {
+  await withModule('../src/services/background/messageHandlers.ts', {
+    deliverSummary: async () => { throw Object.assign(new Error('This PDF has no text Shizue can read.'), { reason: 'pdfUnreadable' }); },
+  }, async ({ messageHandlers }) => {
+    const replies = [];
+    await messageHandlers.action_open_panel({ summarizePage: true }, (reply) => replies.push(reply), { tab: { id: 7, windowId: 2 } });
+    assert.deepEqual(replies, [{ status: 'error', reason: 'pdfUnreadable' }]);
+  }, backgroundHandlerStubs);
+});
+
+test('background reads the PDF of the tab\'s top frame, under the tab title', async () => {
+  const reads = [];
+  await withModule('../src/services/background/messageHandlers.ts', {
+    readPdfFile: async (url, title) => { reads.push([url, title]); return { page: { title, url, text: 'Slide text', pdf: true } }; },
+  }, async ({ messageHandlers }) => {
+    const replies = [];
+    const tab = { id: 7, title: 'Q3 2026 Investor Presentation' };
+    await messageHandlers.action_read_pdf_tab({}, (reply) => replies.push(reply), { tab, frameId: 0, url: 'https://example.test/report.pdf' });
+    await messageHandlers.action_read_pdf_tab({}, (reply) => replies.push(reply), { tab, frameId: 3, url: 'https://example.test/frame.pdf' });
+    assert.deepEqual(reads, [['https://example.test/report.pdf', 'Q3 2026 Investor Presentation']]);
+    assert.equal(replies[0].page.title, 'Q3 2026 Investor Presentation');
+    assert.deepEqual(replies[1], { error: 'unreadable' });
+  }, backgroundHandlerStubs);
+});
+
 test('background relays a tab\'s own transcript request to that tab\'s top frame', async () => {
   const sent = [];
   const transcript = { videoId: '81234567', captions: [] };

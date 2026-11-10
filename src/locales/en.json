@@ -77,6 +77,7 @@
     "main_0": "How's your day going?",
     "askAnything": "Ask anything · @ to add tabs",
     "pageUnavailable": "Shizue cannot connect to this page. Refresh the page and try again. Browser settings and other restricted pages are not supported.",
+    "pdfUnreadable": "Couldn't read this PDF's text. It may be a scanned PDF, or larger than 50 MB.",
     "connectionError": "Beep beep...🚨 System Error... 📡 🥺",
     "retry": "Retry",
     "history": "History",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "Couldn't translate",
-    "retry": "Try again"
+    "retry": "Try again",
+    "pdfUnsupported": "Page translation doesn't work on PDFs. Summarize the PDF or ask about it in the side panel instead."
   },
   "meeting": {
     "liveTranslation": "Shizue meeting translation",

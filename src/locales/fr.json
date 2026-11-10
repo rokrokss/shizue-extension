@@ -77,6 +77,7 @@
     "main_0": "Comment se passe votre journée ?",
     "askAnything": "Demandez n’importe quoi · @ pour joindre des onglets",
     "pageUnavailable": "Impossible de se connecter à cette page. Actualisez-la et réessayez. Les pages restreintes, comme les paramètres du navigateur, ne sont pas prises en charge.",
+    "pdfUnreadable": "Impossible de lire le texte de ce PDF. Il s’agit peut-être d’un PDF numérisé, ou il dépasse 50 Mo.",
     "connectionError": "Bip bip...🚨 Erreur système... 📡 🥺",
     "retry": "Réessayer",
     "history": "Historique",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "Traduction impossible",
-    "retry": "Réessayer"
+    "retry": "Réessayer",
+    "pdfUnsupported": "La traduction de page ne fonctionne pas sur les PDF. Résumez plutôt le PDF ou posez des questions à son sujet dans le panneau latéral."
   },
   "meeting": {
     "liveTranslation": "Traduction de réunion Shizue",

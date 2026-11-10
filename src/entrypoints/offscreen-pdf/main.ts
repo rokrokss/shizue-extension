@@ -1,11 +1,11 @@
-// The Claude Code bridge's PDF reader (services/background/nativeBridge.ts). pdf.js needs a worker,
-// which the service worker can't start, so the bridge opens this page offscreen for a PDF tab and
-// closes it after. Other builds never open it.
-import { MESSAGE_BRIDGE_READ_PDF } from '@/config/constants';
+// Reads a PDF tab's text for a page summary and the Claude Code bridge (services/background/pdfTab.ts).
+// pdf.js needs a worker, which the service worker can't start, so the background opens this page
+// offscreen for a PDF tab and closes it after.
+import { MESSAGE_OFFSCREEN_READ_PDF } from '@/config/constants';
 import { readPdfPage } from '@/lib/tabText';
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg?.action !== MESSAGE_BRIDGE_READ_PDF || sender.id !== chrome.runtime.id) return false;
+  if (msg?.action !== MESSAGE_OFFSCREEN_READ_PDF || sender.id !== chrome.runtime.id) return false;
   void (async () => {
     try {
       const response = await fetch(msg.url, { credentials: 'include' });

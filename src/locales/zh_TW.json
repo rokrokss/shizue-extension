@@ -77,6 +77,7 @@
     "main_0": "今天過得怎麼樣？",
     "askAnything": "隨便問 · 用 @ 附加分頁",
     "pageUnavailable": "無法連線到此頁面。請重新整理頁面後再試。瀏覽器設定等受限頁面不受支援。",
+    "pdfUnreadable": "無法讀取此 PDF 的文字。它可能是掃描版 PDF，或大於 50 MB。",
     "connectionError": "嗶嗶...🚨 系統錯誤... 📡 🥺",
     "retry": "重試",
     "history": "歷史記錄",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "無法翻譯",
-    "retry": "重試"
+    "retry": "重試",
+    "pdfUnsupported": "頁面翻譯不適用於 PDF。請改在側邊欄中摘要此 PDF 或針對它提問。"
   },
   "meeting": {
     "liveTranslation": "Shizue 會議翻譯",

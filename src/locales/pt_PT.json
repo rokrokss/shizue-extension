@@ -77,6 +77,7 @@
     "main_0": "Como está o seu dia?",
     "askAnything": "Pergunte o que quiser · @ para anexar separadores",
     "pageUnavailable": "Não foi possível ligar a esta página. Atualize a página e tente novamente. Páginas restritas, como as definições do navegador, não são suportadas.",
+    "pdfUnreadable": "Não foi possível ler o texto deste PDF. Pode ser um PDF digitalizado ou ter mais de 50 MB.",
     "connectionError": "Bip bip...🚨 Erro do sistema... 📡 🥺",
     "retry": "Tentar novamente",
     "history": "Histórico",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "Não foi possível traduzir",
-    "retry": "Tentar novamente"
+    "retry": "Tentar novamente",
+    "pdfUnsupported": "A tradução de página não funciona em PDFs. Em vez disso, resuma o PDF ou faça perguntas sobre ele no painel lateral."
   },
   "meeting": {
     "liveTranslation": "Tradução de reuniões do Shizue",

@@ -50,11 +50,16 @@ import { languageOptions } from '@/lib/language';
 import { TranslateModel } from '@/lib/modelRegistry';
 import { getPageTranslator } from '@/lib/pageTranslator';
 import { debugLog } from '@/logs';
+import { PDF_UNREADABLE } from '@/services/pageSummary';
 import { panelService } from '@/services/panelService';
 import { Alert, Button, Select } from 'antd';
 import { motion, PanInfo } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+// Chrome draws a PDF in its own viewer, out of reach of page and image translation; this page is
+// left empty around it.
+const isPdfPage = () => document.contentType === 'application/pdf';
 
 const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
   const { t } = useTranslation();
@@ -70,7 +75,8 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
   const [translateSettingsModalOpen, setTranslateSettingsModalOpen] = useState(false);
   const [closeIconModalOpen, setCloseIconModalOpen] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [panelConnectionFailed, setPanelConnectionFailed] = useState(false);
+  // The message key of the alert above the toggle: a lost connection, or what a PDF can't do.
+  const [notice, setNotice] = useState<string | null>(null);
   const [toggleYPosition, setToggleYPosition] = useToggleYPosition();
   const [isTranslationActive, setIsTranslationActive] = useState(false);
   const isTranslationActiveRef = useRef(isTranslationActive);
@@ -158,11 +164,11 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
   }, [isTranslationActive]);
 
   const setPanelOpenOrNot = () => {
-    void panelService.setPanelOpenOrNot().then((opened) => setPanelConnectionFailed(!opened));
+    void panelService.setPanelOpenOrNot().then((opened) => setNotice(opened ? null : 'chat.pageUnavailable'));
   };
 
   const setPanelOpen = () => {
-    void panelService.openPanel().then((opened) => setPanelConnectionFailed(!opened));
+    void panelService.openPanel().then((opened) => setNotice(opened ? null : 'chat.pageUnavailable'));
   };
 
   const handleClick = () => {
@@ -218,8 +224,8 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
     debugLog('Summarize page clicked');
     if (isDragging) return;
     // The background opens immediately and tracks the summary handoff for the panel.
-    const opened = await panelService.openPanel({ summarizePage: true });
-    setPanelConnectionFailed(!opened);
+    const { opened, reason } = await panelService.summarizePage();
+    setNotice(opened ? null : reason === PDF_UNREADABLE ? 'chat.pdfUnreadable' : 'chat.pageUnavailable');
   }, [isDragging]);
 
   const handleDescribeImage = useCallback(
@@ -345,6 +351,11 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
 
     if (isDragging) return;
 
+    if (isPdfPage()) {
+      setNotice('pageTranslation.pdfUnsupported');
+      return;
+    }
+
     if (!anyModelAvailable) {
       debugLog('Translate page clicked but not able to translate, no model available');
       setPanelOpen();
@@ -368,6 +379,10 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
 
   const handleTranslateImage = useCallback(
     (srcUrl: string | undefined, wholePage: boolean) => {
+      if (wholePage && isPdfPage()) {
+        setNotice('pageTranslation.pdfUnsupported');
+        return;
+      }
       if (!anyModelAvailable) {
         setPanelOpen();
         return;
@@ -431,10 +446,10 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
         }}
         className="sz:fixed sz:right-0 sz:bottom-[26px] sz:flex sz:flex-col sz:items-end sz:z-2147483647"
       >
-        {panelConnectionFailed && <div className="sz:w-64 sz:max-w-[calc(100vw-16px)] sz:mr-2 sz:mb-2"
+        {notice && <div className="sz:w-64 sz:max-w-[calc(100vw-16px)] sz:mr-2 sz:mb-2"
           style={{ filter: theme === 'dark' ? 'invert(1) hue-rotate(180deg)' : 'none' }}>
-          <Alert type="warning" showIcon closable onClose={() => setPanelConnectionFailed(false)}
-            className="sz:font-ycom" message={t('chat.pageUnavailable')} />
+          <Alert type="warning" showIcon closable onClose={() => setNotice(null)}
+            className="sz:font-ycom" message={t(notice)} />
         </div>}
         <div
           className="sz:flex sz:flex-col sz:items-end sz:z-2147483647"

@@ -77,6 +77,7 @@
     "main_0": "Siku yako inaendeleaje?",
     "askAnything": "Uliza chochote · @ kuambatisha vichupo",
     "pageUnavailable": "Haiwezekani kuunganisha kwenye ukurasa huu. Pakia ukurasa upya na ujaribu tena. Kurasa zenye ufikiaji uliozuiwa, kama mipangilio ya kivinjari, hazitumiki.",
+    "pdfUnreadable": "Imeshindwa kusoma maandishi ya PDF hii. Huenda ni PDF iliyochanganuliwa, au ni kubwa kuliko MB 50.",
     "connectionError": "Beep beep...🚨 Hitilafu ya Mfumo... 📡 🥺",
     "retry": "Jaribu tena",
     "history": "Historia",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "Imeshindwa kutafsiri",
-    "retry": "Jaribu tena"
+    "retry": "Jaribu tena",
+    "pdfUnsupported": "Tafsiri ya ukurasa haifanyi kazi kwenye PDF. Badala yake, fupisha PDF au uliza kuihusu kwenye paneli ya pembeni."
   },
   "meeting": {
     "liveTranslation": "Tafsiri ya mikutano ya Shizue",

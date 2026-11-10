@@ -77,6 +77,7 @@
     "main_0": "Wie geht es dir heute?",
     "askAnything": "Frag irgendwas · @ für Tabs",
     "pageUnavailable": "Keine Verbindung zu dieser Seite möglich. Lade die Seite neu und versuche es erneut. Geschützte Seiten wie die Browsereinstellungen werden nicht unterstützt.",
+    "pdfUnreadable": "Der Text dieser PDF konnte nicht gelesen werden. Vielleicht ist sie eingescannt oder größer als 50 MB.",
     "connectionError": "Piep piep...🚨 Systemfehler... 📡 🥺",
     "retry": "Wiederholen",
     "history": "Verlauf",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "Übersetzung fehlgeschlagen",
-    "retry": "Erneut versuchen"
+    "retry": "Erneut versuchen",
+    "pdfUnsupported": "Die Seitenübersetzung funktioniert nicht bei PDFs. Fasse die PDF stattdessen in der Seitenleiste zusammen oder stelle Fragen dazu."
   },
   "meeting": {
     "liveTranslation": "Shizue-Besprechungsübersetzung",

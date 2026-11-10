@@ -77,6 +77,7 @@
     "main_0": "Kumusta ang iyong araw?",
     "askAnything": "Magtanong ng kahit ano · @ para maglakip ng tab",
     "pageUnavailable": "Hindi makakonekta sa pahinang ito. I-refresh ang pahina at subukang muli. Hindi suportado ang mga pahinang may limitadong access, tulad ng mga setting ng browser.",
+    "pdfUnreadable": "Hindi mabasa ang teksto ng PDF na ito. Maaaring na-scan ito, o mas malaki sa 50 MB.",
     "connectionError": "Beep beep...🚨 Error sa System... 📡 🥺",
     "retry": "Subukan ulit",
     "history": "History",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "Hindi naisalin",
-    "retry": "Subukan ulit"
+    "retry": "Subukan ulit",
+    "pdfUnsupported": "Hindi gumagana ang pagsasalin ng pahina sa mga PDF. Sa halip, ibuod ang PDF o magtanong tungkol dito sa side panel."
   },
   "meeting": {
     "liveTranslation": "Shizue · Pagsasalin ng pulong",

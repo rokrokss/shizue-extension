@@ -77,6 +77,7 @@
     "main_0": "좋은 하루 보내고 계신가요?",
     "askAnything": "무엇이든 부탁하세요 · @로 탭 첨부",
     "pageUnavailable": "이 페이지와 연결할 수 없습니다. 웹 페이지를 새로고침한 뒤 다시 시도하세요. 브라우저 설정 등 접근이 제한된 페이지에서는 사용할 수 없습니다.",
+    "pdfUnreadable": "이 PDF의 글자를 읽지 못했습니다. 스캔한 PDF이거나 50MB보다 큰 파일일 수 있습니다.",
     "connectionError": "뚜뚜...🚨 시스템 오류... 📡 🥺",
     "retry": "재시도",
     "history": "기록",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "번역하지 못했습니다",
-    "retry": "다시 시도"
+    "retry": "다시 시도",
+    "pdfUnsupported": "PDF에서는 페이지 번역을 사용할 수 없습니다. 대신 패널에서 PDF를 요약하거나 질문해 보세요."
   },
   "meeting": {
     "liveTranslation": "시즈에 회의 번역",

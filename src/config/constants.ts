@@ -33,8 +33,11 @@ export const MESSAGE_AGENT_STEER = 'action_agent_steer';
 export const MESSAGE_AGENT_STOP = 'action_agent_stop';
 // The hand-back button of the agent's pill, when it is the user's turn on the page.
 export const MESSAGE_AGENT_RESUME = 'action_agent_resume';
-// Background → the Claude Code bridge's offscreen page: a PDF tab's text (entrypoints/offscreen-pdf).
-export const MESSAGE_BRIDGE_READ_PDF = 'action_bridge_read_pdf';
+// Background → the offscreen page: a PDF tab's text (entrypoints/offscreen-pdf), for a page summary
+// and the Claude Code bridge.
+export const MESSAGE_OFFSCREEN_READ_PDF = 'action_offscreen_read_pdf';
+// A PDF tab's toggle → background: the PDF's text, for its page summary (services/pageSummary.ts).
+export const MESSAGE_READ_PDF_TAB = 'action_read_pdf_tab';
 // Values for a form's fields, read from another open tab by the chat model (lib/formFill.ts).
 export const MESSAGE_FORM_FILL_PROPOSE = 'action_form_fill_propose';
 export const MESSAGE_CONTEXT_MENU_TRANSLATE_IMAGE = 'action_context_menu_translate_image';

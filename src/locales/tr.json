@@ -77,6 +77,7 @@
     "main_0": "Gününüz nasıl geçiyor?",
     "askAnything": "Herhangi bir şey sor · Sekme eklemek için @",
     "pageUnavailable": "Bu sayfaya bağlanılamıyor. Sayfayı yenileyip tekrar deneyin. Tarayıcı ayarları gibi erişimi kısıtlı sayfalar desteklenmez.",
+    "pdfUnreadable": "Bu PDF’nin metni okunamadı. Taranmış bir PDF olabilir ya da 50 MB’tan büyük olabilir.",
     "connectionError": "Bip bip...🚨 Sistem Hatası... 📡 🥺",
     "retry": "Yeniden Dene",
     "history": "Geçmiş",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "Çevrilemedi",
-    "retry": "Tekrar dene"
+    "retry": "Tekrar dene",
+    "pdfUnsupported": "Sayfa çevirisi PDF’lerde çalışmaz. Bunun yerine PDF’yi yan panelde özetleyin veya onunla ilgili soru sorun."
   },
   "meeting": {
     "liveTranslation": "Shizue toplantı çevirisi",

@@ -77,6 +77,7 @@
     "main_0": "今天过得怎么样？",
     "askAnything": "随便问 · 用 @ 添加标签页",
     "pageUnavailable": "无法连接到此页面。请刷新页面后重试。浏览器设置等受限页面不受支持。",
+    "pdfUnreadable": "无法读取此 PDF 的文字。它可能是扫描版 PDF，或大于 50 MB。",
     "connectionError": "哔哔...🚨 系统错误... 📡 🥺",
     "retry": "重试",
     "history": "历史记录",
@@ -422,7 +423,8 @@
   },
   "pageTranslation": {
     "failed": "未能翻译",
-    "retry": "重试"
+    "retry": "重试",
+    "pdfUnsupported": "页面翻译不适用于 PDF。请改在侧边栏中总结此 PDF 或就它提问。"
   },
   "meeting": {
     "liveTranslation": "Shizue 会议翻译",

@@ -6,7 +6,7 @@ import StudyMenu from '@/components/Chat/StudyMenu';
 import ToolsMenu from '@/components/Chat/ToolsMenu';
 import Footer from '@/components/Footer';
 import { LONG_PASTE_CHARS, MAX_ATTACHED_TABS, SUMMARY_PAGE_TEXT_MAX_CHARS } from '@/config/constants';
-import { requestPageSummary } from '@/services/pageSummary';
+import { PDF_UNREADABLE, requestPageSummary } from '@/services/pageSummary';
 import { useActiveWebTab } from '@/hooks/activeTab';
 import { ChatStatus, isChatWaiting, useReasoningEffort, useWebSearch } from '@/hooks/chat';
 import { useThemeValue } from '@/hooks/layout';
@@ -118,7 +118,8 @@ const ChatInput = ({
 }) => {
   const { t } = useTranslation();
   const [chatInput, setChatInput] = useState('');
-  const [summaryFailed, setSummaryFailed] = useState(false);
+  // The message key of a failed summary's alert.
+  const [summaryFailed, setSummaryFailed] = useState<string | null>(null);
   const [isComposing, setIsComposing] = useState(false);
   const [uploadedImages, setUploadedImages] = useState<File[]>([]);
   const [attached, setAttached] = useState<AttachedItem[]>([]);
@@ -628,7 +629,7 @@ const ChatInput = ({
   const handleSummaryClick = async () => {
     debugLog('ChatInput: [handleSummaryClick] trigger summarize page');
 
-    setSummaryFailed(false);
+    setSummaryFailed(null);
     try {
       const tab = await panelPageTab();
 
@@ -643,7 +644,9 @@ const ChatInput = ({
     } catch (error) {
       debugLog('ChatInput: [handleSummaryClick] error', error);
       onSummaryFailed();
-      setSummaryFailed(true);
+      setSummaryFailed(
+        (error as { reason?: string }).reason === PDF_UNREADABLE ? 'chat.pdfUnreadable' : 'chat.pageUnavailable'
+      );
     }
   };
 
@@ -707,8 +710,8 @@ const ChatInput = ({
 
   return (
     <div className="sz-chat-input sz:w-full sz:px-2 sz:flex sz:flex-col sz:items-center sz:justify-center">
-      {summaryFailed && <Alert type="warning" showIcon closable onClose={() => setSummaryFailed(false)}
-        className="sz:w-full sz:mb-2 sz:font-ycom" message={t('chat.pageUnavailable')} />}
+      {summaryFailed && <Alert type="warning" showIcon closable onClose={() => setSummaryFailed(null)}
+        className="sz:w-full sz:mb-2 sz:font-ycom" message={t(summaryFailed)} />}
       {captureFailed && <Alert type="warning" showIcon closable onClose={() => setCaptureFailed(false)}
         className="sz:w-full sz:mb-2 sz:font-ycom" message={t('chat.captureFailed')} />}
       {pastFinds ? (

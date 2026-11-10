@@ -12,6 +12,7 @@ import {
   MESSAGE_LOAD_THREAD,
   MESSAGE_LOOKUP_WORD,
   MESSAGE_OPEN_PANEL,
+  MESSAGE_READ_PDF_TAB,
   MESSAGE_READ_TAB_VIDEO_TRANSCRIPT,
   MESSAGE_READ_VIDEO_TRANSCRIPT,
   MESSAGE_WAIT_PANEL_SUMMARY,
@@ -43,6 +44,8 @@ import { resumeAgentInTab, stopAgentInTab } from '@/services/background/browserA
 import { pauseBridgeInTab } from '@/services/background/nativeBridge';
 import { getTranslationHandler } from '@/services/background/translationHandler';
 import { openPanelForSummary, waitForPanelSummary } from '@/services/background/panelSummary';
+import { readPdf } from '@/services/background/pdfTab';
+import type { PageRead } from '@/lib/tabText';
 
 async function handleSetPanelOpenOrNot(
   msg: any,
@@ -104,7 +107,13 @@ async function handleOpenPanel(
   sender: chrome.runtime.MessageSender
 ) {
   if (msg.summarizePage === true && sender.tab?.id !== undefined) {
-    await openPanelForSummary(sender.tab.id, sender.tab.windowId);
+    try {
+      await openPanelForSummary(sender.tab.id, sender.tab.windowId);
+    } catch (error) {
+      // The page tells the user why when the page itself is the reason, such as a PDF with no text.
+      sendResponse({ status: 'error', reason: (error as { reason?: string }).reason });
+      return;
+    }
   } else {
     await openPanel(sender.tab?.windowId, sender.tab?.id);
   }
@@ -208,6 +217,17 @@ async function handleSccCaptionSnapshot(
 
 // A page summary runs in the toggle script, while a Netflix title's subtitles are read by the
 // caption script in the same tab (lib/netflix/netflixTranscript.ts).
+// A PDF tab's text for its page summary. Chrome's PDF viewer leaves the page empty, so the file is
+// read, under the tab's title, which Chrome takes from the PDF.
+async function handleReadPdfTab(
+  _msg: any,
+  sendResponse: (response: PageRead) => void,
+  sender: chrome.runtime.MessageSender
+) {
+  if (sender.frameId !== 0 || !sender.url) return sendResponse({ error: 'unreadable' });
+  sendResponse(await readPdf(sender.url, sender.tab?.title ?? ''));
+}
+
 async function handleReadTabVideoTranscript(
   msg: any,
   sendResponse: (response?: any) => void,
@@ -372,6 +392,7 @@ export const messageHandlers = {
   [MESSAGE_INJECT_TWITCH_BRIDGE]: handleInjectTwitchBridge,
   [MESSAGE_INJECT_TRACK_CAPTIONS]: handleInjectTrackCaptions,
   [MESSAGE_INJECT_NETFLIX_BRIDGE]: handleInjectNetflixBridge,
+  [MESSAGE_READ_PDF_TAB]: handleReadPdfTab,
   [MESSAGE_READ_TAB_VIDEO_TRANSCRIPT]: handleReadTabVideoTranscript,
   [MESSAGE_SCC_CAPTION_SNAPSHOT]: handleSccCaptionSnapshot,
   [MESSAGE_SCC_SET_HIDDEN]: handleSccSetHidden,
