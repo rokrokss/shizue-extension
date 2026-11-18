@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.7
+
+- Pasted text, files and attached tabs, with or without images, can be sent with Enter without typing a question. A chat started this way is named after its first attachment
+
 ## v0.5.6
 
 - Page translation and page image translation in a PDF tab say they don't work on PDFs and suggest summarizing the PDF or asking about it in the side panel, instead of turning on and translating nothing
