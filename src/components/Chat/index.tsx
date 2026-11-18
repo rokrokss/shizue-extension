@@ -631,7 +631,8 @@ const Chat = () => {
     threadLoader.invalidate();
     setChatStatus('waiting');
 
-    const tId = await checkIfThreadExists(text);
+    // Attachments sent without a question name the chat after the first of them.
+    const tId = await checkIfThreadExists(text || attachments?.[0]?.title || '');
 
     await addHumanMessage(tId, text, images, attachments, webSearch, videoMoment, browserAgent, autoApprove);
     followRef.current = true;

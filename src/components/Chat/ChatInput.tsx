@@ -293,10 +293,10 @@ const ChatInput = ({
     return seconds === null ? undefined : { video: threadVideo, seconds };
   };
 
-  // Attached tabs are read as they are now; files and pasted text were read when added. A question
-  // is required: a page alone is a summary.
+  // Attached tabs are read as they are now; files and pasted text were read when added. They can go
+  // out without a question.
   const handleSubmitWithPages = async (text: string, found: PageText[] = []) => {
-    if (text === '' || isReadingPages || attached.some((item) => item.loading)) return;
+    if (isReadingPages || attached.some((item) => item.loading)) return;
     const items = attached;
     const videoMoment = askedMoment();
     setIsReadingPages(true);
@@ -542,7 +542,7 @@ const ChatInput = ({
     setRecallIndex(null);
     setMention(null);
     if (looking || pastFinds) return;
-    if (attached.length > 0 && (text === '' || isReadingPages || attached.some((item) => item.loading))) return;
+    if (attached.length > 0 && (isReadingPages || attached.some((item) => item.loading))) return;
     const found = await lookUp(text);
     if (found === null) return;
     if (attached.length > 0) return handleSubmitWithPages(text, found);
@@ -621,7 +621,7 @@ const ChatInput = ({
       }
       if (isChatWaiting(chatStatus)) {
         // A new question while an answer is still coming stops that answer and goes out instead.
-        if (currentValue === '' && uploadedImages.length === 0) return;
+        if (currentValue === '' && uploadedImages.length === 0 && attached.length === 0) return;
         await onCancel();
       }
       handleSubmit(currentValue);
