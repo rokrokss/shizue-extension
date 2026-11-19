@@ -59,7 +59,7 @@ Shizue to darmowe rozszerzenie open source (MIT). Zaloguj się przez ChatGPT, ab
 - Wyszukiwanie w historii działa na Twoim komputerze i nic, co znajdzie, nie zostanie wysłane bez Twojej decyzji
 - Z modelem lokalnym nic nie opuszcza Twojego komputera
 - Bez analityki i śledzenia
-- Kod źródłowy: https://github.com/rokrokss/shizue
+- Kod źródłowy: https://github.com/rokrokss/shizue-extension
 
 
 🚀 Pierwsze kroki

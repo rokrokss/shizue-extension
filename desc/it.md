@@ -59,7 +59,7 @@ Shizue è gratis e open source (MIT). Accedi con ChatGPT per usare il tuo piano,
 - La ricerca nella cronologia avviene sul tuo computer, e nulla di ciò che trova viene inviato se non lo scegli tu
 - Con un modello locale, nulla lascia il tuo computer
 - Nessuno strumento di analisi o tracciamento
-- Codice sorgente: https://github.com/rokrokss/shizue
+- Codice sorgente: https://github.com/rokrokss/shizue-extension
 
 
 🚀 Per iniziare

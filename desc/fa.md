@@ -60,7 +60,7 @@
 - با مدل محلی، هیچ چیزی از رایانهٔ شما خارج نمی‌شود
 - بدون هیچ ابزار تحلیل یا ردیابی
 - کد منبع:
-https://github.com/rokrokss/shizue
+https://github.com/rokrokss/shizue-extension
 
 
 🚀 شروع کار

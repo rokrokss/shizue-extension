@@ -59,7 +59,7 @@
 - 履歴の検索はパソコン上で行われ、見つかったものはご自身で選ばない限り送信されません
 - ローカルモデルを使えば、何もパソコンの外に出ません
 - 解析ツールやトラッキングは使用していません
-- ソースコード：https://github.com/rokrokss/shizue
+- ソースコード：https://github.com/rokrokss/shizue-extension
 
 
 🚀 はじめ方

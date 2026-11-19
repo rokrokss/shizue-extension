@@ -59,7 +59,7 @@
 - 히스토리 찾기는 내 컴퓨터 안에서 이루어지고, 찾은 것은 내가 보내기로 고를 때만 전송됩니다
 - 로컬 모델을 쓰면 아무것도 내 컴퓨터 밖으로 나가지 않습니다
 - 분석이나 추적 도구를 쓰지 않습니다
-- 소스 코드: https://github.com/rokrokss/shizue
+- 소스 코드: https://github.com/rokrokss/shizue-extension
 
 
 🚀 시작하기

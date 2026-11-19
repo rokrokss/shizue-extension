@@ -59,7 +59,7 @@ Shizue ücretsiz ve açık kaynaklıdır (MIT). ChatGPT ile giriş yapıp planı
 - Geçmiş araması bilgisayarınızda çalışır; bulduğu hiçbir şey siz seçmedikçe gönderilmez
 - Yerel bir modelle hiçbir şey bilgisayarınızdan çıkmaz
 - Analiz ya da takip aracı kullanılmaz
-- Kaynak kodu: https://github.com/rokrokss/shizue
+- Kaynak kodu: https://github.com/rokrokss/shizue-extension
 
 
 🚀 Başlarken

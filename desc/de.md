@@ -59,7 +59,7 @@ Shizue ist kostenlos und Open Source (MIT). Melde dich mit ChatGPT an und nutze 
 - Die Verlaufssuche läuft auf deinem Computer, und nichts von dem, was sie findet, wird gesendet, außer du entscheidest dich dafür
 - Mit einem lokalen Modell verlässt nichts deinen Computer
 - Keine Nutzungsanalyse, kein Tracking
-- Quellcode: https://github.com/rokrokss/shizue
+- Quellcode: https://github.com/rokrokss/shizue-extension
 
 
 🚀 Erste Schritte

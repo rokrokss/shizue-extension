@@ -60,7 +60,7 @@ Shizue مفت اور اوپن سورس (MIT) ہے۔ ChatGPT کے ذریعے سا
 - لوکل ماڈل کے ساتھ کچھ بھی آپ کے کمپیوٹر سے باہر نہیں جاتا
 - کوئی اینالیٹکس یا ٹریکنگ نہیں
 - سورس کوڈ:
-https://github.com/rokrokss/shizue
+https://github.com/rokrokss/shizue-extension
 
 
 🚀 شروع کیسے کریں

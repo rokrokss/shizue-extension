@@ -5,7 +5,7 @@
   "description": "Supercharge your Browse experience with the power of LLMs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rokrokss/shizue.git"
+    "url": "https://github.com/rokrokss/shizue-extension.git"
   },
   "author": "rokrokss",
   "private": true,

@@ -59,7 +59,7 @@ Shizue 是免费的开源软件（MIT）。你可以使用 ChatGPT 登录，用�
 - 历史记录搜索在你的电脑上进行，找到的内容除非你选择发送，否则不会发出
 - 使用本地模型时，任何内容都不会离开你的电脑
 - 不使用统计分析或追踪工具
-- 源代码：https://github.com/rokrokss/shizue
+- 源代码：https://github.com/rokrokss/shizue-extension
 
 
 🚀 开始使用

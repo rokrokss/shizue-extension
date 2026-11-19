@@ -59,7 +59,7 @@ Libre at open source (MIT) ang Shizue. Mag-sign in gamit ang ChatGPT para magami
 - Sa computer mo tumatakbo ang paghahanap sa history, at walang ipinapadala sa mga nahanap nito maliban kung pipiliin mo
 - Kapag local model ang gamit, walang lumalabas sa computer mo
 - Walang analytics o tracking
-- Source code: https://github.com/rokrokss/shizue
+- Source code: https://github.com/rokrokss/shizue-extension
 
 
 🚀 Pagsisimula

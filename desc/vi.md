@@ -59,7 +59,7 @@ Shizue miễn phí và là phần mềm mã nguồn mở (MIT). Bạn có thể 
 - Việc tìm trong lịch sử chạy ngay trên máy tính của bạn, và những gì tìm được không bị gửi đi trừ khi bạn chọn gửi
 - Khi dùng mô hình cục bộ, không có gì rời khỏi máy tính của bạn
 - Không dùng công cụ phân tích hay theo dõi
-- Mã nguồn: https://github.com/rokrokss/shizue
+- Mã nguồn: https://github.com/rokrokss/shizue-extension
 
 
 🚀 Bắt đầu

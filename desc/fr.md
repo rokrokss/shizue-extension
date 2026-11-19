@@ -59,7 +59,7 @@ Shizue est une extension gratuite et open source (MIT). Connectez-vous avec Chat
 - La recherche dans l'historique s'exécute sur votre ordinateur, et rien de ce qu'elle trouve n'est envoyé sauf si vous le choisissez
 - Avec un modèle local, rien ne quitte votre ordinateur
 - Aucun outil d'analyse ni de suivi
-- Code source : https://github.com/rokrokss/shizue
+- Code source : https://github.com/rokrokss/shizue-extension
 
 
 🚀 Pour commencer

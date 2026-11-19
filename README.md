@@ -192,7 +192,7 @@ One [OpenRouter](https://openrouter.ai) key gives you every model in Shizue, inc
 1.  **Clone & Setup:**
     ```bash
     # Ensure pnpm is installed (npm i -g pnpm)
-    git clone https://github.com/rokrokss/shizue && cd shizue
+    git clone https://github.com/rokrokss/shizue-extension && cd shizue-extension
     pnpm install
     ```
 

@@ -20,7 +20,7 @@ const jsonLd = ({ lang, url, img, description }) =>
         name: 'Shizue',
         url: `${ORIGIN}/`,
         logo: `${ORIGIN}/icon.svg`,
-        sameAs: ['https://github.com/rokrokss/shizue', 'https://discord.gg/ukfPmxsyEy'],
+        sameAs: ['https://github.com/rokrokss/shizue-extension', 'https://discord.gg/ukfPmxsyEy'],
       },
       {
         '@type': 'SoftwareApplication',

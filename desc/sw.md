@@ -59,7 +59,7 @@ Shizue ni bure na ni programu huria (MIT). Ingia kwa ChatGPT ili utumie mpango w
 - Utafutaji kwenye historia hufanyika kwenye kompyuta yako, na kinachopatikana hakitumwi isipokuwa uchague kukituma
 - Ukitumia modeli ya ndani, hakuna kinachotoka nje ya kompyuta yako
 - Hakuna zana za takwimu wala ufuatiliaji
-- Msimbo chanzo: https://github.com/rokrokss/shizue
+- Msimbo chanzo: https://github.com/rokrokss/shizue-extension
 
 
 🚀 Kuanza

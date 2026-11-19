@@ -59,7 +59,7 @@ Shizue is free and open source (MIT). Sign in with ChatGPT to use your plan, or 
 - History search runs on your computer, and nothing it finds is sent unless you choose to
 - With a local model, nothing leaves your computer
 - No analytics or tracking
-- Source code: https://github.com/rokrokss/shizue
+- Source code: https://github.com/rokrokss/shizue-extension
 
 
 🚀 Getting started

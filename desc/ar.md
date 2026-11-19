@@ -60,7 +60,7 @@
 - مع النموذج المحلي، لا يغادر أي شيء حاسوبك
 - لا توجد أدوات تحليل أو تتبّع
 - الكود المصدري:
-https://github.com/rokrokss/shizue
+https://github.com/rokrokss/shizue-extension
 
 
 🚀 للبدء
