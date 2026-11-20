@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.5.8
+
+- The characters beside messages and on the floating button match the Shizue app: the two bunnies and sixteen new animals take the place of the cows and chickens. A message keeps the same character every time it shows
+- Fix the GitHub and privacy policy links, which pointed to the repository's old name
+
 ## v0.5.7
 
 - Pasted text, files and attached tabs, with or without images, can be sent with Enter without typing a question. A chat started this way is named after its first attachment
