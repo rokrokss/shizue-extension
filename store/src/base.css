@@ -134,12 +134,22 @@ body { -webkit-font-smoothing: antialiased; overflow: hidden; }
 }
 .sp-stand { --fw: 14; --fh: 17; --gap: 34; background-image: url('../../src/assets/character/standing.png'); }
 .sp-walk { --fw: 14; --fh: 17; --gap: 34; background-image: url('../../src/assets/character/walking_forward.png'); }
-.sp-cow { --fw: 27; --fh: 17; --gap: 5; background-image: url('sprites/cow_eating.png'); }
-.sp-babycow { --fw: 19; --fh: 14; --gap: 13; background-image: url('sprites/baby_cow_eating.png'); }
-.sp-babycow-walk { --fw: 20; --fh: 15; --gap: 11.333; background-image: url('sprites/baby_cow_walking.png'); }
-.sp-chicken { --fw: 11; --fh: 13; --gap: 5; background-image: url('sprites/chicken.png'); }
-.sp-bluechicken { --fw: 11; --fh: 12; --gap: 5; background-image: url('sprites/blue_chicken_watch.png'); }
-.sp-chicken-eat { --fw: 14; --fh: 12; --gap: 2; background-image: url('sprites/chicken_eating.png'); }
+.sp-bear { --fw: 19; --fh: 15; --gap: 0; background-image: url('../../src/assets/character/bear.png'); }
+.sp-raccoon { --fw: 20; --fh: 13; --gap: 0; background-image: url('../../src/assets/character/raccoon.png'); }
+.sp-puppy { --fw: 20; --fh: 15; --gap: 0; background-image: url('../../src/assets/character/puppy.png'); }
+.sp-cat { --fw: 21; --fh: 13; --gap: 0; background-image: url('../../src/assets/character/cat.png'); }
+.sp-frog { --fw: 13; --fh: 12; --gap: 0; background-image: url('../../src/assets/character/frog.png'); }
+.sp-monkey { --fw: 17; --fh: 15; --gap: 0; background-image: url('../../src/assets/character/monkey.png'); }
+.sp-hamster { --fw: 17; --fh: 12; --gap: 0; background-image: url('../../src/assets/character/hamster.png'); }
+.sp-squirrel { --fw: 17; --fh: 16; --gap: 0; background-image: url('../../src/assets/character/squirrel.png'); }
+.sp-penguin { --fw: 14; --fh: 13; --gap: 0; background-image: url('../../src/assets/character/penguin.png'); }
+.sp-panda { --fw: 17; --fh: 16; --gap: 0; background-image: url('../../src/assets/character/panda.png'); }
+.sp-fox { --fw: 22; --fh: 16; --gap: 0; background-image: url('../../src/assets/character/fox.png'); }
+.sp-hedgehog { --fw: 14; --fh: 14; --gap: 0; background-image: url('../../src/assets/character/hedgehog.png'); }
+.sp-duck { --fw: 16; --fh: 15; --gap: 0; background-image: url('../../src/assets/character/duck.png'); }
+.sp-pig { --fw: 20; --fh: 16; --gap: 0; background-image: url('../../src/assets/character/pig.png'); }
+.sp-sheep { --fw: 21; --fh: 15; --gap: 0; background-image: url('../../src/assets/character/sheep.png'); }
+.sp-owl { --fw: 17; --fh: 15; --gap: 0; background-image: url('../../src/assets/character/owl.png'); }
 
 /* ---------- browser window ---------- */
 .browser {
