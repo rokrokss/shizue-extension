@@ -1,12 +1,6 @@
-import BabyCowEating from '@/components/Character/BabyCowEating';
-import BabyCowSniff from '@/components/Character/BabyCowSniff';
-import BabyCowWalking from '@/components/Character/BabyCowWalking';
-import BlueChickenWatch from '@/components/Character/BlueChickenWatch';
+import Animal from '@/components/Character/Animal';
 import CharacterForward from '@/components/Character/CharacterForward';
 import CharacterStanding from '@/components/Character/CharacterStanding';
-import Chicken from '@/components/Character/Chicken';
-import ChickenEating from '@/components/Character/ChickenEating';
-import CowEating from '@/components/Character/CowEating';
 
 interface CharacterPickChatProps {
   index: number;
@@ -15,19 +9,30 @@ interface CharacterPickChatProps {
   dark?: boolean;
 }
 
-export const characterCount = 9;
+// The figures a message is drawn beside, in the Shizue app's order (the walking rabbit, the
+// animals, the standing rabbit), so that a message has the same figure in both.
+export const characterCount = 18;
 
 const CharacterPickChat = ({ index, scale, marginLeft, dark }: CharacterPickChatProps) => {
   const characters = [
     <CharacterForward key="0" scale={2 * scale} marginLeft={marginLeft} dark={dark} />,
-    <CowEating key="1" scale={1.9 * scale} marginLeft={marginLeft} />,
-    <BabyCowEating key="2" scale={2.15 * scale} marginLeft={marginLeft} />,
-    <BabyCowWalking key="3" scale={2.1 * scale} marginLeft={marginLeft} />,
-    <BlueChickenWatch key="4" scale={2.5 * scale} marginLeft={marginLeft} />,
-    <Chicken key="5" scale={2.5 * scale} marginLeft={marginLeft} />,
-    <BabyCowSniff key="6" scale={2.25 * scale} marginLeft={marginLeft} />,
-    <ChickenEating key="7" scale={2.5 * scale} marginLeft={marginLeft} />,
-    <CharacterStanding key="8" scale={2 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="1" name="bear" scale={2.13 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="2" name="raccoon" scale={2.46 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="3" name="puppy" scale={2.13 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="4" name="cat" scale={2.46 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="5" name="frog" scale={2.5 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="6" name="monkey" scale={2.13 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="7" name="hamster" scale={2.5 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="8" name="squirrel" scale={2.0 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="9" name="penguin" scale={2.46 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="10" name="panda" scale={2.0 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="11" name="fox" scale={2.0 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="12" name="hedgehog" scale={2.29 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="13" name="duck" scale={2.13 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="14" name="pig" scale={2.0 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="15" name="sheep" scale={2.13 * scale} marginLeft={marginLeft} dark={dark} />,
+    <Animal key="16" name="owl" scale={2.13 * scale} marginLeft={marginLeft} dark={dark} />,
+    <CharacterStanding key="17" scale={2 * scale} marginLeft={marginLeft} dark={dark} />,
   ];
 
   return <div>{characters[index % characters.length]}</div>;

@@ -134,12 +134,12 @@ body { -webkit-font-smoothing: antialiased; overflow: hidden; }
 }
 .sp-stand { --fw: 14; --fh: 17; --gap: 34; background-image: url('../../src/assets/character/standing.png'); }
 .sp-walk { --fw: 14; --fh: 17; --gap: 34; background-image: url('../../src/assets/character/walking_forward.png'); }
-.sp-cow { --fw: 27; --fh: 17; --gap: 5; background-image: url('../../src/assets/character/cow_eating.png'); }
-.sp-babycow { --fw: 19; --fh: 14; --gap: 13; background-image: url('../../src/assets/character/baby_cow_eating.png'); }
-.sp-babycow-walk { --fw: 20; --fh: 15; --gap: 11.333; background-image: url('../../src/assets/character/baby_cow_walking.png'); }
-.sp-chicken { --fw: 11; --fh: 13; --gap: 5; background-image: url('../../src/assets/character/chicken.png'); }
-.sp-bluechicken { --fw: 11; --fh: 12; --gap: 5; background-image: url('../../src/assets/character/blue_chicken_watch.png'); }
-.sp-chicken-eat { --fw: 14; --fh: 12; --gap: 2; background-image: url('../../src/assets/character/chicken_eating.png'); }
+.sp-cow { --fw: 27; --fh: 17; --gap: 5; background-image: url('sprites/cow_eating.png'); }
+.sp-babycow { --fw: 19; --fh: 14; --gap: 13; background-image: url('sprites/baby_cow_eating.png'); }
+.sp-babycow-walk { --fw: 20; --fh: 15; --gap: 11.333; background-image: url('sprites/baby_cow_walking.png'); }
+.sp-chicken { --fw: 11; --fh: 13; --gap: 5; background-image: url('sprites/chicken.png'); }
+.sp-bluechicken { --fw: 11; --fh: 12; --gap: 5; background-image: url('sprites/blue_chicken_watch.png'); }
+.sp-chicken-eat { --fw: 14; --fh: 12; --gap: 2; background-image: url('sprites/chicken_eating.png'); }
 
 /* ---------- browser window ---------- */
 .browser {
