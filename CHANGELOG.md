@@ -2,6 +2,7 @@
 
 ## v0.5.9
 
+- A new lock button at the top of the floating button's menu lifts a page's blocks on selecting and dragging text, right-clicking, and copying and pasting, in the page and its frames, until the page reloads. While it is on, the lock opens and shows a check; press it again to put the page's blocks back
 - GPT-6.1 Sol makes way for GPT-6.2 Sol. With Sign in with ChatGPT, GPT-6.1 Sol is no longer offered, and a chat or translation model set to it moves to GPT-6.2 Sol
 
 ## v0.5.8
