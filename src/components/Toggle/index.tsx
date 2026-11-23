@@ -2,7 +2,7 @@ import BookIcon from '@/assets/icons/book.svg?react';
 import BrowserControlIcon from '@/assets/icons/browser_control.svg?react';
 import CloseIcon from '@/assets/icons/close.svg?react';
 import DragFreeIcon from '@/assets/icons/drag_free.svg?react';
-import DragFreeCheckIcon from '@/assets/icons/drag_free_check.svg?react';
+import DragFreeOpenIcon from '@/assets/icons/drag_free_open.svg?react';
 import SettingIcon from '@/assets/icons/setting.svg?react';
 import TranslateIcon from '@/assets/icons/translate.svg?react';
 import TranslateCheckIcon from '@/assets/icons/translate_check.svg?react';
@@ -508,7 +508,7 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
                 theme={theme}
                 icon={
                   isDragFreeActive ? (
-                    <DragFreeCheckIcon className={menuIconClass} />
+                    <DragFreeOpenIcon className={menuIconClass} />
                   ) : (
                     <DragFreeIcon className={menuIconClass} />
                   )
