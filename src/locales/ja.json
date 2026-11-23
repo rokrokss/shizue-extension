@@ -37,6 +37,8 @@
     "summarizeSelection": "選択したテキストを要約",
     "fixGrammarSelection": "選択したテキストの文法を修正",
     "removeTranslation": "翻訳を削除",
+    "dragFree": "ドラッグ・コピー・右クリックを解除",
+    "dragFreeOff": "ページの制限に戻す",
     "translateImage": "画像を翻訳",
     "translatePageImages": "ページの画像をすべて翻訳",
     "fillFormFromTab": "開いているタブからこのフォームに入力",

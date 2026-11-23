@@ -37,6 +37,8 @@
     "summarizeSelection": "নির্বাচিত টেক্সট সংক্ষেপ করুন",
     "fixGrammarSelection": "নির্বাচিত টেক্সটের ব্যাকরণ ঠিক করুন",
     "removeTranslation": "অনুবাদ সরান",
+    "dragFree": "নির্বাচন, কপি ও রাইট-ক্লিক আনলক করুন",
+    "dragFreeOff": "পেজের বাধা ফিরিয়ে আনুন",
     "translateImage": "ছবি অনুবাদ করুন",
     "translatePageImages": "পৃষ্ঠার সব ছবি অনুবাদ করুন",
     "fillFormFromTab": "খোলা ট্যাব থেকে এই ফর্ম পূরণ করুন",

@@ -17,6 +17,8 @@ export const MESSAGE_SCC_SET_HIDDEN = 'scc_set_hidden';
 export const MESSAGE_INJECT_NETFLIX_BRIDGE = 'inject_netflix_bridge';
 export const MESSAGE_CONTEXT_MENU_TRANSLATE_PAGE = 'context_menu_translate_page';
 export const MESSAGE_TRANSLATE_FRAMES = 'translate_frames';
+// The toggle's drag free button → background: lift the page's copy blocks in every frame (lib/dragFree.ts).
+export const MESSAGE_SET_DRAG_FREE = 'set_drag_free';
 export const MESSAGE_REMEMBER_THREAD = 'action_remember_thread';
 // Questions to ask next, offered under a finished summary (ChatModelHandler.suggestQuestions).
 export const MESSAGE_SUGGEST_QUESTIONS = 'action_suggest_questions';

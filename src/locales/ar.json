@@ -37,6 +37,8 @@
     "summarizeSelection": "تلخيص النص المحدد",
     "fixGrammarSelection": "تصحيح قواعد النص المحدد",
     "removeTranslation": "إزالة الترجمة",
+    "dragFree": "إلغاء حظر التحديد والنسخ والنقر بزر الماوس الأيمن",
+    "dragFreeOff": "استعادة قيود الصفحة",
     "translateImage": "ترجمة الصورة",
     "translatePageImages": "ترجمة كل صور الصفحة",
     "fillFormFromTab": "املأ هذا النموذج من علامة تبويب مفتوحة",

@@ -37,6 +37,8 @@
     "summarizeSelection": "Tóm tắt văn bản đã chọn",
     "fixGrammarSelection": "Sửa ngữ pháp văn bản đã chọn",
     "removeTranslation": "Xóa bản dịch",
+    "dragFree": "Mở khóa bôi đen, sao chép và nhấp chuột phải",
+    "dragFreeOff": "Khôi phục các chặn của trang",
     "translateImage": "Dịch hình ảnh",
     "translatePageImages": "Dịch tất cả hình ảnh trên trang",
     "fillFormFromTab": "Điền biểu mẫu này từ một thẻ đang mở",

@@ -17,6 +17,7 @@ import {
   MESSAGE_READ_VIDEO_TRANSCRIPT,
   MESSAGE_WAIT_PANEL_SUMMARY,
   MESSAGE_SET_PANEL_OPEN_OR_NOT,
+  MESSAGE_SET_DRAG_FREE,
   MESSAGE_TRANSLATE_FRAMES,
   MESSAGE_REMEMBER_THREAD,
   MESSAGE_SUGGEST_QUESTIONS,
@@ -33,6 +34,7 @@ import {
   MESSAGE_WARM_UP_TRANSLATION,
 } from '@/config/constants';
 import { openPanel, togglePanel } from '@/entrypoints/background/sidepanel';
+import { DRAG_FREE_CSS, setDragFreeInFrame } from '@/lib/dragFree';
 import { addWord, db, getLatestMessageForThread, loadThread } from '@/lib/indexDB';
 import { parsePlayerResponse } from '@/lib/youtube';
 import { getChatModelHandler } from '@/services/background/chatModelHandler';
@@ -291,6 +293,27 @@ async function handleTranslateFrames(
   sendResponse({ status: 'success' });
 }
 
+// Drag free in every frame of the sender's tab (lib/dragFree.ts). Frames added afterwards don't
+// get it, and a frame or the tab loading another page loses it.
+async function handleSetDragFree(
+  msg: any,
+  sendResponse: (response?: any) => void,
+  sender: chrome.runtime.MessageSender
+) {
+  const tabId = sender.tab?.id;
+  if (tabId === undefined) return sendResponse({ status: 'error' });
+  const active = msg.active === true;
+  const target = { tabId, allFrames: true };
+  const css = { target, css: DRAG_FREE_CSS, origin: 'USER' as const };
+  await Promise.all([
+    (active ? chrome.scripting.insertCSS(css) : chrome.scripting.removeCSS(css)).catch(() => {}),
+    chrome.scripting
+      .executeScript({ target, func: setDragFreeInFrame, args: [active] })
+      .catch(() => {}),
+  ]);
+  sendResponse({ status: 'success' });
+}
+
 async function handleSuggestQuestions(msg: any, sendResponse: (response?: any) => void) {
   sendResponse(await getChatModelHandler().suggestQuestions(msg.threadId));
 }
@@ -398,6 +421,7 @@ export const messageHandlers = {
   [MESSAGE_SCC_CAPTION_SNAPSHOT]: handleSccCaptionSnapshot,
   [MESSAGE_SCC_SET_HIDDEN]: handleSccSetHidden,
   [MESSAGE_TRANSLATE_FRAMES]: handleTranslateFrames,
+  [MESSAGE_SET_DRAG_FREE]: handleSetDragFree,
   [MESSAGE_REMEMBER_THREAD]: handleRememberThread,
   [MESSAGE_SUGGEST_QUESTIONS]: handleSuggestQuestions,
   [MESSAGE_PICK_OPEN_TABS]: handlePickOpenTabs,

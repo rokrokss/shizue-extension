@@ -37,6 +37,8 @@
     "summarizeSelection": "總結所選文字",
     "fixGrammarSelection": "修正所選文字的文法",
     "removeTranslation": "移除翻譯",
+    "dragFree": "解除拖曳選取、複製和右鍵限制",
+    "dragFreeOff": "恢復頁面的限制",
     "translateImage": "翻譯圖片",
     "translatePageImages": "翻譯頁面上的所有圖片",
     "fillFormFromTab": "用開啟的分頁填寫此表單",

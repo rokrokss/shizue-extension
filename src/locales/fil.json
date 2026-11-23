@@ -37,6 +37,8 @@
     "summarizeSelection": "Ibuod ang napiling teksto",
     "fixGrammarSelection": "Ayusin ang grammar ng napiling teksto",
     "removeTranslation": "Alisin ang pagsasalin",
+    "dragFree": "I-unblock ang pagpili, pagkopya at right-click",
+    "dragFreeOff": "Ibalik ang mga block ng page",
     "translateImage": "Isalin ang larawan",
     "translatePageImages": "Isalin ang lahat ng larawan sa pahina",
     "fillFormFromTab": "Punan ang form na ito mula sa bukas na tab",

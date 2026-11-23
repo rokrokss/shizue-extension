@@ -37,6 +37,8 @@
     "summarizeSelection": "선택한 텍스트 요약",
     "fixGrammarSelection": "선택한 텍스트 문법 교정",
     "removeTranslation": "번역 없애기",
+    "dragFree": "드래그·복사·우클릭 풀기",
+    "dragFreeOff": "페이지의 막힘 되돌리기",
     "translateImage": "이미지 번역",
     "translatePageImages": "페이지의 이미지 모두 번역",
     "fillFormFromTab": "열린 탭으로 이 양식 채우기",

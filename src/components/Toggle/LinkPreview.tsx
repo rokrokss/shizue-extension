@@ -152,13 +152,14 @@ const LinkPreview = () => {
       void show(message.linkUrl, anchor);
     };
     document.addEventListener('mouseover', onMouseOver, { capture: true, passive: true });
-    document.addEventListener('contextmenu', onContextMenu, { capture: true });
+    // On the window, before drag free's listeners stop the event there (lib/dragFree.ts).
+    window.addEventListener('contextmenu', onContextMenu, { capture: true });
     document.addEventListener('keydown', onKeyDown, { capture: true });
     document.addEventListener('mousedown', onMouseDown, { capture: true });
     chrome.runtime.onMessage.addListener(onMessage);
     return () => {
       document.removeEventListener('mouseover', onMouseOver, { capture: true });
-      document.removeEventListener('contextmenu', onContextMenu, { capture: true });
+      window.removeEventListener('contextmenu', onContextMenu, { capture: true });
       document.removeEventListener('keydown', onKeyDown, { capture: true });
       document.removeEventListener('mousedown', onMouseDown, { capture: true });
       chrome.runtime.onMessage.removeListener(onMessage);

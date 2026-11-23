@@ -37,6 +37,8 @@
     "summarizeSelection": "منتخب متن کا خلاصہ کریں",
     "fixGrammarSelection": "منتخب متن کی گرامر درست کریں",
     "removeTranslation": "ترجمہ ہٹائیں",
+    "dragFree": "منتخب کرنا، کاپی اور رائٹ کلک کھولیں",
+    "dragFreeOff": "صفحے کی پابندیاں واپس لائیں",
     "translateImage": "تصویر کا ترجمہ کریں",
     "translatePageImages": "صفحے کی تمام تصاویر کا ترجمہ کریں",
     "fillFormFromTab": "کھلے ٹیب سے یہ فارم بھریں",

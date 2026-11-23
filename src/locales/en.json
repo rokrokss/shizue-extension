@@ -37,6 +37,8 @@
     "summarizeSelection": "Summarize selected text",
     "fixGrammarSelection": "Fix grammar in selected text",
     "removeTranslation": "Remove translation",
+    "dragFree": "Unblock selecting, copying and right-click",
+    "dragFreeOff": "Restore the page's blocks",
     "translateImage": "Translate image",
     "translatePageImages": "Translate all images on page",
     "fillFormFromTab": "Fill this form from an open tab",

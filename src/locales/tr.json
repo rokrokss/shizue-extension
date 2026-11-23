@@ -37,6 +37,8 @@
     "summarizeSelection": "Seçili metni özetle",
     "fixGrammarSelection": "Seçili metnin dilbilgisini düzelt",
     "removeTranslation": "Çeviriyi kaldır",
+    "dragFree": "Seçme, kopyalama ve sağ tıklamanın kilidini aç",
+    "dragFreeOff": "Sayfanın engellerini geri getir",
     "translateImage": "Görseli çevir",
     "translatePageImages": "Sayfadaki tüm görselleri çevir",
     "fillFormFromTab": "Bu formu açık bir sekmeden doldur",

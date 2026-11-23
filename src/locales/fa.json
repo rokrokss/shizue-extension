@@ -37,6 +37,8 @@
     "summarizeSelection": "خلاصهٔ متن انتخاب‌شده",
     "fixGrammarSelection": "اصلاح دستور زبان متن انتخاب‌شده",
     "removeTranslation": "حذف ترجمه",
+    "dragFree": "باز کردن انتخاب، کپی و کلیک راست",
+    "dragFreeOff": "بازگرداندن محدودیت‌های صفحه",
     "translateImage": "ترجمهٔ تصویر",
     "translatePageImages": "ترجمهٔ همهٔ تصاویر صفحه",
     "fillFormFromTab": "پر کردن این فرم از یک زبانهٔ باز",

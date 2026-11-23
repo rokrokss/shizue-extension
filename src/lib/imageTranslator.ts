@@ -303,7 +303,8 @@ class ImageTranslator {
 
   constructor() {
     // The image right-clicked: the menu only says its address, which several images may share.
-    document.addEventListener(
+    // On the window, before drag free's listeners stop the event there (lib/dragFree.ts).
+    window.addEventListener(
       'contextmenu',
       (event) => {
         this.lastContextImage = event.target instanceof HTMLImageElement ? event.target : null;

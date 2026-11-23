@@ -37,6 +37,8 @@
     "summarizeSelection": "Podsumuj zaznaczony tekst",
     "fixGrammarSelection": "Popraw gramatykę zaznaczonego tekstu",
     "removeTranslation": "Usuń tłumaczenie",
+    "dragFree": "Odblokuj zaznaczanie, kopiowanie i prawy klik",
+    "dragFreeOff": "Przywróć blokady strony",
     "translateImage": "Przetłumacz obraz",
     "translatePageImages": "Przetłumacz wszystkie obrazy na stronie",
     "fillFormFromTab": "Wypełnij ten formularz z otwartej karty",

@@ -1,6 +1,8 @@
 import BookIcon from '@/assets/icons/book.svg?react';
 import BrowserControlIcon from '@/assets/icons/browser_control.svg?react';
 import CloseIcon from '@/assets/icons/close.svg?react';
+import DragFreeIcon from '@/assets/icons/drag_free.svg?react';
+import DragFreeCheckIcon from '@/assets/icons/drag_free_check.svg?react';
 import SettingIcon from '@/assets/icons/setting.svg?react';
 import TranslateIcon from '@/assets/icons/translate.svg?react';
 import TranslateCheckIcon from '@/assets/icons/translate_check.svg?react';
@@ -18,6 +20,7 @@ import {
   MESSAGE_CONTEXT_MENU_TRANSLATE_IMAGE,
   MESSAGE_CONTEXT_MENU_TRANSLATE_PAGE,
   MESSAGE_CONTEXT_MENU_TRANSLATE_PAGE_IMAGES,
+  MESSAGE_SET_DRAG_FREE,
   MESSAGE_UPDATE_PANEL_INIT_DATA,
   SelectionActionType,
   SUMMARY_PAGE_TEXT_MAX_CHARS,
@@ -79,6 +82,7 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
   const [notice, setNotice] = useState<string | null>(null);
   const [toggleYPosition, setToggleYPosition] = useToggleYPosition();
   const [isTranslationActive, setIsTranslationActive] = useState(false);
+  const [isDragFreeActive, setIsDragFreeActive] = useState(false);
   const isTranslationActiveRef = useRef(isTranslationActive);
   const [settingsTriggerYPosition, setSettingsTriggerYPosition] = useState(0);
   const [closeIconTriggerYPosition, setCloseIconTriggerYPosition] = useState(0);
@@ -136,6 +140,8 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
         : t('overlayMenu.summarizePage'),
     t('overlayMenu.removeTranslation'),
     t('chat.browserAgent'),
+    t('overlayMenu.dragFree'),
+    t('overlayMenu.dragFreeOff'),
   ];
 
   const getCurrentDomain = useCallback(() => {
@@ -349,6 +355,21 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
     });
   };
 
+  // Lifts the page's blocks on selecting, copying and the context menu until it reloads, or puts
+  // them back (lib/dragFree.ts).
+  const handleDragFreeClick = async () => {
+    if (isDragging) return;
+    const active = !isDragFreeActive;
+    setIsDragFreeActive(active);
+    const response = await chrome.runtime
+      .sendMessage({ action: MESSAGE_SET_DRAG_FREE, active })
+      .catch(() => null);
+    if (response?.status !== 'success') {
+      setIsDragFreeActive(!active);
+      setNotice('chat.pageUnavailable');
+    }
+  };
+
   const handleTranslatePage = useCallback(async () => {
     debugLog('Translate page clicked');
 
@@ -483,6 +504,19 @@ const Toggle = ({ portalContainer }: { portalContainer: HTMLElement }) => {
             }}
           >
             <OverlayMenu>
+              <OverlayMenuItem
+                theme={theme}
+                icon={
+                  isDragFreeActive ? (
+                    <DragFreeCheckIcon className={menuIconClass} />
+                  ) : (
+                    <DragFreeIcon className={menuIconClass} />
+                  )
+                }
+                tooltipMessage={isDragFreeActive ? tooltipMessages[6] : tooltipMessages[5]}
+                onClick={handleDragFreeClick}
+                hideTooltip={translateSettingsModalOpen || closeIconModalOpen}
+              />
               <OverlayMenuItem
                 theme={theme}
                 icon={<BrowserControlIcon className={menuIconClass} />}

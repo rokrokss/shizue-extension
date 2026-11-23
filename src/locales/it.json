@@ -37,6 +37,8 @@
     "summarizeSelection": "Riassumi il testo selezionato",
     "fixGrammarSelection": "Correggi la grammatica del testo selezionato",
     "removeTranslation": "Rimuovi traduzione",
+    "dragFree": "Sblocca selezione, copia e clic destro",
+    "dragFreeOff": "Ripristina i blocchi della pagina",
     "translateImage": "Traduci immagine",
     "translatePageImages": "Traduci tutte le immagini della pagina",
     "fillFormFromTab": "Compila questo modulo da una scheda aperta",
