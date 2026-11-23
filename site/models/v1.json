@@ -3,15 +3,15 @@
   "models": [
     {
       "slot": "gpt",
-      "id": "gpt-6.1-sol",
-      "label": "GPT-6.1 Sol",
+      "id": "gpt-6.2-sol",
+      "label": "GPT-6.2 Sol",
       "provider": "openai-api-key",
       "supportsTemperature": false,
       "supportsImages": true,
       "openaiFastEffort": "low",
       "defaultThinking": "medium",
       "higherEfforts": ["xhigh", "max"],
-      "openrouter": { "id": "openai/gpt-6.1-sol", "fastEffort": "low" }
+      "openrouter": { "id": "openai/gpt-6.2-sol", "fastEffort": "low" }
     },
     {
       "slot": "gpt-astra",
@@ -156,10 +156,11 @@
   },
   "successors": {},
   "chatgpt": {
-    "hidden": ["gpt-6-sol", "gpt-5.6-sol", "gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-terra-pro"],
+    "hidden": ["gpt-6.1-sol", "gpt-6-sol", "gpt-5.6-sol", "gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-terra-pro"],
     "successors": {
-      "gpt-6-sol": "gpt-6.1-sol",
-      "gpt-5.6-sol": "gpt-6.1-sol",
+      "gpt-6.1-sol": "gpt-6.2-sol",
+      "gpt-6-sol": "gpt-6.2-sol",
+      "gpt-5.6-sol": "gpt-6.2-sol",
       "gpt-5.6-luna": "gpt-6-luna",
       "gpt-5.6-terra": "gpt-6.1-terra",
       "gpt-5.6-terra-pro": "gpt-6.1-terra"

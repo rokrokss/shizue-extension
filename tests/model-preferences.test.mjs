@@ -11,12 +11,12 @@ await build({ entryPoints: [fileURLToPath(new URL('../src/lib/modelPreferences.t
 after(() => rm(temporary, { force: true }));
 const { rememberProviderModels: remember, resolveProviderModels: resolve, isProviderModel, registeredAIProviders, resolveChatGPTSignOut } = await import(pathToFileURL(temporary).href);
 const catalogs = {
-  chatGPT: [{ id: 'gpt-6.1-sol' }, { id: 'gpt-6-luna' }, { id: 'custom-model' }],
+  chatGPT: [{ id: 'gpt-6.2-sol' }, { id: 'gpt-6-luna' }, { id: 'custom-model' }],
   local: [{ id: 'local-one' }, { id: 'local-two' }],
 };
 const empty = { selections: {} };
 const apiSelection = { chat: 'claude-sonnet', translation: 'gemini-flash-lite' };
-const chatGPTSelection = { chat: 'chatgpt:custom-model', translation: 'chatgpt:gpt-6.1-sol' };
+const chatGPTSelection = { chat: 'chatgpt:custom-model', translation: 'chatgpt:gpt-6.2-sol' };
 
 test('provider history records actual switches and stays stable when model choices change', () => {
   let preferences = remember(empty, 'openrouter-api-key', apiSelection);
@@ -78,7 +78,7 @@ test('older preferences without provider history can still restore a registered 
 
 test('ChatGPT and OpenRouter restore their separate chat and translation choices across repeated switches', () => {
   let preferences = remember(empty, 'openrouter-api-key', apiSelection);
-  assert.deepEqual(resolve('chatgpt', apiSelection, undefined, catalogs), { chat: 'chatgpt:gpt-6.1-sol', translation: 'chatgpt:gpt-6-luna' });
+  assert.deepEqual(resolve('chatgpt', apiSelection, undefined, catalogs), { chat: 'chatgpt:gpt-6.2-sol', translation: 'chatgpt:gpt-6-luna' });
   preferences = remember(preferences, 'chatgpt', chatGPTSelection);
   // Persisted preferences must also work after reopening the extension.
   preferences = JSON.parse(JSON.stringify(preferences));
@@ -113,8 +113,8 @@ test('only the disappearing selection is restored; the other selection stays unc
 });
 
 test('a model removed from a refreshed catalog falls back, while a still-valid saved model is restored', () => {
-  assert.deepEqual(resolve('chatgpt', apiSelection, chatGPTSelection, { ...catalogs, chatGPT: [{ id: 'gpt-6.1-sol' }, { id: 'gpt-6-luna' }] }), {
-    chat: 'chatgpt:gpt-6.1-sol', translation: 'chatgpt:gpt-6.1-sol',
+  assert.deepEqual(resolve('chatgpt', apiSelection, chatGPTSelection, { ...catalogs, chatGPT: [{ id: 'gpt-6.2-sol' }, { id: 'gpt-6-luna' }] }), {
+    chat: 'chatgpt:gpt-6.2-sol', translation: 'chatgpt:gpt-6.2-sol',
   });
   assert.deepEqual(resolve('local', chatGPTSelection, { chat: 'local:removed', translation: 'local:local-two' }, catalogs), {
     chat: 'local:local-one', translation: 'local:local-two',
@@ -128,9 +128,9 @@ test('a temporarily empty ChatGPT catalog preserves saved choices without invent
 });
 
 test('excluded ChatGPT models cannot return through defaults or saved selections, even while offline', () => {
-  const excluded = ['gpt-6-sol', 'gpt-5.6-sol', 'gpt-5.6-luna', 'gpt-5.6-terra', 'gpt-5.6-terra-pro'];
+  const excluded = ['gpt-6.1-sol', 'gpt-6-sol', 'gpt-5.6-sol', 'gpt-5.6-luna', 'gpt-5.6-terra', 'gpt-5.6-terra-pro'];
   const accountCatalog = { ...catalogs, chatGPT: [...excluded.map(id => ({ id })), ...catalogs.chatGPT] };
-  const defaults = { chat: 'chatgpt:gpt-6.1-sol', translation: 'chatgpt:gpt-6-luna' };
+  const defaults = { chat: 'chatgpt:gpt-6.2-sol', translation: 'chatgpt:gpt-6-luna' };
   assert.deepEqual(resolve('chatgpt', apiSelection, undefined, accountCatalog), defaults);
   for (const id of excluded) {
     const selection = { chat: `chatgpt:${id}`, translation: `chatgpt:${id}` };
@@ -138,7 +138,7 @@ test('excluded ChatGPT models cannot return through defaults or saved selections
     assert.deepEqual(resolve('chatgpt', selection, selection, accountCatalog), defaults);
     assert.deepEqual(resolve('chatgpt', selection, selection, { chatGPT: [], local: [] }), { chat: undefined, translation: undefined });
   }
-  assert.equal(isProviderModel('chatgpt', 'chatgpt:gpt-6.1-sol'), true);
+  assert.equal(isProviderModel('chatgpt', 'chatgpt:gpt-6.2-sol'), true);
   assert.equal(isProviderModel('chatgpt', 'chatgpt:gpt-6-luna'), true);
   assert.deepEqual(resolve('chatgpt', apiSelection, undefined, { chatGPT: excluded.map(id => ({ id })), local: [] }), { chat: undefined, translation: undefined });
 });
@@ -179,7 +179,7 @@ test('provider preferences persist in Chrome local storage without replacing exi
   }
 });
 
-test('the saved GPT slot calls GPT-6.1 Sol with supported fast reasoning on both API routes', async () => {
+test('the saved GPT slot calls GPT-6.2 Sol with supported fast reasoning on both API routes', async () => {
   const modelsFile = fileURLToPath(new URL(`../.wxt/model-routing-${randomUUID()}.mjs`, import.meta.url));
   try {
     await build({ entryPoints: [fileURLToPath(new URL('../src/lib/models.ts', import.meta.url))], outfile: modelsFile, bundle: true, platform: 'node', format: 'esm', packages: 'external', logLevel: 'silent' });
@@ -188,7 +188,7 @@ test('the saved GPT slot calls GPT-6.1 Sol with supported fast reasoning on both
       const modelPreset = { modelName: 'gpt', connectionMode, openaiKey: 'synthetic-key', openrouterKey: 'synthetic-key' };
       const model = getModelInstance({ modelPreset, fast: true, temperature: 0.3, maxTokens: 2000, jsonSchema: { type: 'object' } });
       const params = model.invocationParams();
-      assert.equal(params.model, connectionMode === 'direct' ? 'gpt-6.1-sol' : 'openai/gpt-6.1-sol');
+      assert.equal(params.model, connectionMode === 'direct' ? 'gpt-6.2-sol' : 'openai/gpt-6.2-sol');
       assert.equal(connectionMode === 'direct' ? params.reasoning_effort : params.reasoning.effort, 'low');
       assert.equal(params.temperature, undefined);
       assert.deepEqual(params.response_format, { type: 'json_object' });

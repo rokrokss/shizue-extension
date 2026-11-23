@@ -91,10 +91,10 @@ test('ChatGPT translations carry model-specific effort through the factory and r
     requests.push(body);
     return { events: [{ type: 'response.output_text.delta', delta: '{"translation":"안녕하세요"}' }, { type: 'response.completed', response: {} }] };
   };
-  const models = ['gpt-6.1-sol', 'gpt-6.1-terra', 'gpt-6-luna', 'gpt-6-astra', 'unknown-account-model'];
+  const models = ['gpt-6.2-sol', 'gpt-6.1-terra', 'gpt-6-luna', 'gpt-6-astra', 'unknown-account-model'];
   await withChatGPT('../src/lib/models.ts', { models, respond }, async ({ getModelInstance }) => {
     for (const [modelName, effort] of [
-      ['chatgpt:gpt-6.1-sol', 'low'],
+      ['chatgpt:gpt-6.2-sol', 'low'],
       ['chatgpt:gpt-6.1-terra', 'none'],
       ['chatgpt:gpt-6-luna', 'none'],
       ['chatgpt:gpt-6-astra', 'low'],
@@ -137,7 +137,7 @@ test('the chat streams the thinking summary, and still answers when the account 
       { type: 'response.completed', response: { usage: { input_tokens: 5, output_tokens: 3, total_tokens: 8 } } },
     ] };
   };
-  await withChatGPT('../src/lib/models.ts', { models: ['gpt-6.1-sol', 'gpt-6.1-terra'], respond }, async ({ getModelInstance, getWebSearchModelInstance }) => {
+  await withChatGPT('../src/lib/models.ts', { models: ['gpt-6.2-sol', 'gpt-6.1-terra'], respond }, async ({ getModelInstance, getWebSearchModelInstance }) => {
     const chat = (modelName, reasoningEffort, factory = getModelInstance) =>
       factory({ modelPreset: { modelName, connectionMode: 'direct' }, streaming: true, reasoningEffort, temperature: 0.7 });
     const collect = async (model) => {
@@ -149,30 +149,30 @@ test('the chat streams the thinking summary, and still answers when the account 
       }
       return { text, thinking };
     };
-    assert.deepEqual(await collect(chat('chatgpt:gpt-6.1-sol')), { text: 'Hi!', thinking: '**Planning**\n\nReply briefly' });
+    assert.deepEqual(await collect(chat('chatgpt:gpt-6.2-sol')), { text: 'Hi!', thinking: '**Planning**\n\nReply briefly' });
     assert.deepEqual(requests.at(-1).reasoning, { summary: 'auto' });
-    await collect(chat('chatgpt:gpt-6.1-sol', 'high'));
+    await collect(chat('chatgpt:gpt-6.2-sol', 'high'));
     assert.deepEqual(requests.at(-1).reasoning, { effort: 'high', summary: 'auto' });
-    await collect(chat('chatgpt:gpt-6.1-sol', undefined, getWebSearchModelInstance));
+    await collect(chat('chatgpt:gpt-6.2-sol', undefined, getWebSearchModelInstance));
     assert.deepEqual([requests.at(-1).reasoning, requests.at(-1).tools], [{ summary: 'auto' }, [{ type: 'web_search' }]]);
     // Low effort is no thinking for this model, so there is nothing to summarize.
     await collect(chat('chatgpt:gpt-6.1-terra', 'low'));
     assert.deepEqual(requests.at(-1).reasoning, { effort: 'none' });
     // Calls that wait for the whole reply don't ask for the summary.
-    await getModelInstance({ modelPreset: { modelName: 'chatgpt:gpt-6.1-sol', connectionMode: 'direct' }, streaming: false }).invoke([new HumanMessage('Hi')]);
+    await getModelInstance({ modelPreset: { modelName: 'chatgpt:gpt-6.2-sol', connectionMode: 'direct' }, streaming: false }).invoke([new HumanMessage('Hi')]);
     assert.equal(Object.hasOwn(requests.at(-1), 'reasoning'), false);
 
     refuse = { message: 'Your organization must be verified to generate reasoning summaries.', type: 'invalid_request_error', param: 'reasoning.summary', code: 'unsupported_value' };
     const before = requests.length;
-    assert.equal((await collect(chat('chatgpt:gpt-6.1-sol', 'high'))).text, 'Hi!');
+    assert.equal((await collect(chat('chatgpt:gpt-6.2-sol', 'high'))).text, 'Hi!');
     assert.deepEqual(requests.slice(before).map((r) => r.reasoning), [{ effort: 'high', summary: 'auto' }, { effort: 'high' }]);
     const afterHigh = requests.length;
-    assert.equal((await collect(chat('chatgpt:gpt-6.1-sol'))).text, 'Hi!');
+    assert.equal((await collect(chat('chatgpt:gpt-6.2-sol'))).text, 'Hi!');
     assert.deepEqual(requests.slice(afterHigh).map((r) => Object.hasOwn(r, 'reasoning')), [true, false]);
     // Any other refusal is the request's error, not retried.
     refuse = { message: 'Bad input.', type: 'invalid_request_error', param: 'input', code: 'invalid_value' };
     const afterDefault = requests.length;
-    await assert.rejects(collect(chat('chatgpt:gpt-6.1-sol')));
+    await assert.rejects(collect(chat('chatgpt:gpt-6.2-sol')));
     assert.equal(requests.length, afterDefault + 1);
   });
 });

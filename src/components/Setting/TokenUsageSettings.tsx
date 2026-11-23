@@ -38,6 +38,7 @@ const MODEL_COLORS = {
   'claude-haiku': '#1FFFFC',
   'gpt-6-sol': '#32CCBC',
   'gpt-6.1-sol': '#32CCBC',
+  'gpt-6.2-sol': '#32CCBC',
   'gpt-6-astra': '#2E8B7A',
   'gpt-6.1-terra': '#90F7EC',
   'gpt-6-luna': '#ABDCFF',

@@ -160,7 +160,8 @@ test('saved choices move off dropped slots to their successor, else to the provi
   assert.deepEqual(migrateModelSelections(list, { chat: 'gpt-mini', translation: 'local:x', preferences: { selections: {} } }), {});
   // Settings saved before providers were remembered fall back to the OpenAI defaults.
   assert.deepEqual(migrateModelSelections(list, { chat: 'claude-haiku' }), { chat: 'gpt' });
-  assert.deepEqual(migrateModelSelections(list, { chat: 'chatgpt:gpt-6-sol' }), { chat: 'chatgpt:gpt-6.1-sol' });
+  assert.deepEqual(migrateModelSelections(list, { chat: 'chatgpt:gpt-6-sol' }), { chat: 'chatgpt:gpt-6.2-sol' });
+  assert.deepEqual(migrateModelSelections(list, { chat: 'chatgpt:gpt-6.1-sol' }), { chat: 'chatgpt:gpt-6.2-sol' });
 });
 
 test('a first check fetches the list, saves it with the moved choices in one write, and applies it', async () => {

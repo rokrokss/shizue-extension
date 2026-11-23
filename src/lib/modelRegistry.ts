@@ -189,6 +189,7 @@ export const modelSupportsWebSearch = (model: ChatModel) => !isLocalModel(model)
 // Usage records written before model IDs were stored hold slot names or retired model IDs.
 const legacyModelLabels: Record<string, string> = {
   'gpt-6-sol': 'GPT-6 Sol',
+  'gpt-6.1-sol': 'GPT-6.1 Sol',
   'claude-fable-5-1': 'Claude Fable 5.1',
   'claude-sonnet-5': 'Claude Sonnet 5',
   'claude-haiku-4-5': 'Claude Haiku 4.5',

@@ -122,7 +122,7 @@ test('account selection and deletion are no longer available through the setting
 });
 
 test('logout publishes fallback provider, models, routing and account state together', async () => {
-  const chatGPTSelection = { chat: 'chatgpt:gpt-6.1-sol', translation: 'chatgpt:gpt-6-luna' };
+  const chatGPTSelection = { chat: 'chatgpt:gpt-6.2-sol', translation: 'chatgpt:gpt-6-luna' };
   const savedModels = { chat: 'claude-sonnet', translation: 'gemini-flash-lite' };
   const fixture = backendFixture({
     OPENROUTER_KEY: 'synthetic-key', OPENROUTER_VALIDATED: true,

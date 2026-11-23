@@ -154,7 +154,7 @@ test('model catalog uses visibility and retains account-specific server order', 
 
 test('Responses requests validate effort and retain the supported-field allowlist', () => {
   const input = [{ role: 'user', content: 'Translate Hello into Korean.' }];
-  const base = { model: 'gpt-6.1-sol', input, instructions: 'Only return the translation.' };
+  const base = { model: 'gpt-6.2-sol', input, instructions: 'Only return the translation.' };
   assert.deepEqual(responseRequestBody(base), { ...base, store: false, stream: true });
   // 'xhigh' and 'max' only reach the models that take them (lib/reasoning.ts).
   for (const effort of ['low', 'none', 'medium', 'high', 'xhigh', 'max']) {

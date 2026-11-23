@@ -74,7 +74,7 @@ test('The thinking effort maps onto each provider, and models without one take n
   assert.equal(modelSupportsReasoningEffort('gpt'), true);
   assert.equal(modelSupportsReasoningEffort('claude-haiku'), true);
   assert.equal(modelSupportsReasoningEffort('gemma'), false);
-  assert.equal(modelSupportsReasoningEffort('chatgpt:gpt-6.1-sol'), true);
+  assert.equal(modelSupportsReasoningEffort('chatgpt:gpt-6.2-sol'), true);
   const server = { kind: 'ollama', baseUrl: 'http://localhost:11434', models: [
     { id: 'qwen3.5:9b', supportsImages: false, supportsThinking: true },
     { id: 'gemma4:12b', supportsImages: true, supportsThinking: false }] };
@@ -88,7 +88,7 @@ test('Models the list sets to think by default think at the medium effort, with 
     getModelInstance({ modelPreset: { modelName, connectionMode, ...keys }, streaming: true, ...options }).invocationParams({});
 
   // A ChatGPT account model follows the OpenAI slot with the same model.
-  const models = ['gpt', 'gpt-astra', 'chatgpt:gpt-6.1-sol', 'chatgpt:gpt-6-astra', 'gemini-argon', 'claude-opus', 'claude-fable', 'deepseek-pro',
+  const models = ['gpt', 'gpt-astra', 'chatgpt:gpt-6.2-sol', 'chatgpt:gpt-6-astra', 'gemini-argon', 'claude-opus', 'claude-fable', 'deepseek-pro',
     'gpt-terra', 'claude-sonnet', 'gemini-flash', 'chatgpt:gpt-6.1-terra', 'chatgpt:unknown', 'local:qwen3.5:9b'];
   assert.deepEqual(models.map(defaultThinkingFor), ['medium', 'medium', 'medium', 'medium', 'medium', 'medium', 'high', 'high',
     undefined, undefined, undefined, undefined, undefined, undefined]);
@@ -122,7 +122,7 @@ test('Extra and Max are offered only for the models that take them, and a choice
   for (const [model, efforts] of [
     ['gpt', all], ['gpt-astra', all], ['gpt-terra', all], ['gpt-mini', all],
     ['claude-fable', all], ['claude-opus', all], ['claude-sonnet', all], ['claude-haiku', all],
-    ['chatgpt:gpt-6.1-sol', all], ['chatgpt:unknown', base],
+    ['chatgpt:gpt-6.2-sol', all], ['chatgpt:unknown', base],
     ['deepseek-pro', ['low', 'medium', 'high', 'max']], ['deepseek-flash', ['low', 'medium', 'high', 'max']],
     ['gemini-argon', base], ['gemini-flash', base], ['gemini-flash-lite', base], ['gemma', []],
     ['local:qwen3.5:9b', base],
