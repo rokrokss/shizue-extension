@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.9
+
+- GPT-6.1 Sol makes way for GPT-6.2 Sol. With Sign in with ChatGPT, GPT-6.1 Sol is no longer offered, and a chat or translation model set to it moves to GPT-6.2 Sol
+
 ## v0.5.8
 
 - The characters beside messages and on the floating button match the Shizue app: the two bunnies and sixteen new animals take the place of the cows and chickens. A message keeps the same character every time it shows
